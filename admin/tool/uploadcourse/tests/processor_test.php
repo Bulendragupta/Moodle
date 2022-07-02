@@ -167,7 +167,11 @@ class processor_test extends \advanced_testcase {
         $cir->init();
 
         $options = array('mode' => tool_uploadcourse_processor::MODE_CREATE_NEW);
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $p = new tool_uploadcourse_processor($cir, $options, array());
     }
 
@@ -185,7 +189,11 @@ class processor_test extends \advanced_testcase {
         $cir->init();
 
         $options = array('mode' => tool_uploadcourse_processor::MODE_CREATE_NEW);
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $p = new tool_uploadcourse_processor($cir, $options, array());
     }
 

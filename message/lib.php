@@ -570,6 +570,20 @@ function message_page_type_list(string $pagetype, ?context $parentcontext, ?cont
 }
 
 /**
+ * Return a list of page types
+ *
+ * @param string $pagetype current page type
+ * @param context|null $parentcontext Block's parent context
+ * @param context|null $currentcontext Current context of block
+ * @return array
+ */
+function message_page_type_list(string $pagetype, ?context $parentcontext, ?context $currentcontext): array {
+    return [
+        'message-*' => get_string('page-message-x', 'message'),
+    ];
+}
+
+/**
  * Get messages sent or/and received by the specified users.
  * Please note that this function return deleted messages too. Besides, only individual conversation messages
  * are returned to maintain backwards compatibility.

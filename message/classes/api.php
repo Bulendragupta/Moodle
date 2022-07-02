@@ -1077,8 +1077,12 @@ class api {
         debugging('\core_message\api::get_contacts_with_unread_message_count is deprecated and no longer used',
             DEBUG_DEVELOPER);
 
+<<<<<<< HEAD
         $userfieldsapi = \core_user\fields::for_userpic()->including('lastaccess');
         $userfields = $userfieldsapi->get_sql('u', false, '', '', false)->selects;
+=======
+        $userfields = \user_picture::fields('u', array('lastaccess'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $unreadcountssql = "SELECT $userfields, count(m.id) as messagecount
                               FROM {message_contacts} mc
                         INNER JOIN {user} u
@@ -1119,8 +1123,12 @@ class api {
         debugging('\core_message\api::get_non_contacts_with_unread_message_count is deprecated and no longer used',
             DEBUG_DEVELOPER);
 
+<<<<<<< HEAD
         $userfieldsapi = \core_user\fields::for_userpic()->including('lastaccess');
         $userfields = $userfieldsapi->get_sql('u', false, '', '', false)->selects;
+=======
+        $userfields = \user_picture::fields('u', array('lastaccess'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $unreadcountssql = "SELECT $userfields, count(m.id) as messagecount
                               FROM {user} u
                         INNER JOIN {messages} m

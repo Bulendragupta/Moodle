@@ -133,6 +133,7 @@ Feature: In a lesson activity, students can navigate through a series of pages i
     And I press "Continue"
     And I should see "Congratulations - end of lesson reached"
 
+<<<<<<< HEAD
   Scenario: Student reattempts a question until out of attempts with specific jumps
     Given the following "activities" exist:
       | activity   | name             | intro                   | course | idnumber    |
@@ -202,6 +203,14 @@ Feature: In a lesson activity, students can navigate through a series of pages i
       | id_review | Yes |
       | id_maxattempts | 0 |
     And I press "Save and return to course"
+=======
+  Scenario: Student should not see remaining attempts notification if maximum number of attempts is set to unlimited
+    Given I add a "Lesson" to section "1" and I fill the form with:
+      | Name | Test lesson name |
+      | Description | Test lesson description |
+      | id_review | Yes |
+      | id_maxattempts | 0 |
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I follow "Test lesson name"
     And I follow "Add a question page"
     And I set the following fields to these values:

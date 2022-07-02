@@ -31,6 +31,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $string['clianswerno'] = 't';
 $string['cliansweryes'] = 'y';
+<<<<<<< HEAD
 $string['cliincorrectvalueerror'] = 'Galat, nilai salah "{$a->value}" untuk opsi "{$a->option}"';
 $string['cliincorrectvalueretry'] = 'Nilai input salah, coba lagi';
 $string['clitypevalue'] = 'tipe nilai';
@@ -40,3 +41,16 @@ $string['cliyesnoprompt'] = 'ketik y (Ya) atau t (Tidak)';
 $string['environmentrequireinstall'] = 'harus dipasang dan diaktifkan';
 $string['environmentrequireversion'] = 'versi {$a->needed} diperlukan dan Anda menjalankan {$a->current}';
 $string['upgradekeyset'] = 'Kunci peningkatan (biarkan kosong untuk tidak mengaturnya)';
+=======
+$string['cliincorrectvalueerror'] = 'GALAT, nilai yang salah "{$a->value}" untuk opsi "{$a->option}"';
+$string['cliincorrectvalueretry'] = 'Nilai masukan salah, silakan coba lagi';
+$string['clitypevalue'] = 'tipe nilai';
+$string['clitypevaluedefault'] = 'tipe nilai, tekan ENTER untuk menggunakan nilai bawaan ({$a})';
+$string['cliunknowoption'] = 'Opsi tidak dikenali :
+ {$a}
+Silakan gunakan opsi --help';
+$string['cliyesnoprompt'] = 'ketik y (Ya) atau t (Tidak)';
+$string['environmentrequireinstall'] = 'harus dipasang dan diaktifkan';
+$string['environmentrequireversion'] = 'versi {$a->needed} diperlukan dan Anda menjalankan {$a->current}';
+$string['upgradekeyset'] = 'Tingkatkan kunci (biarkan kosong untuk tidak mengaturnya)';
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

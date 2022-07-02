@@ -94,7 +94,11 @@ const show = async(rootNode, {
                     message: message,
                     type: 'success',
                 });
+<<<<<<< HEAD
                 location.href = rootNode.dataset.successurl;
+=======
+                location.reload();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
                 // The following return statement is never reached. It is put here just to make eslint happy.
                 return message;
@@ -104,7 +108,11 @@ const show = async(rootNode, {
             // We cannot use await in the following line.
             // The reason is that we are preventing the default action of the save event being triggered,
             // therefore we cannot define the event handler function asynchronous.
+<<<<<<< HEAD
             getString('nogatewayselected', 'core_payment').then(message => addToast(message, {type: 'warning'})).catch();
+=======
+            getString('nogatewayselected', 'core_payment').then(message => addToast(message)).catch();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         }
 
         e.preventDefault();

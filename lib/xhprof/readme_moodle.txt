@@ -37,7 +37,12 @@ TODO:
 20171002 - MDL-60313 - Marina Glancy (marinaglancy): Upgrade to 0.9.4 release; patched for PHP7.2
 20190314 - MDL-64543 - Brendan Heywood (brendanheywood): Add support for conditional slow profiling
 20191016 - MDL-65349 - Brendan Heywood (brendanheywood): Improved url matching behaviour
+<<<<<<< HEAD
 20201012 - MDL-67081 - Brendan Heywood (brendanheywood): Support selective profiles from CLI
 20201210 - MDL-70297 - Ilya Tregubov (ilyatregubov): Upgrade to 2.2.3 release;
 20210209 - MDL-70525 - Tomo Tsuyuki (tomotsuyuki): Allow huge number of values
 20211209 - MDL-71705 - Ilya Tregubov (ilyatregubov): Upgrade to 2.3.5 release;
+=======
+20210209 - MDL-70525 - Tomo Tsuyuki (tomotsuyuki): Allow huge number of values
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

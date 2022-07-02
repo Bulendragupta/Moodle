@@ -40,14 +40,22 @@
  * @author     Claude Vervoort
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+<<<<<<< HEAD
 namespace mod_lti\local\ltiopenid;
+=======
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 use mod_lti\local\ltiopenid\registration_exception;
 use mod_lti\local\ltiopenid\registration_helper;
 
 /**
  * OpenId LTI Registration library tests
  */
+<<<<<<< HEAD
 class openidregistration_test extends \advanced_testcase {
+=======
+class mod_lti_openidregistrationlib_testcase extends advanced_testcase {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     /**
      * @var string A has-it-all client registration.
@@ -108,8 +116,13 @@ EOD;
         "jwks_uri": "https://client.example.org/.well-known/jwks.json",
         "token_endpoint_auth_method": "private_key_jwt",
         "https://purl.imsglobal.org/spec/lti-tool-configuration": {
+<<<<<<< HEAD
             "domain": "www.example.org",
             "target_link_uri": "https://www.example.org/lti"
+=======
+            "domain": "client.example.org",
+            "target_link_uri": "https://client.example.org/lti"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         }
     }
 EOD;
@@ -146,7 +159,11 @@ EOD;
     public function test_to_config_full() {
         $registration = json_decode($this->registrationfulljson, true);
         $registration['scope'] .= ' https://purl.imsglobal.org/spec/lti-nrps/scope/contextmembership.readonly';
+<<<<<<< HEAD
         $config = registration_helper::get()->registration_to_config($registration, 'TheClientId');
+=======
+        $config = registration_helper::registration_to_config($registration, 'TheClientId');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertEquals('JWK_KEYSET', $config->lti_keytype);
         $this->assertEquals(LTI_VERSION_1P3, $config->lti_ltiversion);
         $this->assertEquals('TheClientId', $config->lti_clientid);
@@ -175,15 +192,22 @@ EOD;
      */
     public function test_to_config_minimal() {
         $registration = json_decode($this->registrationminimaljson, true);
+<<<<<<< HEAD
         $config = registration_helper::get()->registration_to_config($registration, 'TheClientId');
+=======
+        $config = registration_helper::registration_to_config($registration, 'TheClientId');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertEquals('JWK_KEYSET', $config->lti_keytype);
         $this->assertEquals(LTI_VERSION_1P3, $config->lti_ltiversion);
         $this->assertEquals('TheClientId', $config->lti_clientid);
         $this->assertEquals('Virtual Garden', $config->lti_typename);
         $this->assertEmpty($config->lti_description);
+<<<<<<< HEAD
         // Special case here where Moodle ignores www for domains.
         $this->assertEquals('example.org', $config->lti_tooldomain);
         $this->assertEquals('https://www.example.org/lti', $config->lti_toolurl);
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertEquals('https://client.example.org/lti/init', $config->lti_initiatelogin);
         $this->assertEquals('https://client.example.org/callback', $config->lti_redirectionuris);
         $this->assertEmpty($config->lti_customparameters);
@@ -203,7 +227,11 @@ EOD;
      */
     public function test_to_config_minimal_with_deeplinking() {
         $registration = json_decode($this->registrationminimaldljson, true);
+<<<<<<< HEAD
         $config = registration_helper::get()->registration_to_config($registration, 'TheClientId');
+=======
+        $config = registration_helper::registration_to_config($registration, 'TheClientId');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertEquals(1, $config->lti_contentitem);
         $this->assertEmpty($config->lti_toolurl_ContentItemSelectionRequest);
     }
@@ -216,7 +244,11 @@ EOD;
         $this->expectException(registration_exception::class);
         $this->expectExceptionCode(400);
         unset($registration['initiate_login_uri']);
+<<<<<<< HEAD
         registration_helper::get()->registration_to_config($registration, 'TheClientId');
+=======
+        registration_helper::registration_to_config($registration, 'TheClientId');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**
@@ -227,7 +259,11 @@ EOD;
         $this->expectException(registration_exception::class);
         $this->expectExceptionCode(400);
         unset($registration['redirect_uris']);
+<<<<<<< HEAD
         registration_helper::get()->registration_to_config($registration, 'TheClientId');
+=======
+        registration_helper::registration_to_config($registration, 'TheClientId');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**
@@ -238,7 +274,11 @@ EOD;
         $this->expectException(registration_exception::class);
         $this->expectExceptionCode(400);
         $registration['jwks_uri'] = '';
+<<<<<<< HEAD
         registration_helper::get()->registration_to_config($registration, 'TheClientId');
+=======
+        registration_helper::registration_to_config($registration, 'TheClientId');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**
@@ -250,7 +290,11 @@ EOD;
         $this->expectExceptionCode(400);
         unset($registration['https://purl.imsglobal.org/spec/lti-tool-configuration']['domain']);
         unset($registration['https://purl.imsglobal.org/spec/lti-tool-configuration']['target_link_uri']);
+<<<<<<< HEAD
         registration_helper::get()->registration_to_config($registration, 'TheClientId');
+=======
+        registration_helper::registration_to_config($registration, 'TheClientId');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**
@@ -261,7 +305,11 @@ EOD;
         $this->expectException(registration_exception::class);
         $this->expectExceptionCode(400);
         $registration['https://purl.imsglobal.org/spec/lti-tool-configuration']['domain'] = 'not.the.right.domain';
+<<<<<<< HEAD
         registration_helper::get()->registration_to_config($registration, 'TheClientId');
+=======
+        registration_helper::registration_to_config($registration, 'TheClientId');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**
@@ -272,7 +320,11 @@ EOD;
         unset($registration['https://purl.imsglobal.org/spec/lti-tool-configuration']['domain']);
         $this->expectException(registration_exception::class);
         $this->expectExceptionCode(400);
+<<<<<<< HEAD
         $config = registration_helper::get()->registration_to_config($registration, 'TheClientId');
+=======
+        $config = registration_helper::registration_to_config($registration, 'TheClientId');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**
@@ -281,9 +333,15 @@ EOD;
     public function test_validation_domain_targetlinkuri_onlydomain() {
         $registration = json_decode($this->registrationminimaljson, true);
         unset($registration['https://purl.imsglobal.org/spec/lti-tool-configuration']['target_link_uri']);
+<<<<<<< HEAD
         $config = registration_helper::get()->registration_to_config($registration, 'TheClientId');
         $this->assertEquals('example.org', $config->lti_tooldomain);
         $this->assertEquals('https://www.example.org', $config->lti_toolurl);
+=======
+        $config = registration_helper::registration_to_config($registration, 'TheClientId');
+        $this->assertEquals('client.example.org', $config->lti_tooldomain);
+        $this->assertEquals('https://client.example.org', $config->lti_toolurl);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**
@@ -292,8 +350,12 @@ EOD;
     public function test_config_to_registration() {
         $orig = json_decode($this->registrationfulljson, true);
         $orig['scope'] .= ' https://purl.imsglobal.org/spec/lti-nrps/scope/contextmembership.readonly';
+<<<<<<< HEAD
         $reghelper = registration_helper::get();
         $reg = $reghelper->config_to_registration($reghelper->registration_to_config($orig, 'clid'), 12);
+=======
+        $reg = registration_helper::config_to_registration(registration_helper::registration_to_config($orig, 'clid'), 12);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertEquals('clid', $reg['client_id']);
         $this->assertEquals($orig['response_types'], $reg['response_types']);
         $this->assertEquals($orig['initiate_login_uri'], $reg['initiate_login_uri']);
@@ -329,8 +391,12 @@ EOD;
      */
     public function test_config_to_registration_minimal() {
         $orig = json_decode($this->registrationminimaljson, true);
+<<<<<<< HEAD
         $reghelper = registration_helper::get();
         $reg = $reghelper->config_to_registration($reghelper->registration_to_config($orig, 'clid'), 12);
+=======
+        $reg = registration_helper::config_to_registration(registration_helper::registration_to_config($orig, 'clid'), 12);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertEquals('clid', $reg['client_id']);
         $this->assertEquals($orig['response_types'], $reg['response_types']);
         $this->assertEquals($orig['initiate_login_uri'], $reg['initiate_login_uri']);
@@ -347,6 +413,7 @@ EOD;
         $this->assertFalse(in_array('name', $lti['claims']));
     }
 
+<<<<<<< HEAD
     /**
      * Test the transformation from lti config 1.1 to Registration Response.
      */
@@ -437,4 +504,6 @@ EOD;
         $this->assertFalse(in_array('given_name', $lti['claims']));
         $this->assertFalse(in_array('name', $lti['claims']));
     }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

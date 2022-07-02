@@ -17,7 +17,11 @@ Feature: Teachers can enable comments only if comments are enabled at site level
       | teacher1 | C1 | editingteacher |
     When I log in as "teacher1"
     And I am on "Course 1" course homepage
+<<<<<<< HEAD
     And I turn editing mode on
+=======
+    And I press "Turn editing on"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Add an activity or resource"
     And I click on "Add a new Database" "link" in the "Add an activity or resource" "dialogue"
     And I expand all fieldsets

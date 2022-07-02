@@ -321,5 +321,9 @@ Feature: The my overview block allows users to easily access their courses
 
   @accessibility
   Scenario: The dashboard page must have sufficient colour contrast
+<<<<<<< HEAD
     When I am on the "My courses" page logged in as "student1"
+=======
+    When I log in as "student1"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then the page should meet "wcag143" accessibility standards

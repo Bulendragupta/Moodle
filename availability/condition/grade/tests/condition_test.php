@@ -59,7 +59,11 @@ class condition_test extends \advanced_testcase {
         $this->assertFalse($cond->is_available(false, $info, true, $user->id));
         $information = $cond->get_description(false, false, $info);
         $information = \core_availability\info::format_info($information, $course);
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression('~have a grade.*Test!~', $information);
+=======
+        $this->assertRegExp('~have a grade.*Test!~', $information);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertTrue($cond->is_available(true, $info, true, $user->id));
 
         // Add grade and check available.
@@ -68,7 +72,11 @@ class condition_test extends \advanced_testcase {
         $this->assertFalse($cond->is_available(true, $info, true, $user->id));
         $information = $cond->get_description(false, true, $info);
         $information = \core_availability\info::format_info($information, $course);
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression('~do not have a grade.*Test!~', $information);
+=======
+        $this->assertRegExp('~do not have a grade.*Test!~', $information);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Construct directly and test remaining conditions; first, min grade (fail).
         self::set_grade($assignrow, $user->id, 29.99999);
@@ -77,7 +85,11 @@ class condition_test extends \advanced_testcase {
         $this->assertFalse($cond->is_available(false, $info, true, $user->id));
         $information = $cond->get_description(false, false, $info);
         $information = \core_availability\info::format_info($information, $course);
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression('~achieve a required score.*Test!~', $information);
+=======
+        $this->assertRegExp('~achieve a required score.*Test!~', $information);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertTrue($cond->is_available(true, $info, true, $user->id));
 
         // Min grade (success).
@@ -86,7 +98,11 @@ class condition_test extends \advanced_testcase {
         $this->assertFalse($cond->is_available(true, $info, true, $user->id));
         $information = $cond->get_description(false, true, $info);
         $information = \core_availability\info::format_info($information, $course);
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression('~do not get certain scores.*Test!~', $information);
+=======
+        $this->assertRegExp('~do not get certain scores.*Test!~', $information);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Max grade (fail).
         unset($structure->min);
@@ -95,7 +111,11 @@ class condition_test extends \advanced_testcase {
         $this->assertFalse($cond->is_available(false, $info, true, $user->id));
         $information = $cond->get_description(false, false, $info);
         $information = \core_availability\info::format_info($information, $course);
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression('~get an appropriate score.*Test!~', $information);
+=======
+        $this->assertRegExp('~get an appropriate score.*Test!~', $information);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertTrue($cond->is_available(true, $info, true, $user->id));
 
         // Max grade (success).
@@ -104,7 +124,11 @@ class condition_test extends \advanced_testcase {
         $this->assertFalse($cond->is_available(true, $info, true, $user->id));
         $information = $cond->get_description(false, true, $info);
         $information = \core_availability\info::format_info($information, $course);
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression('~do not get certain scores.*Test!~', $information);
+=======
+        $this->assertRegExp('~do not get certain scores.*Test!~', $information);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Max and min (fail).
         $structure->min = 30.0;
@@ -113,7 +137,11 @@ class condition_test extends \advanced_testcase {
         $this->assertFalse($cond->is_available(false, $info, true, $user->id));
         $information = $cond->get_description(false, false, $info);
         $information = \core_availability\info::format_info($information, $course);
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression('~get a particular score.*Test!~', $information);
+=======
+        $this->assertRegExp('~get a particular score.*Test!~', $information);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertTrue($cond->is_available(true, $info, true, $user->id));
 
         // Still fail (other end).
@@ -126,7 +154,11 @@ class condition_test extends \advanced_testcase {
         $this->assertFalse($cond->is_available(true, $info, true, $user->id));
         $information = $cond->get_description(false, true, $info);
         $information = \core_availability\info::format_info($information, $course);
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression('~do not get certain scores.*Test!~', $information);
+=======
+        $this->assertRegExp('~do not get certain scores.*Test!~', $information);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Success (bottom end).
         self::set_grade($assignrow, $user->id, 30.0);
@@ -134,7 +166,11 @@ class condition_test extends \advanced_testcase {
         $this->assertFalse($cond->is_available(true, $info, true, $user->id));
         $information = $cond->get_description(false, true, $info);
         $information = \core_availability\info::format_info($information, $course);
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression('~do not get certain scores.*Test!~', $information);
+=======
+        $this->assertRegExp('~do not get certain scores.*Test!~', $information);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**
@@ -147,7 +183,11 @@ class condition_test extends \advanced_testcase {
         try {
             $cond = new condition($structure);
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Missing or invalid ->id', $e->getMessage());
         }
 
@@ -156,7 +196,11 @@ class condition_test extends \advanced_testcase {
         try {
             $cond = new condition($structure);
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Missing or invalid ->id', $e->getMessage());
         }
 
@@ -166,7 +210,11 @@ class condition_test extends \advanced_testcase {
         try {
             $cond = new condition($structure);
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Missing or invalid ->min', $e->getMessage());
         }
 
@@ -176,7 +224,11 @@ class condition_test extends \advanced_testcase {
         try {
             $cond = new condition($structure);
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Missing or invalid ->max', $e->getMessage());
         }
 

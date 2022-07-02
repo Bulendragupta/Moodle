@@ -39,8 +39,13 @@ Feature: The forum search allows users to perform advanced searches for forum po
 
   Scenario: Perform an advanced search using any term
     Given I am on the "Announcements" "forum activity" page logged in as student1
+<<<<<<< HEAD
     And I press "Search"
     And I should see "Please enter search terms into one or more of the following fields"
+=======
+    And I press "Search forums"
+    And I should see "Advanced search"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the field "words" to "subject"
     When I press "Search"
     Then I should see "My subject"
@@ -48,8 +53,13 @@ Feature: The forum search allows users to perform advanced searches for forum po
 
   Scenario: Perform an advanced search avoiding words
     Given I am on the "Announcements" "forum activity" page logged in as student1
+<<<<<<< HEAD
     And I press "Search"
     And I should see "Please enter search terms into one or more of the following fields"
+=======
+    And I press "Search forums"
+    And I should see "Advanced search"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the field "words" to "My"
     And I set the field "notwords" to "subjective"
     When I press "Search"
@@ -61,8 +71,13 @@ Feature: The forum search allows users to perform advanced searches for forum po
       | mysql    |
       | postgres |
     And I am on the "Announcements" "forum activity" page logged in as student1
+<<<<<<< HEAD
     And I press "Search"
     And I should see "Please enter search terms into one or more of the following fields"
+=======
+    And I press "Search forums"
+    And I should see "Advanced search"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the field "fullwords" to "subject"
     When I press "Search"
     Then I should see "My subject"
@@ -70,8 +85,13 @@ Feature: The forum search allows users to perform advanced searches for forum po
 
   Scenario: Perform an advanced search matching the subject
     Given I am on the "Announcements" "forum activity" page logged in as student1
+<<<<<<< HEAD
     And I press "Search"
     And I should see "Please enter search terms into one or more of the following fields"
+=======
+    And I press "Search forums"
+    And I should see "Advanced search"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the field "subject" to "subjective"
     When I press "Search"
     Then I should not see "My message"
@@ -85,8 +105,13 @@ Feature: The forum search allows users to perform advanced searches for forum po
       | Message | My message |
     And I log out
     When I am on the "Announcements" "forum activity" page logged in as student1
+<<<<<<< HEAD
     And I press "Search"
     And I should see "Please enter search terms into one or more of the following fields"
+=======
+    And I press "Search forums"
+    And I should see "Advanced search"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the field "user" to "TWO"
     And I press "Search"
     Then I should see "Teacher TWO"
@@ -94,8 +119,13 @@ Feature: The forum search allows users to perform advanced searches for forum po
 
   Scenario: Perform an advanced search with multiple words
     Given I am on the "Announcements" "forum activity" page logged in as student1
+<<<<<<< HEAD
     And I press "Search"
     And I should see "Please enter search terms into one or more of the following fields"
+=======
+    And I press "Search forums"
+    And I should see "Advanced search"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the field "subject" to "your subjective"
     When I press "Search"
     Then I should not see "My message"
@@ -111,10 +141,17 @@ Feature: The forum search allows users to perform advanced searches for forum po
     And I press "Save changes"
     And I log out
     And I am on the "Announcements" "forum activity" page logged in as student1
+<<<<<<< HEAD
     And I press "Search"
     And I should see "Please enter search terms into one or more of the following fields"
     And I set the field "Is tagged with" to "SearchedTag"
     When I press "Search"
+=======
+    And I press "Search forums"
+    And I should see "Advanced search"
+    And I set the field "Is tagged with" to "SearchedTag"
+    When I press "Search forums"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "My subject"
     And I should not see "Your subjective"
 

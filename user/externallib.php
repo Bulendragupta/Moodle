@@ -575,6 +575,11 @@ class core_user_external extends external_api {
                 'subdirs'        => 0,
                 'maxfiles'       => 1,
                 'accepted_types' => 'optimised_image');
+<<<<<<< HEAD
+=======
+
+        $transaction = $DB->start_delegated_transaction();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $warnings = array();
         foreach ($params['users'] as $user) {

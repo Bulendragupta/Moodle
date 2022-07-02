@@ -82,11 +82,25 @@ if ($action === 'pollconversions') {
     $completestatuslist = [combined_document::STATUS_COMPLETE, combined_document::STATUS_FAILED];
 
     if (in_array($response->status, $readystatuslist)) {
+<<<<<<< HEAD
         // It seems that the files for this submission haven't been combined in cron yet.
+=======
+        // It seems that the files for this submission haven't been combined by the
+        // "\assignfeedback_editpdf\task\convert_submissions" scheduled task.
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         // Try to combine them in the user session.
         $combineddocument = document_services::get_combined_pdf_for_attempt($assignment, $userid, $attemptnumber);
         $response->status = $combineddocument->get_status();
         $response->filecount = $combineddocument->get_document_count();
+
+        // Check status of the combined document and remove the submission
+        // from the task queue if combination completed.
+        if (in_array($response->status, $completestatuslist)) {
+            $submission = $assignment->get_user_submission($userid, false, $attemptnumber);
+            if ($submission) {
+                $DB->delete_records('assignfeedback_editpdf_queue', array('submissionid' => $submission->id));
+            }
+        }
     }
 
     if (in_array($response->status, $completestatuslist)) {

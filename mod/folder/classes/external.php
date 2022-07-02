@@ -186,8 +186,17 @@ class mod_folder_external extends external_api {
                             'showexpanded' => new external_value(PARAM_INT, '1 = expanded, 0 = collapsed for sub-folders'),
                             'showdownloadfolder' => new external_value(PARAM_INT, 'Whether to show the download folder button'),
                             'forcedownload' => new external_value(PARAM_INT, 'Whether file download is forced'),
+<<<<<<< HEAD
                         ]
                     ))
+=======
+                            'section' => new external_value(PARAM_INT, 'Course section id'),
+                            'visible' => new external_value(PARAM_INT, 'Module visibility'),
+                            'groupmode' => new external_value(PARAM_INT, 'Group mode'),
+                            'groupingid' => new external_value(PARAM_INT, 'Grouping id'),
+                        )
+                    )
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 ),
                 'warnings' => new external_warnings(),
             )

@@ -228,11 +228,19 @@ class core_medialib_testcase extends advanced_testcase {
                     $this->assertStringContainsString($test, $textwithlink);
                     $this->assertStringNotContainsString($html5video, $textwithlink);
                     $this->assertStringContainsString($html5audio, $textwithlink);
+<<<<<<< HEAD
+=======
+                    $this->assertStringNotContainsString($swf, $textwithlink);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                     $this->assertStringContainsString($link, $textwithlink);
 
                     $this->assertStringContainsString($test, $textwithoutlink);
                     $this->assertStringNotContainsString($html5video, $textwithoutlink);
                     $this->assertStringContainsString($html5audio, $textwithoutlink);
+<<<<<<< HEAD
+=======
+                    $this->assertStringNotContainsString($swf, $textwithoutlink);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                     $this->assertStringNotContainsString($link, $textwithoutlink);
                     break;
 
@@ -240,11 +248,19 @@ class core_medialib_testcase extends advanced_testcase {
                     $this->assertStringContainsString($test, $textwithlink);
                     $this->assertStringContainsString($html5video, $textwithlink);
                     $this->assertStringNotContainsString($html5audio, $textwithlink);
+<<<<<<< HEAD
+=======
+                    $this->assertStringNotContainsString($swf, $textwithlink);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                     $this->assertStringContainsString($link, $textwithlink);
 
                     $this->assertStringContainsString($test, $textwithoutlink);
                     $this->assertStringContainsString($html5video, $textwithoutlink);
                     $this->assertStringNotContainsString($html5audio, $textwithoutlink);
+<<<<<<< HEAD
+=======
+                    $this->assertStringNotContainsString($swf, $textwithoutlink);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                     $this->assertStringNotContainsString($link, $textwithoutlink);
                     break;
 
@@ -269,7 +285,11 @@ class core_medialib_testcase extends advanced_testcase {
         // ...and with the 'no it's safe, I checked it' option.
         $url = new moodle_url('http://example.org/test.swf');
         $t = $manager->embed_url($url, '', 0, 0, array(core_media_manager::OPTION_TRUSTED => true));
+<<<<<<< HEAD
         $this->assertStringNotContainsString('</object>', $t);
+=======
+        $this->assertStringContainsString('</object>', $t);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**

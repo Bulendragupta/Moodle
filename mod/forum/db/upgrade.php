@@ -255,7 +255,14 @@ function xmldb_forum_upgrade($oldversion) {
         upgrade_mod_savepoint(true, 2020072100, 'forum');
     }
 
+<<<<<<< HEAD
     if ($oldversion < 2021101100) {
+=======
+    // Automatically generated Moodle v3.10.0 release upgrade line.
+    // Put any upgrade step following this.
+
+    if ($oldversion < 2020110901) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         // Add custom data to digest tasks to stop duplicates being created after this patch.
         $timenow = time();
 
@@ -281,6 +288,7 @@ function xmldb_forum_upgrade($oldversion) {
 
         $DB->set_field_select('task_adhoc', 'customdata', $customdata, $sql, $params);
 
+<<<<<<< HEAD
         upgrade_mod_savepoint(true, 2021101100, 'forum');
     }
 
@@ -349,6 +357,9 @@ function xmldb_forum_upgrade($oldversion) {
             $dbman->add_field($table, $field);
         }
         upgrade_mod_savepoint(true, 2022041901, 'forum');
+=======
+        upgrade_mod_savepoint(true, 2020110901, 'forum');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     return true;

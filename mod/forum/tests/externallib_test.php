@@ -2543,7 +2543,11 @@ class externallib_test extends externallib_advanced_testcase {
 
         // Add discussions to the forums.
         $time = time();
+<<<<<<< HEAD
         $record = new \stdClass();
+=======
+        $record = new stdClass();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $record->course = $course1->id;
         $record->userid = $user1->id;
         $record->forum = $forum1->id;
@@ -2679,6 +2683,7 @@ class externallib_test extends externallib_advanced_testcase {
                             'viewisolated' => $isolatedurluser->out(false),
                             'viewparent' => $urlfactory->get_view_post_url_from_post_id(
                                 $discussion1reply1->discussion, $discussion1reply1->parent)->out(false),
+<<<<<<< HEAD
                             'edit' => (new \moodle_url('/mod/forum/post.php', [
                                 'edit' => $discussion1reply1->id
                             ]))->out(false),
@@ -2689,6 +2694,18 @@ class externallib_test extends externallib_advanced_testcase {
                                 'prune' => $discussion1reply1->id
                             ]))->out(false),
                             'reply' => (new \moodle_url('/mod/forum/post.php#mformforum', [
+=======
+                            'edit' => (new moodle_url('/mod/forum/post.php', [
+                                'edit' => $discussion1reply1->id
+                            ]))->out(false),
+                            'delete' => (new moodle_url('/mod/forum/post.php', [
+                                'delete' => $discussion1reply1->id
+                            ]))->out(false),
+                            'split' => (new moodle_url('/mod/forum/post.php', [
+                                'prune' => $discussion1reply1->id
+                            ]))->out(false),
+                            'reply' => (new moodle_url('/mod/forum/post.php#mformforum', [
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                                 'reply' => $discussion1reply1->id
                             ]))->out(false),
                             'export' => null,
@@ -2744,10 +2761,17 @@ class externallib_test extends externallib_advanced_testcase {
                                 $discussion1firstpostobject->discussion, $discussion1firstpostobject->id)->out(false),
                             'viewisolated' => $isolatedurlparent->out(false),
                             'viewparent' => null,
+<<<<<<< HEAD
                             'edit' => (new \moodle_url('/mod/forum/post.php', [
                                 'edit' => $discussion1firstpostobject->id
                             ]))->out(false),
                             'delete' => (new \moodle_url('/mod/forum/post.php', [
+=======
+                            'edit' => (new moodle_url('/mod/forum/post.php', [
+                                'edit' => $discussion1firstpostobject->id
+                            ]))->out(false),
+                            'delete' => (new moodle_url('/mod/forum/post.php', [
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                                 'delete' => $discussion1firstpostobject->id
                             ]))->out(false),
                             'split' => null,
@@ -2828,10 +2852,17 @@ class externallib_test extends externallib_advanced_testcase {
                             'delete' => (new \moodle_url('/mod/forum/post.php', [
                                 'delete' => $discussion2reply1->id
                             ]))->out(false),
+<<<<<<< HEAD
                             'split' => (new \moodle_url('/mod/forum/post.php', [
                                 'prune' => $discussion2reply1->id
                             ]))->out(false),
                             'reply' => (new \moodle_url('/mod/forum/post.php#mformforum', [
+=======
+                            'split' => (new moodle_url('/mod/forum/post.php', [
+                                'prune' => $discussion2reply1->id
+                            ]))->out(false),
+                            'reply' => (new moodle_url('/mod/forum/post.php#mformforum', [
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                                 'reply' => $discussion2reply1->id
                             ]))->out(false),
                             'export' => null,
@@ -2887,10 +2918,17 @@ class externallib_test extends externallib_advanced_testcase {
                                 $discussion2firstpostobject->discussion, $discussion2firstpostobject->id)->out(false),
                             'viewisolated' => $isolatedurlparent->out(false),
                             'viewparent' => null,
+<<<<<<< HEAD
                             'edit' => (new \moodle_url('/mod/forum/post.php', [
                                 'edit' => $discussion2firstpostobject->id
                             ]))->out(false),
                             'delete' => (new \moodle_url('/mod/forum/post.php', [
+=======
+                            'edit' => (new moodle_url('/mod/forum/post.php', [
+                                'edit' => $discussion2firstpostobject->id
+                            ]))->out(false),
+                            'delete' => (new moodle_url('/mod/forum/post.php', [
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                                 'delete' => $discussion2firstpostobject->id
                             ]))->out(false),
                             'split' => null,
@@ -3318,7 +3356,11 @@ class externallib_test extends externallib_advanced_testcase {
         ]);
 
         // Update discussion post subject.
+<<<<<<< HEAD
         $result = \external_api::clean_returnvalue(
+=======
+        $result = external_api::clean_returnvalue(
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             mod_forum_external::update_discussion_post_returns(),
             mod_forum_external::update_discussion_post($discussion->firstpost, '0')
         );
@@ -3351,7 +3393,11 @@ class externallib_test extends externallib_advanced_testcase {
         ]);
 
         // Update discussion post message.
+<<<<<<< HEAD
         $result = \external_api::clean_returnvalue(
+=======
+        $result = external_api::clean_returnvalue(
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             mod_forum_external::update_discussion_post_returns(),
             mod_forum_external::update_discussion_post($discussion->firstpost, '', '0', FORMAT_HTML)
         );
@@ -3384,7 +3430,11 @@ class externallib_test extends externallib_advanced_testcase {
         ]);
 
         // Update discussion post message & messageformat.
+<<<<<<< HEAD
         $result = \external_api::clean_returnvalue(
+=======
+        $result = external_api::clean_returnvalue(
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             mod_forum_external::update_discussion_post_returns(),
             mod_forum_external::update_discussion_post($discussion->firstpost, '', 'Update discussion message', FORMAT_MOODLE)
         );

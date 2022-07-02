@@ -24,7 +24,11 @@ Feature: Regrading grades does not unnecessarily mark some as overriden
     And I set the field "Available aggregation types" to "Weighted mean of grades"
     And I press "Save changes"
     And I am on the "Assignment 1" "assign activity" page
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Grade" "link" in the "Student 1" "table_row"
     And I set the field "Grade out of 100" to "80"
     And I press "Save and show next"
@@ -58,7 +62,11 @@ Feature: Regrading grades does not unnecessarily mark some as overriden
   @javascript
   Scenario: Confirm overridden course total does not get regraded when activity grade is changed
     Given I am on the "Assignment 1" "assign activity" page
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Grade" "link" in the "Student 1" "table_row"
     And I set the field "Grade out of 100" to "90"
     And I press "Save and show next"

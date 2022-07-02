@@ -876,7 +876,11 @@ M.course_dndupload = {
                 this.originalUnloadEvent = window.onbeforeunload;
                 // Trigger form upload start events.
                 require(['core_form/events'], function(FormEvent) {
+<<<<<<< HEAD
                     FormEvent.notifyUploadStarted(section.get('id'));
+=======
+                    FormEvent.triggerUploadStarted(section.get('id'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 });
             }
             if (xhr.readyState == 4) {
@@ -909,7 +913,11 @@ M.course_dndupload = {
                 }
                 // Trigger form upload complete events.
                 require(['core_form/events'], function(FormEvent) {
+<<<<<<< HEAD
                     FormEvent.notifyUploadCompleted(section.get('id'));
+=======
+                    FormEvent.triggerUploadCompleted(section.get('id'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 });
             }
         };
@@ -1144,7 +1152,11 @@ M.course_dndupload = {
                 this.originalUnloadEvent = window.onbeforeunload;
                 // Trigger form upload start events.
                 require(['core_form/events'], function(FormEvent) {
+<<<<<<< HEAD
                     FormEvent.notifyUploadStarted(section.get('id'));
+=======
+                    FormEvent.triggerUploadStarted(section.get('id'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 });
             }
             if (xhr.readyState == 4) {
@@ -1167,7 +1179,11 @@ M.course_dndupload = {
                             resel.parent.removeChild(resel.li);
                             // Trigger form upload complete events.
                             require(['core_form/events'], function(FormEvent) {
+<<<<<<< HEAD
                                 FormEvent.notifyUploadCompleted(section.get('id'));
+=======
+                                FormEvent.triggerUploadCompleted(section.get('id'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                             });
                             new M.core.alert({message: result.error});
                         }
@@ -1175,13 +1191,21 @@ M.course_dndupload = {
                 } else {
                     // Trigger form upload complete events.
                     require(['core_form/events'], function(FormEvent) {
+<<<<<<< HEAD
                         FormEvent.notifyUploadCompleted(section.get('id'));
+=======
+                        FormEvent.triggerUploadCompleted(section.get('id'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                     });
                     new M.core.alert({message: M.util.get_string('servererror', 'moodle')});
                 }
                 // Trigger form upload complete events.
                 require(['core_form/events'], function(FormEvent) {
+<<<<<<< HEAD
                     FormEvent.notifyUploadCompleted(section.get('id'));
+=======
+                    FormEvent.triggerUploadCompleted(section.get('id'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 });
             }
         };

@@ -1272,12 +1272,15 @@ class flexible_table {
                 $icon_hide = $this->show_hide_link($column, $index);
             }
             switch ($column) {
+<<<<<<< HEAD
 
                 case 'userpic':
                     // do nothing, do not display sortable links
                     break;
 
                 default:
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
                     if (array_search($column, $this->userfullnamecolumns) !== false) {
                         // Check the full name display for sortable fields.

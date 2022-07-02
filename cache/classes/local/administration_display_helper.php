@@ -31,7 +31,11 @@
 namespace core_cache\local;
 
 defined('MOODLE_INTERNAL') || die();
+<<<<<<< HEAD
 use cache_store, cache_factory, cache_config_writer, cache_helper;
+=======
+use cache_store, cache_factory, cache_config_writer, cache_helper, core_cache_renderer;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 /**
  * A cache helper for administration tasks
@@ -463,7 +467,10 @@ class administration_display_helper extends \core_cache\administration_helper {
             redirect($PAGE->url, get_string('addstoresuccess', 'cache', $storepluginsummaries[$plugin]['name']), 5);
         }
 
+<<<<<<< HEAD
         $PAGE->navbar->add(get_string('addstore', 'cache', 'cache'), $PAGE->url);
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         return array('form' => $mform, 'title' => $title);
     }
 
@@ -574,7 +581,10 @@ class administration_display_helper extends \core_cache\administration_helper {
             redirect($PAGE->url);
         }
 
+<<<<<<< HEAD
         $PAGE->navbar->add(get_string('updatedefinitionmapping', 'cache'), $PAGE->url);
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         return array('form' => $mform, 'title' => $title);
     }
 
@@ -613,7 +623,10 @@ class administration_display_helper extends \core_cache\administration_helper {
             redirect($PAGE->url);
         }
 
+<<<<<<< HEAD
         $PAGE->navbar->add(get_string('updatedefinitionsharing', 'cache'), $PAGE->url);
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         return array('form' => $mform, 'title' => $title);
     }
 
@@ -768,10 +781,17 @@ class administration_display_helper extends \core_cache\administration_helper {
     /**
      * Outputs the main admin page by generating it through the renderer.
      *
+<<<<<<< HEAD
      * @param \core_cache\output\renderer $renderer the renderer to use to generate the page.
      * @return string the HTML for the admin page.
      */
     public function generate_admin_page(\core_cache\output\renderer $renderer): string {
+=======
+     * @param core_cache_renderer $renderer the renderer to use to generate the page.
+     * @return string the HTML for the admin page.
+     */
+    public function generate_admin_page(core_cache_renderer $renderer): string {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $context = \context_system::instance();
         $html = '';
 
@@ -795,6 +815,7 @@ class administration_display_helper extends \core_cache\administration_helper {
 
         return $html;
     }
+<<<<<<< HEAD
 
     /**
      * Gets usage information about the whole cache system.
@@ -879,3 +900,6 @@ class administration_display_helper extends \core_cache\administration_helper {
         return $results;
     }
 }
+=======
+}
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

@@ -990,8 +990,13 @@ class core_course_renderer extends plugin_renderer_base {
                 if ($ismoving) {
                     $movingurl = new moodle_url('/course/mod.php', array('moveto' => $modnumber, 'sesskey' => sesskey()));
                     $sectionoutput .= html_writer::tag('li',
+<<<<<<< HEAD
                         html_writer::link($movingurl, '', array('title' => $strmovefull, 'class' => 'movehere')),
                         array('class' => 'movehere'));
+=======
+                            html_writer::link($movingurl, '', array('title' => $strmovefull, 'class' => 'movehere')),
+                            array('class' => 'movehere'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 }
 
                 $sectionoutput .= $modulehtml;
@@ -1000,8 +1005,13 @@ class core_course_renderer extends plugin_renderer_base {
             if ($ismoving) {
                 $movingurl = new moodle_url('/course/mod.php', array('movetosection' => $section->id, 'sesskey' => sesskey()));
                 $sectionoutput .= html_writer::tag('li',
+<<<<<<< HEAD
                     html_writer::link($movingurl, '', array('title' => $strmovefull, 'class' => 'movehere')),
                     array('class' => 'movehere'));
+=======
+                        html_writer::link($movingurl, '', array('title' => $strmovefull, 'class' => 'movehere')),
+                        array('class' => 'movehere'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             }
         }
 
@@ -2197,7 +2207,38 @@ class core_course_renderer extends plugin_renderer_base {
         $section = $modinfo->get_section_info(1);
 
 
+<<<<<<< HEAD
         if (($section && (!empty($modinfo->sections[1]) or !empty($section->summary))) or $editing) {
+=======
+            // If the section name is set we show it.
+            if (trim($section->name) !== '') {
+                $output .= $this->heading(
+                    format_string($section->name, true, array('context' => $context)),
+                    2,
+                    'sectionname'
+                );
+            }
+
+            $summarytext = file_rewrite_pluginfile_urls($section->summary,
+                'pluginfile.php',
+                $context->id,
+                'course',
+                'section',
+                $section->id);
+            $summaryformatoptions = new stdClass();
+            $summaryformatoptions->noclean = true;
+            $summaryformatoptions->overflowdiv = true;
+
+            $output .= format_text($summarytext, $section->summaryformat, $summaryformatoptions);
+
+            if ($editing && has_capability('moodle/course:update', $context)) {
+                $streditsummary = get_string('editsummary');
+                $editsectionurl = new moodle_url('/course/editsection.php', ['id' => $section->id]);
+                $attributes = ['title' => $streditsummary, 'aria-label' => $streditsummary];
+                $output .= html_writer::link($editsectionurl, $this->pix_icon('t/edit', ''), $attributes) .
+                    "<br /><br />";
+            }
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
             $format = course_get_format($SITE);
             $frontpageclass = $format->get_output_classname('content\\frontpagesection');

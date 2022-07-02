@@ -253,6 +253,7 @@ class persistent_test extends advanced_testcase {
             'invalidparam' => 'abc'
         );
 
+        $this->expectException(coding_exception::class);
         $p->from_record($data);
 
         // Previous call should succeed, assert we get back all data except invalid param.

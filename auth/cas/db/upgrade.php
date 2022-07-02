@@ -44,15 +44,26 @@ function xmldb_auth_cas_upgrade($oldversion) {
     // Automatically generated Moodle v3.9.0 release upgrade line.
     // Put any upgrade step following this.
 
+<<<<<<< HEAD
     if ($oldversion < 2021052501) {
+=======
+    if ($oldversion < 2020081700) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         // Normalize the memberattribute_isdn plugin config.
         set_config('memberattribute_isdn',
             !empty(get_config('auth_cas', 'memberattribute_isdn')), 'auth_cas');
 
+<<<<<<< HEAD
         upgrade_plugin_savepoint(true, 2021052501, 'auth', 'cas');
     }
 
     // Automatically generated Moodle v4.0.0 release upgrade line.
+=======
+        upgrade_plugin_savepoint(true, 2020081700, 'auth', 'cas');
+    }
+
+    // Automatically generated Moodle v3.10.0 release upgrade line.
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     // Put any upgrade step following this.
 
     return true;

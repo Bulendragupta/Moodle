@@ -32,6 +32,7 @@
             "user_menu": "<div class='dropdown'>John Doe</div>"
         },
         "config": {
+<<<<<<< HEAD
             "wwwroot": "#",
             "homeurl": "/my/"
         },
@@ -53,6 +54,11 @@
                 "isactive": false
             }
         ]
+=======
+            "wwwroot": "#"
+        },
+        "sitename": "Moodle Site"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 }}
 <nav class="navbar fixed-top navbar-light bg-white navbar-expand" aria-label="{{#str}}sitemenubar, admin{{/str}}">
@@ -82,6 +88,7 @@
         {{{ output.page_heading_menu }}}
     </ul>
 
+<<<<<<< HEAD
     <div id="usernavigation" class="navbar-nav ml-auto">
         {{# output.search_box }}
             {{{ output.search_box }}}
@@ -102,3 +109,39 @@
 </nav>
 
 {{> theme_boost/primary-drawer-mobile }}
+=======
+        <a href="{{{ config.wwwroot }}}" class="navbar-brand aabtn {{# output.should_display_navbar_logo }}has-logo{{/ output.should_display_navbar_logo }}
+            {{^ output.should_display_navbar_logo }}
+                d-none d-sm-inline
+            {{/ output.should_display_navbar_logo }}
+                ">
+            {{# output.should_display_navbar_logo }}
+                <span class="logo d-none d-sm-inline">
+                    <img src="{{output.get_compact_logo_url}}" alt="{{sitename}}">
+                </span>
+            {{/ output.should_display_navbar_logo }}
+            <span class="site-name d-none d-md-inline">{{{ sitename }}}</span>
+        </a>
+
+        <ul class="navbar-nav d-none d-md-flex">
+            <!-- custom_menu -->
+            {{{ output.custom_menu }}}
+            <!-- page_heading_menu -->
+            {{{ output.page_heading_menu }}}
+        </ul>
+        <div class="ml-auto">
+            {{{ output.search_box }}}
+        </div>
+        <ul class="nav navbar-nav usernav">
+            <!-- navbar_plugin_output -->
+            <li class="nav-item">
+                {{{ output.navbar_plugin_output }}}
+            </li>
+            <!-- user_menu -->
+            <li class="nav-item align-items-center pl-2">
+                {{{ output.user_menu }}}
+            </li>
+        </ul>
+        <!-- search_box -->
+</nav>
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

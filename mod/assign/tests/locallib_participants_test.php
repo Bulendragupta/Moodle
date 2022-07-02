@@ -35,6 +35,19 @@ require_once($CFG->dirroot . '/mod/assign/tests/generator.php');
 class locallib_participants_test extends \advanced_testcase {
     use mod_assign_test_generator;
 
+<<<<<<< HEAD
+=======
+
+defined('MOODLE_INTERNAL') || die();
+
+global $CFG;
+require_once(__DIR__ . '/../locallib.php');
+require_once($CFG->dirroot . '/mod/assign/tests/generator.php');
+
+class mod_assign_locallib_participants extends advanced_testcase {
+    use mod_assign_test_generator;
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     public function test_list_participants_blind_marking() {
         global $DB;
         $this->resetAfterTest(true);
@@ -131,10 +144,17 @@ class locallib_participants_test extends \advanced_testcase {
         $this->resetAfterTest(true);
         // Create a role that will prevent users submitting.
         $role = self::getDataGenerator()->create_role();
+<<<<<<< HEAD
         assign_capability('mod/assign:submit', CAP_PROHIBIT, $role, \context_system::instance());
         // Create the test data.
         $course = self::getDataGenerator()->create_course();
         $coursecontext = \context_course::instance($course->id);
+=======
+        assign_capability('mod/assign:submit', CAP_PROHIBIT, $role, context_system::instance());
+        // Create the test data.
+        $course = self::getDataGenerator()->create_course();
+        $coursecontext = context_course::instance($course->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $assign = $this->create_instance($course);
         self::getDataGenerator()->create_and_enrol($course, 'teacher');
         $student1 = self::getDataGenerator()->create_and_enrol($course, 'student');

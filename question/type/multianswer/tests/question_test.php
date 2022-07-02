@@ -245,14 +245,21 @@ class question_test extends \advanced_testcase {
     public function test_get_question_definition_for_external_rendering() {
         $this->resetAfterTest();
 
+<<<<<<< HEAD
         $question = \test_question_maker::make_question('multianswer');
         $question->start_attempt(new question_attempt_step(), 1);
         $qa = \test_question_maker::get_a_qa($question);
+=======
+        $question = test_question_maker::make_question('multianswer');
+        $question->start_attempt(new question_attempt_step(), 1);
+        $qa = test_question_maker::get_a_qa($question);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $displayoptions = new question_display_options();
 
         $options = $question->get_question_definition_for_external_rendering($qa, $displayoptions);
         $this->assertNull($options);
     }
+<<<<<<< HEAD
 
     /**
      * Helper method to make a simulated second version of the standard multianswer test question.
@@ -349,4 +356,6 @@ class question_test extends \advanced_testcase {
                 $newquestion->update_attempt_state_data_for_new_version($oldstep, $question));
     }
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

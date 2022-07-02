@@ -310,7 +310,11 @@ class externallib_test extends \advanced_testcase {
 
         // Add files to user draft area.
         $draftitemid = file_get_unused_draft_itemid();
+<<<<<<< HEAD
         $context = \context_user::instance($USER->id);
+=======
+        $context = context_user::instance($USER->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $filerecordinline = array(
             'contextid' => $context->id,
             'component' => 'user',
@@ -330,12 +334,20 @@ class externallib_test extends \advanced_testcase {
 
         // Check two files were created (one file and one directory).
         $files = core_files_external::get_files($context->id, 'user', 'draft', $draftitemid, '/', '');
+<<<<<<< HEAD
         $files = \external_api::clean_returnvalue(core_files_external::get_files_returns(), $files);
+=======
+        $files = external_api::clean_returnvalue(core_files_external::get_files_returns(), $files);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertCount(2, $files['files']);
 
         // Check the folder has one file.
         $files = core_files_external::get_files($context->id, 'user', 'draft', $draftitemid, '/fakefolder/', '');
+<<<<<<< HEAD
         $files = \external_api::clean_returnvalue(core_files_external::get_files_returns(), $files);
+=======
+        $files = external_api::clean_returnvalue(core_files_external::get_files_returns(), $files);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertCount(1, $files['files']);
 
         // Delete a file and a folder.
@@ -343,6 +355,7 @@ class externallib_test extends \advanced_testcase {
             ['filepath' => '/', 'filename' => 'faketxt.txt'],
             ['filepath' => '/fakefolder/', 'filename' => ''],
         ];
+<<<<<<< HEAD
         $paths = draft::execute($draftitemid, $filestodelete);
         $paths = \external_api::clean_returnvalue(draft::execute_returns(), $paths);
 
@@ -388,4 +401,14 @@ class externallib_test extends \advanced_testcase {
         $files = \external_api::clean_returnvalue(core_files_external::get_files_returns(), $files);
         $this->assertCount(2, $files['files']);
     }
+=======
+        $paths = core_files\external\delete\draft::execute($draftitemid, $filestodelete);
+        $paths = external_api::clean_returnvalue(core_files\external\delete\draft::execute_returns(), $paths);
+
+        // Check everything was deleted.
+        $files = core_files_external::get_files($context->id, 'user', 'draft', $draftitemid, '/', '');
+        $files = external_api::clean_returnvalue(core_files_external::get_files_returns(), $files);
+        $this->assertCount(0, $files['files']);
+    }
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

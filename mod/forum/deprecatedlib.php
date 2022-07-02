@@ -480,6 +480,7 @@ WHERE
 /**
  * Prints the editing button on subscribers page
  *
+<<<<<<< HEAD
  * @deprecated since Moodle 4.0
  * @todo MDL-73956 Final deprecation in Moodle 4.4
  * @global object
@@ -487,6 +488,13 @@ WHERE
  * @param int $courseid
  * @param int $forumid
  * @return string
+=======
+ * @param object $post
+ * @param bool $children
+ * @return int
+ * @deprecated since Moodle 3.7
+ * @todo MDL-65252 This will be removed in Moodle 3.11
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
  */
 function forum_update_subscriptions_button($courseid, $forumid): string {
     global $CFG, $USER;

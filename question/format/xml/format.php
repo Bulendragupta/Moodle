@@ -1218,10 +1218,14 @@ class qformat_xml extends qformat_default {
         // Check question type.
         $questiontype = $this->get_qtype($question->qtype);
 
+<<<<<<< HEAD
         $idnumber = '';
         if (isset($question->idnumber)) {
             $idnumber = htmlspecialchars($question->idnumber);
         }
+=======
+        $idnumber = htmlspecialchars($question->idnumber);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Categories are a special case.
         if ($question->qtype == 'category') {
@@ -1258,7 +1262,11 @@ class qformat_xml extends qformat_default {
             $expout .= "    <defaultgrade>{$question->defaultmark}</defaultgrade>\n";
         }
         $expout .= "    <penalty>{$question->penalty}</penalty>\n";
+<<<<<<< HEAD
         $expout .= "    <hidden>{$question->status}</hidden>\n";
+=======
+        $expout .= "    <hidden>{$question->hidden}</hidden>\n";
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $expout .= "    <idnumber>{$idnumber}</idnumber>\n";
 
         // The rest of the output depends on question type.

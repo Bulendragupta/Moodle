@@ -71,8 +71,11 @@ class redis extends handler {
     protected $lockretry = 100;
     /** @var int $serializer The serializer to use */
     protected $serializer = \Redis::SERIALIZER_PHP;
+<<<<<<< HEAD
     /** @var int $compressor The compressor to use */
     protected $compressor = self::COMPRESSION_NONE;
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     /** @var string $lasthash hash of the session data content */
     protected $lasthash = null;
 

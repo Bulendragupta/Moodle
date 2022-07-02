@@ -34,7 +34,11 @@ Feature: Assignments correctly add feedback to the grade report when workflow an
 
     # Mark the submission.
     And I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I should see "Not marked" in the "I'm the student's first submission" "table_row"
     And I click on "Grade" "link" in the "I'm the student's first submission" "table_row"
     And I set the field "Grade out of 100" to "50"
@@ -42,7 +46,13 @@ Feature: Assignments correctly add feedback to the grade report when workflow an
     And I set the field "Feedback comments" to "Great job! Lol, not really."
     And I set the field "Notify student" to "0"
     And I press "Save changes"
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I click on "Edit settings" "link"
+    And I follow "Test assignment name"
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I should see "In review" in the "I'm the student's first submission" "table_row"
 
   @javascript
@@ -51,12 +61,24 @@ Feature: Assignments correctly add feedback to the grade report when workflow an
     And I set the field "Marking workflow state" to "Ready for release"
     And I set the field "Notify student" to "0"
     And I press "Save changes"
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I click on "Edit settings" "link"
+    And I follow "Test assignment name"
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I should see "Ready for release" in the "I'm the student's first submission" "table_row"
     And I click on "Grade" "link" in the "I'm the student's first submission" "table_row"
     And I set the field "Marking workflow state" to "Released"
     And I press "Save changes"
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I click on "Edit settings" "link"
+    And I follow "Test assignment name"
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I should see "Released" in the "I'm the student's first submission" "table_row"
     And I set the field "Grading action" to "Reveal student identities"
     And I press "Continue"
@@ -73,14 +95,26 @@ Feature: Assignments correctly add feedback to the grade report when workflow an
     And I set the field "Marking workflow state" to "Ready for release"
     And I set the field "Notify student" to "0"
     And I press "Save changes"
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I click on "Edit settings" "link"
+    And I follow "Test assignment name"
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I should see "Ready for release" in the "I'm the student's first submission" "table_row"
     And I set the field "Grading action" to "Reveal student identities"
     And I press "Continue"
     And I click on "Grade" "link" in the "Student 1" "table_row"
     And I set the field "Marking workflow state" to "Released"
     And I press "Save changes"
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I click on "Edit settings" "link"
+    And I follow "Test assignment name"
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I should see "Released" in the "Student 1" "table_row"
     And I log out
 

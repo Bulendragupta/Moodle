@@ -1,6 +1,6 @@
 This files describes API changes for question behaviour plugins.
 
-=== 4.0 ===
+=== 3.10 ===
 
 1) The major question bank changes should not affect behaviour plugins.
    The navigation changes may affect Behat tests. If you encounter this,

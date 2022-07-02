@@ -487,6 +487,11 @@ if (count($notificationsfail) > 0) {
 
 // Start the management form.
 
+<<<<<<< HEAD
+=======
+echo $renderer->course_search_form($search);
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 echo $renderer->management_form_start();
 
 echo $renderer->accessible_skipto_links($displaycategorylisting, $displaycourselisting, $displaycoursedetail);

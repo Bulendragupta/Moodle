@@ -141,7 +141,11 @@ $string['badges'] = 'Badges';
 $string['badgedetails'] = 'Badge details';
 $string['badgeimage'] = 'Image';
 $string['badgeimage_help'] = 'The image should be at least 300 x 300 pixels in size. It will be displayed as 300 x 300 pixels on the badge page and 100 x 100 pixels on the user\'s profile page.';
+<<<<<<< HEAD
 $string['badgeissued'] = 'Badge issued';
+=======
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['badgeprivacysetting'] = 'Badge privacy settings';
 $string['badgeprivacysetting_help'] = 'Badges you earn can be displayed on your account profile page. This setting allows you to automatically set the visibility of the newly earned badges.
 
@@ -582,6 +586,7 @@ $string['sitebackpackverify'] = 'Backpack connection';
 
 // Deprecated since Moodle 3.10.
 $string['backpackneedsupdate'] = 'The backpack connected to this profile does not match the backpack for the site. You need to disconnect and reconnect the backpack.';
+<<<<<<< HEAD
 
 // Deprecated since Moodle 3.11.
 $string['addbackpack'] = 'Add backpack';
@@ -594,3 +599,5 @@ $string['sitebackpack_help'] = 'The external backpack that users can connect to 
 $string['evidence'] = 'Evidence';
 $string['recipientdetails'] = 'Recipient details';
 $string['recipientidentificationproblem'] = 'Cannot find a recipient of this badge among the existing users.';
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

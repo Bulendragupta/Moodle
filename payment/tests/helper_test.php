@@ -36,7 +36,11 @@ use core\plugininfo\paygw;
  * @copyright  2020 Marina Glancy
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+<<<<<<< HEAD
 class helper_test extends advanced_testcase {
+=======
+class accounts_testcase extends advanced_testcase {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     protected function enable_paypal_gateway(): bool {
         if (!array_key_exists('paypal', \core_component::get_plugin_list('paygw'))) {

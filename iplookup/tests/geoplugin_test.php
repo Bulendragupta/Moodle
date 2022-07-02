@@ -26,6 +26,17 @@ namespace core;
  */
 class geoplugin_test extends \advanced_testcase {
 
+<<<<<<< HEAD
+=======
+defined('MOODLE_INTERNAL') || die();
+
+
+/**
+ * GeoIp data file parsing test.
+ */
+class core_iplookup_geoplugin_testcase extends advanced_testcase {
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     public function setUp(): void {
         global $CFG;
         require_once("$CFG->libdir/filelib.php");

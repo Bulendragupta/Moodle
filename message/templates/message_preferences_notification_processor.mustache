@@ -45,5 +45,26 @@
         ]
     }
 }}
+<<<<<<< HEAD
+=======
+<tr class="preference-row" data-region="preference-row" data-preference-key="{{preferencekey}}">
+    <td class="preference-name">{{displayname}}</td>
+    <td {{^userconfigured}}class="disabled"{{/userconfigured}} data-processor-name="{{name}}">
+        {{#locked}}
+            <div class="dimmed_text">{{lockedmessage}}</div>
+        {{/locked}}
+        {{^locked}}
+            <div class="disabled-message">{{#str}} disabled, question {{/str}}</div>
+            <form>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="span6 col-6">
+                            {{#loggedin}}
+                                {{< core/hover_tooltip }}
+                                    {{$anchor}}
+                                        <label class="preference-state"
+                                            title="{{displayname}}"
+                                            data-state="{{name}}">
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 {{> core_message/notification_preferences_component_notification }}

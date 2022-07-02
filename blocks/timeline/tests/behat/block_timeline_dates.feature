@@ -123,6 +123,7 @@ Feature: The timeline block allows users to see upcoming activities
     And I click on "Filter timeline by date" "button" in the "Timeline" "block"
     When I click on "Overdue" "link" in the "Timeline" "block"
     And I reload the page
+<<<<<<< HEAD
     Then "Test assign 1" "link" should exist in the "Timeline" "block"
     And I should see "Course 1 · Assignment is due" in the "Timeline" "block"
     And "Test assign 2" "link" should exist in the "Timeline" "block"
@@ -144,10 +145,33 @@ Feature: The timeline block allows users to see upcoming activities
     And I click on "Sort timeline items" "button" in the "Timeline" "block"
     And I click on "Sort by courses" "link" in the "Timeline" "block"
     And I click on "Filter timeline by date" "button" in the "Timeline" "block"
+=======
+    Then I should see "Test assign 1 is due" in the "Timeline" "block"
+    And I should not see "Test choice 2 closes" in the "Timeline" "block"
+    And I should not see "Test feedback 1 closes" in the "Timeline" "block"
+    And I should not see "Test choice 1 closes" in the "Timeline" "block"
+    And I should not see "Test choice 3 closes" in the "Timeline" "block"
+    And I should not see "Test feedback 3 closes" in the "Timeline" "block"
+
+  Scenario: Current filtering always applies in date view
+    Given I log in as "student1"
+    And I click on "Filter timeline items" "button" in the "Timeline" "block"
+    And I click on "Overdue" "link" in the "Timeline" "block"
+    And I reload the page
+    # Expand to 25 results, to ensure we see the earliest and latest timeline items.
+    And I click on "Show 5 activities per page" "button" in the "Timeline" "block"
+    And I click on "25" "link"
+    And I should see "Test assign 1 is due" in the "Timeline" "block"
+    And I should not see "Test feedback 2 closes" in the "Timeline" "block"
+    And I click on "Sort timeline items" "button" in the "Timeline" "block"
+    And I click on "Sort by courses" "link" in the "Timeline" "block"
+    And I click on "Filter timeline items" "button" in the "Timeline" "block"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     # Confirm that when we switch back to date view, the "All" filer continues to be applied (and not "overdue")
     When I click on "All" "link" in the "Timeline" "block"
     And I click on "Sort timeline items" "button" in the "Timeline" "block"
     And I click on "Sort by dates" "link" in the "Timeline" "block"
+<<<<<<< HEAD
     Then "Test assign 1" "link" should exist in the "Timeline" "block"
     And I click on "Show more activities" "button"
     And "Test feedback 2" "link" should exist in the "Timeline" "block"
@@ -158,3 +182,7 @@ Feature: The timeline block allows users to see upcoming activities
     And I click on "Sort by dates" "link" in the "Timeline" "block"
     Then I should see "No in-progress courses" in the "Timeline" "block"
     And I should not see "Test choice 1"
+=======
+    Then I should see "Test assign 1 is due" in the "Timeline" "block"
+    And I should see "Test feedback 2 closes" in the "Timeline" "block"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

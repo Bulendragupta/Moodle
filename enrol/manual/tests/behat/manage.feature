@@ -5,6 +5,7 @@ Feature: A teacher can manage manually enrolled users in their course
   I can manually add and remove users in my course
 
   Background:
+<<<<<<< HEAD
     Given the following "custom profile fields" exist:
       | datatype | shortname | name  |
       | text     | fruit     | Fruit |
@@ -13,6 +14,13 @@ Feature: A teacher can manage manually enrolled users in their course
       | teacher  | Teacher   |            | User     | teacher@example.com |                     |
       | user1    | First     | Alice      | User     | first@example.com   | Apple               |
       | user2    | Second    | Bob        | User     | second@example.com  | Banana              |
+=======
+    Given the following "users" exist:
+      | username | firstname | middlename | lastname | email               |
+      | teacher  | Teacher   |            | User     | teacher@example.com |
+      | user1    | First     | Alice      | User     | first@example.com   |
+      | user2    | Second    | Bob        | User     | second@example.com  |
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And the following "courses" exist:
       | fullname | shortname | category |
       | Course 1 | C1        | 0        |
@@ -27,7 +35,13 @@ Feature: A teacher can manage manually enrolled users in their course
     And the following "permission overrides" exist:
       | capability                | permission   | role           | contextlevel | reference |
       | moodle/site:viewfullnames | <permission> | editingteacher | Course       | C1        |
+<<<<<<< HEAD
     When I am on the "Course 1" "enrolment methods" page logged in as "teacher"
+=======
+    When I log in as "teacher"
+    And I am on "Course 1" course homepage
+    And I navigate to "Users > Enrolment methods" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Enrol users" "link" in the "Manual enrolments" "table_row"
     And I set the field "addselect_searchtext" to "First"
     And I wait "1" seconds
@@ -50,7 +64,13 @@ Feature: A teacher can manage manually enrolled users in their course
       | user  | course | role    |
       | user1 | C1     | student |
       | user2 | C1     | student |
+<<<<<<< HEAD
     When I am on the "Course 1" "enrolment methods" page logged in as "teacher"
+=======
+    When I log in as "teacher"
+    And I am on "Course 1" course homepage
+    And I navigate to "Users > Enrolment methods" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Enrol users" "link" in the "Manual enrolments" "table_row"
     And I set the field "removeselect_searchtext" to "First"
     And I wait "1" seconds
@@ -61,6 +81,7 @@ Feature: A teacher can manage manually enrolled users in their course
       | permission | expectedfullname |
       | Allow      | First Alice User |
       | Prohibit   | First User       |
+<<<<<<< HEAD
 
   @javascript
   Scenario: Manually enrol users in course using custom user profile fields
@@ -93,3 +114,5 @@ Feature: A teacher can manage manually enrolled users in their course
     And I set the field "Enrolled users" to "First User (first@example.com\, Apple)"
     And I press "Remove"
     And the "Not enrolled users" select box should contain "First User (first@example.com\, Apple)"
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

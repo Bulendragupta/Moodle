@@ -131,8 +131,12 @@ class player {
             $config,
             $this->factory,
             $this->messages,
+<<<<<<< HEAD
             $this->preventredirect,
             $skipcapcheck
+=======
+            $this->preventredirect
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         );
         if ($file) {
             $this->context = \context::instance_by_id($file->get_contextid());

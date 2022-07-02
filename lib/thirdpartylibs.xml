@@ -50,6 +50,16 @@
     <licenseversion>2.1+</licenseversion>
   </library>
   <library>
+<<<<<<< HEAD
+=======
+    <location>jabber</location>
+    <name>XMPPHP</name>
+    <license>GPL</license>
+    <version>2.2</version>
+    <licenseversion>2.0+</licenseversion>
+  </library>
+  <library>
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     <location>minify/matthiasmullie-minify</location>
     <name>MatthiasMullie\Minify</name>
     <license>MIT</license>
@@ -130,7 +140,11 @@
     <location>jquery</location>
     <name>jQuery</name>
     <license>MIT</license>
+<<<<<<< HEAD
     <version>3.6.0</version>
+=======
+    <version>3.5.1</version>
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     <licenseversion></licenseversion>
   </library>
   <library>
@@ -349,6 +363,24 @@
     <name>php-enum</name>
     <license>MIT</license>
     <version>1.8.3</version>
+  </library>
+  <library>
+    <location>http-message</location>
+    <name>http-message</name>
+    <license>MIT</license>
+    <version>1.0.1</version>
+  </library>
+  <library>
+    <location>zipstream</location>
+    <name>ZipStream-PHP</name>
+    <license>MIT</license>
+    <version>2.1.0</version>
+  </library>
+  <library>
+    <location>php-enum</location>
+    <name>php-enum</name>
+    <license>MIT</license>
+    <version>1.7.6</version>
   </library>
   <library>
     <location>http-message</location>

@@ -231,7 +231,11 @@ class manager_test extends \advanced_testcase {
             $fakeareaid = \core_search\manager::generate_areaid('mod_unexisting', 'chihuaquita');
             $search->reset_config($fakeareaid);
             $this->fail('An exception should be triggered if the provided search area does not exist.');
+<<<<<<< HEAD
         } catch (\moodle_exception $ex) {
+=======
+        } catch (moodle_exception $ex) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString($fakeareaid . ' search area is not available.', $ex->getMessage());
         }
 
@@ -898,11 +902,19 @@ class manager_test extends \advanced_testcase {
         $user = $this->getDataGenerator()->create_user();
         $this->setUser($user);
 
+<<<<<<< HEAD
         $search = \testable_core_search::instance();
         $search->add_core_search_areas();
 
         $course = $this->getDataGenerator()->create_course();
         $context = \context_course::instance($course->id);
+=======
+        $search = testable_core_search::instance();
+        $search->add_core_search_areas();
+
+        $course = $this->getDataGenerator()->create_course();
+        $context = context_course::instance($course->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Limit courses to search to only those the user is enrolled in.
         set_config('searchallavailablecourses', 0);

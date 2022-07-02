@@ -150,9 +150,15 @@ class contenttype_h5p_test extends \advanced_testcase {
         global $CFG;
 
         $this->resetAfterTest();
+<<<<<<< HEAD
         $systemcontext = \context_system::instance();
         $this->setAdminUser();
         $contenttype = new contenttype($systemcontext);
+=======
+        $systemcontext = context_system::instance();
+        $this->setAdminUser();
+        $contenttype = new contenttype_h5p\contenttype($systemcontext);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Add an H5P fill the blanks file to the content bank.
         $filename = 'filltheblanks.h5p';

@@ -197,8 +197,15 @@ Feature: Award badges
     And I log in as "student1"
     And I follow "Profile" in the user menu
     And I click on "Course 1" "link" in the "region-main" "region"
+<<<<<<< HEAD
     And I click on "Course Badge" "link"
     And I should see "Course: Course 1"
+=======
+    And I should see "Course Badge"
+    And I click on "Course Badge" "link"
+    And "Course 1" "text" should appear after "Badge details" "text"
+    And "Kurs 1" "text" should not exist
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
   @javascript
   Scenario: Award badge on activity completion

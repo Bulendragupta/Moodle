@@ -17,6 +17,7 @@ $state-warning-bg: theme-color-level("warning", -10) !default;
 $state-warning-border: theme-color-level("warning", -10) !default;
 
 $state-danger-bg: theme-color-level("danger", -10) !default;
+<<<<<<< HEAD
 $state-danger-border: theme-color-level("danger", -9) !default;
 
 $primary-nav-padding-y: ($spacer / 4) !default;
@@ -50,3 +51,6 @@ $activity-icon-colors: map-merge(
     ),
     $activity-icon-colors
 );
+=======
+$state-danger-border: theme-color-level("danger", -9) !default;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

@@ -44,21 +44,36 @@ Feature: Assign reset
     And I log out
 
     And I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     And I follow "View all submissions"
     And I should see "Submitted for grading"
     When I am on the "Course 1" "reset" page
+=======
+    And I navigate to "View all submissions" in current page administration
+    And I should see "Submitted for grading"
+    And I am on "Course 1" course homepage
+    When I navigate to "Reset" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
         | Delete all submissions | 1  |
     And I press "Reset course"
     And I press "Continue"
     And I am on the "Test assignment name" Activity page
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should not see "Submitted for grading"
 
   @javascript
   Scenario: Use course reset to remove user overrides.
     And I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     And I navigate to "Overrides" in current page administration
+=======
+    And I navigate to "User overrides" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Add user override"
     And I set the following fields to these values:
         | Override user    | Student1  |
@@ -82,8 +97,12 @@ Feature: Assign reset
 
   Scenario: Use course reset to remove group overrides.
     When I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     And I navigate to "Overrides" in current page administration
     And I select "Group overrides" from the "jump" singleselect
+=======
+    And I navigate to "Group overrides" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Add group override"
     And I set the following fields to these values:
         | Override group   | Group 1  |
@@ -107,7 +126,11 @@ Feature: Assign reset
 
   Scenario: Use course reset to reset blind marking assignment.
     When I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     And I navigate to "Settings" in current page administration
+=======
+    And I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
         | blindmarking | 1 |
     And I press "Save"

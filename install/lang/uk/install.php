@@ -36,7 +36,11 @@ $string['chooselanguagesub'] = 'Виберіть мову ТІЛЬКИ для п
 $string['clialreadyconfigured'] = 'Файл config.php вже створено, будь ласка, використовуйте admin/cli/install_database.php, якщо ви хочете встановити цей сайт.';
 $string['clialreadyinstalled'] = 'Файл config.php вже створено, будь ласка, використовуйте admin/cli/upgrade.php, якщо ви хочете оновити ваш сайт.';
 $string['cliinstallheader'] = 'Moodle {$a} командний рядок програми установки';
+<<<<<<< HEAD
 $string['clitablesexist'] = 'Вже наявні таблиці бази даних; Неможливо продовжити встановлення CLI.';
+=======
+$string['clitablesexist'] = 'Таблиці бази даних вже існують, CLI установка не може продовжуватися.';
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['databasehost'] = 'Сервер бази даних';
 $string['databasename'] = 'Ім’я бази даних';
 $string['databasetypehead'] = 'Виберіть драйвер бази даних';

@@ -121,6 +121,7 @@ abstract class question_edit_form extends question_wizard_form {
         $this->category = $category;
         $this->categorycontext = context::instance_by_id($category->contextid);
 
+<<<<<<< HEAD
         if (!\core\plugininfo\qbank::is_plugin_enabled('qbank_customfields')) {
             $this->customfieldpluginenabled = false;
         }
@@ -141,6 +142,9 @@ abstract class question_edit_form extends question_wizard_form {
      */
     protected function get_default_value(string $name, $default): ?string {
         return question_bank::get_qtype($this->qtype())->get_default_value($name, $default);
+=======
+        parent::__construct($submiturl, null, 'post', '', ['data-qtype' => $this->qtype()], $formeditable);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**

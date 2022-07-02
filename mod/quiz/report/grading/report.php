@@ -703,6 +703,7 @@ class quiz_grading_report extends quiz_default_report {
         $a = new stdClass();
         $a->attempt = $attempt->attempt;
         $a->fullname = fullname($attempt);
+<<<<<<< HEAD
         $customfields = [];
         foreach ($this->extrauserfields as $field) {
             if ($attempt->{s($field)}) {
@@ -710,6 +711,11 @@ class quiz_grading_report extends quiz_default_report {
             }
         }
         $a->customfields = trim(implode(', ', (array)$customfields), ' ,');
+=======
+        $a->idnumber = s($attempt->idnumber);
+
+        $showidnumbers = $showidnumbers && !empty($attempt->idnumber);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         if ($shownames && $showcustomfields) {
             return get_string('gradingattemptwithcustomfields', 'quiz_grading', $a);

@@ -34,7 +34,11 @@ class course_test extends \advanced_testcase {
         $updatemode = tool_uploadcourse_processor::UPDATE_NOTHING;
         $data = array();
         $co = new tool_uploadcourse_course($mode, $updatemode, $data);
+<<<<<<< HEAD
         $this->expectException(\coding_exception::class);
+=======
+        $this->expectException(coding_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $co->proceed();
     }
 
@@ -45,7 +49,11 @@ class course_test extends \advanced_testcase {
         $data = array();
         $co = new tool_uploadcourse_course($mode, $updatemode, $data);
         $this->assertFalse($co->prepare());
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $co->proceed();
     }
 

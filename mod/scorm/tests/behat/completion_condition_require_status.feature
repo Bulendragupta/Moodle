@@ -29,7 +29,11 @@ Feature: Scorm multi-sco completion
       | packagefilepath          | mod/scorm/tests/packages/RuntimeMinimumCalls_SCORM12.zip |
       | completionstatusrequired | 4                                                        |
     And I am on the "Basic Multi-sco SCORM package" "scorm activity" page logged in as student1
+<<<<<<< HEAD
     And I should see "Enter"
+=======
+    And I should see "Normal"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Enter"
     And I switch to "scorm_object" iframe
     And I should see "Play of the game"
@@ -45,6 +49,7 @@ Feature: Scorm multi-sco completion
   @javascript
   Scenario: Test completion with all scos and correct sco load on re-entry.
     Given the following "activity" exists:
+<<<<<<< HEAD
       | activity                | scorm                                                    |
       | course                  | C1                                                       |
       | name                    | ADV Multi-sco SCORM package                              |
@@ -54,6 +59,18 @@ Feature: Scorm multi-sco completion
       | completionstatusallscos | 1                                                        |
     And I am on the "ADV Multi-sco SCORM package" "scorm activity" page logged in as student1
     And I should see "Enter"
+=======
+      | activity                 | scorm                                                    |
+      | course                   | C1                                                       |
+      | name                     | ADV Multi-sco SCORM package                              |
+      | packagefilepath          | mod/scorm/tests/packages/RuntimeMinimumCalls_SCORM12.zip |
+      # Show activity as complete when conditions are met
+      | completion               | 2                                                        |
+      | completionstatusallscos  | 1                                                        |
+      | completionstatusrequired | 4                                                        |
+    And I am on the "ADV Multi-sco SCORM package" "scorm activity" page logged in as student1
+    And I should see "Normal"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Enter"
     And I switch to "scorm_object" iframe
     And I should see "Play of the game"
@@ -68,7 +85,11 @@ Feature: Scorm multi-sco completion
     Then "Student 1" user has not completed "ADV Multi-sco SCORM package" activity
     And I log out
     And I am on the "ADV Multi-sco SCORM package" "scorm activity" page logged in as student1
+<<<<<<< HEAD
     And I should see "Enter"
+=======
+    And I should see "Normal"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Enter"
     And I switch to "scorm_object" iframe
     And I should see "Par"

@@ -309,7 +309,11 @@ EOF;
     ): void {
         $archive = $this->getMockBuilder(zipwriter::class)
             ->setConstructorArgs([$this->getMockBuilder(\ZipStream\ZipStream::class)->getmock()])
+<<<<<<< HEAD
             ->onlyMethods([
+=======
+            ->setMethods([
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 'is_file_in_archive',
                 'add_file_from_string',
                 'add_file_from_stored_file',
@@ -357,7 +361,11 @@ EOF;
     ): void {
         $archive = $this->getMockBuilder(zipwriter::class)
             ->setConstructorArgs([$this->getMockBuilder(\ZipStream\ZipStream::class)->getmock()])
+<<<<<<< HEAD
             ->onlyMethods([
+=======
+            ->setMethods([
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 'add_file_from_stored_file',
                 'add_file_from_string',
                 'add_file_from_template',

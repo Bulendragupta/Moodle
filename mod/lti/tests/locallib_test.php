@@ -1261,34 +1261,58 @@ MwIDAQAB
         $objgraph->url = 'http://example.com/messages/launch';
         $objgraph->title = 'Test title';
         $objgraph->text = 'Test text';
+<<<<<<< HEAD
         $objgraph->placementAdvice = new \stdClass();
+=======
+        $objgraph->placementAdvice = new stdClass();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $objgraph->placementAdvice->presentationDocumentTarget = 'iframe';
         $objgraph->{$strtype} = 'LtiLinkItem';
         $objgraph->mediaType = 'application\/vnd.ims.lti.v1.ltilink';
 
+<<<<<<< HEAD
         $objgraph2 = new \stdClass();
         $objgraph2->url = 'http://example.com/messages/launch2';
         $objgraph2->title = 'Test title2';
         $objgraph2->text = 'Test text2';
         $objgraph2->placementAdvice = new \stdClass();
+=======
+        $objgraph2 = new stdClass();
+        $objgraph2->url = 'http://example.com/messages/launch2';
+        $objgraph2->title = 'Test title2';
+        $objgraph2->text = 'Test text2';
+        $objgraph2->placementAdvice = new stdClass();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $objgraph2->placementAdvice->presentationDocumentTarget = 'iframe';
         $objgraph2->placementAdvice->displayHeight = 200;
         $objgraph2->placementAdvice->displayWidth = 300;
         $objgraph2->{$strtype} = 'LtiLinkItem';
         $objgraph2->mediaType = 'application\/vnd.ims.lti.v1.ltilink';
 
+<<<<<<< HEAD
         $objgraph3 = new \stdClass();
         $objgraph3->url = 'http://example.com/messages/launch3';
         $objgraph3->title = 'Test title3';
         $objgraph3->text = 'Test text3';
         $objgraph3->placementAdvice = new \stdClass();
+=======
+        $objgraph3 = new stdClass();
+        $objgraph3->url = 'http://example.com/messages/launch3';
+        $objgraph3->title = 'Test title3';
+        $objgraph3->text = 'Test text3';
+        $objgraph3->placementAdvice = new stdClass();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $objgraph3->placementAdvice->presentationDocumentTarget = 'window';
         $objgraph3->placementAdvice->displayHeight = 400;
         $objgraph3->placementAdvice->windowTarget = 'test-win';
         $objgraph3->{$strtype} = 'LtiLinkItem';
         $objgraph3->mediaType = 'application\/vnd.ims.lti.v1.ltilink';
 
+<<<<<<< HEAD
         $expected = new \stdClass();
+=======
+        $expected = new stdClass();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $expected->{$strcontext} = 'http://purl.imsglobal.org/ctx/lti/v1/ContentItem';
         $expected->{$strgraph} = [];
         $expected->{$strgraph}[] = $objgraph;
@@ -1305,10 +1329,17 @@ MwIDAQAB
         $this->resetAfterTest();
         $this->setAdminUser();
 
+<<<<<<< HEAD
         $type = new \stdClass();
         $type->name = "Test tool";
         $type->baseurl = "http://example.com";
         $config = new \stdClass();
+=======
+        $type = new stdClass();
+        $type->name = "Test tool";
+        $type->baseurl = "http://example.com";
+        $config = new stdClass();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $config->lti_acceptgrades = LTI_SETTING_DELEGATE;
         $typeid = lti_add_type($type, $config);
 
@@ -1348,10 +1379,17 @@ MwIDAQAB
         $this->resetAfterTest();
         $this->setAdminUser();
 
+<<<<<<< HEAD
         $type = new \stdClass();
         $type->name = "Test tool";
         $type->baseurl = "http://example.com";
         $config = new \stdClass();
+=======
+        $type = new stdClass();
+        $type->name = "Test tool";
+        $type->baseurl = "http://example.com";
+        $config = new stdClass();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $config->lti_acceptgrades = LTI_SETTING_DELEGATE;
         $typeid = lti_add_type($type, $config);
 
@@ -1406,10 +1444,17 @@ MwIDAQAB
         $this->resetAfterTest();
         $this->setAdminUser();
 
+<<<<<<< HEAD
         $type = new \stdClass();
         $type->name = "Test tool";
         $type->baseurl = "http://example.com";
         $config = new \stdClass();
+=======
+        $type = new stdClass();
+        $type->name = "Test tool";
+        $type->baseurl = "http://example.com";
+        $config = new stdClass();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $typeid = lti_add_type($type, $config);
 
         $generator = $this->getDataGenerator()->get_plugin_generator('mod_lti');
@@ -1766,7 +1811,11 @@ MwIDAQAB
         if ($switchedto) {
             $this->setUser($user);
             $role = $DB->get_record('role', array('shortname' => $switchedto));
+<<<<<<< HEAD
             role_switch($role->id, \context_course::instance($course->id));
+=======
+            role_switch($role->id, context_course::instance($course->id));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         }
 
         $this->assertEquals($expected, lti_get_ims_role($user, 0, $course->id, $islti2));
@@ -1842,6 +1891,7 @@ MwIDAQAB
         ];
     }
 
+<<<<<<< HEAD
     /**
      * Test lti_get_lti_types_and_proxies with no limit or offset.
      */
@@ -1959,6 +2009,8 @@ MwIDAQAB
         lti_load_cartridge('http://example.com/mocked/empty/response', []);
     }
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     /**
      * Create an LTI Tool.
      *

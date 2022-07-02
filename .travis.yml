@@ -17,7 +17,11 @@ services:
     - docker
 
 addons:
+<<<<<<< HEAD
   postgresql: "10"
+=======
+  postgresql: "9.6"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 branches:
   except:
@@ -32,6 +36,7 @@ jobs:
     fast_finish: true
 
     include:
+<<<<<<< HEAD
         # First all the lowest php ones (7.3)
         - php: 7.3
           env: DB=none     TASK=CITEST
@@ -60,6 +65,36 @@ jobs:
 
         - if: env(MOODLE_PHP) = "all" AND (env(MOODLE_DATABASE) = "mysqli" OR env(MOODLE_DATABASE) = "all")
           php: 8.0
+=======
+        # First all the lowest php ones (7.2)
+        - php: 7.2
+          env: DB=none     TASK=CITEST
+        - php: 7.2
+          env: DB=none     TASK=GRUNT    NVM_VERSION='lts/carbon'
+
+        - if: env(MOODLE_DATABASE) = "pgsql" OR env(MOODLE_DATABASE) = "all" OR env(MOODLE_DATABASE) IS NOT present
+          php: 7.2
+          env: DB=pgsql    TASK=PHPUNIT
+
+        - if: env(MOODLE_DATABASE) = "mysqli" OR env(MOODLE_DATABASE) = "all"
+          php: 7.2
+          env: DB=mysqli   TASK=PHPUNIT
+
+        # Then, conditionally, all the highest php ones (7.4)
+        - if: env(MOODLE_PHP) = "all"
+          php: 7.4
+          env: DB=none     TASK=CITEST
+        - if: env(MOODLE_PHP) = "all"
+          php: 7.4
+          env: DB=none     TASK=GRUNT    NVM_VERSION='lts/carbon'
+
+        - if: env(MOODLE_PHP) = "all" AND (env(MOODLE_DATABASE) = "pgsql" OR env(MOODLE_DATABASE) = "all" OR env(MOODLE_DATABASE) IS NOT present)
+          php: 7.4
+          env: DB=pgsql    TASK=PHPUNIT
+
+        - if: env(MOODLE_PHP) = "all" AND (env(MOODLE_DATABASE) = "mysqli" OR env(MOODLE_DATABASE) = "all")
+          php: 7.4
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
           env: DB=mysqli   TASK=PHPUNIT
 
 cache:
@@ -221,7 +256,7 @@ before_script:
         # We need the official upstream for comparison
         git remote add upstream https://github.com/moodle/moodle.git;
 
-        git fetch upstream master;
+        git fetch upstream MOODLE_310_STABLE;
         export GIT_PREVIOUS_COMMIT="`git merge-base FETCH_HEAD $TRAVIS_COMMIT`";
         export GIT_COMMIT="$TRAVIS_COMMIT";
         export UPSTREAM_FETCH_HEAD=`git rev-parse FETCH_HEAD`

@@ -86,8 +86,12 @@ class fetcher {
         }
         $params = array();
 
+<<<<<<< HEAD
         $userfieldsapi = \core_user\fields::for_userpic()->including('username', 'deleted');
         $userfields = $userfieldsapi->get_sql('u', false, '', '', false)->selects;
+=======
+        $userfields = \user_picture::fields('u', array('username', 'deleted'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Add this to the SQL to show only group users.
         if ($currentgroup !== null) {

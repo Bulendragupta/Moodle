@@ -84,6 +84,7 @@ function xmldb_block_myoverview_upgrade($oldversion) {
     // Automatically generated Moodle v3.9.0 release upgrade line.
     // Put any upgrade step following this.
 
+<<<<<<< HEAD
     if ($oldversion < 2021052504) {
         upgrade_block_delete_instances('myoverview', '__default', 'my-index');
 
@@ -121,6 +122,9 @@ function xmldb_block_myoverview_upgrade($oldversion) {
     }
 
     // Automatically generated Moodle v4.0.0 release upgrade line.
+=======
+    // Automatically generated Moodle v3.10.0 release upgrade line.
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     // Put any upgrade step following this.
 
     return true;

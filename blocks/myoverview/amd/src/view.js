@@ -505,6 +505,7 @@ const renderCourses = (root, coursesData) => {
     }
 };
 
+<<<<<<< HEAD
 /**
  * Return the callback to be passed to the subscribe event
  *
@@ -515,6 +516,22 @@ const setLimit = root => {
     // @param {Number} limit The paged limit that is passed through the event.
     return limit => root.find(SELECTORS.courseView.region).attr('data-paging', limit);
 };
+=======
+    /**
+     * Intialise the courses list and cards views on page load.
+     *
+     * @param {object} root The root element for the courses view.
+     */
+    var initializePagedContent = function(root) {
+        namespace = "block_myoverview_" + root.attr('id') + "_" + Math.random();
+
+        var pagingLimit = parseInt(root.find(Selectors.courseView.region).attr('data-paging'), 10);
+        var itemsPerPage = NUMCOURSES_PERPAGE.map(function(value) {
+            var active = false;
+            if (value == pagingLimit) {
+                active = true;
+            }
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 /**
  * Intialise the paged list and cards views on page load.
@@ -528,6 +545,7 @@ const registerPagedEventHandlers = (root, namespace) => {
     PubSub.subscribe(event, setLimit(root));
 };
 
+<<<<<<< HEAD
 /**
  * Figure out how many items are going to be allowed to be rendered in the block.
  *
@@ -541,6 +559,13 @@ const itemsPerPageFunc = (pagingLimit, root) => {
         if (value === pagingLimit) {
             active = true;
         }
+=======
+        // Filter out all pagination options which are too large for the amount of courses user is enrolled in.
+        var totalCourseCount = parseInt(root.find(Selectors.courseView.region).attr('data-totalcoursecount'), 10);
+        itemsPerPage = itemsPerPage.filter(function(pagingOption) {
+            return pagingOption.value < totalCourseCount || pagingOption.value === 0;
+        });
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         return {
             value: value,
@@ -621,6 +646,7 @@ const resetGlobals = () => {
     lastLimit = 0;
 };
 
+<<<<<<< HEAD
 /**
  * The default functionality of fetching paginated courses without special handling.
  *
@@ -636,6 +662,59 @@ const standardFunctionalityCurry = () => {
             pageBuilder(coursesData, currentPage, pageData, actions);
             return renderCourses(root, loadedPages[currentPage]);
         }).catch(Notification.exception);
+=======
+                    var pagePromise = getMyCourses(
+                        filters,
+                        limit
+                    ).then(function(coursesData) {
+                        var courses = coursesData.courses;
+                        var nextPageStart = 0;
+                        var pageCourses = [];
+
+                        // If current page's data is loaded make sure we max it to page limit
+                        if (loadedPages[currentPage] != undefined) {
+                            pageCourses = loadedPages[currentPage].courses;
+                            var currentPageLength = pageCourses.length;
+                            if (currentPageLength < pageData.limit) {
+                                nextPageStart = pageData.limit - currentPageLength;
+                                pageCourses = $.merge(loadedPages[currentPage].courses, courses.slice(0, nextPageStart));
+                            }
+                        } else {
+                            // When the page limit is zero, there is only one page of courses, no start for next page.
+                            nextPageStart = pageData.limit || false;
+                            pageCourses = (pageData.limit > 0) ? courses.slice(0, pageData.limit) : courses;
+                        }
+
+                        // Finished setting up the current page
+                        loadedPages[currentPage] = {
+                            courses: pageCourses
+                        };
+
+                        // Set up the next page (if there is more than one page).
+                        var remainingCourses = nextPageStart !== false ? courses.slice(nextPageStart, courses.length) : [];
+                        if (remainingCourses.length) {
+                            loadedPages[currentPage + 1] = {
+                                courses: remainingCourses
+                            };
+                        }
+
+                        // Set the last page to either the current or next page
+                        if (loadedPages[currentPage].courses.length < pageData.limit || !remainingCourses.length) {
+                            lastPage = currentPage;
+                            actions.allItemsLoaded(currentPage);
+                        } else if (loadedPages[currentPage + 1] != undefined
+                            && loadedPages[currentPage + 1].courses.length < pageData.limit) {
+                            lastPage = currentPage + 1;
+                        }
+
+                        courseOffset = coursesData.nextoffset;
+                        return renderCourses(root, loadedPages[currentPage]);
+                    })
+                    .catch(Notification.exception);
+
+                    promises.push(pagePromise);
+                });
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         promises.push(pagePromise);
     };
@@ -722,6 +801,7 @@ const initializePagedContent = (root, promiseFunction, inputValue = null) => {
     }).catch(Notification.exception);
 };
 
+<<<<<<< HEAD
 /**
  * Listen to, and handle events for the myoverview block.
  *
@@ -779,6 +859,26 @@ const registerEventListeners = (root, page) => {
     input.addEventListener('input', debounce(() => {
         if (input.value === '') {
             clearSearch(clearIcon, root);
+=======
+    /**
+     * Reset the courses views to their original
+     *
+     * state on first page load.courseOffset
+     *
+     * This is called when configuration has changed for the event lists
+     * to cause them to reload their data.
+     *
+     * @param {Object} root The root element for the timeline view.
+     */
+    var reset = function(root) {
+        if (loadedPages.length > 0) {
+            loadedPages.forEach(function(courseList, index) {
+                var pagedContentPage = getPagedContentContainer(root, index);
+                renderCourses(root, courseList).then(function(html, js) {
+                    return Templates.replaceNodeContents(pagedContentPage, html, js);
+                }).catch(Notification.exception);
+            });
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         } else {
             activeSearch(clearIcon);
             initializePagedContent(root, searchFunctionalityCurry(), input.value.trim());

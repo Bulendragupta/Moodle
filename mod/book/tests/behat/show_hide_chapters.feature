@@ -25,9 +25,13 @@ Feature: Book activity chapter visibility management
       | Chapter title | First chapter |
       | Content | First chapter |
     And I press "Save changes"
+<<<<<<< HEAD
     And I am on "Course 1" course homepage
     And I turn editing mode on
     And I click on "Test book" "link" in the "region-main" "region"
+=======
+    And I turn editing mode on
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Add new chapter after \"First chapter\"" "link"
     And I set the following fields to these values:
       | Chapter title | Second chapter |
@@ -56,9 +60,13 @@ Feature: Book activity chapter visibility management
     When I follow "Hide chapter \"2. Second chapter\""
     And I follow "Hide chapter \"2. Third chapter\""
     And I am on the "Test book" "book activity" page
+<<<<<<< HEAD
     And I am on "Course 1" course homepage
     And I turn editing mode off
     And I click on "Test book" "link" in the "region-main" "region"
+=======
+    And I turn editing mode off
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then the "class" attribute of "a[title='Second chapter']" "css_element" should contain "dimmed_text"
     And the "class" attribute of "a[title='Third chapter']" "css_element" should contain "dimmed_text"
     And I am on "Course 1" course homepage
@@ -78,3 +86,9 @@ Feature: Book activity chapter visibility management
     And I should not see "Third chapter" in the "Table of contents" "block"
     And I follow "Next"
     And I should see "Fourth chapter" in the ".book_content" "css_element"
+<<<<<<< HEAD
+=======
+    And I follow "Exit book"
+    And I am on the "Test book" "book activity" page
+    And I should see "First chapter" in the ".book_content" "css_element"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

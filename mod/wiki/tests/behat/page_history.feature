@@ -32,13 +32,21 @@ Feature: A history of each wiki page is available
     And I press "Save"
     And I log out
     When I am on the "Test wiki name" "wiki activity" page logged in as student1
+<<<<<<< HEAD
     And I select "Edit" from the "jump" singleselect
+=======
+    And I follow "Edit"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | HTML format | Second edition |
     And I press "Save"
     And I log out
     When I am on the "Test wiki name" "wiki activity" page logged in as student2
+<<<<<<< HEAD
     And I select "Edit" from the "jump" singleselect
+=======
+    And I follow "Edit"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | HTML format | Third edition |
     And I press "Save"

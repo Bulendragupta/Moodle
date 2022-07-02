@@ -2270,6 +2270,7 @@ class core_moodlelib_testcase extends advanced_testcase {
         $COURSE->lang = $originallang;
     }
 
+<<<<<<< HEAD
     public function test_lang_string_var_export() {
 
         // Call var_export() on a newly generated lang_string.
@@ -2311,6 +2312,12 @@ EOF;
         } else {
             $this->expectWarning();
         }
+=======
+    public function test_get_string_limitation() {
+        // This is one of the limitations to the lang_string class. It can't be
+        // used as a key.
+        $this->expectException(\PHPUnit\Framework\Error\Warning::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $array = array(get_string('yes', null, null, true) => 'yes');
     }
 
@@ -4143,7 +4150,11 @@ EOF;
 
         $result = complex_random_string();
         $this->assertEqualsWithDelta(28, strlen($result), 4); // Expected length is 24 - 32.
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression('/^[' . $pool . ']+$/', $result);
+=======
+        $this->assertRegExp('/^[' . $pool . ']+$/', $result);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $this->assertDebuggingNotCalled();
 
@@ -4577,6 +4588,29 @@ EOF;
     }
 
     /**
+     * Test method for safely unserializing a serialized object of type stdClass
+     */
+    public function test_unserialize_object(): void {
+        $object = (object) [
+            'foo' => 42,
+            'bar' => 'Hamster',
+            'innerobject' => (object) [
+                'baz' => 'happy',
+            ],
+        ];
+
+        // We should get back the same object we serialized.
+        $serializedobject = serialize($object);
+        $this->assertEquals($object, unserialize_object($serializedobject));
+
+        // Try serializing a different class, not allowed.
+        $langstr = new lang_string('no');
+        $serializedlangstr = serialize($langstr);
+        $unserializedlangstr = unserialize_object($serializedlangstr);
+        $this->assertInstanceOf(stdClass::class, $unserializedlangstr);
+    }
+
+    /**
      * Test that the component_class_callback returns the correct default value when the class was not found.
      *
      * @dataProvider component_class_callback_default_provider
@@ -4954,7 +4988,11 @@ EOF;
         $newname = rename_to_unused_name($file);
 
         // Check new name has expected format.
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression('~/_temp_[a-f0-9]+$~', $newname);
+=======
+        $this->assertRegExp('~/_temp_[a-f0-9]+$~', $newname);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Check it's still in the same folder.
         $this->assertEquals($CFG->dataroot, dirname($newname));
@@ -4980,7 +5018,11 @@ EOF;
         $newname = rename_to_unused_name($file);
 
         // Check new name has expected format.
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression('~/_temp_[a-f0-9]+$~', $newname);
+=======
+        $this->assertRegExp('~/_temp_[a-f0-9]+$~', $newname);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Check it's still in the same folder.
         $this->assertEquals($CFG->dataroot, dirname($newname));
@@ -5011,6 +5053,7 @@ EOF;
     public function display_size_provider() {
 
         return [
+<<<<<<< HEAD
             [0, '0 bytes'],
             [1, '1 bytes'],
             [1023, '1023 bytes'],
@@ -5030,6 +5073,27 @@ EOF;
             [5555555555555555, '4.9 PB'],
             [66666666666666666, '59.2 PB'],
             [777777777777777777, '690.8 PB'],
+=======
+            [0,     '0 bytes'    ],
+            [1,     '1 bytes'    ],
+            [1023,  '1023 bytes' ],
+            [1024,      '1KB'    ],
+            [2222,      '2.2KB'  ],
+            [33333,     '32.6KB' ],
+            [444444,    '434KB'  ],
+            [5555555,       '5.3MB'  ],
+            [66666666,      '63.6MB' ],
+            [777777777,     '741.7MB'],
+            [8888888888,        '8.3GB'  ],
+            [99999999999,       '93.1GB' ],
+            [111111111111,      '103.5GB'],
+            [2222222222222,         '2TB'    ],
+            [33333333333333,        '30.3TB' ],
+            [444444444444444,       '404.2TB'],
+            [5555555555555555,          '4.9PB'  ],
+            [66666666666666666,         '59.2PB' ],
+            [777777777777777777,        '690.8PB'],
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         ];
     }
 
@@ -5041,6 +5105,7 @@ EOF;
      */
     public function test_display_size($size, $expected) {
         $result = display_size($size);
+<<<<<<< HEAD
         $expected = str_replace(' ', "\xc2\xa0", $expected); // Should be non-breaking space.
         $this->assertEquals($expected, $result);
     }
@@ -5337,4 +5402,8 @@ EOF;
         $default = get_default_home_page();
         $this->assertEquals(HOMEPAGE_MYCOURSES, $default);
     }
+=======
+        $this->assertEquals($expected, $result);
+    }
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

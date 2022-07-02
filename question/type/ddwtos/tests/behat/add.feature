@@ -19,6 +19,7 @@ Feature: Test creating a drag and drop into text question
   Scenario: Create a drag and drop into text question
     When I am on the "Course 1" "core_question > course question bank" page logged in as teacher
     And I add a "Drag and drop into text" question filling the form with:
+<<<<<<< HEAD
       | Question name                  | Drag and drop into text 001   |
       | Question text                  | The [[1]] [[2]] on the [[3]]. |
       | General feedback               | The cat sat on the mat.       |
@@ -31,6 +32,18 @@ Feature: Test creating a drag and drop into text question
       | Penalty for each incorrect try | 20%                           |
       | Hint 1                         | First hint                    |
       | Hint 2                         | Second hint                   |
+=======
+      | Question name             | Drag and drop into text 001   |
+      | Question text             | The [[1]] [[2]] on the [[3]]. |
+      | General feedback          | The cat sat on the mat.       |
+      | id_choices_0_answer       | cat                           |
+      | id_choices_1_answer       | sat                           |
+      | id_choices_2_answer       | mat                           |
+      | id_choices_3_answer       | dog                           |
+      | id_choices_4_answer       | table                         |
+      | Hint 1                    | First hint                    |
+      | Hint 2                    | Second hint                   |
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "Drag and drop into text 001"
     # Checking that the next new question form displays user preferences settings.
     And I press "Create a new question ..."

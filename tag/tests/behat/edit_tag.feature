@@ -164,7 +164,10 @@ Feature: Users can edit tags to add description or rename
     And I set the field "Edit tag name" in the "Cat" "table_row" to "Kitten"
     Then I should not see "Cat"
     And "New name for tag" "field" should not exist
+<<<<<<< HEAD
     And I navigate to "Appearance > Manage tags" in site administration
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I follow "Default collection"
     And I should see "Kitten"
     And I should not see "Cat"

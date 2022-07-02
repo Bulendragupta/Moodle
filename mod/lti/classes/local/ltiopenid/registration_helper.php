@@ -28,7 +28,10 @@ defined('MOODLE_INTERNAL') || die;
 require_once($CFG->dirroot . '/mod/lti/locallib.php');
 use Firebase\JWT\JWK;
 use Firebase\JWT\JWT;
+<<<<<<< HEAD
 use Firebase\JWT\Key;
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 use stdClass;
 
 /**
@@ -52,6 +55,7 @@ class registration_helper {
     /** Tool Settings scope */
     const SCOPE_TOOL_SETTING = 'https://purl.imsglobal.org/spec/lti-ts/scope/toolsetting';
 
+<<<<<<< HEAD
     /** Indicates the token is to create a new registration */
     const REG_TOKEN_OP_NEW_REG = 'reg';
     /** Indicates the token is to update an existing registration */
@@ -65,6 +69,8 @@ class registration_helper {
     public static function get() {
         return new registration_helper();
     }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     /**
      * Function used to validate parameters.
@@ -78,7 +84,11 @@ class registration_helper {
      *
      * @return mixed
      */
+<<<<<<< HEAD
     private function get_parameter(array $payload, string $key, bool $required) {
+=======
+    private static function get_parameter(array $payload, string $key, bool $required) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         if (!isset($payload[$key]) || empty($payload[$key])) {
             if ($required) {
                 throw new registration_exception('missing required attribute '.$key, 400);
@@ -101,6 +111,7 @@ class registration_helper {
      *
      * @return object the Moodle LTI config.
      */
+<<<<<<< HEAD
     public function registration_to_config(array $registrationpayload, string $clientid): object {
         $responsetypes = $this->get_parameter($registrationpayload, 'response_types', true);
         $initiateloginuri = $this->get_parameter($registrationpayload, 'initiate_login_uri', true);
@@ -122,15 +133,42 @@ class registration_helper {
         $claims = $this->get_parameter($ltitoolconfiguration, 'claims', false);
         $messages = $ltitoolconfiguration['messages'] ?? [];
         $description = $this->get_parameter($ltitoolconfiguration, 'description', false);
+=======
+    public static function registration_to_config(array $registrationpayload, string $clientid): object {
+        $responsetypes = self::get_parameter($registrationpayload, 'response_types', true);
+        $initiateloginuri = self::get_parameter($registrationpayload, 'initiate_login_uri', true);
+        $redirecturis = self::get_parameter($registrationpayload, 'redirect_uris', true);
+        $clientname = self::get_parameter($registrationpayload, 'client_name', true);
+        $jwksuri = self::get_parameter($registrationpayload, 'jwks_uri', true);
+        $tokenendpointauthmethod = self::get_parameter($registrationpayload, 'token_endpoint_auth_method', true);
+
+        $applicationtype = self::get_parameter($registrationpayload, 'application_type', false);
+        $logouri = self::get_parameter($registrationpayload, 'logo_uri', false);
+
+        $ltitoolconfiguration = self::get_parameter($registrationpayload,
+            'https://purl.imsglobal.org/spec/lti-tool-configuration', true);
+
+        $domain = self::get_parameter($ltitoolconfiguration, 'domain', false);
+        $targetlinkuri = self::get_parameter($ltitoolconfiguration, 'target_link_uri', false);
+        $customparameters = self::get_parameter($ltitoolconfiguration, 'custom_parameters', false);
+        $scopes = explode(" ", self::get_parameter($registrationpayload, 'scope', false) ?? '');
+        $claims = self::get_parameter($ltitoolconfiguration, 'claims', false);
+        $messages = $ltitoolconfiguration['messages'] ?? [];
+        $description = self::get_parameter($ltitoolconfiguration, 'description', false);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Validate domain and target link.
         if (empty($domain)) {
             throw new registration_exception('missing_domain', 400);
         }
+<<<<<<< HEAD
 
         $targetlinkuri = $targetlinkuri ?: 'https://'.$domain;
         // Stripping www as this is ignored for domain matching.
         $domain = lti_get_domain_from_url($domain);
+=======
+        $targetlinkuri = $targetlinkuri ?: 'https://'.$domain;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         if ($domain !== lti_get_domain_from_url($targetlinkuri)) {
             throw new registration_exception('domain_targetlinkuri_mismatch', 400);
         }
@@ -255,6 +293,7 @@ class registration_helper {
     }
 
     /**
+<<<<<<< HEAD
      * Adds to the config the LTI 1.1 key and sign it with the 1.1 secret.
      *
      * @param array $lticonfig reference to lticonfig to which to add the 1.1 OAuth info.
@@ -273,10 +312,13 @@ class registration_helper {
     }
 
     /**
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * Transforms a moodle LTI 1.3 Config to an OAuth/LTI Client Registration.
      *
      * @param object $config Moodle LTI Config.
      * @param int $typeid which is the LTI deployment id.
+<<<<<<< HEAD
      * @param object $type tool instance in case the tool already exists.
      *
      * @return array the Client Registration as an associative array.
@@ -326,17 +368,56 @@ class registration_helper {
         if (isset($config->customparameters) && !empty($config->customparameters)) {
             $params = [];
             foreach (explode(PHP_EOL, $config->customparameters) as $param) {
+=======
+     *
+     * @return array the Client Registration as an associative array.
+     */
+    public static function config_to_registration(object $config, int $typeid): array {
+        $registrationresponse = [];
+        $registrationresponse['client_id'] = $config->lti_clientid;
+        $registrationresponse['token_endpoint_auth_method'] = ['private_key_jwt'];
+        $registrationresponse['response_types'] = ['id_token'];
+        $registrationresponse['jwks_uri'] = $config->lti_publickeyset;
+        $registrationresponse['initiate_login_uri'] = $config->lti_initiatelogin;
+        $registrationresponse['grant_types'] = ['client_credentials', 'implicit'];
+        $registrationresponse['redirect_uris'] = explode(PHP_EOL, $config->lti_redirectionuris);
+        $registrationresponse['application_type'] = 'web';
+        $registrationresponse['token_endpoint_auth_method'] = 'private_key_jwt';
+        $registrationresponse['client_name'] = $config->lti_typename;
+        $registrationresponse['logo_uri'] = $config->lti_icon ?? '';
+        $lticonfigurationresponse = [];
+        $lticonfigurationresponse['deployment_id'] = strval($typeid);
+        $lticonfigurationresponse['target_link_uri'] = $config->lti_toolurl;
+        $lticonfigurationresponse['domain'] = $config->lti_tooldomain ?? '';
+        $lticonfigurationresponse['description'] = $config->lti_description ?? '';
+        if ($config->lti_contentitem == 1) {
+            $contentitemmessage = [];
+            $contentitemmessage['type'] = 'LtiDeepLinkingRequest';
+            if (isset($config->lti_toolurl_ContentItemSelectionRequest)) {
+                $contentitemmessage['target_link_uri'] = $config->lti_toolurl_ContentItemSelectionRequest;
+            }
+            $lticonfigurationresponse['messages'] = [$contentitemmessage];
+        }
+        if (isset($config->lti_customparameters) && !empty($config->lti_customparameters)) {
+            $params = [];
+            foreach (explode(PHP_EOL, $config->lti_customparameters) as $param) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 $split = explode('=', $param);
                 $params[$split[0]] = $split[1];
             }
             $lticonfigurationresponse['custom_parameters'] = $params;
         }
         $scopesresponse = [];
+<<<<<<< HEAD
         if ($config->ltiservice_gradesynchronization ?? 0 > 0) {
+=======
+        if ($config->ltiservice_gradesynchronization > 0) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $scopesresponse[] = self::SCOPE_SCORE;
             $scopesresponse[] = self::SCOPE_RESULT;
             $scopesresponse[] = self::SCOPE_LINEITEM_RO;
         }
+<<<<<<< HEAD
         if ($config->ltiservice_gradesynchronization ?? 0 == 2) {
             $scopesresponse[] = self::SCOPE_LINEITEM;
         }
@@ -344,17 +425,34 @@ class registration_helper {
             $scopesresponse[] = self::SCOPE_NRPS;
         }
         if ($config->ltiservice_toolsettings ?? 0 == 1) {
+=======
+        if ($config->ltiservice_gradesynchronization == 2) {
+            $scopesresponse[] = self::SCOPE_LINEITEM;
+        }
+        if ($config->ltiservice_memberships == 1) {
+            $scopesresponse[] = self::SCOPE_NRPS;
+        }
+        if ($config->ltiservice_toolsettings == 1) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $scopesresponse[] = self::SCOPE_TOOL_SETTING;
         }
         $registrationresponse['scope'] = implode(' ', $scopesresponse);
 
         $claimsresponse = ['sub', 'iss'];
+<<<<<<< HEAD
         if ($config->sendname ?? '' == LTI_SETTING_ALWAYS) {
+=======
+        if ($config->lti_sendname == LTI_SETTING_ALWAYS) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $claimsresponse[] = 'name';
             $claimsresponse[] = 'family_name';
             $claimsresponse[] = 'given_name';
         }
+<<<<<<< HEAD
         if ($config->sendemailaddr ?? '' == LTI_SETTING_ALWAYS) {
+=======
+        if ($config->lti_sendemailaddr == LTI_SETTING_ALWAYS) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $claimsresponse[] = 'email';
         }
         $lticonfigurationresponse['claims'] = $claimsresponse;
@@ -368,6 +466,7 @@ class registration_helper {
      *
      * @param string $registrationtokenjwt registration token
      *
+<<<<<<< HEAD
      * @return array with 2 keys: clientid for the registration, type but only if it's an update
      */
     public function validate_registration_token(string $registrationtokenjwt): array {
@@ -395,6 +494,23 @@ class registration_helper {
             throw new registration_exception("Incorrect scope", 403);
         }
         return $response;
+=======
+     * @return string client id for the registration
+     */
+    public static function validate_registration_token(string $registrationtokenjwt): string {
+        global $DB;
+        $keys = JWK::parseKeySet(jwks_helper::get_jwks());
+        $registrationtoken = JWT::decode($registrationtokenjwt, $keys, ['RS256']);
+
+        // Get clientid from registrationtoken.
+        $clientid = $registrationtoken->sub;
+
+        // Checks if clientid is already registered.
+        if (!empty($DB->get_record('lti_types', array('clientid' => $clientid)))) {
+            throw new registration_exception("token_already_used", 401);
+        }
+        return $clientid;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**
@@ -402,7 +518,11 @@ class registration_helper {
      *
      * @return array List of scopes
      */
+<<<<<<< HEAD
     public function lti_get_service_scopes() {
+=======
+    public static function lti_get_service_scopes() {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $services = lti_get_services();
         $scopes = array();
@@ -415,6 +535,7 @@ class registration_helper {
         return $scopes;
     }
 
+<<<<<<< HEAD
     /**
      * Generates a new client id string.
      *
@@ -446,4 +567,6 @@ class registration_helper {
     public function get_tool_proxy(int $proxyid) : array {
         return lti_get_tool_proxy($proxyid);
     }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

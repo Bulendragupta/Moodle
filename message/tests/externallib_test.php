@@ -186,7 +186,11 @@ class externallib_test extends externallib_advanced_testcase {
         \core_message\api::add_contact($user1->id, $user2->id);
 
         $sentmessages = core_message_external::send_instant_messages($messages);
+<<<<<<< HEAD
         $sentmessages = \external_api::clean_returnvalue(core_message_external::send_instant_messages_returns(), $sentmessages);
+=======
+        $sentmessages = external_api::clean_returnvalue(core_message_external::send_instant_messages_returns(), $sentmessages);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertEquals(
             get_string('errormessagetoolong', 'message'),
             array_pop($sentmessages)['errormessage']
@@ -1287,7 +1291,11 @@ class externallib_test extends externallib_advanced_testcase {
         $this->assertEquals($user5->id, $result['id']);
 
         // Empty query, will throw an exception.
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $results = core_message_external::search_contacts('');
     }
 
@@ -2037,12 +2045,17 @@ class externallib_test extends externallib_advanced_testcase {
         // Create some users.
         $users = [];
         foreach (range(1, 8) as $i) {
+<<<<<<< HEAD
             $user = new \stdClass();
+=======
+            $user = new stdClass();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $user->firstname = ($i == 4) ? 'User' : 'User search'; // Ensure the fourth user won't match the search term.
             $user->lastname = $i;
             $user = $this->getDataGenerator()->create_user($user);
             $users[$i] = $user;
         }
+<<<<<<< HEAD
 
         // Enrol a few users in the same course, but leave them as non-contacts.
         $course1 = $this->getDataGenerator()->create_course();
@@ -2116,6 +2129,81 @@ class externallib_test extends externallib_advanced_testcase {
         $this->assertCount(1, $noncontacts[1]['conversations']);
         $this->assertEquals(\core_message\api::MESSAGE_CONVERSATION_TYPE_INDIVIDUAL, $noncontacts[1]['conversations'][0]['type']);
 
+=======
+
+        // Enrol a few users in the same course, but leave them as non-contacts.
+        $course1 = $this->getDataGenerator()->create_course();
+        $course2 = $this->getDataGenerator()->create_course();
+
+        $this->setAdminUser();
+        $this->getDataGenerator()->enrol_user($users[1]->id, $course1->id);
+        $this->getDataGenerator()->enrol_user($users[6]->id, $course1->id);
+        $this->getDataGenerator()->enrol_user($users[7]->id, $course1->id);
+
+        // Add some other users as contacts.
+        \core_message\api::add_contact($users[1]->id, $users[2]->id);
+        \core_message\api::add_contact($users[3]->id, $users[1]->id);
+        \core_message\api::add_contact($users[1]->id, $users[4]->id);
+
+        // Enrol a user as a teacher in the course, and make the teacher role a course contact role.
+        $this->getDataGenerator()->enrol_user($users[8]->id, $course2->id, 'editingteacher');
+        $teacherrole = $DB->get_record('role', array('shortname' => 'editingteacher'));
+        set_config('coursecontact', $teacherrole->id);
+
+        // Create individual conversations between some users, one contact and one non-contact.
+        \core_message\api::create_conversation(\core_message\api::MESSAGE_CONVERSATION_TYPE_INDIVIDUAL,
+            [$users[1]->id, $users[2]->id]);
+        \core_message\api::create_conversation(\core_message\api::MESSAGE_CONVERSATION_TYPE_INDIVIDUAL,
+            [$users[6]->id, $users[1]->id]);
+
+        // Create a group conversation between 4 users, including a contact and a non-contact.
+        \core_message\api::create_conversation(\core_message\api::MESSAGE_CONVERSATION_TYPE_GROUP,
+            [$users[1]->id, $users[2]->id, $users[4]->id, $users[7]->id], 'Project chat');
+
+        // Set as the user performing the search.
+        $this->setUser($users[1]);
+
+        // Perform a search with $CFG->messagingallusers disabled.
+        set_config('messagingallusers', 0);
+        $result = core_message_external::message_search_users($users[1]->id, 'search');
+        $result = external_api::clean_returnvalue(core_message_external::message_search_users_returns(), $result);
+
+        // Confirm that we returns contacts and non-contacts.
+        $this->assertArrayHasKey('contacts', $result);
+        $this->assertArrayHasKey('noncontacts', $result);
+        $contacts = $result['contacts'];
+        $noncontacts = $result['noncontacts'];
+
+        // Check that we retrieved the correct contacts.
+        $this->assertCount(2, $contacts);
+        $this->assertEquals($users[2]->id, $contacts[0]['id']);
+        $this->assertEquals($users[3]->id, $contacts[1]['id']);
+
+        // Verify the correct conversations were returned for the contacts.
+        $this->assertCount(2, $contacts[0]['conversations']);
+        // We can't rely on the ordering of conversations within the results, so sort by id first.
+        usort($contacts[0]['conversations'], function($a, $b) {
+            return $a['id'] < $b['id'];
+        });
+        $this->assertEquals(\core_message\api::MESSAGE_CONVERSATION_TYPE_GROUP, $contacts[0]['conversations'][0]['type']);
+        $this->assertEquals(\core_message\api::MESSAGE_CONVERSATION_TYPE_INDIVIDUAL, $contacts[0]['conversations'][1]['type']);
+
+        $this->assertCount(0, $contacts[1]['conversations']);
+
+        // Check that we retrieved the correct non-contacts.
+        // When site wide messaging is disabled, we expect to see only those users who we share a course with and whose profiles
+        // are visible in that course. This excludes users like course contacts.
+        $this->assertCount(3, $noncontacts);
+        // Self-conversation first.
+        $this->assertEquals($users[1]->id, $noncontacts[0]['id']);
+        $this->assertEquals($users[6]->id, $noncontacts[1]['id']);
+        $this->assertEquals($users[7]->id, $noncontacts[2]['id']);
+
+        // Verify the correct conversations were returned for the non-contacts.
+        $this->assertCount(1, $noncontacts[1]['conversations']);
+        $this->assertEquals(\core_message\api::MESSAGE_CONVERSATION_TYPE_INDIVIDUAL, $noncontacts[1]['conversations'][0]['type']);
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertCount(1, $noncontacts[2]['conversations']);
         $this->assertEquals(\core_message\api::MESSAGE_CONVERSATION_TYPE_GROUP, $noncontacts[2]['conversations'][0]['type']);
     }
@@ -2133,7 +2221,11 @@ class externallib_test extends externallib_advanced_testcase {
         // Create some users.
         $users = [];
         foreach (range(1, 9) as $i) {
+<<<<<<< HEAD
             $user = new \stdClass();
+=======
+            $user = new stdClass();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $user->firstname = ($i == 4) ? 'User' : 'User search'; // Ensure the fourth user won't match the search term.
             $user->lastname = $i;
             $user = $this->getDataGenerator()->create_user($user);
@@ -2223,11 +2315,19 @@ class externallib_test extends externallib_advanced_testcase {
         $this->resetAfterTest();
 
         // Create some users.
+<<<<<<< HEAD
         $user1 = new \stdClass();
         $user1->firstname = 'User';
         $user1->lastname = 'One';
         $user1 = $this->getDataGenerator()->create_user($user1);
         $user2 = new \stdClass();
+=======
+        $user1 = new stdClass();
+        $user1->firstname = 'User';
+        $user1->lastname = 'One';
+        $user1 = $this->getDataGenerator()->create_user($user1);
+        $user2 = new stdClass();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $user2->firstname = 'User';
         $user2->lastname = 'Two';
         $user2 = $this->getDataGenerator()->create_user($user2);
@@ -2239,7 +2339,11 @@ class externallib_test extends externallib_advanced_testcase {
         // Perform a search as user1.
         $this->setUser($user1);
         $result = core_message_external::message_search_users($user1->id, 'One');
+<<<<<<< HEAD
         $result = \external_api::clean_returnvalue(core_message_external::message_search_users_returns(), $result);
+=======
+        $result = external_api::clean_returnvalue(core_message_external::message_search_users_returns(), $result);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Check results are empty.
         $this->assertCount(0, $result['contacts']);
@@ -2530,7 +2634,11 @@ class externallib_test extends externallib_advanced_testcase {
         $result = core_message_external::data_for_messagearea_search_messages($user1->id, 'o');
 
         // We need to execute the return values cleaning process to simulate the web service server.
+<<<<<<< HEAD
         $result = \external_api::clean_returnvalue(core_message_external::data_for_messagearea_search_messages_returns(),
+=======
+        $result = external_api::clean_returnvalue(core_message_external::data_for_messagearea_search_messages_returns(),
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $result);
 
         // Confirm the data is correct.
@@ -2785,7 +2893,11 @@ class externallib_test extends externallib_advanced_testcase {
         $this->setUser($user1);
 
         $requests = core_message_external::get_user_contacts($user1->id);
+<<<<<<< HEAD
         $requests = \external_api::clean_returnvalue(core_message_external::get_user_contacts_returns(), $requests);
+=======
+        $requests = external_api::clean_returnvalue(core_message_external::get_user_contacts_returns(), $requests);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $this->assertEmpty($requests);
     }
@@ -4314,7 +4426,11 @@ class externallib_test extends externallib_advanced_testcase {
 
         // Call the WebService.
         $result = core_message_external::get_conversations($user1->id, 0, 20, null, false);
+<<<<<<< HEAD
         $result = \external_api::clean_returnvalue(core_message_external::get_conversations_returns(), $result);
+=======
+        $result = external_api::clean_returnvalue(core_message_external::get_conversations_returns(), $result);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $conversations = $result['conversations'];
 
         // Format original data.
@@ -4864,7 +4980,11 @@ class externallib_test extends externallib_advanced_testcase {
             ],
         ];
 
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $writtenmessages = core_message_external::send_messages_to_conversation($gc2->id, $messages);
     }
 
@@ -5830,7 +5950,11 @@ class externallib_test extends externallib_advanced_testcase {
         $result = core_message_external::get_conversation_messages($user1->id, $conversation->id, 0, 0, '', $time + 5);
 
         // We need to execute the return values cleaning process to simulate the web service server.
+<<<<<<< HEAD
         $result = \external_api::clean_returnvalue(core_message_external::get_conversation_messages_returns(), $result);
+=======
+        $result = external_api::clean_returnvalue(core_message_external::get_conversation_messages_returns(), $result);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Check the results are correct.
         $this->assertEquals($conversation->id, $result['id']);

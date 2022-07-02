@@ -116,4 +116,22 @@ class workshop_random_allocator_form extends moodleform {
 
         return $errors;
     }
+
+    /**
+     * Validate the allocation settings.
+     *
+     * @param array $data
+     * @param array $files
+     * @return array
+     */
+    public function validation($data, $files): array {
+
+        $errors = parent::validation($data, $files);
+
+        if ($data['numofreviews'] < 0) {
+            $errors['grpnumofreviews'] = get_string('invalidnum', 'core_error');
+        }
+
+        return $errors;
+    }
 }

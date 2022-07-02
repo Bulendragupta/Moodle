@@ -39,7 +39,12 @@ Feature: Basic use of the Statistics report
 
   @javascript
   Scenario: Report works when there are no attempts
+<<<<<<< HEAD
     When I am on the "Quiz 1" "mod_quiz > Statistics report" page logged in as teacher1
+=======
+    Given I am on the "Quiz 1" "quiz activity" page logged in as teacher1
+    And I navigate to "Results > Statistics" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "No attempts have been made at this quiz, or all attempts have questions that need manual grading."
     And I should not see "Statistics for question positions"
     And "Show chart data" "link" should not exist

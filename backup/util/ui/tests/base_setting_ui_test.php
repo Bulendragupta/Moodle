@@ -14,10 +14,20 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+<<<<<<< HEAD
 namespace core_backup;
 
 use base_setting;
 use base_setting_ui;
+=======
+/**
+ * Tests for base_setting_ui class.
+ *
+ * @package   core_backup
+ * @copyright 2021 Université Rennes 2 {@link https://www.univ-rennes2.fr}
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 defined('MOODLE_INTERNAL') || die();
 
@@ -28,11 +38,18 @@ require_once($CFG->dirroot.'/backup/util/settings/tests/settings_test.php');
 /**
  * Tests for base_setting_ui class.
  *
+<<<<<<< HEAD
  * @package   core_backup
  * @copyright 2021 Université Rennes 2 {@link https://www.univ-rennes2.fr}
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class base_setting_ui_test extends \advanced_testcase {
+=======
+ * @copyright 2021 Université Rennes 2 {@link https://www.univ-rennes2.fr}
+ * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class base_setting_ui_test extends advanced_testcase {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     /**
      * Tests set_label().
      *
@@ -69,7 +86,11 @@ class base_setting_ui_test extends \advanced_testcase {
         $this->assertSame('<b>label</b>', $bsui->get_label());
 
         // Should raise an exception when cleaning ends with 100% empty.
+<<<<<<< HEAD
         $this->expectException(\Exception::class);
+=======
+        $this->expectException(base_setting_ui_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->expectExceptionMessage('error/setting_invalid_ui_label');
         $bsui->set_label('<script>alert("test")</script>');
     }

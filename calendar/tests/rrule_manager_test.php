@@ -2147,7 +2147,11 @@ class rrule_manager_test extends \advanced_testcase {
         $twentiethmonday->modify('+20 Monday');
         $startdatetime = $this->change_event_startdate($twentiethmonday->format('Ymd\T000000'), 'US/Eastern');
 
+<<<<<<< HEAD
         $interval = new \DateInterval('P1Y');
+=======
+        $interval = new DateInterval('P1Y');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $rrule = 'FREQ=YEARLY;BYDAY=20MO';
         $mang = new rrule_manager($rrule);

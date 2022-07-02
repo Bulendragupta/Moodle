@@ -5,17 +5,22 @@ Feature: Sort content in the content bank
   I need to be able to sort the content bank in various ways
 
   Background:
+<<<<<<< HEAD
     Given I log in as "admin"
     And I navigate to "H5P > Manage H5P content types" in site administration
     And I upload "h5p/tests/fixtures/filltheblanks.h5p" file to "H5P content type" filemanager
     And I click on "Upload H5P content types" "button" in the "#fitem_id_uploadlibraries" "css_element"
     And the following "users" exist:
+=======
+    Given the following "users" exist:
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
       | username    | firstname | lastname | email              |
       | manager     | Max       | Manager  | man@example.com    |
     And the following "role assigns" exist:
       | user        | role      | contextlevel  | reference     |
       | manager     | manager       | System    |               |
     And the following "contentbank content" exist:
+<<<<<<< HEAD
         | contextlevel | reference | contenttype       | user    | contentname          | filepath                                |
         | System       |           | contenttype_h5p   | admin   | Dragon_santjordi.h5p | /h5p/tests/fixtures/filltheblanks.h5p   |
         | System       |           | contenttype_h5p   | admin   | mathsbook.h5p        | /h5p/tests/fixtures/filltheblanks.h5p   |
@@ -23,6 +28,15 @@ Feature: Sort content in the content bank
         | System       |           | contenttype_h5p   | admin   | santjordi.h5p        | /h5p/tests/fixtures/filltheblanks.h5p   |
         | System       |           | contenttype_h5p   | admin   | santjordi_rose.h5p   | /h5p/tests/fixtures/filltheblanks.h5p   |
         | System       |           | contenttype_h5p   | admin   | SantJordi_book       | /h5p/tests/fixtures/filltheblanks.h5p   |
+=======
+        | contextlevel | reference | contenttype       | user    | contentname          |
+        | System       |           | contenttype_h5p   | admin   | Dragon_santjordi.h5p |
+        | System       |           | contenttype_h5p   | admin   | mathsbook.h5p        |
+        | System       |           | contenttype_h5p   | manager | historybook.h5p      |
+        | System       |           | contenttype_h5p   | admin   | santjordi.h5p        |
+        | System       |           | contenttype_h5p   | admin   | santjordi_rose.h5p   |
+        | System       |           | contenttype_h5p   | admin   | SantJordi_book       |
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
   Scenario: Admins can order content in the content bank
     Given I am on site homepage
@@ -43,10 +57,16 @@ Feature: Sort content in the content bank
     Then "santjordi_rose.h5p" "text" should appear before "SantJordi_book" "text"
 
   Scenario: Admins can order content depending on the author
+<<<<<<< HEAD
     Given I am on site homepage
     And I turn editing mode on
     And the following config values are set as admin:
       | unaddableblocks | | theme_boost|
+=======
+    Given I log in as "admin"
+    And I am on site homepage
+    And I turn editing mode on
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I add the "Navigation" block if not present
     And I expand "Site pages" node
     And I click on "Content bank" "link"

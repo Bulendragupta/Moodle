@@ -51,11 +51,23 @@ class award_criteria_profile extends award_criteria {
         'address',
         'phone1',
         'phone2',
+<<<<<<< HEAD
+=======
+        'icq',
+        'skype',
+        'yahoo',
+        'aim',
+        'msn',
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         'department',
         'institution',
         'description',
         'picture',
         'city',
+<<<<<<< HEAD
+=======
+        'url',
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         'country',
     ];
 
@@ -71,6 +83,15 @@ class award_criteria_profile extends award_criteria {
         $existing = array();
         $missing = array();
         $dfields = $this->allowed_default_fields;
+<<<<<<< HEAD
+=======
+
+        $sql = "SELECT uf.id as fieldid, uf.name as name, ic.id as categoryid, ic.name as categoryname, uf.datatype
+                FROM {user_info_field} uf
+                JOIN {user_info_category} ic
+                ON uf.categoryid = ic.id AND uf.visible <> 0
+                ORDER BY ic.sortorder ASC, uf.sortorder ASC";
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Get custom fields.
         $cfields = array_filter(profile_get_custom_fields(), function($field) {

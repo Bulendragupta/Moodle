@@ -25,8 +25,12 @@
 
 namespace mod_quiz\question\bank;
 
+<<<<<<< HEAD
 use core_question\local\bank\question_version_status;
 use mod_quiz\question\bank\filter\custom_category_condition;
+=======
+use coding_exception;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 /**
  * Subclass to customise the view of the question bank for the quiz editing screen.
@@ -76,6 +80,7 @@ class custom_view extends \core_question\local\bank\view {
             $corequestionbankcolumns[] = 'question_text_row';
         }
 
+<<<<<<< HEAD
         foreach ($corequestionbankcolumns as $fullname) {
             $shortname = $fullname;
             if (class_exists('mod_quiz\\question\\bank\\' . $fullname)) {
@@ -111,6 +116,21 @@ class custom_view extends \core_question\local\bank\view {
                     if ($corequestionbankcolumn === $columnname) {
                         $questionbankclasscolumns[$columnname] = $columnobject;
                     }
+=======
+        foreach ($quizquestionbankcolumns as $fullname) {
+            if (!class_exists($fullname)) {
+                if (class_exists('mod_quiz\\question\\bank\\' . $fullname)) {
+                    $fullname = 'mod_quiz\\question\\bank\\' . $fullname;
+                } else if (class_exists('core_question\\bank\\' . $fullname)) {
+                    $fullname = 'core_question\\bank\\' . $fullname;
+                } else if (class_exists('question_bank_' . $fullname)) {
+                    debugging('Legacy question bank column class question_bank_' .
+                            $fullname . ' should be renamed to mod_quiz\\question\\bank\\' .
+                            $fullname, DEBUG_DEVELOPER);
+                    $fullname = 'question_bank_' . $fullname;
+                } else {
+                    throw new coding_exception('Invalid quiz question bank column', $fullname);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 }
             }
         }

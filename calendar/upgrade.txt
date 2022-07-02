@@ -1,6 +1,7 @@
 This files describes API changes in /calendar/* ,
 information provided here is intended especially for developers.
 
+<<<<<<< HEAD
 === 4.1 ===
 * New method `calendar_format_event_location` which will format the location property of an event, converting any
   links into suitable markup
@@ -23,9 +24,12 @@ information provided here is intended especially for developers.
   - calendar_threemonth and threemonth_month templates.
   - Behat step definitions i_hover_over_day_of_this_month_in_calendar and i_click_day_of_this_month_in_calendar.
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 === 3.10 ===
 * The core_calendar\local\event\value_objects\times_interface class now has new method get_usermidnight_time() which
   returns the user midnight time for a given event.
+* Updated calendar_can_manage_user_event() function to check permissions to user events.
 
 === 3.9 ===
 * Plugins can now create their own calendar events, both standard and action ones. To do it they need to specify

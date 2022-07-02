@@ -33,7 +33,11 @@ Feature: Grant an extension to an offline student
       | activity | course | name                 | intro                       | assignsubmission_onlinetext_enabled | assignsubmission_file_enabled | duedate    |
       | assign   | C1     | Test assignment name | Test assignment description | 0                                   | 0                             | 1388534400 |
     And I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I follow "View all submissions"
+=======
+    When I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I open the action menu in "Student 1" "table_row"
     And I follow "Grant extension"
     And I should see "Student 1 (student1@example.com)"
@@ -51,7 +55,11 @@ Feature: Grant an extension to an offline student
       | activity | course | name                 | intro                       | assignsubmission_onlinetext_enabled | assignsubmission_file_enabled | duedate    |
       | assign   | C1     | Test assignment name | Test assignment description | 0                                   | 0                             | 1388534400 |
     And I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I follow "View all submissions"
+=======
+    When I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the field "selectall" to "1"
     And I set the field "operation" to "Grant extension"
     And I click on "Go" "button" confirming the dialogue
@@ -80,7 +88,11 @@ Feature: Grant an extension to an offline student
       | activity | course | name                 | intro                       | assignsubmission_onlinetext_enabled | assignsubmission_file_enabled | allowsubmissionsfromdate    | duedate    |
       | assign   | C1     | Test assignment name | Test assignment description | 0                                   | 0                             | 1388534400                  | 1388620800 |
     And I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I follow "View all submissions"
+=======
+    When I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I open the action menu in "Student 1" "table_row"
     And I follow "Grant extension"
     And I should see "Student 1 (student1@example.com)"
@@ -100,7 +112,11 @@ Feature: Grant an extension to an offline student
       | activity | course | name                 | intro                       | assignsubmission_onlinetext_enabled | assignsubmission_file_enabled | allowsubmissionsfromdate    | duedate    |
       | assign   | C1     | Test assignment name | Test assignment description | 0                                   | 0                             | 1388534400                  | 1388620800 |
     And I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I follow "View all submissions"
+=======
+    When I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the field "selectall" to "1"
     And I set the field "operation" to "Grant extension"
     And I click on "Go" "button" confirming the dialogue

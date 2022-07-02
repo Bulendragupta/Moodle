@@ -124,8 +124,12 @@ class report_log_table_log extends table_sql {
         }
 
         // If we reach that point new users logs have been generated since the last users db query.
+<<<<<<< HEAD
         $userfieldsapi = \core_user\fields::for_name();
         $fields = $userfieldsapi->get_sql('', false, '', '', false)->selects;
+=======
+        $fields = get_all_user_name_fields(true);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         if ($user = \core_user::get_user($userid, $fields)) {
             $this->userfullnames[$userid] = fullname($user, has_capability('moodle/site:viewfullnames', $this->get_context()));
         } else {

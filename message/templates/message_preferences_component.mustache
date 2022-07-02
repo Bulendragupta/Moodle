@@ -51,7 +51,22 @@
     <tr data-preference-key="{{preferencekey}}">
         <th>{{displayname}}</th>
         <td class="align-bottom">
+<<<<<<< HEAD
             {{#str}} enabled, core_message {{/str}}
+=======
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="span6 col-6">
+                        {{#str}} loggedin, message {{/str}}
+                        {{#onlinehelphtml}}{{{.}}}{{/onlinehelphtml}}
+                    </div>
+                    <div class="span6 col-6">
+                        {{#str}} loggedoff, message {{/str}}
+                        {{#offlinehelphtml}}{{{.}}}{{/offlinehelphtml}}
+                    </div>
+                </div>
+            </div>
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         </td>
     </tr>
     {{#processors}}

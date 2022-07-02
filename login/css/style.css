@@ -1,0 +1,298 @@
+@font-face {
+    font-family: 'Metropolis';
+    src: url('../fonts/Metropolis-Bold.eot');
+    src: url('../fonts/Metropolis-Bold.eot?#iefix') format('embedded-opentype'), url('../fonts/Metropolis-Bold.woff2') format('woff2'), url('../fonts/Metropolis-Bold.woff') format('woff'), url('../fonts/Metropolis-Bold.ttf') format('truetype'), url('../fonts/Metropolis-Bold.svg#Metropolis-Bold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Metropolis';
+    src: url('../fonts/Metropolis-Black.eot');
+    src: url('../fonts/Metropolis-Black.eot?#iefix') format('embedded-opentype'), url('../fonts/Metropolis-Black.woff2') format('woff2'), url('../fonts/Metropolis-Black.woff') format('woff'), url('../fonts/Metropolis-Black.ttf') format('truetype'), url('../fonts/Metropolis-Black.svg#Metropolis-Black') format('svg');
+    font-weight: 900;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Metropolis Extra';
+    src: url('../fonts/Metropolis-ExtraBold.eot');
+    src: url('../fonts/Metropolis-ExtraBold.eot?#iefix') format('embedded-opentype'), url('../fonts/Metropolis-ExtraBold.woff2') format('woff2'), url('../fonts/Metropolis-ExtraBold.woff') format('woff'), url('../fonts/Metropolis-ExtraBold.ttf') format('truetype'), url('../fonts/Metropolis-ExtraBold.svg#Metropolis-ExtraBold') format('svg');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Metropolis';
+    src: url('../fonts/Metropolis-Regular.eot');
+    src: url('../fonts/Metropolis-Regular.eot?#iefix') format('embedded-opentype'), url('../fonts/Metropolis-Regular.woff2') format('woff2'), url('../fonts/Metropolis-Regular.woff') format('woff'), url('../fonts/Metropolis-Regular.ttf') format('truetype'), url('../fonts/Metropolis-Regular.svg#Metropolis-Regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Metropolis Semi';
+    src: url('../fonts/Metropolis-SemiBold.eot');
+    src: url('../fonts/Metropolis-SemiBold.eot?#iefix') format('embedded-opentype'), url('../fonts/Metropolis-SemiBold.woff2') format('woff2'), url('../fonts/Metropolis-SemiBold.woff') format('woff'), url('../fonts/Metropolis-SemiBold.ttf') format('truetype'), url('../fonts/Metropolis-SemiBold.svg#Metropolis-SemiBold') format('svg');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Metropolis';
+    src: url('../fonts/Metropolis-Light.eot');
+    src: url('../fonts/Metropolis-Light.eot?#iefix') format('embedded-opentype'), url('../fonts/Metropolis-Light.woff2') format('woff2'), url('../fonts/Metropolis-Light.woff') format('woff'), url('../fonts/Metropolis-Light.ttf') format('truetype'), url('../fonts/Metropolis-Light.svg#Metropolis-Light') format('svg');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+html, body{
+    height: 100%;
+}
+
+a{
+    transition: ease-in-out 0.2s;
+}
+
+body {
+    font-family: 'Metropolis';
+    color: #111;
+}
+.loginWrapper{
+    /* min-height: 950px; */
+}
+.loginWrapper::after{
+    background: rgba(58, 58, 58, 0.4);
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    content: '';
+    z-index: 1;
+}
+
+header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+}
+
+.headerLogos a{
+    display: inline-block;
+    vertical-align: top;
+}
+.headerRight{
+    color: #fff;
+}
+.phone{
+    font-size: 16px;
+    line-height: 16px;
+}
+.phone a{
+    color: #fff;
+    font-weight: bold;
+    text-decoration: none;
+}
+.phone a:hover{
+    opacity: 0.5;
+}
+.socialLinks{
+    border-left: 1px solid rgba(255,255,255,0.2);
+    padding-left: 15px;
+    margin-left: 15px;
+}
+.socialLinks a{
+    color: #fff;
+    font-size: 18px;
+    margin: 0 3px;
+}
+.socialLinks a:hover{
+    opacity: 0.5;
+}
+.ctaButton{
+    margin-left: 40px;
+}
+.cta-btn{
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+    background: #cb2f34;
+    border-radius: 30px;
+    padding: 15px 35px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+.cta-btn:hover{
+    color: #fff;
+    background: #af2328;
+}
+.cuidolLmsLogin{
+    position: absolute;
+    z-index: 10;
+    left: 0;
+    right: 0;
+    top: 0;
+}
+.cuidolLmsLogin__inner{
+    max-width: 420px;
+    margin: auto;
+    margin-top: 150px;
+}
+.cuidolLmsLogin__inner h2{
+    color: #fff;
+    font-size: 24px;
+    line-height: 28px;
+    font-weight: bold;
+    margin-bottom: 30px;
+}
+.cuidolLmsLogin__inner h2 span{
+    font-weight: 300;
+}
+
+
+.cuidolLmsLogin__form{
+    background: #fff;
+    padding: 45px 36px;
+    border-radius: 30px;
+}
+
+.cuidolLmsLogin__form .form-control{
+    height: 49px;
+    background: #ebebeb;
+    border-radius: 10px;
+    border: 1px solid #d7d7d7;
+}
+.cuidolLmsLogin__form--fields p a{
+    color: #5b5b5b;
+    text-decoration: none;
+}
+
+.cuidolLmsLogin__form--tabs{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.cuidolLmsLogin__form--tabs a{
+    font-size: 20px;
+    font-weight: 600;
+    color: #b9b8b8;
+    text-decoration: none;
+    padding: 0 15px;
+    border-right: 1px solid #ddd;
+}
+.cuidolLmsLogin__form--tabs a:last-child{
+    border: 0;
+}
+.cuidolLmsLogin__form--tabs a.active{
+    color: #cb2f34;
+}
+
+
+@media only screen and (max-width: 1199px){
+    .ctaButton {
+        margin-left: 15px;
+    }
+    .socialLinks{
+        padding-left: 5px;
+        margin-left: 5px;
+    }
+    .cta-btn{
+        padding: 15px 25px;
+    }
+    .phone a{
+        display: block;
+    }
+}
+
+
+@media only screen and (max-width: 991px){
+    header{
+        text-align: center;
+    }
+    .headerRight{
+        margin-top: 10px;
+        text-align: left;
+        border-bottom: 1px solid rgba(255,255,255,0.2);
+        padding-bottom: 15px;
+    }
+    .cuidolLmsLogin__inner{
+        margin-top: 200px;
+    }
+    .headerLogos a:first-child{
+        margin-right: 15px !important;
+    }
+    .cuLogo {
+        width: 200px;
+    }
+    .cuidolLogo {
+        width: 115px;
+    }
+    .socialLinks{
+        padding-left: 10px;
+        margin-left: 10px;
+    }
+    .loginWrapper{
+        min-height: 1024px;
+    }
+}
+
+@media only screen and (max-width: 575px){
+    
+    .cuidolLmsLogin__inner{
+        margin-top: 230px;
+    }
+    .headerLogos a:first-child{
+        margin-right: 15px !important;
+    }
+    .headerRight{
+        text-align: center;
+        display: block !important;
+    }
+    .cuLogo {
+        width: 170px;
+    }
+    .cuidolLogo {
+        width: 90px;
+    }
+    .socialLinks{
+        margin: 5px 0;
+        padding: 0;
+        border: 0;
+    }
+    .phone a{
+        display: inline-block;
+    }
+    .cuidolLmsLogin__inner h2{
+        font-size: 20px;
+        line-height: 24px;
+    }
+    .ctaButton{
+        margin: 0;
+    }
+    .cta-btn{
+        padding: 11px 25px
+    }
+    .cuidolLmsLogin__form{
+        padding: 35px 25px;
+        margin-bottom: 30px;
+    }
+    .cuidolLmsLogin__form--tabs a{
+        font-size: 18px;
+    }
+    .loginWrapper {
+        min-height: inherit;
+        height: auto !important;
+    }
+    body{
+        background: #212529;
+    }
+    
+}

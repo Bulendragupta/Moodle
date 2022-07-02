@@ -126,6 +126,7 @@ Feature: Users can auto-enrol themself in courses where self enrolment is allowe
     Given the "multilang" filter is "on"
     And the "multilang" filter applies to "content and headings"
     And I am on the "C1" "Course" page logged in as "teacher1"
+<<<<<<< HEAD
     When I add "Self enrolment" enrolment method in "Course 1" with:
       | Custom instance name | Test student enrolment |
     And I am on "Course 1" course homepage
@@ -137,6 +138,19 @@ Feature: Users can auto-enrol themself in courses where self enrolment is allowe
     And I press "Enrol me"
     And I should see "You are enrolled in the course"
     And I am on the "C1" "course" page
+=======
+    When I add "Self enrolment" enrolment method with:
+      | Custom instance name | Test student enrolment |
+    And I am on "Course 1" course homepage
+    And I navigate to "Edit settings" in current page administration
+    And I set the field "Course full name" in the "General" "fieldset" to "<span lang=\"en\" class=\"multilang\">Course</span><span lang=\"it\" class=\"multilang\">Corso</span> 1"
+    And I press "Save and display"
+    And I log out
+    And I am on the "C1" Course page logged in as student1
+    And I press "Enrol me"
+    And I should see "You are enrolled in the course"
+    And I am on the "C1" Course page
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I navigate to "Unenrol me from C1" in current page administration
     And I click on "Continue" "button" in the "Confirm" "dialogue"
     Then I should see "You are unenrolled from the course \"Course 1\""

@@ -45,6 +45,13 @@ class dropbox extends client {
     ];
 
     /**
+     * @var array Custom continue endpoints that differ from the standard.
+     */
+    private $mappedcontinueoverides = [
+        'files/search_v2' => 'files/search/continue_v2'
+    ];
+
+    /**
      * Create the DropBox API Client.
      *
      * @param   issuer      $issuer     The dropbox issuer

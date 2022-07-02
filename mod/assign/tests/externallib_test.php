@@ -662,7 +662,11 @@ class externallib_test extends \mod_assign\externallib_advanced_testcase {
 
         $this->setUser($teacher);
         $result = mod_assign_external::get_submissions([$assignmodule->id]);
+<<<<<<< HEAD
         $result = \external_api::clean_returnvalue(mod_assign_external::get_submissions_returns(), $result);
+=======
+        $result = external_api::clean_returnvalue(mod_assign_external::get_submissions_returns(), $result);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $this->assertEquals(1, count($result['assignments']));
         [$assignment] = $result['assignments'];
@@ -864,7 +868,11 @@ class externallib_test extends \mod_assign\externallib_advanced_testcase {
             'text' => 'Submission text',
             'format' => FORMAT_MOODLE);
         $notices = array();
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $assign->save_submission($data, $notices);
     }
 
@@ -1088,7 +1096,11 @@ class externallib_test extends \mod_assign\externallib_advanced_testcase {
         $this->getDataGenerator()->enrol_user($student1->id, $course->id, $studentrole->id);
 
         $this->setUser($student1);
+<<<<<<< HEAD
         $this->expectException(\required_capability_exception::class);
+=======
+        $this->expectException(required_capability_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $result = mod_assign_external::reveal_identities($instance->id);
         $result = \external_api::clean_returnvalue(mod_assign_external::reveal_identities_returns(), $result);
         $this->assertEquals(1, count($result));
@@ -1567,7 +1579,11 @@ class externallib_test extends \mod_assign\externallib_advanced_testcase {
         $grades1[] = $student2gradeinfo;
 
         // Expect an exception since 2 grades have been submitted for the same team.
+<<<<<<< HEAD
         $this->expectException(\invalid_parameter_exception::class);
+=======
+        $this->expectException(invalid_parameter_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $result = mod_assign_external::save_grades($instance->id, true, $grades1);
         $result = \external_api::clean_returnvalue(mod_assign_external::save_grades_returns(), $result);
 
@@ -1785,7 +1801,11 @@ class externallib_test extends \mod_assign\externallib_advanced_testcase {
         $cm = get_coursemodule_from_instance('assign', $assign->id);
 
         // Test invalid instance id.
+<<<<<<< HEAD
         $this->expectException(\dml_missing_record_exception::class);
+=======
+        $this->expectException(dml_missing_record_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_assign_external::view_grading_table(0);
     }
 
@@ -1807,7 +1827,11 @@ class externallib_test extends \mod_assign\externallib_advanced_testcase {
         $user = self::getDataGenerator()->create_user();
         $this->setUser($user);
 
+<<<<<<< HEAD
         $this->expectException(\require_login_exception::class);
+=======
+        $this->expectException(require_login_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_assign_external::view_grading_table($assign->id);
     }
 
@@ -1877,7 +1901,11 @@ class externallib_test extends \mod_assign\externallib_advanced_testcase {
         accesslib_clear_all_caches_for_unit_testing();
         \course_modinfo::clear_instance_cache();
 
+<<<<<<< HEAD
         $this->expectException(\require_login_exception::class);
+=======
+        $this->expectException(require_login_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->expectExceptionMessage('Course or activity not accessible. (Activity is hidden)');
         mod_assign_external::view_grading_table($assign->id);
     }
@@ -2131,13 +2159,21 @@ class externallib_test extends \mod_assign\externallib_advanced_testcase {
         $this->assertFalse(isset($result['gradingsummary']));
 
         // Should return all participants if we grant accessallgroups capability to the normal teacher role.
+<<<<<<< HEAD
         $context = \context_course::instance($assign->get_instance()->course);
+=======
+        $context = context_course::instance($assign->get_instance()->course);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $teacherrole = $DB->get_record('role', array('shortname' => 'teacher'));
         assign_capability('moodle/site:accessallgroups', CAP_ALLOW, $teacherrole->id, $context->id, true);
         accesslib_clear_all_caches_for_unit_testing();
 
         $result = mod_assign_external::get_submission_status($assign->get_instance()->id);
+<<<<<<< HEAD
         $result = \external_api::clean_returnvalue(mod_assign_external::get_submission_status_returns(), $result);
+=======
+        $result = external_api::clean_returnvalue(mod_assign_external::get_submission_status_returns(), $result);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertCount(0, $result['warnings']);
         $this->assertEquals(2, $result['gradingsummary']['participantcount']);
         $this->assertEquals(0, $result['gradingsummary']['submissiondraftscount']);
@@ -2266,7 +2302,11 @@ class externallib_test extends \mod_assign\externallib_advanced_testcase {
         $this->setUser($student2);
 
         // Access control test.
+<<<<<<< HEAD
         $this->expectException(\required_capability_exception::class);
+=======
+        $this->expectException(required_capability_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_assign_external::get_submission_status($assign->get_instance()->id, $student1->id);
 
     }
@@ -2395,6 +2435,7 @@ class externallib_test extends \mod_assign\externallib_advanced_testcase {
     }
 
     /**
+<<<<<<< HEAD
      * Test get_submission_status with time limit for student.
      *
      * @covers \mod_assign_external::get_submission_status
@@ -2471,11 +2512,17 @@ class externallib_test extends \mod_assign\externallib_advanced_testcase {
     }
 
     /**
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * get_participant should throw an excaption if the requested assignment doesn't exist.
      */
     public function test_get_participant_no_assignment() {
         $this->resetAfterTest(true);
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_assign_external::get_participant('-1', '-1', false);
     }
 
@@ -2497,7 +2544,11 @@ class externallib_test extends \mod_assign\externallib_advanced_testcase {
         $this->setUser($student);
         assign_capability('mod/assign:view', CAP_PROHIBIT, $studentrole->id, $context->id, true);
 
+<<<<<<< HEAD
         $this->expectException(\require_login_exception::class);
+=======
+        $this->expectException(require_login_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_assign_external::get_participant($assign->id, $student->id, false);
     }
 
@@ -2522,7 +2573,11 @@ class externallib_test extends \mod_assign\externallib_advanced_testcase {
         assign_capability('mod/assign:grade', CAP_PROHIBIT, $teacherrole->id, $context->id, true);
         accesslib_clear_all_caches_for_unit_testing();
 
+<<<<<<< HEAD
         $this->expectException(\required_capability_exception::class);
+=======
+        $this->expectException(required_capability_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_assign_external::get_participant($assign->id, $student->id, false);
     }
 
@@ -2540,7 +2595,11 @@ class externallib_test extends \mod_assign\externallib_advanced_testcase {
 
         $this->setUser($teacher);
 
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $result = mod_assign_external::get_participant($assign->id, $student->id, false);
         $result = \external_api::clean_returnvalue(mod_assign_external::get_participant_returns(), $result);
     }

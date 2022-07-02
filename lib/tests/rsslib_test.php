@@ -42,7 +42,11 @@ class rsslib_test extends \advanced_testcase {
     const TIMEOUT = 10;
 
     protected function setUp(): void {
+<<<<<<< HEAD
         \moodle_simplepie::reset_cache();
+=======
+        moodle_simplepie::reset_cache();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     public function test_getfeed() {

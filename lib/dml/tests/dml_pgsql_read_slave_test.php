@@ -125,6 +125,7 @@ class dml_pgsql_read_slave_test extends \base_testcase {
         if ($DB->get_dbfamily() != 'postgres') {
             $this->markTestSkipped("Not postgres");
         }
+<<<<<<< HEAD
 
         // Open second connection.
         $cfg = $DB->export_dbconfig();
@@ -144,6 +145,27 @@ class dml_pgsql_read_slave_test extends \base_testcase {
         $dbman = $db2->get_manager();
 
         $table = new \xmldb_table('silly_test_table');
+=======
+
+        // Open second connection.
+        $cfg = $DB->export_dbconfig();
+        if (!isset($cfg->dboptions)) {
+            $cfg->dboptions = [];
+        }
+        if (!isset($cfg->dboptions['readonly'])) {
+            $cfg->dboptions['readonly'] = [
+                'instance' => [$cfg->dbhost]
+            ];
+        }
+
+        // Get a separate disposable db connection handle with guaranteed 'readonly' config.
+        $db2 = moodle_database::get_driver_instance($cfg->dbtype, $cfg->dblibrary);
+        $db2->connect($cfg->dbhost, $cfg->dbuser, $cfg->dbpass, $cfg->dbname, $cfg->prefix, $cfg->dboptions);
+
+        $dbman = $db2->get_manager();
+
+        $table = new xmldb_table('silly_test_table');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $table->add_field('id', XMLDB_TYPE_INTEGER, 10, null, XMLDB_NOTNULL, XMLDB_SEQUENCE);
         $table->add_field('msg', XMLDB_TYPE_CHAR, 255);
         $table->add_key('primary', XMLDB_KEY_PRIMARY, ['id']);
@@ -158,7 +180,11 @@ class dml_pgsql_read_slave_test extends \base_testcase {
         $db2->get_records('silly_test_table');
         $this->assertEquals($reads, $db2->perf_get_reads_slave());
 
+<<<<<<< HEAD
         $table2 = new \xmldb_table('silly_test_table2');
+=======
+        $table2 = new xmldb_table('silly_test_table2');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $table2->add_field('id', XMLDB_TYPE_INTEGER, 10, null, XMLDB_NOTNULL, XMLDB_SEQUENCE);
         $table2->add_field('msg', XMLDB_TYPE_CHAR, 255);
         $table2->add_key('primary', XMLDB_KEY_PRIMARY, ['id']);

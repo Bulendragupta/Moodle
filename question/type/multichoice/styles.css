@@ -14,12 +14,15 @@
 
 .que.multichoice .answer .answernumber {
     min-width: 1.5em;
+<<<<<<< HEAD
 }
 
 .que.multichoice .answer .specificfeedback {
     display: inline;
     padding: 0 0.7em;
     background: #fff3bf;
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }
 
 /* Editing form. */

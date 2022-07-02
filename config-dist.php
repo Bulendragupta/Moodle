@@ -713,6 +713,7 @@ $CFG->admin = 'admin';
 //
 // $CFG->maxcoursesincategory = 10000;
 //
+<<<<<<< HEAD
 // Admin setting encryption
 //
 //      $CFG->secretdataroot = '/var/www/my_secret_folder';
@@ -748,6 +749,8 @@ $CFG->admin = 'admin';
 //
 //      $CFG->enrolments_sync_interval = 3600
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 //=========================================================================
 // 7. SETTINGS FOR DEVELOPMENT SERVERS - not intended for production use!!!
 //=========================================================================
@@ -1118,6 +1121,7 @@ $CFG->admin = 'admin';
 //      $CFG->alternative_cache_factory_class = 'tool_alternativecache_cache_factory';
 //
 //=========================================================================
+<<<<<<< HEAD
 // 17. SCHEDULED TASK OVERRIDES
 //=========================================================================
 //
@@ -1183,6 +1187,8 @@ $CFG->admin = 'admin';
 //      $CFG->showservicesandsupportcontent = false;
 //
 //=========================================================================
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 // ALL DONE!  To continue installation, visit your main page with a browser
 //=========================================================================
 

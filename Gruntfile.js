@@ -136,6 +136,44 @@ const setupMoodleEnvironment = grunt => {
                 grunt.fail.fatal('Setting root to ' + root + ' failed - path does not exist');
             }
         }
+<<<<<<< HEAD
+=======
+    }
+
+    const scssTasks = ['sass'];
+    if (hasScss) {
+        scssTasks.unshift('stylelint:scss');
+    }
+    scssTasks.unshift('ignorefiles');
+    grunt.registerTask('scss', scssTasks);
+
+    const cssTasks = ['ignorefiles'];
+    if (hasCss) {
+        cssTasks.push('stylelint:css');
+    }
+    grunt.registerTask('rawcss', cssTasks);
+
+    grunt.registerTask('css', ['scss', 'rawcss']);
+};
+
+/**
+ * Grunt configuration.
+ *
+ * @param {Object} grunt
+ */
+module.exports = function(grunt) {
+    const path = require('path');
+    const tasks = {};
+    const async = require('async');
+    const DOMParser = require('xmldom').DOMParser;
+    const xpath = require('xpath');
+    const semver = require('semver');
+    const watchman = require('fb-watchman');
+    const watchmanClient = new watchman.Client();
+    const fs = require('fs');
+    const ComponentList = require(path.resolve('GruntfileComponents.js'));
+    const sass = require('node-sass');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         return cwd;
     };
@@ -219,6 +257,7 @@ const verifyNodeVersion = grunt => {
     }
 };
 
+<<<<<<< HEAD
 /**
  * Grunt configuration.
  *
@@ -230,6 +269,241 @@ module.exports = function(grunt) {
 
     // Setup the Moodle environemnt within the Grunt object.
     grunt.moodleEnv = setupMoodleEnvironment(grunt);
+=======
+    const babelTransform = require('@babel/core').transform;
+    const babel = (options = {}) => {
+        return {
+            name: 'babel',
+
+            transform: (code, id) => {
+                grunt.log.debug(`Transforming ${id}`);
+                options.filename = id;
+                const transformed = babelTransform(code, options);
+
+                return {
+                    code: transformed.code,
+                    map: transformed.map
+                };
+            }
+        };
+    };
+
+    // Note: We have to use a rate limit plugin here because rollup runs all tasks asynchronously and in parallel.
+    // When we kick off a full run, if we kick off a rollup of every file this will fork-bomb the machine.
+    // To work around this we use a concurrent Promise queue based on the number of available processors.
+    const rateLimit = () => {
+        const queue = [];
+        let queueRunner;
+
+        const startQueue = () => {
+            if (queueRunner) {
+                return;
+            }
+
+            queueRunner = setTimeout(() => {
+                const limit = Math.max(1, require('os').cpus().length / 2);
+                grunt.log.debug(`Starting rollup with queue size of ${limit}`);
+                runQueue(limit);
+            }, 100);
+        };
+
+        // The queue runner will run the next `size` items in the queue.
+        const runQueue = (size = 1) => {
+            queue.splice(0, size).forEach(resolve => {
+                resolve();
+            });
+        };
+
+        return {
+            name: 'ratelimit',
+
+            // The options hook is run in parallel.
+            // We can return an unresolved Promise which is queued for later resolution.
+            options: async() => {
+                return new Promise(resolve => {
+                    queue.push(resolve);
+                    startQueue();
+                });
+            },
+
+            // When an item in the queue completes, start the next item in the queue.
+            buildEnd: () => {
+                runQueue();
+            },
+        };
+    };
+
+    const terser = require('rollup-plugin-terser').terser;
+
+    // Project configuration.
+    grunt.initConfig({
+        eslint: {
+            // Even though warnings dont stop the build we don't display warnings by default because
+            // at this moment we've got too many core warnings.
+            // To display warnings call: grunt eslint --show-lint-warnings
+            // To fail on warnings call: grunt eslint --max-lint-warnings=0
+            // Also --max-lint-warnings=-1 can be used to display warnings but not fail.
+            options: {
+                quiet: (!grunt.option('show-lint-warnings')) && (typeof grunt.option('max-lint-warnings') === 'undefined'),
+                maxWarnings: ((typeof grunt.option('max-lint-warnings') !== 'undefined') ? grunt.option('max-lint-warnings') : -1)
+            },
+            amd: {src: files ? files : amdSrc},
+            // Check YUI module source files.
+            yui: {src: files ? files : yuiSrc},
+        },
+        rollup: {
+            dist: {
+                options: {
+                    format: 'esm',
+                    dir: 'output',
+                    sourcemap: true,
+                    treeshake: false,
+                    context: 'window',
+                    plugins: [
+                        rateLimit({initialDelay: 0}),
+                        babel({
+                            sourceMaps: true,
+                            comments: false,
+                            compact: false,
+                            plugins: [
+                                'transform-es2015-modules-amd-lazy',
+                                'system-import-transformer',
+                                // This plugin modifies the Babel transpiling for "export default"
+                                // so that if it's used then only the exported value is returned
+                                // by the generated AMD module.
+                                //
+                                // It also adds the Moodle plugin name to the AMD module definition
+                                // so that it can be imported as expected in other modules.
+                                path.resolve('babel-plugin-add-module-to-define.js'),
+                                '@babel/plugin-syntax-dynamic-import',
+                                '@babel/plugin-syntax-import-meta',
+                                ['@babel/plugin-proposal-class-properties', {'loose': false}],
+                                '@babel/plugin-proposal-json-strings'
+                            ],
+                            presets: [
+                                ['@babel/preset-env', {
+                                    targets: {
+                                        browsers: [
+                                            ">0.25%",
+                                            "last 2 versions",
+                                            "not ie <= 10",
+                                            "not op_mini all",
+                                            "not Opera > 0",
+                                            "not dead"
+                                        ]
+                                    },
+                                    modules: false,
+                                    useBuiltIns: false
+                                }]
+                            ]
+                        }),
+
+                        terser({
+                            // Do not mangle variables.
+                            // Makes debugging easier.
+                            mangle: false,
+                        }),
+                    ],
+                },
+                files: [{
+                    expand: true,
+                    src: files ? files : amdSrc,
+                    rename: babelRename
+                }],
+            },
+        },
+        jsdoc: {
+            dist: {
+                options: {
+                    configure: ".grunt/jsdoc/jsdoc.conf.js",
+                },
+            },
+        },
+        sass: {
+            dist: {
+                files: {
+                    "theme/boost/style/moodle.css": "theme/boost/scss/preset/default.scss",
+                    "theme/classic/style/moodle.css": "theme/classic/scss/classicgrunt.scss"
+                }
+            },
+            options: {
+                implementation: sass,
+                includePaths: ["theme/boost/scss/", "theme/classic/scss/"]
+            }
+        },
+        watch: {
+            options: {
+                nospawn: true // We need not to spawn so config can be changed dynamically.
+            },
+            amd: {
+                files: inComponent
+                    ? ['amd/src/*.js', 'amd/src/**/*.js']
+                    : ['**/amd/src/**/*.js'],
+                tasks: ['amd']
+            },
+            boost: {
+                files: [inComponent ? 'scss/**/*.scss' : 'theme/boost/scss/**/*.scss'],
+                tasks: ['scss']
+            },
+            rawcss: {
+                files: [
+                    '**/*.css',
+                ],
+                excludes: [
+                    '**/moodle.css',
+                    '**/editor.css',
+                ],
+                tasks: ['rawcss']
+            },
+            yui: {
+                files: inComponent
+                    ? ['yui/src/*.json', 'yui/src/**/*.js']
+                    : ['**/yui/src/**/*.js'],
+                tasks: ['yui']
+            },
+            gherkinlint: {
+                files: [inComponent ? 'tests/behat/*.feature' : '**/tests/behat/*.feature'],
+                tasks: ['gherkinlint']
+            }
+        },
+        shifter: {
+            options: {
+                recursive: true,
+                // Shifter takes a relative path.
+                paths: files ? files : [runDir]
+            }
+        },
+        gherkinlint: {
+            options: {
+                files: getGherkinLintTargets(),
+            }
+        },
+    });
+
+    /**
+     * Generate ignore files (utilising thirdpartylibs.xml data)
+     */
+    tasks.ignorefiles = function() {
+        // An array of paths to third party directories.
+        const thirdPartyPaths = getThirdPartyPathsFromXML();
+        // Generate .eslintignore.
+        const eslintIgnores = [
+            '# Generated by "grunt ignorefiles"',
+            '*/**/yui/src/*/meta/',
+            '*/**/build/',
+        ].concat(thirdPartyPaths);
+        grunt.file.write('.eslintignore', eslintIgnores.join('\n') + '\n');
+
+        // Generate .stylelintignore.
+        const stylelintIgnores = [
+            '# Generated by "grunt ignorefiles"',
+            '**/yui/build/*',
+            'theme/boost/style/moodle.css',
+            'theme/classic/style/moodle.css',
+        ].concat(thirdPartyPaths);
+        grunt.file.write('.stylelintignore', stylelintIgnores.join('\n') + '\n');
+    };
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     /**
      * Add the named task.
@@ -257,8 +531,57 @@ module.exports = function(grunt) {
     addTask('style', grunt);
     addTask('componentlibrary', grunt);
 
+<<<<<<< HEAD
     addTask('watch', grunt);
     addTask('startup', grunt);
+=======
+    // On watch, we dynamically modify config to build only affected files. This
+    // method is slightly complicated to deal with multiple changed files at once (copied
+    // from the grunt-contrib-watch readme).
+    var changedFiles = Object.create(null);
+    var onChange = grunt.util._.debounce(function() {
+        var files = Object.keys(changedFiles);
+        grunt.config('eslint.amd.src', files);
+        grunt.config('eslint.yui.src', files);
+        grunt.config('shifter.options.paths', files);
+        grunt.config('gherkinlint.options.files', files);
+        grunt.config('babel.dist.files', [{expand: true, src: files, rename: babelRename}]);
+        changedFiles = Object.create(null);
+    }, 200);
+
+    grunt.event.on('watch', function(action, filepath) {
+        changedFiles[filepath] = action;
+        onChange();
+    });
+
+    // Register NPM tasks.
+    grunt.loadNpmTasks('grunt-contrib-uglify');
+    grunt.loadNpmTasks('grunt-contrib-watch');
+    grunt.loadNpmTasks('grunt-sass');
+    grunt.loadNpmTasks('grunt-eslint');
+    grunt.loadNpmTasks('grunt-stylelint');
+    grunt.loadNpmTasks('grunt-rollup');
+
+    grunt.loadNpmTasks('grunt-jsdoc');
+
+    // Rename the grunt-contrib-watch "watch" task because we're going to wrap it.
+    grunt.renameTask('watch', 'watch-grunt');
+
+    // Register JS tasks.
+    grunt.registerTask('shifter', 'Run Shifter against the current directory', tasks.shifter);
+    grunt.registerTask('gherkinlint', 'Run gherkinlint against the current directory', tasks.gherkinlint);
+    grunt.registerTask('ignorefiles', 'Generate ignore files for linters', tasks.ignorefiles);
+    grunt.registerTask('watch', 'Run tasks on file changes', tasks.watch);
+    grunt.registerTask('yui', ['eslint:yui', 'shifter']);
+    grunt.registerTask('amd', ['ignorefiles', 'eslint:amd', 'rollup']);
+    grunt.registerTask('js', ['amd', 'yui']);
+
+    // Register CSS tasks.
+    registerStyleLintTasks(grunt, files, fullRunDir);
+
+    // Register the startup task.
+    grunt.registerTask('startup', 'Run the correct tasks for the current directory', tasks.startup);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     // Register the default task.
     grunt.registerTask('default', ['startup']);

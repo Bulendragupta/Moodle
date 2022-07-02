@@ -5043,6 +5043,31 @@ class restore_create_categories_and_questions extends restore_structure_step {
             // Otherwise use current user id.
             if (!$this->task->is_samesite()) {
                 $data->createdby = $this->task->get_userid();
+<<<<<<< HEAD
+=======
+            }
+        }
+
+        $userid = $this->get_mappingid('user', $data->modifiedby);
+        if ($userid) {
+            // The question modifier is included in the backup, so we can use their mapping id.
+            $data->modifiedby = $userid;
+        } else {
+            // Leave the question modifier unchanged when we are restoring the same site.
+            // Otherwise use current user id.
+            if (!$this->task->is_samesite()) {
+                $data->modifiedby = $this->task->get_userid();
+            }
+        }
+
+        // With newitemid = 0, let's create the question
+        if (!$questionmapping->newitemid) {
+
+            // The idnumber if it exists also needs to be unique within a category or reset it to null.
+            if (!empty($data->idnumber) && $DB->record_exists('question',
+                    ['idnumber' => $data->idnumber, 'category' => $data->category])) {
+                unset($data->idnumber);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             }
         }
 

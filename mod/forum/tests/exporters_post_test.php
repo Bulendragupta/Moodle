@@ -67,7 +67,11 @@ class exporters_post_test extends \advanced_testcase {
         $course = $datagenerator->create_course();
         $forum = $datagenerator->create_module('forum', ['course' => $course->id]);
         $coursemodule = get_coursemodule_from_instance('forum', $forum->id);
+<<<<<<< HEAD
         $context = \context_module::instance($coursemodule->id);
+=======
+        $context = context_module::instance($coursemodule->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $now = time();
 
         $forumgenparams = [

@@ -237,14 +237,21 @@ class question_test extends \advanced_testcase {
      * test_get_question_definition_for_external_rendering
      */
     public function test_get_question_definition_for_external_rendering() {
+<<<<<<< HEAD
         $question = \test_question_maker::make_question('match');
         $question->start_attempt(new question_attempt_step(), 1);
         $qa = \test_question_maker::get_a_qa($question);
+=======
+        $question = test_question_maker::make_question('match');
+        $question->start_attempt(new question_attempt_step(), 1);
+        $qa = test_question_maker::get_a_qa($question);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $displayoptions = new question_display_options();
 
         $options = $question->get_question_definition_for_external_rendering($qa, $displayoptions);
         $this->assertEquals(1, $options['shufflestems']);
     }
+<<<<<<< HEAD
 
     public function test_validate_can_regrade_with_other_version_ok() {
         $m = \test_question_maker::make_question('match');
@@ -305,4 +312,6 @@ class question_test extends \advanced_testcase {
         $this->assertEquals(['_stemorder' => '14,11,13,12', '_choiceorder' => '12,13,11'],
                 $newm->update_attempt_state_data_for_new_version($oldstep, $m));
     }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

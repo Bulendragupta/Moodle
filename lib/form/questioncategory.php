@@ -60,8 +60,13 @@ class MoodleQuickForm_questioncategory extends MoodleQuickForm_selectgroups {
         if (is_array($options)) {
             $this->_options = $options + $this->_options;
             $this->loadArrayOptGroups(
+<<<<<<< HEAD
                         helper::question_category_options($this->_options['contexts'], $this->_options['top'],
                             $this->_options['currentcat'], false, $this->_options['nochildrenof'], false));
+=======
+                        question_category_options($this->_options['contexts'], $this->_options['top'], $this->_options['currentcat'],
+                                                false, $this->_options['nochildrenof'], false));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         }
     }
 

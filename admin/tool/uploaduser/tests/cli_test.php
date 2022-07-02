@@ -14,7 +14,19 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+<<<<<<< HEAD
 namespace tool_uploaduser;
+=======
+/**
+ * Tests for CLI tool_uploaduser.
+ *
+ * @package    tool_uploaduser
+ * @copyright  2020 Marina Glancy
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+
+use \tool_uploaduser\cli_helper;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 /**
  * Tests for CLI tool_uploaduser.
@@ -23,7 +35,11 @@ namespace tool_uploaduser;
  * @copyright  2020 Marina Glancy
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+<<<<<<< HEAD
 class cli_test extends \advanced_testcase {
+=======
+class tool_uploaduser_cli_testcase extends advanced_testcase {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     /**
      * Generate cli_helper and mock $_SERVER['argv']
@@ -109,7 +125,11 @@ class cli_test extends \advanced_testcase {
         $this->assertEquals('Users created: 2', $stats[0]);
 
         // Users have default values applied.
+<<<<<<< HEAD
         $user1 = \core_user::get_user_by_username('jonest');
+=======
+        $user1 = core_user::get_user_by_username('jonest');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertEquals('Brighton', $user1->city);
         $this->assertEquals('Purchasing', $user1->department);
     }
@@ -118,13 +138,23 @@ class cli_test extends \advanced_testcase {
      * User upload with user profile fields
      */
     public function test_upload_with_profile_fields() {
+<<<<<<< HEAD
         global $CFG;
+=======
+        global $DB, $CFG;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->resetAfterTest();
         set_config('passwordpolicy', 0);
         $this->setAdminUser();
 
+<<<<<<< HEAD
         $this->field1 = $this->getDataGenerator()->create_custom_profile_field([
             'shortname' => 'superfield', 'name' => 'Super field',
+=======
+        $categoryid = $DB->insert_record('user_info_category', ['name' => 'Cat 1', 'sortorder' => 1]);
+        $this->field1 = $DB->insert_record('user_info_field', [
+            'shortname' => 'superfield', 'name' => 'Super field', 'categoryid' => $categoryid,
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             'datatype' => 'text', 'signup' => 1, 'visible' => 1, 'required' => 1, 'sortorder' => 1]);
 
         $filepath = $CFG->dirroot.'/lib/tests/fixtures/upload_users_profile.csv';
@@ -141,7 +171,11 @@ class cli_test extends \advanced_testcase {
         $this->assertEquals('Users created: 2', $stats[0]);
 
         // Created users have data in the profile fields.
+<<<<<<< HEAD
         $user1 = \core_user::get_user_by_username('reznort');
+=======
+        $user1 = core_user::get_user_by_username('reznort');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $profilefields1 = profile_user_record($user1->id);
         $this->assertEquals((object)['superfield' => 'Loves cats'], $profilefields1);
     }
@@ -236,9 +270,15 @@ class cli_test extends \advanced_testcase {
         $enrols = array_values(enrol_get_course_users($course->id));
         $this->assertEqualsCanonicalizing(['jonest'], [$enrols[0]->username]);
         // User reznor is not created.
+<<<<<<< HEAD
         $this->assertFalse(\core_user::get_user_by_username('reznor'));
         // User jonest is not updated.
         $this->assertEquals('OLDNAME', \core_user::get_user_by_username('jonest')->firstname);
+=======
+        $this->assertFalse(core_user::get_user_by_username('reznor'));
+        // User jonest is not updated.
+        $this->assertEquals('OLDNAME', core_user::get_user_by_username('jonest')->firstname);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**
@@ -279,8 +319,14 @@ class cli_test extends \advanced_testcase {
         $enrols = array_values(enrol_get_course_users($course->id));
         $this->assertEqualsCanonicalizing(['jonest'], [$enrols[0]->username]);
         // User reznor is not created.
+<<<<<<< HEAD
         $this->assertFalse(\core_user::get_user_by_username('reznor'));
         // User jonest is updated, new first name is Tom.
         $this->assertEquals('Tom', \core_user::get_user_by_username('jonest')->firstname);
+=======
+        $this->assertFalse(core_user::get_user_by_username('reznor'));
+        // User jonest is updated, new first name is Tom.
+        $this->assertEquals('Tom', core_user::get_user_by_username('jonest')->firstname);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 }

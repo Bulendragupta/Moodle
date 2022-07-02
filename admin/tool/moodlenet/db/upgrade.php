@@ -105,7 +105,11 @@ function xmldb_tool_moodlenet_upgrade(int $oldversion) {
     // Automatically generated Moodle v3.9.0 release upgrade line.
     // Put any upgrade step following this.
 
+<<<<<<< HEAD
     if ($oldversion < 2021052501) {
+=======
+    if ($oldversion < 2020090700) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Find out if there are users with MoodleNet profiles set.
         $sql = "SELECT u.*
@@ -120,6 +124,7 @@ function xmldb_tool_moodlenet_upgrade(int $oldversion) {
             $DB->update_record('user', $record);
         }
 
+<<<<<<< HEAD
         upgrade_plugin_savepoint(true, 2021052501, 'tool', 'moodlenet');
     }
 
@@ -146,6 +151,15 @@ function xmldb_tool_moodlenet_upgrade(int $oldversion) {
     }
 
     if ($oldversion < 2022021601) {
+=======
+        upgrade_plugin_savepoint(true, 2020090700, 'tool', 'moodlenet');
+    }
+
+    // Automatically generated Moodle v3.10.0 release upgrade line.
+    // Put any upgrade step following this.
+
+    if ($oldversion < 2020110901) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $selectsql = "moodlenetprofile IS NOT NULL AND moodlenetprofile != ''";
 
@@ -161,11 +175,17 @@ function xmldb_tool_moodlenet_upgrade(int $oldversion) {
             core\task\manager::queue_adhoc_task($notificationtask);
         }
 
+<<<<<<< HEAD
         upgrade_plugin_savepoint(true, 2022021601, 'tool', 'moodlenet');
     }
 
     // Automatically generated Moodle v4.0.0 release upgrade line.
     // Put any upgrade step following this.
 
+=======
+        upgrade_plugin_savepoint(true, 2020110901, 'tool', 'moodlenet');
+    }
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     return true;
 }

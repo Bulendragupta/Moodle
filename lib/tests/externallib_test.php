@@ -270,9 +270,15 @@ class externallib_test extends \advanced_testcase {
         // Check return type on exception because the external values does not allow NULL values.
         $testdata = array('value' => null);
         try {
+<<<<<<< HEAD
             $cleanedvalue = \external_api::clean_returnvalue($returndesc, $testdata);
         } catch (\moodle_exception $e) {
             $this->assertInstanceOf(\invalid_response_exception::class, $e);
+=======
+            $cleanedvalue = external_api::clean_returnvalue($returndesc, $testdata);
+        } catch (moodle_exception $e) {
+            $this->assertInstanceOf('invalid_response_exception', $e);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('of PHP type "NULL"', $e->debuginfo);
         }
     }

@@ -148,7 +148,12 @@ class db_test extends \advanced_testcase {
         set_config('field_lock_email', 'unlocked', 'auth_db');
 
         // Create a user profile field and add mapping to it.
+<<<<<<< HEAD
         $this->getDataGenerator()->create_custom_profile_field(['shortname' => 'pet', 'name' => 'Pet', 'datatype' => 'text']);
+=======
+        $DB->insert_record('user_info_field', ['shortname' => 'pet', 'name' => 'Pet', 'required' => 0,
+            'visible' => 1, 'locked' => 0, 'categoryid' => 1, 'datatype' => 'text']);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         set_config('field_map_profile_field_pet', 'animal', 'auth_db');
         set_config('field_updatelocal_profile_field_pet', 'oncreate', 'auth_db');
@@ -220,7 +225,11 @@ class db_test extends \advanced_testcase {
 
         $this->assertCount(2, $DB->get_records('user'));
 
+<<<<<<< HEAD
         $trace = new \null_progress_trace();
+=======
+        $trace = new null_progress_trace();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Sync users and make sure that two events user_created werer triggered.
         $sink = $this->redirectEvents();

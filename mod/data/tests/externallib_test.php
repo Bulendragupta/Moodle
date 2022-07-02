@@ -386,7 +386,11 @@ class externallib_test extends externallib_advanced_testcase {
         $this->setUser($this->student1);
 
         $result = mod_data_external::get_data_access_information($this->database->id);
+<<<<<<< HEAD
         $result = \external_api::clean_returnvalue(mod_data_external::get_data_access_information_returns(), $result);
+=======
+        $result = external_api::clean_returnvalue(mod_data_external::get_data_access_information_returns(), $result);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $this->assertEquals($this->group1->id, $result['groupid']); // My group is correctly found.
         $this->assertFalse($result['canmanageentries']);
@@ -400,7 +404,11 @@ class externallib_test extends externallib_advanced_testcase {
 
         // Check the other course group in visible groups mode.
         $result = mod_data_external::get_data_access_information($this->database->id, $this->group2->id);
+<<<<<<< HEAD
         $result = \external_api::clean_returnvalue(mod_data_external::get_data_access_information_returns(), $result);
+=======
+        $result = external_api::clean_returnvalue(mod_data_external::get_data_access_information_returns(), $result);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $this->assertEquals($this->group2->id, $result['groupid']); // The group is correctly found.
         $this->assertFalse($result['canmanageentries']);

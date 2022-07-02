@@ -35,7 +35,11 @@ $string['clihelp'] = 'Print out this help.';
 $string['climissingargument'] = 'Argument --{$a} is required';
 $string['clititle'] = 'Command line Upload user tool.';
 $string['clivalidationerror'] = 'Validation error:';
+<<<<<<< HEAD
 $string['csvdelimiter'] = 'CSV separator';
+=======
+$string['csvdelimiter'] = 'CSV delimiter';
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['defaultvalues'] = 'Default values';
 $string['deleteerrors'] = 'Delete errors';
 $string['encoding'] = 'Encoding';

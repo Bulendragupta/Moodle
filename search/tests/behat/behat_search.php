@@ -51,8 +51,12 @@ class behat_search extends behat_base {
         $this->execute('behat_forms::i_set_the_field_to', ['q', $query]);
 
         // Submit the form.
+<<<<<<< HEAD
         $this->execute("behat_general::i_click_on_in_the",
             [get_string('search', 'core'), 'button', '#usernavigation', 'css_element']);
+=======
+        $this->execute_script('return document.querySelector(".searchform-navbar").submit();');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**

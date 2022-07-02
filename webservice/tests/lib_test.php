@@ -198,6 +198,7 @@ class lib_test extends \advanced_testcase {
     }
 
     /**
+<<<<<<< HEAD
      * Tests for the {@see webservice::get_missing_capabilities_by_users()} implementation.
      */
     public function test_get_missing_capabilities_by_users() {
@@ -257,6 +258,8 @@ class lib_test extends \advanced_testcase {
     }
 
     /**
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * Data provider for {@see test_get_active_tokens}
      *
      * @return array
@@ -278,20 +281,34 @@ class lib_test extends \advanced_testcase {
      * @dataProvider get_active_tokens_provider
      */
     public function test_get_active_tokens(int $validuntil, bool $expectedactive): void {
+<<<<<<< HEAD
+=======
+        global $DB;
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->resetAfterTest();
 
         $user = $this->getDataGenerator()->create_user();
 
+<<<<<<< HEAD
         /** @var core_webservice_generator $generator */
         $generator = $this->getDataGenerator()->get_plugin_generator('core_webservice');
 
         $service = $generator->create_service(['name' => 'My test service', 'shortname' => 'mytestservice']);
         $generator->create_token(['userid' => $user->id, 'service' => $service->shortname, 'validuntil' => $validuntil]);
+=======
+        $serviceid = $DB->get_field('external_services', 'id', ['shortname' => MOODLE_OFFICIAL_MOBILE_SERVICE], MUST_EXIST);
+        external_generate_token(EXTERNAL_TOKEN_PERMANENT, $serviceid, $user->id, context_system::instance(), $validuntil, '');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $tokens = webservice::get_active_tokens($user->id);
         if ($expectedactive) {
             $this->assertCount(1, $tokens);
+<<<<<<< HEAD
             $this->assertEquals($service->id, reset($tokens)->externalserviceid);
+=======
+            $this->assertEquals($serviceid, reset($tokens)->externalserviceid);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         } else {
             $this->assertEmpty($tokens);
         }

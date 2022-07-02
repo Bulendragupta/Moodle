@@ -40,7 +40,11 @@ Feature: Teacher can modify choices of the students
     And I log in as "teacher1"
     And I change window size to "large"
     And I am on the "Choice name" "choice activity" page
+<<<<<<< HEAD
     And I navigate to "Responses" in current page administration
+=======
+    And I navigate to "View 1 responses" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Student 1 Option 1" "checkbox"
     And I select "Delete" from the "With selected" singleselect
     And "Student 1 Option 1" "checkbox" should not exist
@@ -60,7 +64,11 @@ Feature: Teacher can modify choices of the students
     And I log out
     And I change window size to "large"
     And I am on the "Choice name" "choice activity" page logged in as teacher1
+<<<<<<< HEAD
     And I navigate to "Responses" in current page administration
+=======
+    And I navigate to "View 1 responses" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Student 1 Option 1" "checkbox"
     And I click on "Student 2 Not answered yet" "checkbox"
     And I click on "Student 3 Not answered yet" "checkbox"
@@ -85,7 +93,11 @@ Feature: Teacher can modify choices of the students
     And I log out
     And I change window size to "large"
     And I am on the "Choice name" "choice activity" page logged in as teacher1
+<<<<<<< HEAD
     And I navigate to "Responses" in current page administration
+=======
+    And I navigate to "View 1 responses" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Student 1 Option 2" "checkbox"
     And I select "Delete" from the "With selected" singleselect
     And I click on "Student 1 Option 1" "checkbox"

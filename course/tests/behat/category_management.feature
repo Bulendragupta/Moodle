@@ -230,7 +230,11 @@ Feature: Test category management actions
     And "What to do" "select" should exist
     And I expand the "Move into" autocomplete
     And "Cat 2" "autocomplete_suggestions" should not exist
+<<<<<<< HEAD
     And "Category 1" "autocomplete_selection" should be visible
+=======
+    And "Miscellaneous" "autocomplete_selection" should be visible
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the field "What to do" to "Delete all - cannot be undone"
     And "Move into" "select" should not be visible
     And I press "Cancel"

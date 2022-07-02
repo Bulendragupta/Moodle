@@ -116,7 +116,11 @@ abstract class condition extends tree_node {
      *
      * @param int $cmid Course-module id
      * @return string Placeholder text
+<<<<<<< HEAD
      * @since Moodle 4.0
+=======
+     * @since Moodle 3.10.7
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      */
     public static function description_cm_name(int $cmid): string {
         return '<AVAILABILITY_CMNAME_' . $cmid . '/>';
@@ -130,7 +134,11 @@ abstract class condition extends tree_node {
      *
      * @param string $str Text to be processed with format_string
      * @return string Placeholder text
+<<<<<<< HEAD
      * @since Moodle 4.0
+=======
+     * @since Moodle 3.10.7
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      */
     public static function description_format_string(string $str): string {
         return '<AVAILABILITY_FORMAT_STRING>' . htmlspecialchars($str, ENT_NOQUOTES) .
@@ -149,7 +157,11 @@ abstract class condition extends tree_node {
      *
      * @param string[] $params Array of arbitrary parameters
      * @return string Placeholder text
+<<<<<<< HEAD
      * @since Moodle 4.0
+=======
+     * @since Moodle 3.10.7
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      */
     public function description_callback(array $params): string {
         $out = '<AVAILABILITY_CALLBACK type="' . $this->get_type() . '">';

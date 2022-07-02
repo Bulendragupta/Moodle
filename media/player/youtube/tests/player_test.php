@@ -61,10 +61,17 @@ class player_test extends \advanced_testcase {
         $url = new \moodle_url('http://www.youtube.com/watch?v=vyrwMmsufJc');
         $t = $manager->embed_url($url);
         $this->assertStringContainsString('</iframe>', $t);
+<<<<<<< HEAD
         $url = new \moodle_url('http://www.youtube.com/v/vyrwMmsufJc');
         $t = $manager->embed_url($url);
         $this->assertStringContainsString('</iframe>', $t);
         $url = new \moodle_url('http://m.youtube.com/watch?v=vyrwMmsufJc');
+=======
+        $url = new moodle_url('http://www.youtube.com/v/vyrwMmsufJc');
+        $t = $manager->embed_url($url);
+        $this->assertStringContainsString('</iframe>', $t);
+        $url = new moodle_url('http://m.youtube.com/watch?v=vyrwMmsufJc');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $t = $manager->embed_url($url);
         $this->assertStringContainsString('</iframe>', $t);
 
@@ -92,7 +99,11 @@ class player_test extends \advanced_testcase {
         $t = $manager->embed_url($url);
         $this->assertStringContainsString('</iframe>', $t);
         $this->assertStringNotContainsString('list=PLxcO_', $t); // We shouldn't get a list param as input was invalid.
+<<<<<<< HEAD
         $url = new \moodle_url('https://www.youtube.com/watch?v=JNJMF1l3udM&t=">');
+=======
+        $url = new moodle_url('https://www.youtube.com/watch?v=JNJMF1l3udM&t=">');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $t = $manager->embed_url($url);
         $this->assertStringContainsString('</iframe>', $t);
         $this->assertStringNotContainsString('start=', $t); // We shouldn't get a start param as input was invalid.
@@ -101,10 +112,17 @@ class player_test extends \advanced_testcase {
         $url = new \moodle_url('http://www.youtube.com/view_play_list?p=PL6E18E2927047B662');
         $t = $manager->embed_url($url);
         $this->assertStringContainsString('</iframe>', $t);
+<<<<<<< HEAD
         $url = new \moodle_url('http://www.youtube.com/playlist?list=PL6E18E2927047B662');
         $t = $manager->embed_url($url);
         $this->assertStringContainsString('</iframe>', $t);
         $url = new \moodle_url('http://www.youtube.com/p/PL6E18E2927047B662');
+=======
+        $url = new moodle_url('http://www.youtube.com/playlist?list=PL6E18E2927047B662');
+        $t = $manager->embed_url($url);
+        $this->assertStringContainsString('</iframe>', $t);
+        $url = new moodle_url('http://www.youtube.com/p/PL6E18E2927047B662');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $t = $manager->embed_url($url);
         $this->assertStringContainsString('</iframe>', $t);
 

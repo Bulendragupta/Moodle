@@ -289,16 +289,23 @@ $functions = array(
     ],
     'core_calendar_get_calendar_export_token' => [
         'classname'     => 'core_calendar\external\export\token',
+<<<<<<< HEAD
+=======
+        'methodname'    => 'execute',
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         'description'   => 'Return the auth token required for exporting a calendar.',
         'type'          => 'read',
         'services'      => array(MOODLE_OFFICIAL_MOBILE_SERVICE),
     ],
+<<<<<<< HEAD
     'core_calendar_delete_subscription' => [
         'classname' => 'core_calendar\external\subscription\delete',
         'description' => 'Delete the calendar subscription',
         'type' => 'write',
         'ajax' => true
     ],
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     'core_cohort_add_cohort_members' => array(
         'classname' => 'core_cohort_external',
         'methodname' => 'add_cohort_members',
@@ -836,16 +843,23 @@ $functions = array(
     ),
     'core_files_delete_draft_files' => array(
         'classname' => 'core_files\external\delete\draft',
+<<<<<<< HEAD
+=======
+        'methodname' => 'execute',
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         'description' => 'Delete the indicated files (or directories) from a user draft file area.',
         'type'        => 'write',
         'services' => array(MOODLE_OFFICIAL_MOBILE_SERVICE),
     ),
+<<<<<<< HEAD
     'core_files_get_unused_draft_itemid' => array(
         'classname' => 'core_files\external\get\unused_draft',
         'description' => 'Generate a new draft itemid for the current user.',
         'type'        => 'write',
         'services' => array(MOODLE_OFFICIAL_MOBILE_SERVICE),
     ),
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     'core_form_get_filetypes_browser_data' => array(
         'classname' => 'core_form\external',
         'methodname' => 'get_filetypes_browser_data',
@@ -945,6 +959,7 @@ $functions = array(
     'core_grades_create_gradecategory' => array (
         'classname' => 'core_grades_external',
         'methodname' => 'create_gradecategory',
+<<<<<<< HEAD
         'description' => '** DEPRECATED ** Please do not call this function any more. Use core_grades_create_gradecategories.
                                      Create a grade category inside a course gradebook.',
         'type' => 'write',
@@ -953,6 +968,9 @@ $functions = array(
     'core_grades_create_gradecategories' => array (
         'classname' => 'core_grades\external\create_gradecategories',
         'description' => 'Create grade categories inside a course gradebook.',
+=======
+        'description' => 'Create a grade category inside a course gradebook.',
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         'type' => 'write',
         'capabilities' => 'moodle/grade:manage',
     ),
@@ -2771,10 +2789,15 @@ $functions = array(
     ],
     'core_payment_get_available_gateways' => [
         'classname'   => 'core_payment\external\get_available_gateways',
+<<<<<<< HEAD
+=======
+        'methodname'  => 'execute',
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         'description' => 'Get the list of payment gateways that support the given component/area',
         'type'        => 'read',
         'ajax'        => true,
     ],
+<<<<<<< HEAD
     'core_reportbuilder_filters_reset' => [
         'classname'   => 'core_reportbuilder\external\filters\reset',
         'description' => 'Reset filters for given report',
@@ -2908,6 +2931,8 @@ $functions = array(
         'type'        => 'write',
         'ajax'        => true,
     ],
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 );
 
 $services = array(

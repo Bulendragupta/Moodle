@@ -30,7 +30,11 @@ Feature: Add scorm activity
     And I should see "Preview"
     And I log out
     And I am on the "Awesome SCORM package" "scorm activity" page logged in as student1
+<<<<<<< HEAD
     And I should see "Enter"
+=======
+    And I should see "Normal"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Enter"
     And I switch to "scorm_object" iframe
     And I should see "Not implemented yet"

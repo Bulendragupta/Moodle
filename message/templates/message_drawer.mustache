@@ -36,9 +36,15 @@
 {{< core/drawer}}
     {{$drawercontent}}
         <div id="message-drawer-{{uniqid}}" class="message-app" data-region="message-drawer" role="region">
+<<<<<<< HEAD
             <div class="closewidget text-right pr-2">
                 <a class="text-dark btn-link" data-action="closedrawer" href="#"
                    title="{{#cleanstr}} closebuttontitle {{/cleanstr}}" aria-label="{{#cleanstr}} closebuttontitle {{/cleanstr}}"
+=======
+            <div class="closewidget bg-light border-bottom text-right">
+                <a class="text-dark" data-action="closedrawer" href="#"
+                   title="{{#str}} closebuttontitle {{/str}}" aria-label="{{#str}} closebuttontitle {{/str}}"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 >
                     {{#pix}} i/window_close, core {{/pix}}
                 </a>

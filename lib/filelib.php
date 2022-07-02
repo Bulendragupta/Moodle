@@ -3053,6 +3053,7 @@ function file_is_svg_image_from_mimetype(string $mimetype): bool {
 }
 
 /**
+<<<<<<< HEAD
  * Returns the moodle proxy configuration as a formatted url
  *
  * @return string the string to use for proxy settings.
@@ -3085,6 +3086,8 @@ function get_moodle_proxy_url() {
 
 
 /**
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
  * RESTful cURL class
  *
  * This is a wrapper class for curl, it is quite easy to use:
@@ -3765,9 +3768,16 @@ class curl {
             debugging('Attempting to disable emulated redirects has no effect any more!', DEBUG_DEVELOPER);
         }
 
+<<<<<<< HEAD
         $urlisblocked = $this->check_securityhelper_blocklist($url);
         if (!is_null($urlisblocked)) {
             return $urlisblocked;
+=======
+        // If curl security is enabled, check the URL against the list of blocked URLs before calling the first curl_exec.
+        if (!$this->ignoresecurity && $this->securityhelper->url_is_blocked($url)) {
+            $this->error = $this->securityhelper->get_blocked_url_string();
+            return $this->error;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         }
 
         // Set the URL as a curl option.
@@ -3863,11 +3873,19 @@ class curl {
                     }
                 }
 
+<<<<<<< HEAD
                 $urlisblocked = $this->check_securityhelper_blocklist($redirecturl);
                 if (!is_null($urlisblocked)) {
                     $this->reset_request_state_vars();
                     curl_close($curl);
                     return $urlisblocked;
+=======
+                if (!$this->ignoresecurity && $this->securityhelper->url_is_blocked($redirecturl)) {
+                    $this->reset_request_state_vars();
+                    $this->error = $this->securityhelper->get_blocked_url_string();
+                    curl_close($curl);
+                    return $this->error;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 }
 
                 // If the response body is written to a seekable stream resource, reset the stream pointer to avoid

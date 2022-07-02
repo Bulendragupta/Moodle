@@ -1624,7 +1624,11 @@ class externallib_test extends externallib_advanced_testcase {
         $sections = external_api::clean_returnvalue(core_course_external::get_course_contents_returns(), $sections);
 
         $this->assertCount(5, $sections); // All the sections, including the "not visible" one.
+<<<<<<< HEAD
         $this->assertCount(6, $sections[0]['modules']);
+=======
+        $this->assertCount(5, $sections[0]['modules']);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertCount(1, $sections[1]['modules']);
         $this->assertCount(1, $sections[2]['modules']);
         $this->assertCount(0, $sections[3]['modules']); // No modules for the section with availability restrictions.
@@ -1646,7 +1650,11 @@ class externallib_test extends externallib_advanced_testcase {
         $sections = external_api::clean_returnvalue(core_course_external::get_course_contents_returns(), $sections);
 
         $this->assertCount(6, $sections); // Include fake section with stealth activities.
+<<<<<<< HEAD
         $this->assertCount(6, $sections[0]['modules']);
+=======
+        $this->assertCount(5, $sections[0]['modules']);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertCount(1, $sections[1]['modules']);
         $this->assertCount(1, $sections[2]['modules']);
         $this->assertCount(0, $sections[3]['modules']); // No modules for the section with availability restrictions.
@@ -3214,6 +3222,7 @@ class externallib_test extends externallib_advanced_testcase {
                 'limit' => 5,
                 'offset' => 50,
                 'sort' => 'shortname ASC',
+<<<<<<< HEAD
                 'expectedcourses' => [],
                 'expectednextoffset' => 50,
             ],
@@ -3268,6 +3277,8 @@ class externallib_test extends externallib_advanced_testcase {
                 'limit' => 5,
                 'offset' => 5,
                 'sort' => "ul.timeaccess.foo ascd",
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 'expectedcourses' => [],
                 'expectednextoffset' => 0,
                 'expectedexception' => 'Invalid sort direction in $sort parameter in enrol_get_my_courses()',
@@ -3412,6 +3423,157 @@ class externallib_test extends externallib_advanced_testcase {
                 'expectedexception' => null,
                 'searchvalue' => '!`~[]C',
             ],
+            'all limit and offset with sort ul.timeaccess desc' => [
+                'coursedata' => $coursedata,
+                'classification' => 'inprogress',
+                'limit' => 0,
+                'offset' => 0,
+                'sort' => 'ul.timeaccess desc',
+                'expectedcourses' => [
+                    'ainprogress',
+                    'binprogress',
+                    'cinprogress',
+                    'dinprogress',
+                    'einprogress'
+                ],
+                'expectednextoffset' => 15
+            ],
+            'all limit and offset with sort sql injection for sort or 1==1' => [
+                'coursedata' => $coursedata,
+                'classification' => 'all',
+                'limit' => 5,
+                'offset' => 5,
+                'sort' => 'ul.timeaccess desc or 1==1',
+                'expectedcourses' => [],
+                'expectednextoffset' => 0,
+                'expectedexception' => 'Invalid $sort parameter in enrol_get_my_courses()'
+            ],
+            'all limit and offset with sql injection of sort a custom one' => [
+                'coursedata' => $coursedata,
+                'classification' => 'all',
+                'limit' => 5,
+                'offset' => 5,
+                'sort' => "ul.timeaccess LIMIT 1--",
+                'expectedcourses' => [],
+                'expectednextoffset' => 0,
+                'expectedexception' => 'Invalid $sort parameter in enrol_get_my_courses()'
+            ],
+            'all limit and offset with wrong sort direction' => [
+                'coursedata' => $coursedata,
+                'classification' => 'all',
+                'limit' => 5,
+                'offset' => 5,
+                'sort' => "ul.timeaccess abcdasc",
+                'expectedcourses' => [],
+                'expectednextoffset' => 0,
+                'expectedexception' => 'Invalid sort direction in $sort parameter in enrol_get_my_courses()'
+            ],
+            'all limit and offset with wrong sort direction' => [
+                'coursedata' => $coursedata,
+                'classification' => 'all',
+                'limit' => 5,
+                'offset' => 5,
+                'sort' => "ul.timeaccess.foo ascd",
+                'expectedcourses' => [],
+                'expectednextoffset' => 0,
+                'expectedexception' => 'Invalid sort direction in $sort parameter in enrol_get_my_courses()'
+            ],
+            'all limit and offset with wrong sort param' => [
+                'coursedata' => $coursedata,
+                'classification' => 'all',
+                'limit' => 5,
+                'offset' => 5,
+                'sort' => "foobar",
+                'expectedcourses' => [],
+                'expectednextoffset' => 0,
+                'expectedexception' => 'Invalid $sort parameter in enrol_get_my_courses()'
+            ],
+            'all limit and offset with wrong field name' => [
+                'coursedata' => $coursedata,
+                'classification' => 'all',
+                'limit' => 5,
+                'offset' => 5,
+                'sort' => "ul.foobar",
+                'expectedcourses' => [],
+                'expectednextoffset' => 0,
+                'expectedexception' => 'Invalid $sort parameter in enrol_get_my_courses()'
+            ],
+            'all limit and offset with wrong field separator' => [
+                'coursedata' => $coursedata,
+                'classification' => 'all',
+                'limit' => 5,
+                'offset' => 5,
+                'sort' => "ul.timeaccess.foo",
+                'expectedcourses' => [],
+                'expectednextoffset' => 0,
+                'expectedexception' => 'Invalid $sort parameter in enrol_get_my_courses()'
+            ],
+            'all limit and offset with wrong field separator #' => [
+                'coursedata' => $coursedata,
+                'classification' => 'all',
+                'limit' => 5,
+                'offset' => 5,
+                'sort' => "ul#timeaccess",
+                'expectedcourses' => [],
+                'expectednextoffset' => 0,
+                'expectedexception' => 'Invalid $sort parameter in enrol_get_my_courses()'
+            ],
+            'all limit and offset with wrong field separator $' => [
+                'coursedata' => $coursedata,
+                'classification' => 'all',
+                'limit' => 5,
+                'offset' => 5,
+                'sort' => 'ul$timeaccess',
+                'expectedcourses' => [],
+                'expectednextoffset' => 0,
+                'expectedexception' => 'Invalid $sort parameter in enrol_get_my_courses()'
+            ],
+            'all limit and offset with wrong field name' => [
+                'coursedata' => $coursedata,
+                'classification' => 'all',
+                'limit' => 5,
+                'offset' => 5,
+                'sort' => 'timeaccess123',
+                'expectedcourses' => [],
+                'expectednextoffset' => 0,
+                'expectedexception' => 'Invalid $sort parameter in enrol_get_my_courses()'
+            ],
+            'all limit and offset with no sort direction for ul' => [
+                'coursedata' => $coursedata,
+                'classification' => 'inprogress',
+                'limit' => 0,
+                'offset' => 0,
+                'sort' => "ul.timeaccess",
+                'expectedcourses' => ['ainprogress', 'binprogress', 'cinprogress', 'dinprogress', 'einprogress'],
+                'expectednextoffset' => 15,
+            ],
+            'all limit and offset with valid field name and no prefix, test for ul' => [
+                'coursedata' => $coursedata,
+                'classification' => 'inprogress',
+                'limit' => 0,
+                'offset' => 0,
+                'sort' => "timeaccess",
+                'expectedcourses' => ['ainprogress', 'binprogress', 'cinprogress', 'dinprogress', 'einprogress'],
+                'expectednextoffset' => 15,
+            ],
+            'all limit and offset with valid field name and no prefix' => [
+                'coursedata' => $coursedata,
+                'classification' => 'all',
+                'limit' => 5,
+                'offset' => 5,
+                'sort' => "fullname",
+                'expectedcourses' => ['bpast', 'cpast', 'dfuture', 'dpast', 'efuture'],
+                'expectednextoffset' => 10,
+            ],
+            'all limit and offset with valid field name and no prefix and with sort direction' => [
+                'coursedata' => $coursedata,
+                'classification' => 'all',
+                'limit' => 5,
+                'offset' => 5,
+                'sort' => "fullname desc",
+                'expectedcourses' => ['bpast', 'cpast', 'dfuture', 'dpast', 'efuture'],
+                'expectednextoffset' => 10,
+            ],
         ];
     }
 
@@ -3427,7 +3589,10 @@ class externallib_test extends externallib_advanced_testcase {
      * @param array $expectedcourses Expected courses in result
      * @param int $expectednextoffset Expected next offset value in result
      * @param string|null $expectedexception Expected exception string
+<<<<<<< HEAD
      * @param string|null $searchvalue If we are searching, what do we need to look for?
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      */
     public function test_get_enrolled_courses_by_timeline_classification(
         $coursedata,
@@ -3437,8 +3602,12 @@ class externallib_test extends externallib_advanced_testcase {
         $sort,
         $expectedcourses,
         $expectednextoffset,
+<<<<<<< HEAD
         $expectedexception = null,
         $searchvalue = null
+=======
+        $expectedexception = null
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     ) {
         $this->resetAfterTest();
         $generator = $this->getDataGenerator();
@@ -3468,10 +3637,14 @@ class externallib_test extends externallib_advanced_testcase {
             $classification,
             $limit,
             $offset,
+<<<<<<< HEAD
             $sort,
             null,
             null,
             $searchvalue
+=======
+            $sort
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         );
         $result = external_api::clean_returnvalue(
             core_course_external::get_enrolled_courses_by_timeline_classification_returns(),

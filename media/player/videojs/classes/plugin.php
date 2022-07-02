@@ -132,6 +132,10 @@ class media_videojs_plugin extends core_media_player_native {
             $datasetup[] = '"techOrder": ["OgvJS"]';
         }
 
+        if ($this->ogvtech) {
+            $datasetup[] = '"techOrder": ["OgvJS"]';
+        }
+
         // Add a language.
         if ($this->language) {
             $datasetup[] = '"language": "' . $this->language . '"';
@@ -309,10 +313,27 @@ class media_videojs_plugin extends core_media_player_native {
             // Ogv.JS Tech.
             $this->ogvtech = false;
             if (in_array($ext, $this->ogvsupportedextensions) &&
+<<<<<<< HEAD
                 (core_useragent::is_safari() || core_useragent::is_ios())) {
                 $this->ogvtech = true;
                 $result[] = $url;
                 continue;
+=======
+                    (core_useragent::is_safari() || core_useragent::is_ios())) {
+                $this->ogvtech = true;
+                $result[] = $url;
+                continue;
+            }
+
+            if (!get_config('media_videojs', 'useflash')) {
+                return parent::list_supported_urls($urls, $options);
+            } else {
+                // If Flash fallback is enabled we can not check if/when browser supports flash.
+                // We assume it will be able to handle any other extensions that player supports.
+                if (in_array($ext, $extensions)) {
+                    $result[] = $url;
+                }
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             }
 
             return parent::list_supported_urls($urls, $options);

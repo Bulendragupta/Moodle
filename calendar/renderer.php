@@ -429,7 +429,13 @@ class core_calendar_renderer extends plugin_renderer_base {
      * @param stdClass $subscription
      * @return string
      */
+<<<<<<< HEAD
     protected function render_subscription_update_interval(stdClass $subscription): string {
+=======
+    protected function subscription_action_form($subscription) {
+        // Assemble form for the subscription row.
+        $html = html_writer::start_tag('form', ['action' => $this->page->url->out(false) , 'method' => 'post']);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         if (empty($subscription->url)) {
             return '';
         }

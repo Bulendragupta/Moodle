@@ -72,7 +72,11 @@ Feature: Edit quiz page - adding things
     When I press "Repaginate"
     Then I should see "Repaginate with"
     And I set the field "menuquestionsperpage" to "2"
+<<<<<<< HEAD
     And I click on "Go" "button" in the "Repaginate" "dialogue"
+=======
+    When I click on "Go" "button" in the "Repaginate" "dialogue"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I should see "Essay 01 new" on quiz page "1"
     And I should see "Essay 02 new" on quiz page "1"
     And I should see "Essay 03 new" on quiz page "2"

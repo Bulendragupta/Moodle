@@ -63,7 +63,11 @@ class subscription_test extends \advanced_testcase {
      */
     public function test_magic_get() {
         $this->assertEquals(20, $this->subscription->courseid);
+<<<<<<< HEAD
         $this->expectException(\coding_exception::class);
+=======
+        $this->expectException(coding_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->subscription->ruleid;
     }
 }

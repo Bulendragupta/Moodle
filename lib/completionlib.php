@@ -1075,6 +1075,7 @@ class completion_info {
             }
         }
 
+<<<<<<< HEAD
         // Default data to return when no completion data is found.
         $defaultdata = [
             'id' => 0,
@@ -1086,6 +1087,8 @@ class completion_info {
             'timemodified' => 0,
         ];
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         // If cached completion data is not found, fetch via SQL.
         // Fetch completion data for all of the activities in the course ONLY if we're caching the fetched completion data.
         // If we're not caching the completion data, then just fetch the completion data for the user in this course module.

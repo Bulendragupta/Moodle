@@ -2617,6 +2617,7 @@ $capabilities = array(
         'contextlevel' => CONTEXT_COURSE,
         'archetypes' => [],
     ],
+<<<<<<< HEAD
 
     // Allow users to view hidden content.
     'moodle/contentbank:viewunlistedcontent' => [
@@ -2662,4 +2663,6 @@ $capabilities = array(
         'contextlevel' => CONTEXT_SYSTEM,
         'archetypes' => [],
     ],
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 );

@@ -43,7 +43,11 @@ $string['creategrouping'] = 'Create grouping';
 $string['creategroupinselectedgrouping'] = 'Create group in grouping';
 $string['createingrouping'] = 'Grouping of auto-created groups';
 $string['createorphangroup'] = 'Create orphan group';
+<<<<<<< HEAD
 $string['csvdelimiter'] = 'CSV separator';
+=======
+$string['csvdelimiter'] = 'CSV delimiter';
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['databaseupgradegroups'] = 'Groups version is now {$a}';
 $string['defaultgrouping'] = 'Default grouping';
 $string['defaultgroupingname'] = 'Grouping';

@@ -104,7 +104,10 @@ $string['newstep'] = 'New step';
 $string['newtour'] = 'Create a new tour';
 $string['next'] = 'Next';
 $string['nextstep'] = 'Next';
+<<<<<<< HEAD
 $string['nextstep_sequence'] = 'Next ({$a->position}/{$a->total})';
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['options_heading'] = 'Options';
 $string['pathmatch'] = 'Apply to URL match';
 $string['pathmatch_help'] = 'Tours will be displayed on any page whose URL matches this value.
@@ -120,6 +123,7 @@ Some example values include:
 If you wish to display a tour on the site home, you can use the value: "FRONTPAGE".';
 $string['placement'] = 'Placement';
 $string['pluginname'] = 'User tours';
+$string['previousstep'] = 'Previous';
 $string['resettouronpage'] = 'Reset user tour on this page';
 $string['right'] = 'Right';
 $string['select_block'] = 'Select a block';

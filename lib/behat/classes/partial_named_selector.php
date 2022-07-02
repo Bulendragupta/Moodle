@@ -137,9 +137,12 @@ class behat_partial_named_selector extends \Behat\Mink\Selector\PartialNamedSele
     protected static $moodleselectors = array(
         'activity' => <<<XPATH
 .//li[contains(concat(' ', normalize-space(@class), ' '), ' activity ')][descendant::*[contains(normalize-space(.), %locator%)]]
+<<<<<<< HEAD
 XPATH
         , 'badge' => <<<XPATH
 .//span[(contains(@class, 'badge')) and text()[contains(., %locator%)]]
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 XPATH
         , 'block' => <<<XPATH
 .//*[@data-block][contains(concat(' ', normalize-space(@class), ' '), concat(' ', %locator%, ' ')) or

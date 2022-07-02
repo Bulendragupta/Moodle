@@ -73,6 +73,7 @@ Feature: Award badges based on activity completion
     And I click on "Submit all and finish" "button" in the "Confirmation" "dialogue"
     And I log out
 
+<<<<<<< HEAD
     And I am on the "Course 1" course page logged in as teacher1
     And I navigate to "Badges > Manage badges" in current page administration
     And I follow "Course Badge"
@@ -93,6 +94,13 @@ Feature: Award badges based on activity completion
     # Fail grade with student2
     And I am on the "Course 1" course page logged in as student2
     And I am on the "Test quiz name" "quiz activity" page
+=======
+  Scenario: Student earns a badge using activity completion, but does not get passing grade
+    Given I log in as "student1"
+    And I am on "Course 1" course homepage
+    And the "Test quiz name" "quiz" activity with "auto" completion should be marked as not complete
+    When I am on the "Test quiz name" "quiz activity" page
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Re-attempt quiz"
     And I set the field "False" to "1"
     And I press "Finish attempt ..."
@@ -100,6 +108,7 @@ Feature: Award badges based on activity completion
     And I click on "Submit all and finish" "button" in the "Confirmation" "dialogue"
     And I log out
 
+<<<<<<< HEAD
     # Pass grade with student1
     And I am on the "Course 1" course page logged in as student1
     And I am on the "Test quiz name" "quiz activity" page
@@ -122,3 +131,9 @@ Feature: Award badges based on activity completion
       | aggregationcriteria                         |
       | Any of the selected activities is complete  |
       | All of the selected activities are complete |
+=======
+    And I am on the "Course 1" course page logged in as teacher1
+    And I navigate to "Badges > Manage badges" in current page administration
+    And I follow "Course Badge"
+    Then I should see "Recipients (1)"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

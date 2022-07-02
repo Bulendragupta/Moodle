@@ -17,8 +17,13 @@ Feature: A user can control their default discussion subscription settings
       | student1 | C1 | student |
       | student2 | C1 | student |
     And the following "activities" exist:
+<<<<<<< HEAD
       | activity   | name                   | intro                  | course | idnumber | type    | section |
       | forum      | Test forum name        | Test forum description | C1     | forump1  | general | 1       |
+=======
+      | activity   | name                   | intro                  | course | type    | section |
+      | forum      | Test forum name        | Test forum description | C1     | general | 1       |
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I am on the "Test forum name" "forum activity editing" page logged in as admin
     And I set the following fields to these values:
       | Subscription mode | Optional subscription |
@@ -27,12 +32,20 @@ Feature: A user can control their default discussion subscription settings
 
   Scenario: Creating a new discussion in an optional forum follows user preferences
     Given I am on the "Test forum name" "forum activity" page logged in as student1
+<<<<<<< HEAD
     When I click on "Add discussion topic" "link"
+=======
+    When I click on "Add a new discussion topic" "link"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Advanced" "button"
     Then "input[name=discussionsubscribe][checked=checked]" "css_element" should exist
     And I log out
     And I am on the "Test forum name" "forum activity" page logged in as student2
+<<<<<<< HEAD
     And I click on "Add discussion topic" "link"
+=======
+    And I click on "Add a new discussion topic" "link"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Advanced" "button"
     And "input[name=discussionsubscribe]:not([checked=checked])" "css_element" should exist
 
@@ -59,12 +72,20 @@ Feature: A user can control their default discussion subscription settings
     And I press "Save and return to course"
     And I log out
     And I am on the "Test forum name" "forum activity" page logged in as student1
+<<<<<<< HEAD
     When I click on "Add discussion topic" "link"
+=======
+    When I click on "Add a new discussion topic" "link"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Advanced" "button"
     Then "input[name=discussionsubscribe][checked=checked]" "css_element" should exist
     And I log out
     And I am on the "Test forum name" "forum activity" page logged in as student2
+<<<<<<< HEAD
     And I click on "Add discussion topic" "link"
+=======
+    And I click on "Add a new discussion topic" "link"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Advanced" "button"
     And "input[name=discussionsubscribe][checked=checked]" "css_element" should exist
 

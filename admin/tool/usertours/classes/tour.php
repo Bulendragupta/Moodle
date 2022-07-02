@@ -850,6 +850,7 @@ class tour {
 
         return $results;
     }
+<<<<<<< HEAD
 
     /**
      * Set the value for the display step numbers setting.
@@ -872,4 +873,6 @@ class tour {
     public function get_display_step_numbers(): bool {
         return $this->displaystepnumbers;
     }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

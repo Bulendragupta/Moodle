@@ -111,9 +111,14 @@ if ($formaction == 'bulkchange.php') {
                     // Ensure users are enrolled in this course context, further limiting them by selected userids.
                     [$enrolledsql, $enrolledparams] = get_enrolled_sql($context);
                     [$useridsql, $useridparams] = $DB->get_in_or_equal($userids, SQL_PARAMS_NAMED, 'userid');
+<<<<<<< HEAD
                     [$userordersql, $userorderparams] = users_order_by_sql('u', null, $context);
 
                     $params = array_merge($userfields->params, $enrolledparams, $useridparams, $userorderparams);
+=======
+
+                    $params = array_merge($enrolledparams, $useridparams);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
                     // If user can only view their own groups then they can only export users from those groups too.
                     $groupmode = groups_get_course_groupmode($course);
@@ -129,6 +134,7 @@ if ($formaction == 'bulkchange.php') {
                         $groupmemberjoin = '';
                     }
 
+<<<<<<< HEAD
                     // Add column for groups if the user can view them.
                     if (!isset($hiddenfields['groups'])) {
                         $columnnames['groupnames'] = get_string('groups');
@@ -149,6 +155,13 @@ if ($formaction == 'bulkchange.php') {
                                    {$groupconcatjoin}
                              WHERE u.id {$useridsql}
                           ORDER BY {$userordersql}";
+=======
+                    $sql = "SELECT u.firstname, u.lastname" . $identityfieldsselect . "
+                              FROM {user} u
+                              JOIN ({$enrolledsql}) je ON je.id = u.id
+                                   {$groupmemberjoin}
+                             WHERE u.id {$useridsql}";
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
                     $rs = $DB->get_recordset_sql($sql, $params);
 

@@ -51,7 +51,10 @@ $string['enablerunnow_desc'] = 'Allows administrators to run a single scheduled 
 $string['faildelay'] = 'Fail delay';
 $string['fromcomponent'] = 'From component: {$a}';
 $string['hostname'] = 'Host name';
+<<<<<<< HEAD
 $string['lastcronstart'] = 'Time since last cron run: {$a}';
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['lastruntime'] = 'Last run';
 $string['lastupdated'] = 'Last updated {$a}.';
 $string['nextruntime'] = 'Next run';

@@ -26,8 +26,12 @@ Feature: An incorrect response to an answer with multiple attempts show appropri
     And I set the following fields to these values:
       | Provide option to try a question again | Yes |
       | Maximum number of attempts per question | 2 |
+<<<<<<< HEAD
     And I press "Save and return to course"
     And I follow "Test lesson name"
+=======
+    And I press "Save and display"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
   Scenario: A student answering incorrectly to a question will see an option to move to the next question if set up.
     Given I follow "Add a question page"

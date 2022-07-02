@@ -282,9 +282,15 @@ class taglib_test extends \advanced_testcase {
     public function test_set_item_tags_with_invalid_userid(): void {
         $user = $this->getDataGenerator()->create_user();
 
+<<<<<<< HEAD
         $this->expectException(\coding_exception::class);
         $this->expectExceptionMessage('Related tags can not have tag instance userid');
         core_tag_tag::set_item_tags('core', 'tag', 1, \context_system::instance(), ['all', 'night', 'long'], $user->id);
+=======
+        $this->expectException(coding_exception::class);
+        $this->expectExceptionMessage('Related tags can not have tag instance userid');
+        core_tag_tag::set_item_tags('core', 'tag', 1, context_system::instance(), ['all', 'night', 'long'], $user->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**

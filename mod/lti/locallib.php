@@ -55,9 +55,13 @@ use mod_lti\helper;
 use moodle\mod\lti as lti;
 use Firebase\JWT\JWT;
 use Firebase\JWT\JWK;
+<<<<<<< HEAD
 use Firebase\JWT\Key;
 use mod_lti\local\ltiopenid\jwks_helper;
 use mod_lti\local\ltiopenid\registration_helper;
+=======
+use mod_lti\local\ltiopenid\jwks_helper;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 global $CFG;
 require_once($CFG->dirroot.'/mod/lti/OAuth.php');
@@ -2077,6 +2081,7 @@ function lti_calculate_custom_parameter($value) {
             return implode(",", groups_get_user_groups($COURSE->id, $USER->id)[0]);
         case 'Context.id.history':
             return implode(",", get_course_history($COURSE));
+<<<<<<< HEAD
         case 'CourseSection.timeFrame.begin':
             if (empty($COURSE->startdate)) {
                 return "";
@@ -2089,6 +2094,8 @@ function lti_calculate_custom_parameter($value) {
             }
             $dt = new DateTime("@$COURSE->enddate", new DateTimeZone('UTC'));
             return $dt->format(DateTime::ATOM);
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
     return null;
 }
@@ -4578,6 +4585,7 @@ function lti_new_access_token($typeid, $scopes) {
 
 }
 
+<<<<<<< HEAD
 
 /**
  * Wrapper for function libxml_disable_entity_loader() deprecated in PHP 8
@@ -4595,3 +4603,5 @@ function lti_libxml_disable_entity_loader(bool $value): bool {
     }
     return true;
 }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

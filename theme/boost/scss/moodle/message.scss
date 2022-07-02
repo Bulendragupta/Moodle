@@ -540,6 +540,7 @@ $message-day-color: color-yiq($message-app-bg) !default;
             }
         }
     }
+<<<<<<< HEAD
     .list-group {
         border-radius: 0;
         .list-group-item {
@@ -564,6 +565,29 @@ $message-day-color: color-yiq($message-app-bg) !default;
                 width: auto;
                 text-align: inherit;
             }
+=======
+    .list-group .list-group-item {
+        border-left: 0;
+        border-right: 0;
+        &:hover {
+            color: $white;
+            background-color: $primary;
+            .badge-primary {
+                background-color: $white;
+                color: $primary;
+            }
+        }
+        &:first-child {
+            border-top: 0;
+        }
+        &:last-child {
+            border-bottom: 0;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
+        }
+        &.list-group-item-action {
+            margin: 0.1rem;
+            width: auto;
+            text-align: inherit;
         }
     }
     .last-message {

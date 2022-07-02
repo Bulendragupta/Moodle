@@ -1403,6 +1403,7 @@ class block_manager {
                 $deleteactionurl->param('cache', 1);
             }
 
+<<<<<<< HEAD
             $deleteconfirmationurl = new moodle_url($actionurl, [
                 'bui_deleteid' => $block->instance->id,
                 'bui_confirm' => 1,
@@ -1410,6 +1411,8 @@ class block_manager {
             ]);
             $blocktitle = $block->get_title();
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $controls[] = new action_menu_link_secondary(
                 $deleteactionurl,
                 new pix_icon('t/delete', $str, 'moodle', array('class' => 'iconsmall', 'title' => '')),

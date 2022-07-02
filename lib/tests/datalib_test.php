@@ -707,16 +707,26 @@ class datalib_test extends \advanced_testcase {
         $this->assertEquals(MAX_COURSES_IN_CATEGORY, get_max_courses_in_category());
 
         // Misc category.
+<<<<<<< HEAD
         $misc = \core_course_category::get_default();
+=======
+        $misc = core_course_category::get_default();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertEquals(MAX_COURSES_IN_CATEGORY, $misc->sortorder);
 
         $category1 = $this->getDataGenerator()->create_category();
         $category2 = $this->getDataGenerator()->create_category();
 
         // Check category sort orders.
+<<<<<<< HEAD
         $this->assertEquals(MAX_COURSES_IN_CATEGORY, \core_course_category::get($misc->id)->sortorder);
         $this->assertEquals(MAX_COURSES_IN_CATEGORY * 2, \core_course_category::get($category1->id)->sortorder);
         $this->assertEquals(MAX_COURSES_IN_CATEGORY * 3, \core_course_category::get($category2->id)->sortorder);
+=======
+        $this->assertEquals(MAX_COURSES_IN_CATEGORY, core_course_category::get($misc->id)->sortorder);
+        $this->assertEquals(MAX_COURSES_IN_CATEGORY * 2, core_course_category::get($category1->id)->sortorder);
+        $this->assertEquals(MAX_COURSES_IN_CATEGORY * 3, core_course_category::get($category2->id)->sortorder);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Create courses.
         $course1 = $this->getDataGenerator()->create_course(['category' => $category1->id]);
@@ -736,9 +746,15 @@ class datalib_test extends \advanced_testcase {
 
         // The sort order has not yet fixed, these sort orders should be the same as before.
         // Categories.
+<<<<<<< HEAD
         $this->assertEquals(MAX_COURSES_IN_CATEGORY, \core_course_category::get($misc->id)->sortorder);
         $this->assertEquals(MAX_COURSES_IN_CATEGORY * 2, \core_course_category::get($category1->id)->sortorder);
         $this->assertEquals(MAX_COURSES_IN_CATEGORY * 3, \core_course_category::get($category2->id)->sortorder);
+=======
+        $this->assertEquals(MAX_COURSES_IN_CATEGORY, core_course_category::get($misc->id)->sortorder);
+        $this->assertEquals(MAX_COURSES_IN_CATEGORY * 2, core_course_category::get($category1->id)->sortorder);
+        $this->assertEquals(MAX_COURSES_IN_CATEGORY * 3, core_course_category::get($category2->id)->sortorder);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         // Courses in category 1.
         $this->assertEquals(MAX_COURSES_IN_CATEGORY * 2 + 2, get_course($course1->id)->sortorder);
         $this->assertEquals(MAX_COURSES_IN_CATEGORY * 2 + 1, get_course($course3->id)->sortorder);
@@ -749,10 +765,17 @@ class datalib_test extends \advanced_testcase {
         // Create new category so that the sort orders are applied.
         $category3 = $this->getDataGenerator()->create_category();
         // Categories.
+<<<<<<< HEAD
         $this->assertEquals(20000, \core_course_category::get($misc->id)->sortorder);
         $this->assertEquals(20000 * 2, \core_course_category::get($category1->id)->sortorder);
         $this->assertEquals(20000 * 3, \core_course_category::get($category2->id)->sortorder);
         $this->assertEquals(20000 * 4, \core_course_category::get($category3->id)->sortorder);
+=======
+        $this->assertEquals(20000, core_course_category::get($misc->id)->sortorder);
+        $this->assertEquals(20000 * 2, core_course_category::get($category1->id)->sortorder);
+        $this->assertEquals(20000 * 3, core_course_category::get($category2->id)->sortorder);
+        $this->assertEquals(20000 * 4, core_course_category::get($category3->id)->sortorder);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         // Courses in category 1.
         $this->assertEquals(20000 * 2 + 2, get_course($course1->id)->sortorder);
         $this->assertEquals(20000 * 2 + 1, get_course($course3->id)->sortorder);
@@ -790,6 +813,7 @@ class datalib_test extends \advanced_testcase {
     }
 
     /**
+<<<<<<< HEAD
      * Tests the get_users_listing function.
      */
     public function test_get_users_listing(): void {
@@ -886,6 +910,8 @@ class datalib_test extends \advanced_testcase {
     }
 
     /**
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * Data provider for test_get_safe_orderby().
      *
      * @return array

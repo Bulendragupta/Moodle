@@ -196,8 +196,13 @@ $string['coursemisconf'] = 'Course is misconfigured';
 $string['courserequestdisabled'] = 'Sorry, but course requests have been disabled by the administrator.';
 $string['csvcolumnduplicates'] = 'Duplicate columns detected';
 $string['csvemptyfile'] = 'The CSV file is empty';
+<<<<<<< HEAD
 $string['csvfileerror'] = 'There is something wrong with the format of the CSV file. Please check the number of headings and columns match, and that the separator and file encoding are correct. {$a}';
 $string['csvfewcolumns'] = 'Not enough columns, please verify the separator setting';
+=======
+$string['csvfileerror'] = 'There is something wrong with the format of the CSV file. Please check the number of headings and columns match, and that the delimiter and file encoding are correct. {$a}';
+$string['csvfewcolumns'] = 'Not enough columns, please verify the delimiter setting';
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['csvinvalidcols'] = '<b>Invalid CSV file:</b> First line must include "Header Fields" and the file must be type of <br />"Expanded Fields/Comma Separated"<br />or<br /> "Expanded Fields with CAVV Result Code/Comma Separated"';
 $string['csvinvalidcolsnum'] = 'Invalid CSV file - each line must include 49 or 70 fields';
 $string['csvloaderror'] = 'An error occurred while loading the CSV file: {$a}';
@@ -480,9 +485,13 @@ $string['notownerofkey'] = 'You are not owner of this key';
 $string['nousers'] = 'No such user!';
 $string['oauth1accesstoken'] = 'OAuth 1.0 error: We did not obtain the access token.';
 $string['oauth1requesttoken'] = 'OAuth 1.0 error: We did not obtain the request token - the service provider may be temporarily down.';
+<<<<<<< HEAD
 $string['oauth2upgradetokenerror'] = 'Could not upgrade OAuth 2 token. HTTP status for remote endpoint: {$a}';
 $string['oauth2refreshtokenerror'] = 'Could not refresh OAuth 2 token. HTTP status for remote endpoint: {$a}';
 $string['oauth2refreshtokentaskerror'] = 'Could not refresh OAuth 2 token for one or more issuers. View task output for details.';
+=======
+$string['oauth2refreshtokenerror'] = 'Could not refresh OAuth 2 token. HTTP status for remote endpoint: {$a}';
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['onlyadmins'] = 'Only administrators can do that';
 $string['onlyeditingteachers'] = 'Only editing teachers can do that';
 $string['onlyeditown'] = 'You can only edit your own information';

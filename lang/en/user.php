@@ -37,7 +37,11 @@ $string['filtertype'] = 'Filter type';
 $string['match'] = 'Match';
 $string['matchofthefollowing'] = 'of the following:';
 $string['moodlenetprofile'] = 'MoodleNet profile ID';
+<<<<<<< HEAD
 $string['moodlenetprofile_help'] = 'Your MoodleNet profile ID links your MoodleNet profile with this site.';
+=======
+$string['moodlenetprofile_help'] = 'This field represents your MoodleNet profile ID which is used to link your MoodleNet profile to Moodle. It expects a WebFinger-compliant URI.';
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['placeholdertypeorselect'] = 'Type or select...';
 $string['placeholdertype'] = 'Type...';
 $string['privacy:courserequestpath'] = 'Requested courses';

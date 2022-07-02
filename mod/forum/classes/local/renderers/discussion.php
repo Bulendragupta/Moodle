@@ -216,8 +216,12 @@ class discussion {
                 'pindiscussion' => null,
                 'neighbourlinks' => $this->get_neighbour_links_html(),
                 'exportdiscussion' => !empty($CFG->enableportfolios) ? $this->get_export_discussion_html($user) : null
+<<<<<<< HEAD
             ],
             'settingsselector' => true,
+=======
+            ]
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         ]);
 
         $capabilities = (array) $exporteddiscussion['capabilities'];

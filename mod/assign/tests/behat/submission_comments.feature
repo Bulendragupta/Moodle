@@ -92,13 +92,23 @@ Feature: In an assignment, students can comment in their submissions
       | activity  | course  | name                  | assignsubmission_onlinetext_enabled  | assignmentsubmission_file_enabled  | assignfeedback_comments_enabled  |
       | assign    | C1      | Test assignment name  | 0                                    | 0                                  | 1                                |
     And I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Grade" "link" in the "Student 1" "table_row"
     When I set the following fields to these values:
       | Grade out of 100   | 50                        |
       | Feedback comments  | I'm the teacher feedback  |
     And I press "Save changes"
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I click on "Edit settings" "link"
+    And I follow "Test assignment name"
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "50.00" in the "Student 1" "table_row"
     And I should see "I'm the teacher feedback" in the "Student 1" "table_row"
 
@@ -107,7 +117,11 @@ Feature: In an assignment, students can comment in their submissions
       | activity  | course  | name                  | assignsubmission_onlinetext_enabled  | assignmentsubmission_file_enabled  | assignfeedback_comments_enabled  |
       | assign    | C1      | Test assignment name  | 0                                    | 0                                  | 1                                |
     And I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Grade" "link" in the "Student 1" "table_row"
     And I set the following fields to these values:
       | Grade out of 100 | 0 |

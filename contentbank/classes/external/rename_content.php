@@ -77,6 +77,7 @@ class rename_content extends external_api {
             'name' => $name,
         ]);
         $params['name'] = clean_param($params['name'], PARAM_TEXT);
+<<<<<<< HEAD
 
         // If name is empty don't try to rename and return a more detailed message.
         if (trim($params['name']) === '') {
@@ -91,19 +92,39 @@ class rename_content extends external_api {
                 $cb = new contentbank();
                 $content = $cb->get_content_from_id($record->id);
                 $contenttype = $content->get_content_type_instance();
+=======
+        try {
+            $record = $DB->get_record('contentbank_content', ['id' => $params['contentid']], '*', MUST_EXIST);
+            $contenttypeclass = "\\$record->contenttype\\contenttype";
+            if (class_exists($contenttypeclass)) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 $context = \context::instance_by_id($record->contextid, MUST_EXIST);
                 self::validate_context($context);
                 // Check capability.
                 if ($contenttype->can_manage($content)) {
-                    // This content can be renamed.
-                    if ($contenttype->rename_content($content, $params['name'])) {
-                        $result = true;
-                    } else {
+                    if (trim($params['name']) === '') {
+                        // If name is empty don't try to rename and return a more detailed message.
                         $warnings[] = [
                             'item' => $params['contentid'],
+<<<<<<< HEAD
                             'warningcode' => 'contentnotrenamed',
                             'message' => get_string('contentnotrenamed', 'core_contentbank')
+=======
+                            'warningcode' => 'emptynamenotallowed',
+                            'message' => get_string('emptynamenotallowed', 'core_contentbank')
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                         ];
+                    } else {
+                        // This content can be renamed.
+                        if ($contenttype->rename_content($content, $params['name'])) {
+                            $result = true;
+                        } else {
+                            $warnings[] = [
+                                'item' => $params['contentid'],
+                                'warningcode' => 'contentnotrenamed',
+                                'message' => get_string('contentnotrenamed', 'core_contentbank')
+                            ];
+                        }
                     }
                 } else {
                     // The user has no permission to manage this content.
@@ -121,6 +142,16 @@ class rename_content extends external_api {
                     'message' => $e->getMessage()
                 ];
             }
+<<<<<<< HEAD
+=======
+        } catch (\moodle_exception $e) {
+            // The content or the context don't exist.
+            $warnings[] = [
+                'item' => $params['contentid'],
+                'warningcode' => 'exception',
+                'message' => $e->getMessage()
+            ];
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         }
 
         return [

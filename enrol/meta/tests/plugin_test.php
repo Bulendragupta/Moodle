@@ -932,7 +932,11 @@ class plugin_test extends \advanced_testcase {
 
         // A course with meta enrolment.
         $course = $this->getDataGenerator()->create_course();
+<<<<<<< HEAD
         $coursecontext = \context_course::instance($course->id);
+=======
+        $coursecontext = context_course::instance($course->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Create a meta enrolment instance.
         $instance = (object)$metaplugin->get_instance_defaults();
@@ -976,10 +980,17 @@ class plugin_test extends \advanced_testcase {
         $this->assertEquals('You are trying to use an invalid course ID', $errors['customint1']);
 
         // Test when a course is set as a not visible and a user doesn't have the capability to use it here.
+<<<<<<< HEAD
         $metacourse2record = new \stdClass();
         $metacourse2record->visible = 0;
         $metacourse2 = $this->getDataGenerator()->create_course($metacourse2record);
         $metacourse2context = \context_course::instance($metacourse2->id);
+=======
+        $metacourse2record = new stdClass();
+        $metacourse2record->visible = 0;
+        $metacourse2 = $this->getDataGenerator()->create_course($metacourse2record);
+        $metacourse2context = context_course::instance($metacourse2->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $user = $this->getDataGenerator()->create_user();
         $teacherrole = $DB->get_record('role', array('shortname' => 'teacher'));
@@ -1000,7 +1011,11 @@ class plugin_test extends \advanced_testcase {
         $metacourse2->visible = 1;
         $DB->update_record('course', $metacourse2);
         assign_capability('moodle/course:viewhiddencourses', CAP_ALLOW,
+<<<<<<< HEAD
             $teacherrole->id, \context_course::instance($metacourse2->id));
+=======
+            $teacherrole->id, context_course::instance($metacourse2->id));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Test with no 'enrol/meta:selectaslinked' capability.
         unassign_capability('enrol/meta:selectaslinked', $teacherrole->id);

@@ -2620,7 +2620,11 @@ var COMMENT = function(editor, gradeid, pageno, x, y, width, colour, rawtext) {
      * @return bool true if menu is active, else false.
      */
     this.is_menu_active = function() {
+<<<<<<< HEAD
         return this.menu !== null && this.menu.get('visible');
+=======
+        return this.menu.get('visible');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     };
 
     /**

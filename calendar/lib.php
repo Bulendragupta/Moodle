@@ -3718,7 +3718,11 @@ function calendar_get_timestamp($d, $m, $y, $time = 0) {
  *
  * @return array The data for template and template name.
  */
+<<<<<<< HEAD
 function calendar_get_footer_options($calendar, array $options = []) {
+=======
+function calendar_get_footer_options($calendar) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     global $CFG, $USER, $PAGE;
 
     // Generate hash for iCal link.
@@ -3968,6 +3972,7 @@ function calendar_get_export_token(stdClass $user): string {
 
     return sha1($user->id . $DB->get_field('user', 'password', ['id' => $user->id]) . $CFG->calendar_exportsalt);
 }
+<<<<<<< HEAD
 
 /**
  * Get the list of URL parameters for calendar expport and import links.
@@ -4020,3 +4025,5 @@ function calendar_inplace_editable(string $itemtype, int $itemid, int $newvalue)
 
     \external_api::validate_context(context_system::instance());
 }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

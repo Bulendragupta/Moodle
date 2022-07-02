@@ -45,8 +45,13 @@ class api_test extends messagelib_test {
         $this->send_fake_message($sender, $recipient);
         $this->send_fake_message($sender, $recipient);
 
+<<<<<<< HEAD
         api::mark_all_notifications_as_read($recipient->id);
         api::mark_all_messages_as_read($recipient->id);
+=======
+        \core_message\api::mark_all_notifications_as_read($recipient->id);
+        \core_message\api::mark_all_messages_as_read($recipient->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $this->assertEquals(message_count_unread_messages($recipient), 0);
         $this->assertDebuggingCalled();
@@ -114,10 +119,17 @@ class api_test extends messagelib_test {
         $this->assertEquals(0, api::count_blocked_users());
 
         // Add 1 blocked user to admin's blocked user list.
+<<<<<<< HEAD
         api::block_user($USER->id, $user1->id);
 
         $this->assertEquals(0, api::count_blocked_users($user1));
         $this->assertEquals(1, api::count_blocked_users());
+=======
+        \core_message\api::block_user($USER->id, $user1->id);
+
+        $this->assertEquals(0, \core_message\api::count_blocked_users($user1));
+        $this->assertEquals(1, \core_message\api::count_blocked_users());
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**
@@ -2801,6 +2813,7 @@ class api_test extends messagelib_test {
 
     /**
      * Tests deleting a conversation by conversation id.
+<<<<<<< HEAD
      */
     public function test_delete_conversation_by_id() {
         global $DB;
@@ -2879,6 +2892,8 @@ class api_test extends messagelib_test {
 
     /**
      * Tests counting unread conversations.
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      */
     public function test_count_unread_conversations() {
         $this->resetAfterTest(true);
@@ -3837,7 +3852,11 @@ class api_test extends messagelib_test {
         $this->send_fake_message($user4, $user2);
 
         // Get the contacts and the unread message count.
+<<<<<<< HEAD
         $messages = api::get_contacts_with_unread_message_count($user2->id);
+=======
+        $messages = \core_message\api::get_contacts_with_unread_message_count($user2->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertDebuggingCalled();
 
         // Confirm the size is correct.
@@ -3859,7 +3878,11 @@ class api_test extends messagelib_test {
         api::mark_message_as_read($user2->id, $m6);
 
         // Get the contacts and the unread message count.
+<<<<<<< HEAD
         $messages = api::get_contacts_with_unread_message_count($user2->id);
+=======
+        $messages = \core_message\api::get_contacts_with_unread_message_count($user2->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertDebuggingCalled();
 
         // Confirm the size is correct.
@@ -3883,7 +3906,11 @@ class api_test extends messagelib_test {
         $this->send_fake_message($user4, $user1);
 
         // Get the contacts and the unread message count.
+<<<<<<< HEAD
         $messages = api::get_contacts_with_unread_message_count($user1->id);
+=======
+        $messages = \core_message\api::get_contacts_with_unread_message_count($user1->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertDebuggingCalled();
 
         // Confirm the size is correct.
@@ -3896,7 +3923,11 @@ class api_test extends messagelib_test {
         $m = $DB->get_record('messages', ['id' => $messageid]);
         api::mark_message_as_read($user1->id, $m);
 
+<<<<<<< HEAD
         $messages = api::get_contacts_with_unread_message_count($user1->id);
+=======
+        $messages = \core_message\api::get_contacts_with_unread_message_count($user1->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertDebuggingCalled();
 
         // Confirm the size is correct.
@@ -3919,7 +3950,11 @@ class api_test extends messagelib_test {
         api::add_contact($user2->id, $user1->id);
 
         // Check we get the correct message count.
+<<<<<<< HEAD
         $messages = api::get_contacts_with_unread_message_count($user2->id);
+=======
+        $messages = \core_message\api::get_contacts_with_unread_message_count($user2->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertDebuggingCalled();
 
         // Confirm the size is correct.
@@ -3963,7 +3998,11 @@ class api_test extends messagelib_test {
 
 
         // Get the non-contacts and the unread message count.
+<<<<<<< HEAD
         $messages = api::get_non_contacts_with_unread_message_count($user2->id);
+=======
+        $messages = \core_message\api::get_non_contacts_with_unread_message_count($user2->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertDebuggingCalled();
 
         // Check we get the correct message count.
@@ -3983,7 +4022,11 @@ class api_test extends messagelib_test {
         api::mark_message_as_read($user2->id, $m6);
 
         // Get the non-contacts and the unread message count.
+<<<<<<< HEAD
         $messages = api::get_non_contacts_with_unread_message_count($user2->id);
+=======
+        $messages = \core_message\api::get_non_contacts_with_unread_message_count($user2->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertDebuggingCalled();
 
         // Check the marked message is not returned in the message count.
@@ -4005,7 +4048,11 @@ class api_test extends messagelib_test {
         $this->send_fake_message($user4, $user1);
 
         // Get the non-contacts and the unread message count.
+<<<<<<< HEAD
         $messages = api::get_non_contacts_with_unread_message_count($user1->id);
+=======
+        $messages = \core_message\api::get_non_contacts_with_unread_message_count($user1->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertDebuggingCalled();
 
         // Confirm the size is correct.
@@ -4019,7 +4066,11 @@ class api_test extends messagelib_test {
         api::mark_message_as_read($user1->id, $m);
 
         // Get the non-contacts and the unread message count.
+<<<<<<< HEAD
         $messages = api::get_non_contacts_with_unread_message_count($user1->id);
+=======
+        $messages = \core_message\api::get_non_contacts_with_unread_message_count($user1->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertDebuggingCalled();
 
         // Check the marked message is not returned in the message count.
@@ -4105,7 +4156,11 @@ class api_test extends messagelib_test {
         $user1 = self::getDataGenerator()->create_user();
         $user2 = self::getDataGenerator()->create_user();
 
+<<<<<<< HEAD
         $this->assertFalse(api::get_conversation_between_users([$user1->id, $user2->id]));
+=======
+        $this->assertFalse(\core_message\api::get_conversation_between_users([$user1->id, $user2->id]));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**
@@ -6426,8 +6481,13 @@ class api_test extends messagelib_test {
         $user4 = self::getDataGenerator()->create_user();
 
         // Create group conversation.
+<<<<<<< HEAD
         $conversation = api::create_conversation(
             api::MESSAGE_CONVERSATION_TYPE_GROUP,
+=======
+        $conversation = \core_message\api::create_conversation(
+            \core_message\api::MESSAGE_CONVERSATION_TYPE_GROUP,
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             [$user1->id, $user2->id, $user3->id, $user4->id]
         );
 
@@ -6442,7 +6502,11 @@ class api_test extends messagelib_test {
         testhelper::send_fake_message_to_conversation($user3, $conversation->id, 'Message 4', $time + 4);
 
         // Retrieve the messages from $time + 5, which should return no messages.
+<<<<<<< HEAD
         $convmessages = api::get_conversation_messages($user1->id, $conversation->id, 0, 0, '', $time + 5);
+=======
+        $convmessages = \core_message\api::get_conversation_messages($user1->id, $conversation->id, 0, 0, '', $time + 5);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Confirm the conversation id is correct.
         $this->assertEquals($conversation->id, $convmessages['id']);

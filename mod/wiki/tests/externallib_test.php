@@ -456,7 +456,11 @@ class externallib_test extends externallib_advanced_testcase {
      * Test get_subwiki_pages using an invalid wiki instance.
      */
     public function test_get_subwiki_pages_invalid_instance() {
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_wiki_external::get_subwiki_pages(0);
     }
 
@@ -468,7 +472,11 @@ class externallib_test extends externallib_advanced_testcase {
         $usernotenrolled = self::getDataGenerator()->create_user();
         $this->setUser($usernotenrolled);
 
+<<<<<<< HEAD
         $this->expectException(\require_login_exception::class);
+=======
+        $this->expectException(require_login_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_wiki_external::get_subwiki_pages($this->wiki->id);
     }
 
@@ -481,7 +489,11 @@ class externallib_test extends externallib_advanced_testcase {
                             array('course' => $this->course->id, 'visible' => false));
 
         $this->setUser($this->student);
+<<<<<<< HEAD
         $this->expectException(\require_login_exception::class);
+=======
+        $this->expectException(require_login_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_wiki_external::get_subwiki_pages($hiddenwiki->id);
     }
 
@@ -495,7 +507,11 @@ class externallib_test extends externallib_advanced_testcase {
         accesslib_clear_all_caches_for_unit_testing();
 
         $this->setUser($this->student);
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_wiki_external::get_subwiki_pages($this->wiki->id);
     }
 
@@ -507,7 +523,11 @@ class externallib_test extends externallib_advanced_testcase {
         $indwiki = $this->getDataGenerator()->create_module('wiki',
                                 array('course' => $this->course->id, 'wikimode' => 'individual'));
 
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_wiki_external::get_subwiki_pages($indwiki->id, 0, -10);
     }
 
@@ -518,7 +538,11 @@ class externallib_test extends externallib_advanced_testcase {
         // Create testing data.
         $this->create_collaborative_wikis_with_groups();
 
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_wiki_external::get_subwiki_pages($this->wikisep->id, -111);
     }
 
@@ -531,7 +555,11 @@ class externallib_test extends externallib_advanced_testcase {
                                 array('course' => $this->course->id, 'wikimode' => 'individual'));
 
         $this->setUser($this->student);
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_wiki_external::get_subwiki_pages($indwiki->id, 0, $this->teacher->id);
     }
 
@@ -544,7 +572,11 @@ class externallib_test extends externallib_advanced_testcase {
         $this->create_collaborative_wikis_with_groups();
 
         $this->setUser($this->student);
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_wiki_external::get_subwiki_pages($this->wikisep->id, $this->group2->id);
     }
 
@@ -557,7 +589,11 @@ class externallib_test extends externallib_advanced_testcase {
         $this->create_individual_wikis_with_groups();
 
         $this->setUser($this->student);
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_wiki_external::get_subwiki_pages($this->wikisepind->id, $this->group2->id, $this->teacher->id);
     }
 
@@ -570,7 +606,11 @@ class externallib_test extends externallib_advanced_testcase {
         $this->create_collaborative_wikis_with_groups();
 
         $this->setUser($this->student);
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_wiki_external::get_subwiki_pages($this->wikisep->id, 0);
     }
 
@@ -583,7 +623,11 @@ class externallib_test extends externallib_advanced_testcase {
         $this->create_individual_wikis_with_groups();
 
         $this->setUser($this->student);
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_wiki_external::get_subwiki_pages($this->wikisepind->id, 0, $this->teacher->id);
     }
 
@@ -911,7 +955,11 @@ class externallib_test extends externallib_advanced_testcase {
      * Test get_page_contents using an invalid pageid.
      */
     public function test_get_page_contents_invalid_pageid() {
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_wiki_external::get_page_contents(0);
     }
 
@@ -923,7 +971,11 @@ class externallib_test extends externallib_advanced_testcase {
         $usernotenrolled = self::getDataGenerator()->create_user();
         $this->setUser($usernotenrolled);
 
+<<<<<<< HEAD
         $this->expectException(\require_login_exception::class);
+=======
+        $this->expectException(require_login_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_wiki_external::get_page_contents($this->firstpage->id);
     }
 
@@ -937,7 +989,11 @@ class externallib_test extends externallib_advanced_testcase {
         $hiddenpage = $this->getDataGenerator()->get_plugin_generator('mod_wiki')->create_page($hiddenwiki);
 
         $this->setUser($this->student);
+<<<<<<< HEAD
         $this->expectException(\require_login_exception::class);
+=======
+        $this->expectException(require_login_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_wiki_external::get_page_contents($hiddenpage->id);
     }
 
@@ -951,7 +1007,11 @@ class externallib_test extends externallib_advanced_testcase {
         accesslib_clear_all_caches_for_unit_testing();
 
         $this->setUser($this->student);
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_wiki_external::get_page_contents($this->firstpage->id);
     }
 
@@ -964,7 +1024,11 @@ class externallib_test extends externallib_advanced_testcase {
         $this->create_individual_wikis_with_groups();
 
         $this->setUser($this->student);
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_wiki_external::get_page_contents($this->fpsepg2indt->id);
     }
 
@@ -1068,7 +1132,11 @@ class externallib_test extends externallib_advanced_testcase {
         $this->create_collaborative_wikis_with_groups();
 
         $this->setUser($this->student);
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_wiki_external::get_subwiki_files($this->wikisep->id, $this->group2->id);
     }
 
@@ -1282,7 +1350,11 @@ class externallib_test extends externallib_advanced_testcase {
 
         // Test on existing subwiki.
         $result = mod_wiki_external::new_page($pagetitle, $pagecontent, 'html', $this->fpsepg1indstu->subwikiid);
+<<<<<<< HEAD
         $result = \external_api::clean_returnvalue(mod_wiki_external::new_page_returns(), $result);
+=======
+        $result = external_api::clean_returnvalue(mod_wiki_external::new_page_returns(), $result);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertIsInt($result['pageid']);
 
         $version = wiki_get_current_version($result['pageid']);
@@ -1304,7 +1376,11 @@ class externallib_test extends externallib_advanced_testcase {
         $this->getDataGenerator()->create_group_member(array('userid' => $this->student->id, 'groupid' => $this->group2->id));
         $result = mod_wiki_external::new_page($pagetitle, $pagecontent, 'html', null, $this->wikisepind->id, $this->student->id,
             $this->group2->id);
+<<<<<<< HEAD
         $result = \external_api::clean_returnvalue(mod_wiki_external::new_page_returns(), $result);
+=======
+        $result = external_api::clean_returnvalue(mod_wiki_external::new_page_returns(), $result);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertIsInt($result['pageid']);
 
         $version = wiki_get_current_version($result['pageid']);
@@ -1357,7 +1433,11 @@ class externallib_test extends externallib_advanced_testcase {
         $newpagecontent = $sectioncontent.'<h1><span>Title2</span></h1>Text inside section';
 
         $result = mod_wiki_external::edit_page($newpage->id, $newpagecontent);
+<<<<<<< HEAD
         $result = \external_api::clean_returnvalue(mod_wiki_external::edit_page_returns(), $result);
+=======
+        $result = external_api::clean_returnvalue(mod_wiki_external::edit_page_returns(), $result);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertIsInt($result['pageid']);
 
         $version = wiki_get_current_version($result['pageid']);
@@ -1368,7 +1448,11 @@ class externallib_test extends externallib_advanced_testcase {
         $section = '<span>Title2</span>';
 
         $result = mod_wiki_external::edit_page($newpage->id, $newsectioncontent, $section);
+<<<<<<< HEAD
         $result = \external_api::clean_returnvalue(mod_wiki_external::edit_page_returns(), $result);
+=======
+        $result = external_api::clean_returnvalue(mod_wiki_external::edit_page_returns(), $result);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertIsInt($result['pageid']);
 
         $expected = $sectioncontent . $newsectioncontent;

@@ -36,7 +36,11 @@ Feature: Add a quiz
     And I log out
 
     And I am on the "Test quiz name" "quiz activity" page logged in as student1
+<<<<<<< HEAD
     And I press "Attempt quiz"
+=======
+    And I press "Attempt quiz now"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "Question 1"
     And I should see "Answer the first question"
     And I set the field "True" to "1"

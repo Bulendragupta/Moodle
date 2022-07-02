@@ -206,7 +206,11 @@ class externallib_test extends externallib_advanced_testcase {
         $record->courseid = $course->id;
         $courseevent = $this->create_calendar_event('course', $USER->id, 'course', 3, time(), $record);
         $userevent = $this->create_calendar_event('user', $user->id);
+<<<<<<< HEAD
         $record = new \stdClass();
+=======
+        $record = new stdClass();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $record->courseid = $course->id;
         $record->groupid = $group->id;
         $groupevent = $this->create_calendar_event('group', $USER->id, 'group', 0, time(), $record);
@@ -283,7 +287,11 @@ class externallib_test extends externallib_advanced_testcase {
             array('eventid' => $userevent->id, 'repeat' => 0),
             array('eventid' => $groupevent->id, 'repeat' => 0)
         );
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         core_calendar_external::delete_calendar_events($events);
     }
 
@@ -565,10 +573,17 @@ class externallib_test extends externallib_advanced_testcase {
 
         // Now call the WebService.
         $events = core_calendar_external::get_calendar_events();
+<<<<<<< HEAD
         $events = \external_api::clean_returnvalue(core_calendar_external::get_calendar_events_returns(), $events);
 
         // Format the original data.
         $sitecontext = \context_system::instance();
+=======
+        $events = external_api::clean_returnvalue(core_calendar_external::get_calendar_events_returns(), $events);
+
+        // Format the original data.
+        $sitecontext = context_system::instance();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $siteevent->name = $siteevent->format_external_name();
         list($siteevent->description, $siteevent->descriptionformat) = $siteevent->format_external_text();
 
@@ -1081,7 +1096,11 @@ class externallib_test extends externallib_advanced_testcase {
 
         // Student1 will see an exception if he/she trying to view student2's data.
         $this->setUser($user1);
+<<<<<<< HEAD
         $this->expectException(\required_capability_exception::class);
+=======
+        $this->expectException(required_capability_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->expectExceptionMessage('error/nopermission');
         $result = core_calendar_external::get_calendar_action_events_by_timesort(0, null, 0, 20, true, $user2->id);
     }
@@ -1980,9 +1999,14 @@ class externallib_test extends externallib_advanced_testcase {
         $this->resetAfterTest(true);
         $this->setUser($user);
 
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
 
         \external_api::clean_returnvalue(
+=======
+        $this->expectException(moodle_exception::class);
+        external_api::clean_returnvalue(
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             core_calendar_external::submit_create_update_form_returns(),
             core_calendar_external::submit_create_update_form($querystring)
         );
@@ -2783,8 +2807,13 @@ class externallib_test extends externallib_advanced_testcase {
         $this->assertEquals($data['event']['id'], $courseevent->id);
         // User not enrolled in the course cannot load the course event.
         $this->setUser($user2);
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
         $data = \external_api::clean_returnvalue(
+=======
+        $this->expectException(moodle_exception::class);
+        $data = external_api::clean_returnvalue(
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             core_calendar_external::get_calendar_event_by_id_returns(),
             core_calendar_external::get_calendar_event_by_id($courseevent->id)
         );
@@ -2796,7 +2825,11 @@ class externallib_test extends externallib_advanced_testcase {
      * @return array
      */
     public function test_get_calendar_event_by_id_prevent_read_other_users_events_data_provider(): array {
+<<<<<<< HEAD
         $syscontext = \context_system::instance();
+=======
+        $syscontext = context_system::instance();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $managerrole = 'manager';
         return [
             [true, false, $syscontext, $managerrole, true],
@@ -2819,7 +2852,11 @@ class externallib_test extends externallib_advanced_testcase {
      * @param bool          $expectexception   Should the test throw exception
      */
     public function test_get_calendar_event_by_id_prevent_read_other_users_events(
+<<<<<<< HEAD
             bool $isadminevent, bool $isadmin, ?\stdClass $readerrolecontext,
+=======
+            bool $isadminevent, bool $isadmin, ?stdClass $readerrolecontext,
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             ?string $readerrolename, bool $expectexception) {
         global $USER, $DB;
 
@@ -2833,7 +2870,11 @@ class externallib_test extends externallib_advanced_testcase {
             $this->setUser($user);
         }
         $userevent = $this->create_calendar_event('user event', $USER->id, 'user', 0, time());
+<<<<<<< HEAD
         $results = \external_api::clean_returnvalue(
+=======
+        $results = external_api::clean_returnvalue(
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             core_calendar_external::get_calendar_event_by_id_returns(),
             core_calendar_external::get_calendar_event_by_id($userevent->id)
         );
@@ -2853,9 +2894,15 @@ class externallib_test extends externallib_advanced_testcase {
 
         if ($expectexception) {
             // Setup if exception is expected for the test.
+<<<<<<< HEAD
             $this->expectException(\moodle_exception::class);
         }
         \external_api::clean_returnvalue(
+=======
+            $this->expectException(moodle_exception::class);
+        }
+        external_api::clean_returnvalue(
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             core_calendar_external::get_calendar_event_by_id_returns(),
             core_calendar_external::get_calendar_event_by_id($userevent->id)
         );
@@ -2867,7 +2914,11 @@ class externallib_test extends externallib_advanced_testcase {
      * @return array
      */
     public function test_edit_or_delete_other_users_events_data_provider(): array {
+<<<<<<< HEAD
         $syscontext = \context_system::instance();
+=======
+        $syscontext = context_system::instance();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $managerrole = 'manager';
         return [
             [false, false, $syscontext, $managerrole, false],
@@ -2889,7 +2940,11 @@ class externallib_test extends externallib_advanced_testcase {
      * @param bool          $expectexception Whether the test should throw an exception or not.
      */
     public function test_delete_other_users_events(bool $isadmin, bool $isadminevent,
+<<<<<<< HEAD
             ?\stdClass $writerrolecontext, ?string $writerrolename, bool $expectexception) {
+=======
+            ?stdClass $writerrolecontext, ?string $writerrolename, bool $expectexception) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         global $DB, $USER;
 
         $this->resetAfterTest();
@@ -2916,7 +2971,11 @@ class externallib_test extends externallib_advanced_testcase {
         }
 
         if ($expectexception) {
+<<<<<<< HEAD
             $this->expectException(\moodle_exception::class);
+=======
+            $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         }
         $events = [
             ['eventid' => $userevent->id, 'repeat' => 0]
@@ -2936,7 +2995,11 @@ class externallib_test extends externallib_advanced_testcase {
      * @param bool          $expectexception Whether the test should throw an exception or not.
      */
     public function test_edit_other_users_events(bool $isadmin, bool $isadminevent,
+<<<<<<< HEAD
             ?\stdClass $writerrolecontext, ?string $writerrolename, bool $expectexception) {
+=======
+            ?stdClass $writerrolecontext, ?string $writerrolename, bool $expectexception) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         global $DB, $USER;
 
         $this->resetAfterTest();
@@ -2989,7 +3052,11 @@ class externallib_test extends externallib_advanced_testcase {
         $USER->ignoresesskey = true;
 
         if ($expectexception) {
+<<<<<<< HEAD
             $this->expectException(\moodle_exception::class);
+=======
+            $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         }
         core_calendar_external::submit_create_update_form($querystring);
     }

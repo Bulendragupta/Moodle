@@ -32,6 +32,7 @@ I should be able to create an assignment with a due date relative to the course 
 
     And I am on the "Test assignment name" Activity page logged in as student2
     And I should not see "Assignment is overdue by:" in the "Time remaining" "table_row"
+<<<<<<< HEAD
 
   Scenario: As a student the due date I see for submitting my assignment is relative to my course start date
     Given the following config values are set as admin:
@@ -54,6 +55,8 @@ I should be able to create an assignment with a due date relative to the course 
 
     When I am on the "Test assignment name" Activity page logged in as student1
     Then the activity date in "Test assignment name" should contain "Due: Thursday, 7 January 2021, 8:00"
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
   Scenario: As a teacher, I should see the relative dates when reviewing assignment submissions
     Given the following config values are set as admin:
@@ -78,7 +81,11 @@ I should be able to create an assignment with a due date relative to the course 
       | assign    | Test assignment name  | C1      | 1                                    | ##first day of 4 months ago##  | ##last day of 3 months ago##  |
 
     And I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     And the activity date in "Test assignment name" should contain "after course start"
+=======
+    And I should see "after course start" in the "Due date" "table_row"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I should see "Calculated for each student" in the "Time remaining" "table_row"
     When I follow "View all submissions"
     Then I should see "No submission" in the "Student 1" "table_row"

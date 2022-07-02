@@ -118,10 +118,13 @@ Feature: Using the AJAX grading feature of Grader report to update grades and fe
     And I set the field "ajaxgrade" to "33"
     And I set the field "ajaxfeedback" to "Student 2 VU feedback"
     And I press the enter key
+<<<<<<< HEAD
     And I click on student "Student 2" for grade item "Item SU"
     And I set the field "ajaxgrade" to "Very good"
     And I set the field "ajaxfeedback" to "Student 2 SU feedback"
     And I press the enter key
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on student "Student 3" for grade item "Item VL"
     And I should not see a grade field for "Student 3" and grade item "Item VL"
     And I should not see a feedback field for "Student 3" and grade item "Item VL"
@@ -130,6 +133,13 @@ Feature: Using the AJAX grading feature of Grader report to update grades and fe
     And I should see a feedback field for "Student 3" and grade item "Item TU"
     And I set the field "ajaxfeedback" to "Student 3 TU feedback"
     And I press the enter key
+<<<<<<< HEAD
+=======
+    And I click on student "Student 2" for grade item "Item SU"
+    And I set the field "ajaxgrade" to "Very good"
+    And I set the field "ajaxfeedback" to "Student 2 SU feedback"
+    And I press the enter key
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     # Reload grader report:
     And I navigate to "View > User report" in the course gradebook
     And I navigate to "View > Grader report" in the course gradebook
@@ -254,6 +264,7 @@ Feature: Using the AJAX grading feature of Grader report to update grades and fe
     And I click on "The grade entered for Item VU for Student 2 is more than the maximum allowed" "text"
     And I should not see "The grade entered for Item VU for Student 2 is more than the maximum allowed"
     And the grade for "Student 2" in grade item "Item VU" should match "66.00"
+<<<<<<< HEAD
 
   @javascript
   Scenario: Teacher can see user custom filed columns as additional user identity
@@ -264,3 +275,5 @@ Feature: Using the AJAX grading feature of Grader report to update grades and fe
     When I navigate to "View > Grader report" in the course gradebook
     Then I should see "litle yellow frog" in the "student1" "table_row"
     And I should see "prince frog" in the "student2" "table_row"
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

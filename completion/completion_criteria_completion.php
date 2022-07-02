@@ -103,8 +103,13 @@ class completion_criteria_completion extends data_object {
      *
      * This method creates a course_completion_crit_compl record
      *
+<<<<<<< HEAD
      * @param   int $timecompleted Time completed (optional).
      * @return  int id of completion record.
+=======
+     * @param int $timecompleted Time completed (optional)
+     * @return void
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      */
     public function mark_complete($timecompleted = null) {
         if (empty($timecompleted)) {

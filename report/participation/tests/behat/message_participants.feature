@@ -33,8 +33,12 @@ Feature: Use the particiaption report to message groups of students
   Scenario: Message all students from the participation report
     Given I log in as "teacher1"
     And I am on "Course 1" course homepage
+<<<<<<< HEAD
     And I navigate to "Reports" in current page administration
     And I click on "Course participation" "link"
+=======
+    And I navigate to "Reports > Course participation" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the field "instanceid" to "Test book name"
     And I set the field "roleid" to "Student"
     And I press "Go"

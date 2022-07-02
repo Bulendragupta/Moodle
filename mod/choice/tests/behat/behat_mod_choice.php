@@ -46,7 +46,11 @@ class behat_mod_choice extends behat_base {
      * @return array
      */
     public function I_choose_option_from_activity($option, $choiceactivity) {
+<<<<<<< HEAD
         $this->execute('behat_navigation::i_am_on_page_instance', [$this->escape($choiceactivity), 'choice activity']);
+=======
+        $this->execute("behat_navigation::i_am_on_page_instance", [$this->escape($choiceactivity), 'choice activity']);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $this->execute('behat_forms::i_set_the_field_to', array( $this->escape($option), 1));
 

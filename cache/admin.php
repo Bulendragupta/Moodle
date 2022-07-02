@@ -48,9 +48,12 @@ $notifications = array();
 // Empty array to hold any form information returned from actions.
 $forminfo = [];
 
+<<<<<<< HEAD
 $PAGE->set_primary_active_tab('siteadminnode');
 $PAGE->navbar->add(get_string('cacheconfig', 'cache'), new moodle_url('/cache/admin.php'));
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 // Handle page actions in admin helper class.
 if (!empty($action) && confirm_sesskey()) {
     $forminfo = $adminhelper->perform_cache_actions($action, $forminfo);

@@ -36,7 +36,11 @@ Feature: Hide grader identities identity from students
 
     # Grade the submission and leave feedback
     And I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I should not see "Graded" in the "Student 1" "table_row"
     And I click on "Grade" "link" in the "Student 1" "table_row"
     And I set the field "Grade out of 100" to "50"
@@ -58,7 +62,11 @@ Feature: Hide grader identities identity from students
   Scenario: Hidden grading is enabled.
     # Enable the hidden grader option
     Given I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     And I navigate to "Settings" in current page administration
+=======
+    And I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I follow "Expand all"
     And I set the field "Hide grader identity from students" to "1"
     And I press "Save and return to course"

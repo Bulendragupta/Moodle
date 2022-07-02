@@ -120,8 +120,14 @@ export const init = ({
 
                 DynamicTable.setPageSize(tableRoot, checkCountButton.dataset.targetPageSize)
                 .then(tableRoot => {
+<<<<<<< HEAD
                     // Update the toggle state.
                     CheckboxToggleAll.setGroupState(root, 'participants-table', true);
+=======
+                    // Always update the toggle state.
+                    // This ensures that the bulk actions are disabled after changing the page size.
+                    CheckboxToggleAll.setGroupState(root, 'participants-table', checkCountButtonClicked);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
                     return tableRoot;
                 })

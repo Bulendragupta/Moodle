@@ -455,6 +455,7 @@ function upgrade_plugin_savepoint($result, $version, $type, $plugin, $allowabort
 function upgrade_stale_php_files_present(): bool {
     global $CFG;
 
+<<<<<<< HEAD
     $someexamplesofremovedfiles = [
         // Removed in 4.0.
         '/admin/classes/task_log_table.php',
@@ -468,6 +469,9 @@ function upgrade_stale_php_files_present(): bool {
         '/lib/xhprof/README',
         '/message/defaultoutputs.php',
         '/user/files_form.php',
+=======
+    $someexamplesofremovedfiles = array(
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         // Removed in 3.10.
         '/grade/grading/classes/privacy/gradingform_provider.php',
         '/lib/coursecatlib.php',
@@ -2732,6 +2736,7 @@ function check_admin_dir_usage(environment_results $result): ?environment_result
 
     return $result;
 }
+<<<<<<< HEAD
 
 /**
  * Check whether the XML-RPC protocol is enabled and warn if so.
@@ -2784,3 +2789,5 @@ function check_xmlrpc_usage(environment_results $result): ?environment_results {
 
     return null;
 }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

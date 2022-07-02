@@ -61,16 +61,23 @@ class question_test extends \advanced_testcase {
         $attachments = $this->create_user_and_sample_attachments($numberofattachments);
 
         // Create the essay question under test.
+<<<<<<< HEAD
         $essay = \test_question_maker::make_an_essay_question();
+=======
+        $essay = test_question_maker::make_an_essay_question();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $essay->start_attempt(new question_attempt_step(), 1);
 
         $essay->responseformat = 'editor';
         $essay->responserequired = $responserequired;
         $essay->attachmentsrequired = $attachmentsrequired;
 
+<<<<<<< HEAD
         // The space before the number of bytes from display_size is actually a non-breaking space.
         $expected = str_replace(' bytes', "\xc2\xa0bytes", $expected);
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertEquals($expected, $essay->summarise_response(
             ['answer' => $answertext, 'answerformat' => FORMAT_HTML,  'attachments' => $attachments[$attachmentuploaded]]));
     }
@@ -411,6 +418,33 @@ class question_test extends \advanced_testcase {
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * test_get_question_definition_for_external_rendering
+     */
+    public function test_get_question_definition_for_external_rendering() {
+        $this->resetAfterTest();
+
+        $essay = test_question_maker::make_an_essay_question();
+        $essay->start_attempt(new question_attempt_step(), 1);
+        $qa = test_question_maker::get_a_qa($essay);
+        $displayoptions = new question_display_options();
+
+        $options = $essay->get_question_definition_for_external_rendering($qa, $displayoptions);
+        $this->assertNotEmpty($options);
+        $this->assertEquals('editor', $options['responseformat']);
+        $this->assertEquals(1, $options['responserequired']);
+        $this->assertEquals(15, $options['responsefieldlines']);
+        $this->assertEquals(0, $options['attachments']);
+        $this->assertEquals(0, $options['attachmentsrequired']);
+        $this->assertNull($options['maxbytes']);
+        $this->assertNull($options['filetypeslist']);
+        $this->assertEquals('', $options['responsetemplate']);
+        $this->assertEquals(FORMAT_MOODLE, $options['responsetemplateformat']);
+    }
+
+    /**
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * Create sample attachemnts and retun generated attachments.
      * @param int $numberofattachments
      * @return array
@@ -421,7 +455,11 @@ class question_test extends \advanced_testcase {
         $this->setUser($user);
 
         // Create sample attachments to use in testing.
+<<<<<<< HEAD
         $helper = \test_question_maker::get_test_helper('essay');
+=======
+        $helper = test_question_maker::get_test_helper('essay');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $attachments = [];
         for ($i = 0; $i < ($numberofattachments + 1); ++$i) {
             $attachments[$i] = $helper->make_attachments_saver($i);

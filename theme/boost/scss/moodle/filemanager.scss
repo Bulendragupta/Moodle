@@ -43,8 +43,11 @@
 .fp-navbar {
     border-color: $input-border-color;
     border-bottom: 0;
+<<<<<<< HEAD
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }
 
 .file-picker .fp-content {
@@ -609,7 +612,10 @@ a.ygtvspacer:hover {
 .filemanager-container {
     min-height: 140px;
     border: 1px solid $input-border-color;
+<<<<<<< HEAD
     @include border-radius();
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }
 
 .filemanager .fp-content {

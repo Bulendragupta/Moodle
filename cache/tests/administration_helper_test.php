@@ -71,7 +71,11 @@ class administration_helper_test extends \advanced_testcase {
             cache_store::MODE_REQUEST => array('default_request'),
         )));
 
+<<<<<<< HEAD
         $storesummaries = administration_helper::get_store_instance_summaries();
+=======
+        $storesummaries = core_cache\administration_helper::get_store_instance_summaries();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertIsArray($storesummaries);
         $this->assertArrayHasKey('summariesstore', $storesummaries);
         $summary = $storesummaries['summariesstore'];
@@ -97,7 +101,11 @@ class administration_helper_test extends \advanced_testcase {
         }));
         $this->assertEquals($mappingcount, $summary['mappings']);
 
+<<<<<<< HEAD
         $definitionsummaries = administration_helper::get_definition_summaries();
+=======
+        $definitionsummaries = core_cache\administration_helper::get_definition_summaries();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertIsArray($definitionsummaries);
         $this->assertArrayHasKey('core/eventinvalidation', $definitionsummaries);
         $summary = $definitionsummaries['core/eventinvalidation'];
@@ -117,7 +125,11 @@ class administration_helper_test extends \advanced_testcase {
         $this->assertIsArray($summary['mappings']);
         $this->assertContains('summariesstore', $summary['mappings']);
 
+<<<<<<< HEAD
         $pluginsummaries = administration_helper::get_store_plugin_summaries();
+=======
+        $pluginsummaries = core_cache\administration_helper::get_store_plugin_summaries();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertIsArray($pluginsummaries);
         $this->assertArrayHasKey('file', $pluginsummaries);
         $summary = $pluginsummaries['file'];
@@ -129,18 +141,30 @@ class administration_helper_test extends \advanced_testcase {
         $this->assertArrayHasKey('supports', $summary);
         $this->assertArrayHasKey('canaddinstance', $summary);
 
+<<<<<<< HEAD
         $locksummaries = administration_helper::get_lock_summaries();
         $this->assertIsArray($locksummaries);
         $this->assertTrue(count($locksummaries) > 0);
 
         $mappings = administration_helper::get_default_mode_stores();
+=======
+        $locksummaries = core_cache\administration_helper::get_lock_summaries();
+        $this->assertIsArray($locksummaries);
+        $this->assertTrue(count($locksummaries) > 0);
+
+        $mappings = core_cache\administration_helper::get_default_mode_stores();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertIsArray($mappings);
         $this->assertCount(3, $mappings);
         $this->assertArrayHasKey(cache_store::MODE_APPLICATION, $mappings);
         $this->assertIsArray($mappings[cache_store::MODE_APPLICATION]);
         $this->assertContains('summariesstore', $mappings[cache_store::MODE_APPLICATION]);
 
+<<<<<<< HEAD
         $potentials = administration_helper::get_definition_store_options('core', 'eventinvalidation');
+=======
+        $potentials = core_cache\administration_helper::get_definition_store_options('core', 'eventinvalidation');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertIsArray($potentials); // Currently used, suitable, default
         $this->assertCount(3, $potentials);
         $this->assertArrayHasKey('summariesstore', $potentials[0]);
@@ -168,7 +192,11 @@ class administration_helper_test extends \advanced_testcase {
      */
     public function test_get_edit_store_form() {
         // Always instantiate a new core display helper here.
+<<<<<<< HEAD
         $administrationhelper = new local\administration_display_helper;
+=======
+        $administrationhelper = new core_cache\local\administration_display_helper;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $config = cache_config_writer::instance();
         $this->assertTrue($config->add_store_instance('test_get_edit_store_form', 'file'));
 

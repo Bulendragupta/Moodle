@@ -714,6 +714,7 @@ class badgeslib_test extends advanced_testcase {
         $this->assertFalse($badge->is_issued($this->user->id));
         $this->assertFalse($badge->is_issued($user2->id));
         $this->assertFalse($badge->is_issued($user3->id));
+<<<<<<< HEAD
 
         // Verify that after calling review_all_criteria, users with the criteria (user3) award the badge instantly.
         $this->assertSame(1, $badge->review_all_criteria()); // Verify award_criteria_cohort->get_completed_criteria_sql().
@@ -732,6 +733,26 @@ class badgeslib_test extends advanced_testcase {
         // Add the user to the cohort3.
         cohort_add_member($cohort3->id, $this->user->id);
 
+=======
+
+        // Verify that after calling review_all_criteria, users with the criteria (user3) award the badge instantly.
+        $this->assertSame(1, $badge->review_all_criteria()); // Verify award_criteria_cohort->get_completed_criteria_sql().
+        $this->assertFalse($badge->is_issued($this->user->id));
+        $this->assertFalse($badge->is_issued($user2->id));
+        $this->assertTrue($badge->is_issued($user3->id));
+        $this->assertDebuggingCalled();
+
+        // Add the user to the cohort1.
+        cohort_add_member($cohort1->id, $this->user->id);
+
+        // Verify that the badge was not awarded yet (ALL cohorts are needed).
+        $this->assertFalse($badge->is_issued($this->user->id));
+        $this->assertSame(0, $badge->review_all_criteria()); // Verify award_criteria_cohort->get_completed_criteria_sql().
+
+        // Add the user to the cohort3.
+        cohort_add_member($cohort3->id, $this->user->id);
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         // Verify that the badge was not awarded yet (ALL cohorts are needed).
         $this->assertFalse($badge->is_issued($this->user->id));
         $this->assertSame(0, $badge->review_all_criteria()); // Verify award_criteria_cohort->get_completed_criteria_sql().
@@ -1298,7 +1319,10 @@ class badgeslib_test extends advanced_testcase {
             'apiversion' => 2,
             'backpackapiurl' => 'https://api.ca.badgr.io/v2',
             'backpackweburl' => 'https://ca.badgr.io',
+<<<<<<< HEAD
             'sortorder' => 2,
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         ];
 
         // Given a complete set of unique data, a new backpack and auth records should exist in the tables.
@@ -1307,6 +1331,7 @@ class badgeslib_test extends advanced_testcase {
         $backpack1 = badges_save_external_backpack((object) $data);
         $data['backpackweburl'] = 'https://eu.badgr.io';
         $data['backpackapiurl'] = 'https://api.eu.badgr.io/v2';
+<<<<<<< HEAD
         $data['apiversion'] = '2.1';
         $data['sortorder'] = 3;
         $backpack2 = badges_save_external_backpack((object) $data);
@@ -1314,6 +1339,12 @@ class badgeslib_test extends advanced_testcase {
         // Move backpack2 to the first position to set it as primary site backpack.
         $this->move_backpack_to_first_position($backpack2);
 
+=======
+        $data['apiversion'] = 2.1;
+        $backpack2 = badges_save_external_backpack((object) $data);
+
+        set_config('badges_site_backpack', $backpack2);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         // The default response should check the default site backpack api version.
         $this->assertEquals(2.1, badges_open_badges_backpack_api());
         // Check the api version for the other backpack created.
@@ -1414,7 +1445,10 @@ class badgeslib_test extends advanced_testcase {
             'apiversion' => '2',
             'backpackapiurl' => 'https://api.ca.badgr.io/v2',
             'backpackweburl' => 'https://ca.badgr.io',
+<<<<<<< HEAD
             'sortorder' => '2',
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         ];
         if ($withauth) {
             $data = array_merge($data, [
@@ -1424,6 +1458,7 @@ class badgeslib_test extends advanced_testcase {
         }
         $backpack = badges_save_external_backpack((object) $data);
 
+<<<<<<< HEAD
         // Check the backpack created is not the primary one.
         $sitebackpack = badges_get_site_primary_backpack();
         $this->assertNotEquals($backpack, $sitebackpack->id);
@@ -1431,6 +1466,9 @@ class badgeslib_test extends advanced_testcase {
         // Move backpack to the first position to set it as primary site backpack.
         $this->move_backpack_to_first_position($backpack);
 
+=======
+        set_config('badges_site_backpack', $backpack);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $sitebackpack = badges_get_site_primary_backpack();
         $this->assertEquals($backpack, $sitebackpack->id);
 
@@ -1458,6 +1496,7 @@ class badgeslib_test extends advanced_testcase {
     }
 
     /**
+<<<<<<< HEAD
      * Test badges_change_sortorder_backpacks().
      *
      * @dataProvider badges_change_sortorder_backpacks_provider
@@ -1536,6 +1575,8 @@ class badgeslib_test extends advanced_testcase {
     }
 
     /**
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * Test the Badgr URL generator function
      *
      * @param mixed $type Type corresponding to the badge entites
@@ -1625,6 +1666,7 @@ class badgeslib_test extends advanced_testcase {
             ]
         ];
     }
+<<<<<<< HEAD
 
     /**
      * Move the backpack to the first position, to set it as primary site backpack.
@@ -1638,4 +1680,6 @@ class badgeslib_test extends advanced_testcase {
             $backpack = badges_get_site_backpack($backpackid);
         }
     }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

@@ -45,7 +45,11 @@ class condition_test extends \advanced_testcase {
      * Load required classes.
      */
     public function setUp(): void {
+<<<<<<< HEAD
         condition::wipe_static_cache();
+=======
+        availability_completion\condition::wipe_static_cache();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**
@@ -107,7 +111,11 @@ class condition_test extends \advanced_testcase {
         try {
             $cond = new condition($structure);
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Missing or invalid ->cm', $e->getMessage());
         }
 
@@ -116,7 +124,11 @@ class condition_test extends \advanced_testcase {
         try {
             $cond = new condition($structure);
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Missing or invalid ->cm', $e->getMessage());
         }
 
@@ -125,7 +137,11 @@ class condition_test extends \advanced_testcase {
         try {
             $cond = new condition($structure);
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Missing or invalid ->e', $e->getMessage());
         }
 
@@ -134,7 +150,11 @@ class condition_test extends \advanced_testcase {
         try {
             $cond = new condition($structure);
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Missing or invalid ->e', $e->getMessage());
         }
 

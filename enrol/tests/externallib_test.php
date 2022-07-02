@@ -358,6 +358,7 @@ class externallib_test extends externallib_advanced_testcase {
             }
             // Verify viewed matches canview expectation (using canonicalize to ignore ordering).
             $this->assertEqualsCanonicalizing($canview, $viewed, "Problem checking visible users for '{$createdusers[$USER->id]}'");
+<<<<<<< HEAD
         }
     }
 
@@ -425,6 +426,8 @@ class externallib_test extends externallib_advanced_testcase {
 
         foreach ($activeusers as $activeuser) {
             $this->assertStringContainsString('active', $activeuser['username']);
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         }
 
         // All enrolled users.
@@ -627,7 +630,11 @@ class externallib_test extends externallib_advanced_testcase {
         $this->resetAfterTest();
 
         $course = $this->getDataGenerator()->create_course();
+<<<<<<< HEAD
         $context = \context_course::instance($course->id);
+=======
+        $context = context_course::instance($course->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $user1 = $this->getDataGenerator()->create_and_enrol($course, 'student');
         $user2 = $this->getDataGenerator()->create_and_enrol($course, 'student');
@@ -715,7 +722,11 @@ class externallib_test extends externallib_advanced_testcase {
         ];
 
         $course = self::getDataGenerator()->create_course($coursedata);
+<<<<<<< HEAD
         $context = \context_course::instance($course->id);
+=======
+        $context = context_course::instance($course->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Enrol a student in the course.
         $student = $this->getDataGenerator()->create_user();
@@ -728,7 +739,11 @@ class externallib_test extends externallib_advanced_testcase {
         $enrolledincourses = core_enrol_external::get_users_courses($student->id, true);
 
         // We need to execute the return values cleaning process to simulate the web service server.
+<<<<<<< HEAD
         $enrolledincourses = \external_api::clean_returnvalue(core_enrol_external::get_users_courses_returns(), $enrolledincourses);
+=======
+        $enrolledincourses = external_api::clean_returnvalue(core_enrol_external::get_users_courses_returns(), $enrolledincourses);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Check that the amount of courses is the right one.
         $this->assertCount(1, $enrolledincourses);
@@ -946,7 +961,11 @@ class externallib_test extends externallib_advanced_testcase {
 
         // Call without required capability.
         $this->unassignUserCapability($capability, $data->context->id, $data->roleid);
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $categories = core_enrol_external::get_enrolled_users($data->course->id);
     }
 

@@ -301,11 +301,17 @@ function useredit_shared_definition(&$mform, $editoroptions, $filemanageroptions
     $mform->setDefault('maildisplay', core_user::get_property_default('maildisplay'));
     $mform->addHelpButton('maildisplay', 'emaildisplay');
 
+<<<<<<< HEAD
     if (get_config('tool_moodlenet', 'enablemoodlenet')) {
         $mform->addElement('text', 'moodlenetprofile', get_string('moodlenetprofile', 'user'), 'maxlength="255" size="30"');
         $mform->setType('moodlenetprofile', PARAM_NOTAGS);
         $mform->addHelpButton('moodlenetprofile', 'moodlenetprofile', 'user');
     }
+=======
+    $mform->addElement('text', 'moodlenetprofile', get_string('moodlenetprofile', 'user'));
+    $mform->setType('moodlenetprofile', PARAM_NOTAGS);
+    $mform->addHelpButton('moodlenetprofile', 'moodlenetprofile', 'user');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     $mform->addElement('text', 'city', get_string('city'), 'maxlength="120" size="21"');
     $mform->setType('city', PARAM_TEXT);

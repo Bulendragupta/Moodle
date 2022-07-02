@@ -84,6 +84,10 @@ Feature: We can use Single view
     And I set the field "Exclude for Jane, Nina, Niamh, Cholmondely" to "1"
     And I press "Save"
     Then I should see "Grades were set for 2 items"
+<<<<<<< HEAD
+=======
+    And I press "Continue"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And the field "Grade for Ann, Jill, Grainne, Beauchamp" matches value "12.05"
     And the field "Exclude for Jane, Nina, Niamh, Cholmondely" matches value "1"
     And I select "new grade item 1" from the "Select grade item..." singleselect

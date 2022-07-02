@@ -61,6 +61,7 @@ class renderer extends plugin_renderer_base {
     }
 
     /**
+<<<<<<< HEAD
      * Render the external registration return page
      *
      * @param tool_configure_page $page
@@ -73,6 +74,8 @@ class renderer extends plugin_renderer_base {
     }
 
     /**
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * Render the reposting of the cross site request.
      *
      * @param repost_crosssite_page $page the page renderable.

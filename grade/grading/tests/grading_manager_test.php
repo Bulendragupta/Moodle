@@ -85,7 +85,11 @@ class grading_manager_test extends \advanced_testcase {
         $this->assertEquals('rubric', $gradingman->get_active_method());
 
         // attempting to set an invalid method
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $gradingman->set_active_method('no_one_should_ever_try_to_implement_a_method_with_this_silly_name');
     }
 

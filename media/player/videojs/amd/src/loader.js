@@ -23,12 +23,21 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+<<<<<<< HEAD
 import Ajax from 'core/ajax';
 import Config from 'core/config';
 import {eventTypes} from 'core_filters/events';
 import LocalStorage from 'core/localstorage';
 import Notification from 'core/notification';
 import jQuery from 'jquery';
+=======
+import Config from 'core/config';
+import Event from 'core/event';
+import jQuery from 'jquery';
+import Ajax from 'core/ajax';
+import LocalStorage from 'core/localstorage';
+import Notification from 'core/notification';
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 /** @var {bool} Whether this is the first load of videojs module */
 let firstLoad;
@@ -40,6 +49,7 @@ let language;
 let langStringCache;
 
 /**
+<<<<<<< HEAD
  * Initialisei teh videojs Loader.
  *
  * Adds the listener for the event to then notify video.js.
@@ -47,10 +57,17 @@ let langStringCache;
  * @method
  * @param {string} lang Language to be used in the player
  * @listens event:filterContentUpdated
+=======
+ * Set-up.
+ *
+ * Adds the listener for the event to then notify video.js.
+ * @param {string} lang Language to be used in the player
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
  */
 export const setUp = (lang) => {
     language = lang;
     firstLoad = true;
+<<<<<<< HEAD
 
     // Notify Video.js about the nodes already present on the page.
     notifyVideoJS({
@@ -61,15 +78,29 @@ export const setUp = (lang) => {
 
     // We need to call popover automatically if nodes are added to the page later.
     document.addEventListener(eventTypes.filterContentUpdated, notifyVideoJS);
+=======
+    // Notify Video.js about the nodes already present on the page.
+    notifyVideoJS(null, jQuery('body'));
+    // We need to call popover automatically if nodes are added to the page later.
+    Event.getLegacyEvents().done((events) => {
+        jQuery(document).on(events.FILTER_CONTENT_UPDATED, notifyVideoJS);
+    });
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 };
 
 /**
  * Notify video.js of new nodes.
  *
  * @param {Event} e The event.
+<<<<<<< HEAD
  */
 const notifyVideoJS = e => {
     const nodes = jQuery(e.detail.nodes);
+=======
+ * @param {NodeList} nodes List of new nodes.
+ */
+const notifyVideoJS = (e, nodes) => {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     const selector = '.mediaplugin_videojs';
     const langStrings = getLanguageJson();
 
@@ -88,6 +119,13 @@ const notifyVideoJS = e => {
                 // Add YouTube to the list of modules we require.
                 modulePromises.push(import('media_videojs/Youtube-lazy'));
             }
+<<<<<<< HEAD
+=======
+            if (config.techOrder && config.techOrder.indexOf('flash') !== -1) {
+                // Add Flash to the list of modules we require.
+                modulePromises.push(import('media_videojs/videojs-flash-lazy'));
+            }
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             if (config.techOrder && config.techOrder.indexOf('OgvJS') !== -1) {
                 config.ogvjs = {
                     worker: true,
@@ -100,6 +138,10 @@ const notifyVideoJS = e => {
             Promise.all([langStrings, ...modulePromises])
             .then(([langJson, videojs]) => {
                 if (firstLoad) {
+<<<<<<< HEAD
+=======
+                    videojs.options.flash.swf = `${Config.wwwroot}/media/player/videojs/videojs/video-js.swf`;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                     videojs.addLanguage(language, langJson);
 
                     firstLoad = false;
@@ -120,6 +162,7 @@ const getLanguageJson = () => {
     if (langStringCache) {
         return Promise.resolve(langStringCache);
     }
+<<<<<<< HEAD
 
     const cacheKey = `media_videojs/${language}`;
 
@@ -129,6 +172,17 @@ const getLanguageJson = () => {
 
         langStringCache = cacheContent;
 
+=======
+
+    const cacheKey = `media_videojs/${language}`;
+
+    const rawCacheContent = LocalStorage.get(cacheKey);
+    if (rawCacheContent) {
+        const cacheContent = JSON.parse(rawCacheContent);
+
+        langStringCache = cacheContent;
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         return Promise.resolve(langStringCache);
     }
 

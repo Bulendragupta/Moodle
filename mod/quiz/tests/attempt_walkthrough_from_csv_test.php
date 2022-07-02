@@ -215,7 +215,11 @@ class mod_quiz_attempt_walkthrough_from_csv_testcase extends advanced_testcase {
      * @return array One array element for each run of the test. Each element contains an array with the params for
      *                  test_walkthrough_from_csv.
      */
+<<<<<<< HEAD
     public function get_data_for_walkthrough(): array {
+=======
+    public function get_data_for_walkthrough() {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $quizzes = $this->load_csv_data_file('quizzes')['quizzes'];
         $datasets = array();
         foreach ($quizzes as $quizsettings) {
@@ -231,7 +235,11 @@ class mod_quiz_attempt_walkthrough_from_csv_testcase extends advanced_testcase {
     }
 
     /**
+<<<<<<< HEAD
      * @param array $steps the step data from the csv file.
+=======
+     * @param $steps array the step data from the csv file.
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * @return array attempt no as in csv file => the id of the quiz_attempt as stored in the db.
      */
     protected function walkthrough_attempts(array $steps): array {
@@ -292,10 +300,17 @@ class mod_quiz_attempt_walkthrough_from_csv_testcase extends advanced_testcase {
     }
 
     /**
+<<<<<<< HEAD
      * @param array $results the results data from the csv file.
      * @param array $attemptids attempt no as in csv file => the id of the quiz_attempt as stored in the db.
      */
     protected function check_attempts_results(array $results, array $attemptids) {
+=======
+     * @param $results array the results data from the csv file.
+     * @param $attemptids array attempt no as in csv file => the id of the quiz_attempt as stored in the db.
+     */
+    protected function check_attempts_results($results, $attemptids) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         foreach ($results as $resultrow) {
             $result = $this->explode_dot_separated_keys_to_make_subindexs($resultrow);
             // Re-load quiz attempt data.

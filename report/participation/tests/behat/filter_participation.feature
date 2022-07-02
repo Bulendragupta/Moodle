@@ -42,8 +42,12 @@ Feature: In a participation report, admin can filter student actions
     And I log out
 
     When I am on the "Course 1" course page logged in as admin
+<<<<<<< HEAD
     When I navigate to "Reports" in current page administration
     And I click on "Course participation" "link"
+=======
+    When I navigate to "Reports > Course participation" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the field "instanceid" to "Test book name"
     And I set the field "roleid" to "Student"
     And I press "Go"

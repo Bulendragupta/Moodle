@@ -1414,11 +1414,19 @@ class cache_test extends \advanced_testcase {
 
         // Check we get the expected disabled caches.
         $cache = cache::make('core', 'string');
+<<<<<<< HEAD
         $this->assertInstanceOf(cache_disabled::class, $cache);
 
         // Test an application cache.
         $cache = cache::make_from_params(cache_store::MODE_APPLICATION, 'phpunit', 'disable');
         $this->assertInstanceOf(cache_disabled::class, $cache);
+=======
+        $this->assertInstanceOf('cache_disabled', $cache);
+
+        // Test an application cache.
+        $cache = cache::make_from_params(cache_store::MODE_APPLICATION, 'phpunit', 'disable');
+        $this->assertInstanceOf('cache_disabled', $cache);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $this->assertFalse($cache->get('test'));
         $this->assertFalse($cache->get_versioned('v', 1));
@@ -1429,7 +1437,11 @@ class cache_test extends \advanced_testcase {
 
         // Test a session cache.
         $cache = cache::make_from_params(cache_store::MODE_SESSION, 'phpunit', 'disable');
+<<<<<<< HEAD
         $this->assertInstanceOf(cache_disabled::class, $cache);
+=======
+        $this->assertInstanceOf('cache_disabled', $cache);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $this->assertFalse($cache->get('test'));
         $this->assertFalse($cache->get_versioned('v', 1));
@@ -1440,7 +1452,11 @@ class cache_test extends \advanced_testcase {
 
         // Finally test a request cache.
         $cache = cache::make_from_params(cache_store::MODE_REQUEST, 'phpunit', 'disable');
+<<<<<<< HEAD
         $this->assertInstanceOf(cache_disabled::class, $cache);
+=======
+        $this->assertInstanceOf('cache_disabled', $cache);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $this->assertFalse($cache->get('test'));
         $this->assertFalse($cache->get_versioned('v', 1));
@@ -2175,7 +2191,11 @@ class cache_test extends \advanced_testcase {
         try {
             cache_helper::purge_by_definition('phpunit', 'purge2');
             $this->fail('Should not be able to purge a definition required identifiers without providing them.');
+<<<<<<< HEAD
         } catch (\coding_exception $ex) {
+=======
+        } catch (coding_exception $ex) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Identifier required for cache has not been provided', $ex->getMessage());
         }
     }

@@ -24,7 +24,11 @@
 
 import $ from 'jquery';
 import * as Aria from './aria';
+<<<<<<< HEAD
 import Bootstrap from './index';
+=======
+import Bootstrap from './bootstrap/index';
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 import Pending from 'core/pending';
 import setupBootstrapPendingChecks from './pending';
 
@@ -42,7 +46,11 @@ const rememberTabs = () => {
     });
     const hash = window.location.hash;
     if (hash) {
+<<<<<<< HEAD
         const tab = document.querySelector('[role="tablist"] [href="' + hash + '"]');
+=======
+        const tab = document.querySelector('.nav-link[href="' + hash + '"]');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         if (tab) {
             tab.click();
         }

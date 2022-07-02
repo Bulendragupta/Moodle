@@ -35,7 +35,11 @@ require_once(__DIR__ . '/fixtures/task_fixtures.php');
  * @copyright 2019 The Open University
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+<<<<<<< HEAD
 class task_running_test extends \advanced_testcase {
+=======
+class task_running_testcase extends \advanced_testcase {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     /**
      * Test for ad-hoc tasks.

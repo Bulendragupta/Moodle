@@ -349,6 +349,7 @@ class behat_general extends behat_base {
         // Gets the node based on the requested selector type and locator.
         $node = $this->get_selected_node($selectortype, $element);
         $this->execute_js_on_node($node, '{{ELEMENT}}.scrollIntoView();');
+<<<<<<< HEAD
         $node->mouseOver();
     }
 
@@ -365,6 +366,8 @@ class behat_general extends behat_base {
         // Gets the node based on the requested selector type and locator.
         $node = $this->get_node_in_container($selectortype, $element, $containerselectortype, $containerselectortype);
         $this->execute_js_on_node($node, '{{ELEMENT}}.scrollIntoView();');
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $node->mouseOver();
     }
 
@@ -1894,9 +1897,12 @@ EOF;
             case 'SPACE':
                 $keys[] = behat_keys::SPACE;
                 break;
+<<<<<<< HEAD
             case 'MULTIPLY':
                 $keys[] = behat_keys::MULTIPLY;
                 break;
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             default:
                 // You can enter a single ASCII character (e.g. a letter) to directly type that key.
                 if (strlen($key) === 1) {
@@ -2150,6 +2156,7 @@ EOF;
     public function i_mark_this_test_as_long_running(int $factor = 2): void {
         $this->set_test_timeout_factor($factor);
     }
+<<<<<<< HEAD
 
     /**
      * Click on a dynamic tab to load its content
@@ -2175,4 +2182,6 @@ EOF;
         $class = core_plugin_manager::resolve_plugininfo_class($plugintype);
         $class::enable_plugin($plugin, true);
     }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

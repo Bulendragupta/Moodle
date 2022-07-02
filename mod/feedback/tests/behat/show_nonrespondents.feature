@@ -59,8 +59,13 @@ Feature: Show users who have not responded to the feedback survey
 
     # Go in as teacher and check the users who haven't completed it.
     And I am on the Frogs "feedback activity" page logged in as teacher1
+<<<<<<< HEAD
     And I navigate to "Responses" in current page administration
     And I select "Show non-respondents" from the "jump" singleselect
+=======
+    And I navigate to "Show non-respondents" in current page administration
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     # Should only show student 2; not student 1 (they did it) or 3 (not in grouping).
     Then I should see "Student 2"
     And I should not see "Student 1"

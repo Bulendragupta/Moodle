@@ -24,7 +24,10 @@
 
 namespace tool_usertours;
 
+<<<<<<< HEAD
 use core\output\inplace_editable;
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 use tool_usertours\local\clientside_filter\clientside_filter;
 
 defined('MOODLE_INTERNAL') || die();

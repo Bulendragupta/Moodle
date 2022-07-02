@@ -14,9 +14,12 @@ Feature: Duplicate activities
     And the following "course enrolments" exist:
       | user | course | role |
       | teacher1 | C1 | editingteacher |
+<<<<<<< HEAD
     And the following "activities" exist:
       | activity | name               | intro                     | course | idnumber   | section |
       | data     | Test database name | Test database description | C1     | database1  | 1       |
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And the following config values are set as admin:
       | backup_import_activities | 0 | backup |
     And I log in as "teacher1"

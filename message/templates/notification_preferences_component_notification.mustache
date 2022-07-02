@@ -55,6 +55,7 @@
             {{/locked}}
             {{^locked}}
                 <form>
+<<<<<<< HEAD
                     <div class="preference-state" data-preference="{{{preferencekey}}}_{{{name}}}">
                         <div class="custom-control custom-switch">
                             <input type="checkbox"
@@ -66,6 +67,60 @@
                             <label for="{{{preferencekey}}}_{{{name}}}" class="custom-control-label"
                                 title="{{enabledlabel}}" >
                             </label>
+=======
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-6">
+                                {{#loggedin}}
+                                    {{< core/hover_tooltip }}
+                                        {{$anchor}}
+                                            <label class="preference-state"
+                                                title="{{displayname}}"
+                                                data-state="{{name}}">
+
+                                                <span class="accesshide">{{displayname}}</span>
+                                                <input type="checkbox"
+                                                    tabindex="-1"
+                                                    class="accesshide"
+                                                    {{#checked}}checked{{/checked}}
+                                                    {{#disableall}}disabled{{/disableall}} />
+                                                <div class="preference-state-status-container" tabindex="0">
+                                                    <span class="on-text">{{#str}} on, message {{/str}}</span>
+                                                    <span class="off-text">{{#str}} off, message {{/str}}</span>
+                                                    {{> core/loading }}
+                                                </div>
+                                            </label>
+                                        {{/anchor}}
+                                        {{$tooltip}}{{displayname}}{{/tooltip}}
+                                    {{/ core/hover_tooltip }}
+                                {{/loggedin}}
+                            </div>
+                            <div class="col-6">
+                                {{#loggedoff}}
+                                    {{< core/hover_tooltip }}
+                                        {{$anchor}}
+                                            <label class="preference-state"
+                                                title="{{displayname}}"
+                                                data-state="{{name}}">
+
+                                                <span class="accesshide">{{displayname}}</span>
+                                                <input type="checkbox"
+                                                    tabindex="-1"
+                                                    class="accesshide"
+                                                    {{#checked}}checked{{/checked}}
+                                                    {{#disableall}}disabled{{/disableall}} />
+                                                <div class="preference-state-status-container" tabindex="0">
+                                                    <span class="on-text">{{#str}} on, message {{/str}}</span>
+                                                    <span class="off-text">{{#str}} off, message {{/str}}</span>
+                                                    {{> core/loading }}
+                                                </div>
+                                            </label>
+                                        {{/anchor}}
+                                        {{$tooltip}}{{displayname}}{{/tooltip}}
+                                    {{/ core/hover_tooltip }}
+                                {{/loggedoff}}
+                            </div>
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                         </div>
                     </div>
                 </form>

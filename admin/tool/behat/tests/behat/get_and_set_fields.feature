@@ -61,7 +61,11 @@ Feature: Verify that all form fields values can be get and set
     And I set the field "Force format" to "1"
     And I press "Save and return to course"
     And I am on the "Test this one" "wiki activity" page
+<<<<<<< HEAD
     And I navigate to "Settings" in current page administration
+=======
+    And I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I expand all fieldsets
     And the field "Force format" matches value "1"
     And the field "Force format" does not match value ""
@@ -69,7 +73,11 @@ Feature: Verify that all form fields values can be get and set
     And I set the field "Force format" to ""
     And I press "Save and return to course"
     And I am on the "Test this one" "wiki activity" page
+<<<<<<< HEAD
     And I navigate to "Settings" in current page administration
+=======
+    And I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I expand all fieldsets
     And the field "Force format" matches value ""
     And the field "Force format" does not match value "1"
@@ -78,7 +86,11 @@ Feature: Verify that all form fields values can be get and set
       | Force format | 1 |
     And I press "Save and return to course"
     And I am on the "Test this one" "wiki activity" page
+<<<<<<< HEAD
     And I navigate to "Settings" in current page administration
+=======
+    And I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I expand all fieldsets
     And the following fields match these values:
       | Force format | 1 |
@@ -89,7 +101,11 @@ Feature: Verify that all form fields values can be get and set
       | Force format | |
     And I press "Save and return to course"
     And I am on the "Test this one" "wiki activity" page
+<<<<<<< HEAD
     And I navigate to "Settings" in current page administration
+=======
+    And I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I expand all fieldsets
     And the following fields match these values:
       | Force format | |
@@ -117,6 +133,7 @@ Feature: Verify that all form fields values can be get and set
       | idnumber         | choice1                      |
       | intro            | Test choice description      |
       | name             | Test choice name             |
+<<<<<<< HEAD
       | choice1          | Option 1, Option 2, Option 3 |
       | section          | 1                            |
       | allowupdate      | 1                            |
@@ -129,9 +146,16 @@ Feature: Verify that all form fields values can be get and set
     And I am on "Course 1" course homepage
     And I am on the "Test choice name" "choice activity" page
     And I set the field "one" to "1"
+=======
+      | option           | Option 1, Option 2, Option 3 |
+      | section          | 1                            |
+      | allowupdate      | 1                            |
+    And I am on the "Test choice name" "choice activity" page
+    And I set the field "Option 1" to "1"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Save my choice"
-    And the field "one" matches value "1"
-    And the field "two" matches value ""
+    And the field "Option 1" matches value "1"
+    And the field "Option 2" matches value ""
     # Check if field xpath set/match works.
     And I am on "Course 1" course homepage
     And I navigate to "Settings" in current page administration

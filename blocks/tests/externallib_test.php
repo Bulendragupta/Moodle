@@ -250,13 +250,21 @@ class externallib_test extends externallib_advanced_testcase {
         $course = $this->getDataGenerator()->create_course();
         $studentrole = $DB->get_record('role', array('shortname' => 'student'));
         $this->getDataGenerator()->enrol_user($user->id, $course->id, $studentrole->id);
+<<<<<<< HEAD
         $coursecontext = \context_course::instance($course->id);
+=======
+        $coursecontext = context_course::instance($course->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Create a HTML block.
         $title = 'My block $$(a+b)=2$$';
         $body = 'My block contents $$(a+b)=2$$';
         $bodyformat = FORMAT_MOODLE;
+<<<<<<< HEAD
         $page = new \moodle_page();
+=======
+        $page = new moodle_page();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $page->set_context($coursecontext);
         $page->set_pagelayout('course');
         $course->format = course_get_format($course)->get_format();
@@ -267,7 +275,11 @@ class externallib_test extends externallib_advanced_testcase {
 
         $this->setUser($user);
         // Re-create the page.
+<<<<<<< HEAD
         $page = new \moodle_page();
+=======
+        $page = new moodle_page();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $page->set_context($coursecontext);
         $page->set_pagelayout('course');
         $course->format = course_get_format($course)->get_format();
@@ -292,10 +304,17 @@ class externallib_test extends externallib_advanced_testcase {
 
         // Check for the new block.
         $result = core_block_external::get_course_blocks($course->id, true);
+<<<<<<< HEAD
         $result = \external_api::clean_returnvalue(core_block_external::get_course_blocks_returns(), $result);
 
         // Format the original data.
         $sitecontext = \context_system::instance();
+=======
+        $result = external_api::clean_returnvalue(core_block_external::get_course_blocks_returns(), $result);
+
+        // Format the original data.
+        $sitecontext = context_system::instance();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $title = external_format_string($title, $coursecontext->id);
         list($body, $bodyformat) = external_format_text($body, $bodyformat, $coursecontext->id, 'block_html', 'content');
 

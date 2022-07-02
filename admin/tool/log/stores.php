@@ -48,6 +48,7 @@ $syscontext = context_system::instance();
 
 switch ($action) {
     case 'disable':
+<<<<<<< HEAD
         $class = \core_plugin_manager::resolve_plugininfo_class('logstore');
         $class::enable_plugin($store, false);
         break;
@@ -55,6 +56,21 @@ switch ($action) {
     case 'enable':
         $class = \core_plugin_manager::resolve_plugininfo_class('logstore');
         $class::enable_plugin($store, true);
+=======
+        unset($enabled[$enrol]);
+        set_config('enabled_stores', implode(',', array_keys($enabled)), 'tool_log');
+        add_to_config_log('tool_logstore_visibility', '1', '0', $enrol);
+        break;
+
+    case 'enable':
+        if (!isset($all[$enrol])) {
+            break;
+        }
+        $enabled = array_keys($enabled);
+        $enabled[] = $enrol;
+        set_config('enabled_stores', implode(',', $enabled), 'tool_log');
+        add_to_config_log('tool_logstore_visibility', '0', '1', $enrol);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         break;
 
     case 'up':

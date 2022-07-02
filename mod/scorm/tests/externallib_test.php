@@ -178,7 +178,11 @@ class externallib_test extends externallib_advanced_testcase {
         self::setUser($student2);
 
         // I should not be able to view the attempts of another student.
+<<<<<<< HEAD
         $this->expectException(\required_capability_exception::class);
+=======
+        $this->expectException(required_capability_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_scorm_external::get_scorm_attempt_count($this->scorm->id, $this->student->id);
     }
 
@@ -187,7 +191,11 @@ class externallib_test extends externallib_advanced_testcase {
         self::setUser($this->student);
 
         // Test invalid instance id.
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_scorm_external::get_scorm_attempt_count(0, $this->student->id);
     }
 
@@ -195,7 +203,11 @@ class externallib_test extends externallib_advanced_testcase {
         // As student.
         self::setUser($this->student);
 
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         mod_scorm_external::get_scorm_attempt_count($this->scorm->id, -1);
     }
 

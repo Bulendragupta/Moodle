@@ -90,7 +90,11 @@ class condition_test extends \advanced_testcase {
         try {
             $cond = new condition($structure);
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Missing or invalid ->op', $e->getMessage());
         }
 
@@ -99,7 +103,11 @@ class condition_test extends \advanced_testcase {
         try {
             $cond = new condition($structure);
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Missing or invalid ->op', $e->getMessage());
         }
 
@@ -108,7 +116,11 @@ class condition_test extends \advanced_testcase {
         try {
             $cond = new condition($structure);
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Missing or invalid ->v', $e->getMessage());
         }
 
@@ -117,7 +129,11 @@ class condition_test extends \advanced_testcase {
         try {
             $cond = new condition($structure);
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Missing or invalid ->v', $e->getMessage());
         }
 
@@ -126,7 +142,11 @@ class condition_test extends \advanced_testcase {
         try {
             $cond = new condition($structure);
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Unexpected ->v', $e->getMessage());
         }
 
@@ -136,7 +156,11 @@ class condition_test extends \advanced_testcase {
         try {
             $cond = new condition($structure);
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Missing ->sf or ->cf', $e->getMessage());
         }
 
@@ -145,7 +169,11 @@ class condition_test extends \advanced_testcase {
         try {
             $cond = new condition($structure);
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Invalid ->sf', $e->getMessage());
         }
 
@@ -155,7 +183,11 @@ class condition_test extends \advanced_testcase {
         try {
             $cond = new condition($structure);
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Both ->sf and ->cf', $e->getMessage());
         }
 
@@ -165,7 +197,11 @@ class condition_test extends \advanced_testcase {
         try {
             $cond = new condition($structure);
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Invalid ->cf', $e->getMessage());
         }
 
@@ -300,7 +336,11 @@ class condition_test extends \advanced_testcase {
         // is evidence that it called the right function to get the name).
         $information = $cond->get_description(false, false, $info);
         $information = \core_availability\info::format_info($information, $info->get_course());
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression('~Department~', $information);
+=======
+        $this->assertRegExp('~Department~', $information);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Set the field to true for both users and retry.
         $DB->set_field('user', 'department', 'Cheese Studies', array('id' => $user->id));
@@ -380,7 +420,11 @@ class condition_test extends \advanced_testcase {
         if (!$yes) {
             $information = $cond->get_description(false, false, $info);
             $information = \core_availability\info::format_info($information, $info->get_course());
+<<<<<<< HEAD
             $this->assertMatchesRegularExpression($failpattern, $information);
+=======
+            $this->assertRegExp($failpattern, $information);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         }
 
         // Negative (NOT) test.
@@ -389,7 +433,11 @@ class condition_test extends \advanced_testcase {
         if ($yes) {
             $information = $cond->get_description(false, true, $info);
             $information = \core_availability\info::format_info($information, $info->get_course());
+<<<<<<< HEAD
             $this->assertMatchesRegularExpression($failpattern, $information);
+=======
+            $this->assertRegExp($failpattern, $information);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         }
     }
 

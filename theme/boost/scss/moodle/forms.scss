@@ -54,6 +54,15 @@
     border-bottom: $border-width solid $table-border-color;
 }
 
+<<<<<<< HEAD
+=======
+@include media-breakpoint-up(sm) {
+    .mform > .form-group {
+        margin-left: $spacer * 1.5;
+    }
+}
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 #adminsettings .form-control[size] {
     width: auto;
 }
@@ -286,7 +295,11 @@ fieldset.coursesearchbox label {
     overflow: auto;
     margin: $dropdown-spacer 0 0;
     padding: $dropdown-padding-y 0;
+<<<<<<< HEAD
     z-index: 2;
+=======
+    z-index: 1;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }
 
 .form-autocomplete-suggestions li {

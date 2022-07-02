@@ -865,11 +865,19 @@ function badges_save_backpack_credentials(stdClass $data) {
  */
 function badges_open_badges_backpack_api(?int $backpackid = null) {
     if (!$backpackid) {
+<<<<<<< HEAD
         $backpack = badges_get_site_primary_backpack();
     } else {
         $backpack = badges_get_site_backpack($backpackid);
     }
 
+=======
+        global $CFG;
+        $backpackid = $CFG->badges_site_backpack;
+    }
+
+    $backpack = badges_get_site_backpack($backpackid);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     if (empty($backpack->apiversion)) {
         return OPEN_BADGES_V2;
     }
@@ -884,6 +892,7 @@ function badges_open_badges_backpack_api(?int $backpackid = null) {
  * @return array(stdClass)
  */
 function badges_get_site_backpack($id, int $userid = 0) {
+<<<<<<< HEAD
     global $DB;
 
     $sql = "SELECT beb.*, bb.id AS badgebackpack, bb.password, bb.email AS backpackemail
@@ -904,6 +913,28 @@ function badges_get_site_backpack($id, int $userid = 0) {
 function badges_get_user_backpack(?int $userid = 0) {
     global $DB;
 
+=======
+    global $DB;
+
+    $sql = "SELECT beb.*, bb.id AS badgebackpack, bb.password, bb.email AS backpackemail
+              FROM {badge_external_backpack} beb
+         LEFT JOIN {badge_backpack} bb ON bb.externalbackpackid = beb.id AND bb.userid=:userid
+             WHERE beb.id=:id";
+
+    return $DB->get_record_sql($sql, ['id' => $id, 'userid' => $userid]);
+}
+
+/**
+ * Get the user backpack for the currently logged in user OR the provided user
+ *
+ * @param int|null $userid The user whose backpack you're requesting for. If null, get the logged in user's backpack
+ * @return mixed The user's backpack or none.
+ * @throws dml_exception
+ */
+function badges_get_user_backpack(?int $userid = 0) {
+    global $DB;
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     if (!$userid) {
         global $USER;
         $userid = $USER->id;
@@ -922,6 +953,7 @@ function badges_get_user_backpack(?int $userid = 0) {
  * @return array(stdClass)
  */
 function badges_get_site_primary_backpack() {
+<<<<<<< HEAD
     global $DB;
 
     $sql = 'SELECT *
@@ -931,6 +963,11 @@ function badges_get_site_primary_backpack() {
     $firstbackpack = $DB->get_record_sql($sql, null, MUST_EXIST);
 
     return badges_get_site_backpack($firstbackpack->id);
+=======
+    global $CFG;
+
+    return badges_get_site_backpack($CFG->badges_site_backpack);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }
 
 /**
@@ -939,7 +976,13 @@ function badges_get_site_primary_backpack() {
  * @return array(stdClass)
  */
 function badges_get_site_backpacks() {
+<<<<<<< HEAD
     global $DB;
+=======
+    global $DB, $CFG;
+
+    $all = $DB->get_records('badge_external_backpack', null, 'sortorder ASC');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     $defaultbackpack = badges_get_site_primary_backpack();
     $all = $DB->get_records('badge_external_backpack', null, 'sortorder ASC');

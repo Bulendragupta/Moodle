@@ -28,11 +28,21 @@ Feature: Check that the assignment grade can be rescaled when the max grade is c
       | submissiondrafts | 0                           |
 
     And I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     And I follow "View all submissions"
     And I click on "Grade" "link" in the "Student 1" "table_row"
     And I set the field "Grade out of 100" to "40"
     And I press "Save changes"
     And I follow "View all submissions"
+=======
+    And I navigate to "View all submissions" in current page administration
+    And I click on "Grade" "link" in the "Student 1" "table_row"
+    And I set the field "Grade out of 100" to "40"
+    And I press "Save changes"
+    And I follow "Edit settings"
+    And I follow "Test assignment name"
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And "Student 1" row "Grade" column of "generaltable" table should contain "40.00"
     And I am on the "Test assignment name" "assign activity" page
 

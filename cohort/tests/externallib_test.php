@@ -133,7 +133,11 @@ class externallib_test extends externallib_advanced_testcase {
 
         // Call without required capability.
         $this->unassignUserCapability('moodle/cohort:manage', $contextid, $roleid);
+<<<<<<< HEAD
         $this->expectException(\required_capability_exception::class);
+=======
+        $this->expectException(required_capability_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $createdcohorts = core_cohort_external::create_cohorts(array($cohort3));
     }
 
@@ -165,7 +169,11 @@ class externallib_test extends externallib_advanced_testcase {
         $cohort1 = self::getDataGenerator()->create_cohort();
         $cohort2 = self::getDataGenerator()->create_cohort();
         $this->unassignUserCapability('moodle/cohort:manage', $contextid, $roleid);
+<<<<<<< HEAD
         $this->expectException(\required_capability_exception::class);
+=======
+        $this->expectException(required_capability_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         core_cohort_external::delete_cohorts(array($cohort1->id, $cohort2->id));
     }
 
@@ -291,7 +299,11 @@ class externallib_test extends externallib_advanced_testcase {
 
         // Call without required capability.
         $this->unassignUserCapability('moodle/cohort:manage', $context->id, $roleid);
+<<<<<<< HEAD
         $this->expectException(\required_capability_exception::class);
+=======
+        $this->expectException(required_capability_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         core_cohort_external::update_cohorts(array($cohort1));
     }
 
@@ -312,7 +324,11 @@ class externallib_test extends externallib_advanced_testcase {
         try {
             core_cohort_external::update_cohorts(array($cohort1));
             $this->fail('Expecting invalid_parameter_exception exception, none occured');
+<<<<<<< HEAD
         } catch (\invalid_parameter_exception $e1) {
+=======
+        } catch (invalid_parameter_exception $e1) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Invalid external api parameter: the value is "THIS IS NOT AN ID"', $e1->debuginfo);
         }
 
@@ -320,7 +336,11 @@ class externallib_test extends externallib_advanced_testcase {
         try {
             core_cohort_external::update_cohorts(array($cohort1));
             $this->fail('Expecting invalid_parameter_exception exception, none occured');
+<<<<<<< HEAD
         } catch (\invalid_parameter_exception $e2) {
+=======
+        } catch (invalid_parameter_exception $e2) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Invalid external api parameter: the value is "9.999"', $e2->debuginfo);
         }
     }
@@ -362,7 +382,11 @@ class externallib_test extends externallib_advanced_testcase {
 
         // Call the external function.
         // Should fail because we don't have permission on the dest category
+<<<<<<< HEAD
         $this->expectException(\required_capability_exception::class);
+=======
+        $this->expectException(required_capability_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         core_cohort_external::update_cohorts(array($cohortupdate));
     }
 
@@ -403,7 +427,11 @@ class externallib_test extends externallib_advanced_testcase {
 
         // Call the external function.
         // Should fail because we don't have permission on the src category
+<<<<<<< HEAD
         $this->expectException(\required_capability_exception::class);
+=======
+        $this->expectException(required_capability_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         core_cohort_external::update_cohorts(array($cohortupdate));
     }
 
@@ -454,7 +482,11 @@ class externallib_test extends externallib_advanced_testcase {
             'usertype' => array('type' => 'id', 'value' => '2')
             );
         $this->unassignUserCapability('moodle/cohort:assign', $contextid, $roleid);
+<<<<<<< HEAD
         $this->expectException(\required_capability_exception::class);
+=======
+        $this->expectException(required_capability_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $addcohortmembers = core_cohort_external::add_cohort_members(array($cohort2));
     }
 
@@ -511,7 +543,11 @@ class externallib_test extends externallib_advanced_testcase {
 
         // Call without required capability.
         $this->unassignUserCapability('moodle/cohort:assign', $context->id, $roleid);
+<<<<<<< HEAD
         $this->expectException(\required_capability_exception::class);
+=======
+        $this->expectException(required_capability_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         core_cohort_external::delete_cohort_members(array($cohortdel1, $cohortdel2));
     }
 

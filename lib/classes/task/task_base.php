@@ -233,6 +233,7 @@ abstract class task_base {
     public function get_pid() {
         return $this->pid;
     }
+<<<<<<< HEAD
 
     /**
      * Informs whether the task's component is enabled.
@@ -250,4 +251,6 @@ abstract class task_base {
             return $plugininfo && $plugininfo->is_enabled();
         }
     }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

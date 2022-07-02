@@ -36,7 +36,11 @@ plugins.push('plugins/markdown');
 const getSource = () => {
     const glob = require('glob');
     const path = require('path');
+<<<<<<< HEAD
     const ComponentList = require(path.resolve('.grunt/components.js'));
+=======
+    const ComponentList = require(path.resolve('GruntfileComponents.js'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     const thirdPartyPaths = ComponentList.getThirdPartyPaths();
 
     const source = {

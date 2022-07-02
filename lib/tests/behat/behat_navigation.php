@@ -736,11 +736,16 @@ class behat_navigation extends behat_base {
      * Recognised page names are:
      * | Page type                  | Identifier meaning        | description                          |
      * | Category                   | category idnumber         | List of courses in that category.    |
+<<<<<<< HEAD
      * | Course                     | course shortname          | Main course home page                |
+=======
+     * | Course                     | course shortname          | Main course home pag                 |
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * | Activity                   | activity idnumber         | Start page for that activity         |
      * | Activity editing           | activity idnumber         | Edit settings page for that activity |
      * | [modname] Activity         | activity name or idnumber | Start page for that activity         |
      * | [modname] Activity editing | activity name or idnumber | Edit settings page for that activity |
+<<<<<<< HEAD
      * | Backup                     | course shortname          | Course to backup                     |
      * | Import                     | course shortname          | Course import from                   |
      * | Restore                    | course shortname          | Course to restore from               |
@@ -751,6 +756,8 @@ class behat_navigation extends behat_base {
      * | Enrolment methods          | course shortname          | Enrolment methods for the course     |
      * | Enrolled users             | course shortname          | The main participants page           |
      * | Other users                | course shortname          | The course other users page          |
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      *
      * Examples:
      *
@@ -774,7 +781,11 @@ class behat_navigation extends behat_base {
                 }
                 return new moodle_url('/course/index.php', ['categoryid' => $categoryid]);
 
+<<<<<<< HEAD
             case 'course editing':
+=======
+            case 'course':
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 $courseid = $this->get_course_id($identifier);
                 if (!$courseid) {
                     throw new Exception('The specified course with shortname, fullname, or idnumber "' .
@@ -805,6 +816,7 @@ class behat_navigation extends behat_base {
                 return new moodle_url('/course/modedit.php', [
                     'update' => $cm->id,
                 ]);
+<<<<<<< HEAD
             case 'backup':
                 $courseid = $this->get_course_id($identifier);
                 if (!$courseid) {
@@ -907,6 +919,38 @@ class behat_navigation extends behat_base {
             }
         }
 
+=======
+        }
+
+        $parts = explode(' ', $type);
+        if (count($parts) > 1) {
+            if ($parts[1] === 'activity') {
+                $modname = $parts[0];
+                $cm = $this->get_cm_by_activity_name($modname, $identifier);
+
+                if (count($parts) == 2) {
+                    // View page.
+                    return new moodle_url($cm->url);
+                }
+
+                if ($parts[2] === 'editing') {
+                    // Edit settings page.
+                    return new moodle_url('/course/modedit.php', ['update' => $cm->id]);
+                }
+
+                if ($parts[2] === 'roles') {
+                    // Locally assigned roles page.
+                    return new moodle_url('/admin/roles/assign.php', ['contextid' => $cm->context->id]);
+                }
+
+                if ($parts[2] === 'permissions') {
+                    // Permissions page.
+                    return new moodle_url('/admin/roles/permissions.php', ['contextid' => $cm->context->id]);
+                }
+            }
+        }
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         throw new Exception('Unrecognised core page type "' . $type . '."');
     }
 

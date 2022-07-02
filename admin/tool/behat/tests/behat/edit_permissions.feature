@@ -72,7 +72,11 @@ Feature: Edit capabilities
   @javascript
   Scenario: Edit permissions escapes role names correctly
     When I am on the "C1" "Course" page logged in as "admin"
+<<<<<<< HEAD
     And I navigate to "Settings" in current page administration
+=======
+    And I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Your word for 'Teacher'             | Teacher >= editing  |
       | Your word for 'Non-editing teacher' | Teacher < "editing" |
@@ -82,6 +86,7 @@ Feature: Edit capabilities
     Then I should see "Teacher >= editing (Teacher)" in the "Teacher 1" "table_row"
     And I should see "Teacher < \"editing\" (Non-editing teacher)" in the "Teaching Assistant" "table_row"
     And I should see "Studier & 'learner' (Student)" in the "Student One" "table_row"
+<<<<<<< HEAD
     And I am on the "C1" "permissions" page
     And I should see "Teacher >= editing (Teacher)" in the "mod/forum:replypost" "table_row"
     And I should see "Teacher < \"editing\" (Non-editing teacher)" in the "mod/forum:replypost" "table_row"
@@ -90,3 +95,13 @@ Feature: Edit capabilities
     And "Teacher >= editing (Teacher)" "button" in the "Prohibit role" "dialogue" should be visible
     And "Teacher < \"editing\" (Non-editing teacher)" "button" in the "Prohibit role" "dialogue" should be visible
     And "Studier & 'learner' (Student)" "button" in the "Prohibit role" "dialogue" should be visible
+=======
+    And I navigate to "Users > Permissions" in current page administration
+    And I should see "Teacher >= editing" in the "mod/forum:replypost" "table_row"
+    And I should see "Teacher < \"editing\"" in the "mod/forum:replypost" "table_row"
+    And I should see "Studier & 'learner'" in the "mod/forum:replypost" "table_row"
+    And I follow "Prohibit"
+    And "Teacher >= editing" "button" in the "Prohibit role" "dialogue" should be visible
+    And "Teacher < \"editing\"" "button" in the "Prohibit role" "dialogue" should be visible
+    And "Studier & 'learner'" "button" in the "Prohibit role" "dialogue" should be visible
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

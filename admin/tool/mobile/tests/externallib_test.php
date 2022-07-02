@@ -164,7 +164,11 @@ class externallib_test extends externallib_advanced_testcase {
         $newurl = 'validimage.png';
         set_config('auth_logo', $newurl, 'auth_cas');
         $result = external::get_public_config();
+<<<<<<< HEAD
         $result = \external_api::clean_returnvalue(external::get_public_config_returns(), $result);
+=======
+        $result = external_api::clean_returnvalue(external::get_public_config_returns(), $result);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertStringContainsString($newurl, $result['identityproviders'][1]['iconurl']);
     }
 
@@ -233,8 +237,11 @@ class externallib_test extends externallib_advanced_testcase {
         $expected[] = ['name' => 'coursegraceperiodafter', 'value' => $CFG->coursegraceperiodafter];
         $expected[] = ['name' => 'coursegraceperiodbefore', 'value' => $CFG->coursegraceperiodbefore];
 
+<<<<<<< HEAD
         $expected[] = ['name' => 'enabledashboard', 'value' => $CFG->enabledashboard];
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertCount(0, $result['warnings']);
         $this->assertEquals($expected, $result['settings']);
 

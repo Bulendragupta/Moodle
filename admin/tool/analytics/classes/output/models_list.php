@@ -65,7 +65,11 @@ class models_list implements \renderable, \templatable {
 
         $newmodelmenu = new \action_menu();
         $newmodelmenu->set_menu_trigger(get_string('newmodel', 'tool_analytics'), 'btn btn-secondary');
+<<<<<<< HEAD
         $newmodelmenu->set_menu_left();
+=======
+        $newmodelmenu->set_alignment(\action_menu::TL, \action_menu::BL);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $newmodelmenu->add(new \action_menu_link(
             new \moodle_url('/admin/tool/analytics/createmodel.php'),

@@ -52,7 +52,11 @@ class behat_mod_workshop extends behat_base {
         $xpath = "//*[@class='userplan']/descendant::div[./span[contains(.,$phaseliteral)]]";
         $continue = $this->escape(get_string('continue'));
 
+<<<<<<< HEAD
         $this->execute('behat_navigation::i_am_on_page_instance', [$workshopname, 'workshop activity']);
+=======
+        $this->execute("behat_general::i_click_on_in_the", [$this->escape($workshopname), 'link', 'page', 'region']);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $this->execute('behat_general::i_click_on_in_the',
             array('a.action-icon', "css_element", $this->escape($xpath), "xpath_element")
@@ -73,7 +77,11 @@ class behat_mod_workshop extends behat_base {
         $savechanges = $this->escape(get_string('savechanges'));
         $xpath = "//div[contains(concat(' ', normalize-space(@class), ' '), ' singlebutton ')]/descendant::*[@type='submit']";
 
+<<<<<<< HEAD
         $this->execute("behat_navigation::i_am_on_page_instance", [$workshopname, 'workshop activity']);
+=======
+        $this->execute("behat_navigation::i_am_on_page_instance", [$this->escape($workshopname), 'workshop activity']);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $this->execute("behat_general::i_click_on", array($xpath, "xpath_element"));
 
@@ -116,7 +124,11 @@ class behat_mod_workshop extends behat_base {
         $assess = $this->escape(get_string('assess', 'workshop'));
         $saveandclose = $this->escape(get_string('saveandclose', 'workshop'));
 
+<<<<<<< HEAD
         $this->execute('behat_navigation::i_am_on_page_instance', [$workshopname, 'workshop activity']);
+=======
+        $this->execute("behat_navigation::i_am_on_page_instance", [$workshopname, 'workshop activity']);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $this->execute('behat_general::i_click_on_in_the',
             array($assess, "button", $xpath, "xpath_element")

@@ -34,7 +34,11 @@ Feature: Group assignment submissions
       | submissiondrafts | 0                           |
       | teamsubmission   | 1                           |
     And I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I follow "View all submissions"
+=======
+    When I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then "//tr[contains(., 'Student 0')][contains(., 'Default group')]" "xpath_element" should exist
     And "//tr[contains(., 'Student 1')][contains(., 'Default group')]" "xpath_element" should exist
     And "//tr[contains(., 'Student 2')][contains(., 'Default group')]" "xpath_element" should exist
@@ -51,8 +55,14 @@ Feature: Group assignment submissions
       | user | group |
       | student0 | G1 |
       | student1 | G1 |
+<<<<<<< HEAD
     And I am on the "Test assignment name" "assign activity" page
     And I follow "View all submissions"
+=======
+    And I am on "Course 1" course homepage
+    And I follow "Test assignment name"
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the field "Separate groups" to "Group 1"
     And "//tr[contains(., 'Student 0')][contains(., 'Group 1')]" "xpath_element" should exist
     And "//tr[contains(., 'Student 1')][contains(., 'Group 1')]" "xpath_element" should exist
@@ -104,7 +114,11 @@ Feature: Group assignment submissions
       | Test assignment name  | student1  | I'm the student's first submission  |
 
     And I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I follow "View all submissions"
+=======
+    When I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then "Student 1" row "Status" column of "generaltable" table should contain "Submitted for grading"
     And "Student 2" row "Status" column of "generaltable" table should contain "Submitted for grading"
     And "Student 3" row "Status" column of "generaltable" table should not contain "Submitted for grading"
@@ -115,7 +129,11 @@ Feature: Group assignment submissions
       | Test assignment name  | student3  | I'm the student's first submission  |
 
     And I am on the "Test assignment name" Activity page
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And "Student 1" row "Status" column of "generaltable" table should contain "Submitted for grading"
     And "Student 2" row "Status" column of "generaltable" table should contain "Submitted for grading"
     And "Student 3" row "Status" column of "generaltable" table should contain "Submitted for grading"
@@ -164,7 +182,11 @@ Feature: Group assignment submissions
       | Test assignment name  | student1  | I'm the student's first submission  |
 
     And I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Grade" "link" in the "Student 1" "table_row"
     And I set the following fields to these values:
       | Grade out of 100 | 50.0 |
@@ -236,10 +258,17 @@ Feature: Group assignment submissions
       | submissiondrafts                     | 0                            |
 
     And the following "mod_assign > submissions" exist:
+<<<<<<< HEAD
       | assign                | user      | onlinetext                          |
       | Test assignment name  | student1  | I'm the student's first submission  |
       | Test assignment name  | student3  | I'm the student's first submission  |
       | Test assignment name  | student5  | I'm the student's first submission  |
+=======
+      | assign                | user      | onlinetext                      |
+      | Test assignment name  | student1  | I'm the student's 1 submission  |
+      | Test assignment name  | student3  | I'm the student's 3 submission  |
+      | Test assignment name  | student5  | I'm the student's 5 submission  |
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     And I am on the "Test assignment name" Activity page logged in as admin
     And I should see "3" in the "Groups" "table_row"
@@ -312,6 +341,10 @@ Feature: Group assignment submissions
     And I log out
 
     And I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I follow "View all submissions"
+=======
+    When I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then "Student 1" row "Status" column of "generaltable" table should contain "Submitted for grading"
     And "Student 2" row "Status" column of "generaltable" table should contain "Submitted for grading"

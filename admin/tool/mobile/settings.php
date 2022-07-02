@@ -27,6 +27,13 @@
 defined('MOODLE_INTERNAL') || die();
 
 use core_admin\local\settings\autocomplete;
+<<<<<<< HEAD
+=======
+
+if ($hassiteconfig) {
+
+    $ADMIN->add('root', new admin_category('mobileapp', new lang_string('mobileapp', 'tool_mobile')), 'development');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 if ($hassiteconfig) {
 
@@ -116,11 +123,14 @@ if ($hassiteconfig) {
     $temp->add(new admin_setting_configselect('tool_mobile/qrcodetype',
                 new lang_string('qrcodetype', 'tool_mobile'),
                 new lang_string('qrcodetype_desc', 'tool_mobile'), $qrcodetypedefault, $options));
+<<<<<<< HEAD
 
     $temp->add(new admin_setting_configduration('tool_mobile/qrkeyttl',
         new lang_string('qrkeyttl', 'tool_mobile'),
         new lang_string('qrkeyttl_desc', 'tool_mobile'), tool_mobile\api::LOGIN_QR_KEY_TTL, MINSECS));
     $temp->hide_if('tool_mobile/qrkeyttl', 'tool_mobile/qrcodetype', 'neq', tool_mobile\api::QR_CODE_LOGIN);
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     $temp->add(new admin_setting_configtext('tool_mobile/forcedurlscheme',
                 new lang_string('forcedurlscheme_key', 'tool_mobile'),

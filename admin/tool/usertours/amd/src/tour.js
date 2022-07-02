@@ -49,8 +49,12 @@ const MINSPACING = 50;
 /**
  * A user tour.
  *
+<<<<<<< HEAD
  * @class tool_usertours/tour
  * @property {boolean} tourRunning Whether the tour is currently running.
+=======
+ * @class
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
  */
 const Tour = class {
     tourRunning = false;

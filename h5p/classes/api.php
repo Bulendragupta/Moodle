@@ -197,7 +197,11 @@ class api {
         global $DB;
 
         // Deconstruct the URL and get the pathname associated.
+<<<<<<< HEAD
         if ($skipcapcheck || self::can_access_pluginfile_hash($url, $preventredirect)) {
+=======
+        if (self::can_access_pluginfile_hash($url, $preventredirect)) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $pathnamehash = self::get_pluginfile_hash($url);
         }
 

@@ -1004,7 +1004,11 @@ class lib_test extends \advanced_testcase {
     public function test_calendar_can_manage_user_event() {
         global $DB, $USER;
         $generator = $this->getDataGenerator();
+<<<<<<< HEAD
         $sitecontext = \context_system::instance();
+=======
+        $sitecontext = context_system::instance();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->resetAfterTest();
         $this->setAdminUser();
         $user1 = $generator->create_user();
@@ -1044,6 +1048,7 @@ class lib_test extends \advanced_testcase {
         $result = calendar_can_manage_user_event($adminevent);
         $this->assertEquals(false, $result);
     }
+<<<<<<< HEAD
 
     /**
      * Data provider for {@see test_calendar_format_event_location}
@@ -1075,4 +1080,6 @@ class lib_test extends \advanced_testcase {
         $event = create_event(['location' => $location]);
         $this->assertMatchesRegularExpression("|^({$expectedpattern})$|", calendar_format_event_location($event));
     }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

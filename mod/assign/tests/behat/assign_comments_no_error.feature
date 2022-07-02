@@ -11,12 +11,17 @@ Feature: Switch role does not cause an error message in assignsubmission_comment
     And the following "course enrolments" exist:
       | course | user     | role           |
       | C1     | teacher1 | editingteacher |
+<<<<<<< HEAD
     And the following "activities" exist:
       | activity | course | idnumber | name                | intro                        | teamsubmission |
       | assign   | C1     | a1       | Test assignment one | This is the description text | 1              |
     And the following "activity" exists:
       | activity         | assign                       |
       | idnumber         | ass1                         |
+=======
+    And the following "activity" exists:
+      | activity         | assign                       |
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
       | course           | C1                           |
       | name             | Test assignment              |
       | intro            | This is the description text |

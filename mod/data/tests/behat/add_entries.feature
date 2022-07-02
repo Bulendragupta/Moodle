@@ -80,11 +80,15 @@ Feature: Users can add entries to database activities
     Given I am on the "Course 1" course page logged in as teacher1
     And I add a "Text area" field to "Test database name" database and I fill the form with:
       | Field name | Textarea field name |
+<<<<<<< HEAD
     And I am on "Course 1" course homepage
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     When I add an entry to "Test database name" database with:
       | Textarea field name | This is the content |
     And I click on "Insert H5P" "button"
     Then I should see "Browse repositories..."
+<<<<<<< HEAD
 
   @javascript
   Scenario: If maximum number of entries is set other than None then add entries should be seen only if number of entries is less than it
@@ -128,3 +132,5 @@ Feature: Users can add entries to database activities
     And I log out
     When I am on the "Test database name" "data activity" page logged in as "guest"
     Then I should not see "Add entry"
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

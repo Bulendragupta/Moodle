@@ -494,9 +494,14 @@ class eventobservers_test extends \advanced_testcase {
 
         $modurl = new \moodle_url('/mod/book/view.php', array('id' => $book->cmid));
 
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression('~<h2>.*' . preg_quote($event->get_url()->out(), '~') . '.*</h2>~',
             $msg->fullmessagehtml);
         $this->assertMatchesRegularExpression('~<li>.*' . preg_quote($modurl->out(), '~') . '.*</li>~', $msg->fullmessagehtml);
+=======
+        $this->assertRegExp('~<h2>.*' . preg_quote($event->get_url()->out(), '~') . '.*</h2>~', $msg->fullmessagehtml);
+        $this->assertRegExp('~<li>.*' . preg_quote($modurl->out(), '~') . '.*</li>~', $msg->fullmessagehtml);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertStringContainsString('<li><strong>'.$rule->get_name($context).'</strong></li>', $msg->fullmessagehtml);
         $this->assertStringContainsString('<li>'.$rule->get_description($context).'</li>', $msg->fullmessagehtml);
         $this->assertStringContainsString('<li>'.$rule->get_event_name().'</li>', $msg->fullmessagehtml);

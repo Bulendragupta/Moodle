@@ -400,6 +400,7 @@ abstract class administration_helper extends cache_helper {
     /**
      * This function must be implemented to display the cache admin page.
      *
+<<<<<<< HEAD
      * @param \core_cache\output\renderer $renderer the renderer used to generate the page.
      * @return string the HTML for the page.
      */
@@ -428,4 +429,10 @@ abstract class administration_helper extends cache_helper {
      * @return array Details of cache usage
      */
     abstract public function get_usage(int $samplekeys): array;
+=======
+     * @param core_cache_renderer $renderer the renderer used to generate the page.
+     * @return string the HTML for the page.
+     */
+    public abstract function generate_admin_page(\core_cache_renderer $renderer): string;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

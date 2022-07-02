@@ -167,8 +167,13 @@ class api_test extends \advanced_testcase {
         $this->assertEquals('success', $template->get('shortname'));
 
         // Trying to change the context.
+<<<<<<< HEAD
         $this->expectException(\coding_exception::class);
         api::update_template((object) ['id' => $template->get('id'), 'contextid' => \context_coursecat::instance($cat->id)->id]);
+=======
+        $this->expectException(coding_exception::class);
+        api::update_template((object) array('id' => $template->get('id'), 'contextid' => context_coursecat::instance($cat->id)));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**
@@ -516,7 +521,11 @@ class api_test extends \advanced_testcase {
 
         // Check that api::create_plan cannot be used.
         unset($record->id);
+<<<<<<< HEAD
         $this->expectException(\coding_exception::class);
+=======
+        $this->expectException(coding_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $plan = api::create_plan($record);
     }
 
@@ -817,7 +826,11 @@ class api_test extends \advanced_testcase {
         }
 
         // Completing a plan that is completed throws an exception.
+<<<<<<< HEAD
         $this->expectException(\coding_exception::class);
+=======
+        $this->expectException(coding_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         api::complete_plan($plan);
     }
 
@@ -4509,7 +4522,11 @@ class api_test extends \advanced_testcase {
 
         $this->setUser($u1);
 
+<<<<<<< HEAD
         $this->expectException(\required_capability_exception::class);
+=======
+        $this->expectException(required_capability_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         api::delete_evidence($ev1);
     }
 

@@ -50,9 +50,14 @@ Feature: Lesson group override
 
   Scenario: Add, modify then delete a group override
     Given I am on the "Test lesson name" "lesson activity" page logged in as teacher1
+<<<<<<< HEAD
     And I navigate to "Overrides" in current page administration
     And I select "Group overrides" from the "jump" singleselect
     And I follow "Add group override"
+=======
+    And I navigate to "Group overrides" in current page administration
+    And I press "Add group override"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Override group      | Group 1 |
       | id_deadline_enabled | 1 |
@@ -74,9 +79,14 @@ Feature: Lesson group override
 
   Scenario: Duplicate a user override
     Given I am on the "Test lesson name" "lesson activity" page logged in as teacher1
+<<<<<<< HEAD
     When I navigate to "Overrides" in current page administration
     And I select "Group overrides" from the "jump" singleselect
     And I follow "Add group override"
+=======
+    And I navigate to "Group overrides" in current page administration
+    And I press "Add group override"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Override group      | Group 1 |
       | id_deadline_enabled | 1 |
@@ -196,7 +206,11 @@ Feature: Lesson group override
     And I should see "Lesson closes"
     And I log out
     And I am on the "Test lesson name" "lesson activity" page logged in as student2
+<<<<<<< HEAD
     Then the activity date in "Test lesson name" should contain "Closed: Saturday, 1 January 2000, 8:00"
+=======
+    Then I should see "This lesson closed on Saturday, 1 January 2000, 8:00"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I should not see "Cat is an amphibian"
     And I log out
     And I am on the "Test lesson name" "lesson activity" page logged in as student1
@@ -227,7 +241,11 @@ Feature: Lesson group override
     And I should see "Lesson opens"
     And I log out
     And I am on the "Test lesson name" "lesson activity" page logged in as student2
+<<<<<<< HEAD
     Then the activity date in "Test lesson name" should contain "Opens: Tuesday, 1 January 2030, 8:00"
+=======
+    Then  I should see "This lesson will be open on Tuesday, 1 January 2030, 8:00"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I should not see "Cat is an amphibian"
     And I log out
     And I am on the "Test lesson name" "lesson activity" page logged in as student1
@@ -280,9 +298,14 @@ Feature: Lesson group override
       | available[minute]    | 00 |
     And I press "Save and display"
     And I am on the "Test lesson name" "lesson activity" page
+<<<<<<< HEAD
     And I navigate to "Overrides" in current page administration
     And I select "Group overrides" from the "jump" singleselect
     And I follow "Add group override"
+=======
+    And I navigate to "Group overrides" in current page administration
+    And I press "Add group override"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Override group       | Group 1 |
       | id_available_enabled | 1 |
@@ -294,8 +317,13 @@ Feature: Lesson group override
     And I press "Save"
     And I should see "Tuesday, 1 January 2030, 8:00"
     And I am on the "Test lesson name" "lesson activity" page
+<<<<<<< HEAD
     And I navigate to "Overrides" in current page administration
     And I follow "Add user override"
+=======
+    And I navigate to "User overrides" in current page administration
+    And I press "Add user override"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Override user        | Student1 |
       | id_available_enabled | 1 |
@@ -308,6 +336,7 @@ Feature: Lesson group override
     And I should see "Wednesday, 1 January 2031, 8:00"
     And I log out
     And I am on the "Test lesson name" "lesson activity" page logged in as student1
+<<<<<<< HEAD
     And the activity date in "Test lesson name" should contain "Opens: Wednesday, 1 January 2031, 8:00"
     And I log out
     And I am on the "Test lesson name" "lesson activity" page logged in as student2
@@ -315,6 +344,15 @@ Feature: Lesson group override
     And I log out
     And I am on the "Test lesson name" "lesson activity" page logged in as student3
     And the activity date in "Test lesson name" should contain "Opens: Tuesday, 1 January 2030, 8:00"
+=======
+    And I should see "This lesson will be open on Wednesday, 1 January 2031, 8:00"
+    And I log out
+    And I am on the "Test lesson name" "lesson activity" page logged in as student2
+    And I should see "This lesson will be open on Sunday, 1 January 2040, 8:00"
+    And I log out
+    And I am on the "Test lesson name" "lesson activity" page logged in as student3
+    And I should see "This lesson will be open on Tuesday, 1 January 2030, 8:00"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
   Scenario: Override a group when teacher is in no group, and does not have accessallgroups permission, and the activity's group mode is 'separate groups'
     Given the following "permission overrides" exist:
@@ -324,8 +362,12 @@ Feature: Lesson group override
       | activity | name     | intro                | course | idnumber | groupmode |
       | lesson   | Lesson 2 | Lesson 2 description | C1     | lesson2  | 1         |
     When I am on the "Lesson 2" "lesson activity" page logged in as teacher1
+<<<<<<< HEAD
     And I navigate to "Overrides" in current page administration
     And I select "Group overrides" from the "jump" singleselect
+=======
+    And I navigate to "Group overrides" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "No groups you can access."
     And I should not see "Add group override"
 
@@ -339,10 +381,16 @@ Feature: Lesson group override
     And the following "group members" exist:
       | user     | group |
       | teacher1 | G1    |
+<<<<<<< HEAD
     When I am on the "Lesson 2" "lesson activity" page logged in as teacher1
     And I navigate to "Overrides" in current page administration
     And I select "Group overrides" from the "jump" singleselect
     And I follow "Add group override"
+=======
+    And I am on the "Lesson 2" "lesson activity" page logged in as teacher1
+    And I navigate to "Group overrides" in current page administration
+    And I press "Add group override"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then the "Override group" select box should contain "Group 1"
     And the "Override group" select box should not contain "Group 2"
 
@@ -357,9 +405,14 @@ Feature: Lesson group override
       | user     | group |
       | teacher1 | G1    |
     And I am on the "Lesson 2" "lesson activity" page logged in as admin
+<<<<<<< HEAD
     And I navigate to "Overrides" in current page administration
     And I select "Group overrides" from the "jump" singleselect
     And I follow "Add group override"
+=======
+    And I navigate to "Group overrides" in current page administration
+    And I press "Add group override"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Override group       | Group 1 |
       | id_available_enabled | 1       |
@@ -379,8 +432,13 @@ Feature: Lesson group override
       | available[minute]    | 00      |
     And I press "Save"
     And I log out
+<<<<<<< HEAD
     When I am on the "Lesson 2" "lesson activity" page logged in as teacher1
     And I navigate to "Overrides" in current page administration
     And I select "Group overrides" from the "jump" singleselect
+=======
+    And I am on the "Lesson 2" "lesson activity" page logged in as teacher1
+    And I navigate to "Group overrides" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "Group 1" in the ".generaltable" "css_element"
     And I should not see "Group 2" in the ".generaltable" "css_element"

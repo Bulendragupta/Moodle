@@ -52,6 +52,7 @@ function xmldb_enrol_lti_upgrade($oldversion) {
     // Automatically generated Moodle v3.9.0 release upgrade line.
     // Put any upgrade step following this.
 
+<<<<<<< HEAD
     if ($oldversion < 2021052501) {
         // LTI 1.3: Set a private key for this site (which is acting as a tool in LTI 1.3).
         require_once($CFG->dirroot . '/enrol/lti/upgradelib.php');
@@ -457,6 +458,9 @@ function xmldb_enrol_lti_upgrade($oldversion) {
     }
 
     // Automatically generated Moodle v4.0.0 release upgrade line.
+=======
+    // Automatically generated Moodle v3.10.0 release upgrade line.
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     // Put any upgrade step following this.
 
     return true;

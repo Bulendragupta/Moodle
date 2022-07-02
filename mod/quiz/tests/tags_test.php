@@ -75,10 +75,22 @@ class mod_quiz_tags_testcase extends advanced_testcase {
         $tag3 = core_tag_tag::get_by_name(0, 't3', 'id, name');
         $this->assertNotFalse($tag3);
 
+<<<<<<< HEAD
         $slottags = $this->get_tags_for_slot($question->slotid);
         $slottags = reset($slottags);
         $slottags = explode(',', $slottags);
         $this->assertEquals("{$tag2->id},{$tag2->name}", "{$slottags[0]},{$slottags[1]}");
+=======
+        $slottags = quiz_retrieve_slot_tags($question->slotid);
+        $this->assertEqualsCanonicalizing(
+                [
+                    ['tagid' => $tag2->id, 'tagname' => $tag2->name]
+                ],
+                array_map(function($tag) {
+                    return ['tagid' => $tag->tagid, 'tagname' => $tag->tagname];
+                }, $slottags)
+        );
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $defaultcategory = question_get_default_category(context_course::instance($newcourseid)->id);
         $this->assertEquals($defaultcategory->id, $question->category);

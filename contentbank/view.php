@@ -75,8 +75,79 @@ $PAGE->navbar->add($record->name);
 $title .= ": ".$record->name;
 $PAGE->set_title($title);
 $PAGE->set_pagetype('contentbank');
+<<<<<<< HEAD
 $PAGE->set_pagelayout('incourse');
 $PAGE->set_secondary_active_tab('contentbank');
+=======
+
+$contenttypeclass = "\\$record->contenttype\\contenttype";
+$contentclass = "\\$record->contenttype\\content";
+if (!class_exists($contenttypeclass) || !class_exists($contentclass)) {
+    print_error('contenttypenotfound', 'error', $returnurl, $record->contenttype);
+}
+$contenttype = new $contenttypeclass($context);
+$content = new $contentclass($record);
+
+// Create the cog menu with all the secondary actions, such as delete, rename...
+$actionmenu = new action_menu();
+$actionmenu->set_alignment(action_menu::TR, action_menu::BR);
+if ($contenttype->can_manage($content)) {
+    // Add the rename content item to the menu.
+    $attributes = [
+        'data-action' => 'renamecontent',
+        'data-contentname' => $content->get_name(),
+        'data-contentid' => $content->get_id(),
+    ];
+    $actionmenu->add_secondary_action(new action_menu_link(
+        new moodle_url('#'),
+        new pix_icon('e/styleparagraph', get_string('rename')),
+        get_string('rename'),
+        false,
+        $attributes
+    ));
+
+    if ($contenttype->can_upload()) {
+        $actionmenu->add_secondary_action(new action_menu_link(
+            new moodle_url('/contentbank/upload.php', ['contextid' => $context->id, 'id' => $content->get_id()]),
+            new pix_icon('i/upload', get_string('upload')),
+            get_string('replacecontent', 'contentbank'),
+            false
+        ));
+    }
+}
+if ($contenttype->can_download($content)) {
+    // Add the download content item to the menu.
+    $actionmenu->add_secondary_action(new action_menu_link(
+        new moodle_url($contenttype->get_download_url($content)),
+        new pix_icon('t/download', get_string('download')),
+        get_string('download'),
+        false
+    ));
+}
+if ($contenttype->can_delete($content)) {
+    // Add the delete content item to the menu.
+    $attributes = [
+                'data-action' => 'deletecontent',
+                'data-contentname' => $content->get_name(),
+                'data-contentid' => $content->get_id(),
+                'data-contextid' => $context->id,
+            ];
+    $actionmenu->add_secondary_action(new action_menu_link(
+        new moodle_url('#'),
+        new pix_icon('t/delete', get_string('delete')),
+        get_string('delete'),
+        false,
+        $attributes
+    ));
+}
+
+// Add the cog menu to the header.
+$PAGE->add_header_action(html_writer::div(
+    $OUTPUT->render($actionmenu),
+    'd-print-none',
+    ['id' => 'region-main-settings-menu']
+));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 echo $OUTPUT->header();
 

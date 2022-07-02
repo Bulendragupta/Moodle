@@ -2021,7 +2021,11 @@ class quiz_attempt {
         // Transition to the appropriate state.
         switch ($this->quizobj->get_quiz()->overduehandling) {
             case 'autosubmit':
+<<<<<<< HEAD
                 $this->process_finish($timestamp, false, $studentisonline ? $timestamp : $timeclose, $studentisonline);
+=======
+                $this->process_finish($timestamp, false, $studentisonline ? $timestamp : $timeclose);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 return;
 
             case 'graceperiod':
@@ -2178,9 +2182,14 @@ class quiz_attempt {
      *      POST request are stored to be graded, before the attempt is finished.
      * @param ?int $timefinish if set, use this as the finish time for the attempt.
      *      (otherwise use $timestamp as the finish time as well).
+<<<<<<< HEAD
      * @param bool $studentisonline is the student currently interacting with Moodle?
      */
     public function process_finish($timestamp, $processsubmitted, $timefinish = null, $studentisonline = false) {
+=======
+     */
+    public function process_finish($timestamp, $processsubmitted, $timefinish = null) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         global $DB;
 
         $transaction = $DB->start_delegated_transaction();
@@ -2468,6 +2477,7 @@ class quiz_attempt {
             if ($becomingabandoned) {
                 $this->process_abandon($timenow, true);
             } else {
+<<<<<<< HEAD
                 if (!$toolate || $this->get_quiz()->overduehandling === 'graceperiod') {
                     // Normally, we record the accurate finish time when the student is online.
                     $finishtime = $timenow;
@@ -2477,6 +2487,9 @@ class quiz_attempt {
                     $finishtime = $timeclose;
                 }
                 $this->process_finish($timenow, !$toolate, $finishtime, true);
+=======
+                $this->process_finish($timenow, !$toolate, $toolate ? $timeclose : $timenow);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             }
 
         } catch (question_out_of_sequence_exception $e) {

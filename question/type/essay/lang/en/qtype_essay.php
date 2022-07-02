@@ -45,12 +45,15 @@ $string['formatplain'] = 'Plain text';
 $string['graderinfo'] = 'Information for graders';
 $string['graderinfoheader'] = 'Grader information';
 $string['maxbytes'] = 'Maximum file size';
+<<<<<<< HEAD
 $string['maxwordlimit'] = 'Maximum word limit';
 $string['maxwordlimit_help'] = 'If the response requires that students enter text, this is the maximum number of words that each student will be allowed to submit.';
 $string['maxwordlimitboundary'] = 'The word limit for this question is {$a->limit} words and you are attempting to submit {$a->count} words. Please shorten your response and try again.';
 $string['minwordlimit'] = 'Minimum word limit';
 $string['minwordlimit_help'] = 'If the response requires that students enter text, this is the minimum number of words that each student will be allowed to submit.';
 $string['minwordlimitboundary'] = 'This question requires a response of at least {$a->limit} words and you are attempting to submit {$a->count} words. Please expand your response and try again.';
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['mustattach'] = 'When "No online text" is selected, or responses are optional, you must allow at least one attachment.';
 $string['mustrequire'] = 'When "No online text" is selected, or responses are optional, you must require at least one attachment.';
 $string['mustrequirefewer'] = 'You cannot require more attachments than you allow.';

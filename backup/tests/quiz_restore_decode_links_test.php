@@ -82,6 +82,7 @@ class quiz_restore_decode_links_test extends \advanced_testcase {
 
         $newcm = duplicate_module($course, get_fast_modinfo($course)->get_cm($quiz->cmid));
 
+<<<<<<< HEAD
         $quizquestions = \mod_quiz\question\bank\qbank_helper::get_question_structure(
                 $newcm->instance, \context_module::instance($newcm->id));
         $questionids = [];
@@ -103,5 +104,19 @@ class quiz_restore_decode_links_test extends \advanced_testcase {
         $this->assertEquals($CFG->wwwroot . '/mod/quiz/view.php?id=' . $quiz->cmid, $answers[$secondanswer->id]->answer);
         $this->assertEquals($CFG->wwwroot . '/grade/report/index.php?id=' . $quiz->cmid, $answers[$thirdanswer->id]->answer);
         $this->assertEquals($CFG->wwwroot . '/mod/quiz/index.php?id=' . $quiz->cmid, $answers[$fourthanswer->id]->answer);
+=======
+        $sql = "SELECT qa.id, qa.answer
+                  FROM {quiz} q
+             LEFT JOIN {quiz_slots} qs ON qs.quizid = q.id
+             LEFT JOIN {question_answers} qa ON qa.question = qs.questionid
+                 WHERE q.id = :quizid";
+        $params = array('quizid' => $newcm->instance);
+        $answers = $DB->get_records_sql_menu($sql, $params);
+
+        $this->assertEquals($CFG->wwwroot . '/course/view.php?id=' . $course->id, $answers[$firstanswer->id]);
+        $this->assertEquals($CFG->wwwroot . '/mod/quiz/view.php?id=' . $quiz->cmid, $answers[$secondanswer->id]);
+        $this->assertEquals($CFG->wwwroot . '/grade/report/index.php?id=' . $quiz->cmid, $answers[$thirdanswer->id]);
+        $this->assertEquals($CFG->wwwroot . '/mod/quiz/index.php?id=' . $quiz->cmid, $answers[$fourthanswer->id]);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 }

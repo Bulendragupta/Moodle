@@ -35,7 +35,11 @@ function xmldb_paygw_paypal_upgrade(int $oldversion): bool {
 
     $dbman = $DB->get_manager();
 
+<<<<<<< HEAD
     if ($oldversion < 2021052501) {
+=======
+    if ($oldversion < 2020110901) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         // Define key paymentid (foreign-unique) to be added to paygw_paypal.
         $table = new xmldb_table('paygw_paypal');
         $key = new xmldb_key('paymentid', XMLDB_KEY_FOREIGN_UNIQUE, ['paymentid'], 'payments', ['id']);
@@ -44,11 +48,17 @@ function xmldb_paygw_paypal_upgrade(int $oldversion): bool {
         $dbman->add_key($table, $key);
 
         // Paypal savepoint reached.
+<<<<<<< HEAD
         upgrade_plugin_savepoint(true, 2021052501, 'paygw', 'paypal');
     }
 
     // Automatically generated Moodle v4.0.0 release upgrade line.
     // Put any upgrade step following this.
 
+=======
+        upgrade_plugin_savepoint(true, 2020110901, 'paygw', 'paypal');
+    }
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     return true;
 }

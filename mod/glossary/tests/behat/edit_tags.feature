@@ -24,7 +24,11 @@ Feature: Edited glossary entries handle tags correctly
 
   Scenario: Glossary entry edition of custom tags works as expected
     Given I am on the "Test glossary" "glossary activity" page logged in as teacher1
+<<<<<<< HEAD
     And I press "Add entry"
+=======
+    And I press "Add a new entry"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Concept | Dummy first entry |
       | Definition | Dream is the start of a journey |
@@ -49,7 +53,11 @@ Feature: Edited glossary entries handle tags correctly
     And I press "Continue"
     And I log out
     Given I am on the "Test glossary" "glossary activity" page logged in as teacher1
+<<<<<<< HEAD
     And I press "Add entry"
+=======
+    And I press "Add a new entry"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I expand all fieldsets
     And I open the autocomplete suggestions list
     And I should see "OT1" in the ".form-autocomplete-suggestions" "css_element"

@@ -93,7 +93,11 @@ class myprofile_test extends \advanced_testcase {
         $category->add_node($node2);
         $category->add_node($node1);
 
+<<<<<<< HEAD
         $this->expectException(\coding_exception::class);
+=======
+        $this->expectException(coding_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $category->validate_after_order();
 
     }
@@ -110,7 +114,11 @@ class myprofile_test extends \advanced_testcase {
         $category->add_node($node2);
         $category->add_node($node1);
 
+<<<<<<< HEAD
         $this->expectException(\coding_exception::class);
+=======
+        $this->expectException(coding_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $category->validate_after_order();
 
     }
@@ -206,7 +214,11 @@ class myprofile_test extends \advanced_testcase {
         // Add a node with invalid 'after' and make sure an exception is thrown.
         $node7 = new \core_user\output\myprofile\node('category', 'node7', 'nodetitle', 'noderandom');
         $category->add_node($node7);
+<<<<<<< HEAD
         $this->expectException(\coding_exception::class);
+=======
+        $this->expectException(coding_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $category->sort_nodes();
     }
 
@@ -262,7 +274,11 @@ class myprofile_test extends \advanced_testcase {
         $this->assertEquals($node1, $node);
 
         // Can't add node with same name.
+<<<<<<< HEAD
         $this->expectException(\coding_exception::class);
+=======
+        $this->expectException(coding_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $tree->add_node($node1);
     }
 
@@ -278,7 +294,11 @@ class myprofile_test extends \advanced_testcase {
         $this->assertEquals($category1, $category);
 
         // Can't add node with same name.
+<<<<<<< HEAD
         $this->expectException(\coding_exception::class);
+=======
+        $this->expectException(coding_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $tree->add_category($category1);
     }
 
@@ -365,7 +385,11 @@ class myprofile_test extends \advanced_testcase {
         $this->assertEquals($category6, $category);
 
         // Can't add category with same name.
+<<<<<<< HEAD
         $this->expectException(\coding_exception::class);
+=======
+        $this->expectException(coding_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $tree->add_category($category1);
     }
 }

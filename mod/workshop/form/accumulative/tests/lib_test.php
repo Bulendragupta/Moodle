@@ -89,7 +89,11 @@ class lib_test extends \advanced_testcase {
         $this->strategy->dimensions[1003] = (object)array('grade' => '20', 'weight' => '-1');
         $grades[] = (object)array('dimensionid' => 1003, 'grade' => '20');
         // exercise SUT
+<<<<<<< HEAD
         $this->expectException(\coding_exception::class);
+=======
+        $this->expectException(coding_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $suggested = $this->strategy->calculate_peer_grade($grades);
     }
 
@@ -190,7 +194,11 @@ class lib_test extends \advanced_testcase {
         $grades[] = (object)array('dimensionid' => 1012, 'grade' => '4.00000'); // exceeds the number of scale items
 
         // Exercise SUT.
+<<<<<<< HEAD
         $this->expectException(\coding_exception::class);
+=======
+        $this->expectException(coding_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $suggested = $this->strategy->calculate_peer_grade($grades);
     }
 }

@@ -131,6 +131,7 @@ class mod_assign_generator extends testing_module_generator {
 
         return $id;
     }
+<<<<<<< HEAD
 
     /**
      * Create an assign override (either user or group).
@@ -155,4 +156,6 @@ class mod_assign_generator extends testing_module_generator {
 
         $DB->insert_record('assign_overrides', (object) $data);
     }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

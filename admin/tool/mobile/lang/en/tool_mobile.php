@@ -152,6 +152,9 @@ $string['viewqrcode'] = 'View QR code';
 
 // Deprecated since Moodle 3.10.
 $string['mobileappconnected'] = 'Mobile app connected';
+<<<<<<< HEAD
 
 // Deprecated since Moodle 3.11.
 $string['openusingembeddedbrowser'] = 'Open using embedded browser';
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

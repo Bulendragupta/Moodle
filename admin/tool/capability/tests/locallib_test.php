@@ -21,7 +21,10 @@
  * @copyright 2021 The Open University
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later.
  */
+<<<<<<< HEAD
 namespace tool_capability;
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 defined('MOODLE_INTERNAL') || die();
 global $CFG;
@@ -31,7 +34,11 @@ require_once($CFG->dirroot . '/' . $CFG->admin . '/tool/capability/locallib.php'
 /**
  * Tests for the capability overview helper functions.
  */
+<<<<<<< HEAD
 class locallib_test extends \advanced_testcase {
+=======
+class tool_capability_locallib_testcase extends advanced_testcase {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     /**
      * Test the function that gets the data - simple case.
@@ -41,7 +48,11 @@ class locallib_test extends \advanced_testcase {
 
         $data = tool_capability_calculate_role_data('mod/quiz:attempt', get_all_roles());
 
+<<<<<<< HEAD
         $systcontext = \context_system::instance();
+=======
+        $systcontext = context_system::instance();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $studentroleid = $DB->get_field('role', 'id', ['shortname' => 'student']);
 
         $this->assertArrayHasKey($systcontext->id, $data);
@@ -64,10 +75,17 @@ class locallib_test extends \advanced_testcase {
 
         // This simulates a situation that seems to happen sometimes, where
         // we end up with contexts with path = NULL in the database.
+<<<<<<< HEAD
         $systcontext = \context_system::instance();
         $generator = $this->getDataGenerator();
         $course = $generator->create_course();
         $coursecontext = \context_course::instance($course->id);
+=======
+        $systcontext = context_system::instance();
+        $generator = $this->getDataGenerator();
+        $course = $generator->create_course();
+        $coursecontext = context_course::instance($course->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $studentroleid = $DB->get_field('role', 'id', ['shortname' => 'student']);
         role_change_permission($studentroleid, $coursecontext, 'mod/quiz:attempt', CAP_PREVENT);
         // This is where we simulate the breakage.

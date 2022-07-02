@@ -902,6 +902,11 @@ class backup_badges_structure_step extends backup_structure_step {
 
     protected function define_structure() {
         global $CFG;
+<<<<<<< HEAD
+=======
+
+        require_once($CFG->libdir . '/badgeslib.php');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         require_once($CFG->libdir . '/badgeslib.php');
         // Define each element separated.

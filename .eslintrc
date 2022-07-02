@@ -220,7 +220,11 @@
       }
     },
     {
+<<<<<<< HEAD
       files: ["**/amd/src/*.js", "**/amd/src/**/*.js", "Gruntfile.js", ".grunt/*.js", ".grunt/tasks/*.js", "jsdoc.conf.js"],
+=======
+      files: ["**/amd/src/*.js", "**/amd/src/**/*.js", "Gruntfile*.js", "babel-plugin-add-module-to-define.js", "jsdoc.conf.js"],
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
       // We support es6 now. Woot!
       env: {
         es6: true

@@ -337,8 +337,12 @@ class player_test extends \advanced_testcase {
         $url = new moodle_url('http://example.org/some_filename.flv');
         $t = $manager->embed_url($url);
         $this->assertStringNotContainsString('mediaplugin_videojs', $t);
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression(
             '~<a class="mediafallbacklink" href="http://example.org/some_filename.flv">some_filename.flv</a>~', $t);
+=======
+        $this->assertRegExp('~<a class="mediafallbacklink" href="http://example.org/some_filename.flv">some_filename.flv</a>~', $t);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**
@@ -350,7 +354,39 @@ class player_test extends \advanced_testcase {
         $url = new moodle_url('rtmp://example.com/fms&mp4:path/to/file.mp4');
         $t = $manager->embed_url($url);
         $this->assertStringNotContainsString('mediaplugin_videojs', $t);
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression(
             '~<a class="mediafallbacklink" href="rtmp://example.com/fms&mp4:path/to/file.mp4">file.mp4</a>~', $t);
+=======
+        $this->assertRegExp('~<a class="mediafallbacklink" href="rtmp://example.com/fms&mp4:path/to/file.mp4">file.mp4</a>~', $t);
+
+        // RTMP enabled, flash disabled.
+        set_config('useflash', 0, 'media_videojs');
+        set_config('rtmp', 1, 'media_videojs');
+        $url = new moodle_url('rtmp://example.com/fms&mp4:path/to/file.mp4');
+        $t = $manager->embed_url($url);
+        $this->assertStringNotContainsString('mediaplugin_videojs', $t);
+        $this->assertRegExp('~<a class="mediafallbacklink" href="rtmp://example.com/fms&mp4:path/to/file.mp4">file.mp4</a>~', $t);
+
+        // RTMP enabled, flash enabled, rtmp/mp4 type expected.
+        set_config('useflash', 1, 'media_videojs');
+        set_config('rtmp', 1, 'media_videojs');
+        $url = new moodle_url('rtmp://example.com/fms&mp4:path/to/file.mp4');
+        $t = $manager->embed_url($url);
+        $this->flash_plugin_engaged($t);
+        $this->assertRegExp('~</video>~', $t);
+        $this->assertRegExp('~<source src="rtmp://example.com/fms&mp4:path/to/file.mp4" type="rtmp/mp4"~', $t);
+        $this->assertRegExp('~<a class="mediafallbacklink" href="rtmp://example.com/fms&mp4:path/to/file.mp4">file.mp4</a>~', $t);
+
+        // RTMP enabled, flash enabled, rtmp/flv type expected.
+        set_config('useflash', 1, 'media_videojs');
+        set_config('rtmp', 1, 'media_videojs');
+        $url = new moodle_url('rtmp://example.com/fms&flv:path/to/file.flv');
+        $t = $manager->embed_url($url);
+        $this->flash_plugin_engaged($t);
+        $this->assertRegExp('~</video>~', $t);
+        $this->assertRegExp('~<source src="rtmp://example.com/fms&flv:path/to/file.flv" type="rtmp/flv"~', $t);
+        $this->assertRegExp('~<a class="mediafallbacklink" href="rtmp://example.com/fms&flv:path/to/file.flv">file.flv</a>~', $t);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 }

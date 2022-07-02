@@ -41,6 +41,318 @@ use moodle_exception;
 class api {
 
     /**
+<<<<<<< HEAD
+=======
+     * Build a google ready OAuth 2 service.
+     * @return \core\oauth2\issuer
+     */
+    private static function init_google() {
+        $record = (object) [
+            'name' => 'Google',
+            'image' => 'https://accounts.google.com/favicon.ico',
+            'baseurl' => 'https://accounts.google.com/',
+            'loginparamsoffline' => 'access_type=offline&prompt=consent',
+            'showonloginpage' => true
+        ];
+
+        $issuer = new issuer(0, $record);
+        return $issuer;
+    }
+
+    /**
+     * Create endpoints for google issuers.
+     * @param issuer $issuer issuer the endpoints should be created for.
+     * @return mixed
+     * @throws \coding_exception
+     * @throws \core\invalid_persistent_exception
+     */
+    private static function create_endpoints_for_google($issuer) {
+
+        $record = (object) [
+            'issuerid' => $issuer->get('id'),
+            'name' => 'discovery_endpoint',
+            'url' => 'https://accounts.google.com/.well-known/openid-configuration'
+        ];
+        $endpoint = new endpoint(0, $record);
+        $endpoint->create();
+        return $issuer;
+    }
+
+    /**
+     * Build a facebook ready OAuth 2 service.
+     * @return \core\oauth2\issuer
+     */
+    private static function init_facebook() {
+        // Facebook is a custom setup.
+        $record = (object) [
+            'name' => 'Facebook',
+            'image' => 'https://facebookbrand.com/wp-content/uploads/2016/05/flogo_rgb_hex-brc-site-250.png',
+            'baseurl' => '',
+            'loginscopes' => 'public_profile email',
+            'loginscopesoffline' => 'public_profile email',
+            'showonloginpage' => true
+        ];
+
+        $issuer = new issuer(0, $record);
+        return $issuer;
+    }
+
+    /**
+     * Create endpoints for facebook issuers.
+     * @param issuer $issuer issuer the endpoints should be created for.
+     * @return mixed
+     * @throws \coding_exception
+     * @throws \core\invalid_persistent_exception
+     */
+    private static function create_endpoints_for_facebook($issuer) {
+        // The Facebook API version.
+        $apiversion = '2.12';
+        // The Graph API URL.
+        $graphurl = 'https://graph.facebook.com/v' . $apiversion;
+        // User information fields that we want to fetch.
+        $infofields = [
+            'id',
+            'first_name',
+            'last_name',
+            'link',
+            'picture.type(large)',
+            'name',
+            'email',
+        ];
+        $endpoints = [
+            'authorization_endpoint' => sprintf('https://www.facebook.com/v%s/dialog/oauth', $apiversion),
+            'token_endpoint' => $graphurl . '/oauth/access_token',
+            'userinfo_endpoint' => $graphurl . '/me?fields=' . implode(',', $infofields)
+        ];
+
+        foreach ($endpoints as $name => $url) {
+            $record = (object) [
+                'issuerid' => $issuer->get('id'),
+                'name' => $name,
+                'url' => $url
+            ];
+            $endpoint = new endpoint(0, $record);
+            $endpoint->create();
+        }
+
+        // Create the field mappings.
+        $mapping = [
+            'name' => 'alternatename',
+            'last_name' => 'lastname',
+            'email' => 'email',
+            'first_name' => 'firstname',
+            'picture-data-url' => 'picture',
+            'link' => 'url',
+        ];
+        foreach ($mapping as $external => $internal) {
+            $record = (object) [
+                'issuerid' => $issuer->get('id'),
+                'externalfield' => $external,
+                'internalfield' => $internal
+            ];
+            $userfieldmapping = new user_field_mapping(0, $record);
+            $userfieldmapping->create();
+        }
+        return $issuer;
+    }
+
+    /**
+     * Build a microsoft ready OAuth 2 service.
+     * @return \core\oauth2\issuer
+     */
+    private static function init_microsoft() {
+        // Microsoft is a custom setup.
+        $record = (object) [
+            'name' => 'Microsoft',
+            'image' => 'https://www.microsoft.com/favicon.ico',
+            'baseurl' => '',
+            'loginscopes' => 'openid profile email user.read',
+            'loginscopesoffline' => 'openid profile email user.read offline_access',
+            'showonloginpage' => true
+        ];
+
+        $issuer = new issuer(0, $record);
+        return $issuer;
+    }
+
+    /**
+     * Create endpoints for microsoft issuers.
+     * @param issuer $issuer issuer the endpoints should be created for.
+     * @return mixed
+     * @throws \coding_exception
+     * @throws \core\invalid_persistent_exception
+     */
+    private static function create_endpoints_for_microsoft($issuer) {
+
+        $endpoints = [
+            'authorization_endpoint' => 'https://login.microsoftonline.com/common/oauth2/v2.0/authorize',
+            'token_endpoint' => 'https://login.microsoftonline.com/common/oauth2/v2.0/token',
+            'userinfo_endpoint' => 'https://graph.microsoft.com/v1.0/me/',
+            'userpicture_endpoint' => 'https://graph.microsoft.com/v1.0/me/photo/$value',
+        ];
+
+        foreach ($endpoints as $name => $url) {
+            $record = (object) [
+                'issuerid' => $issuer->get('id'),
+                'name' => $name,
+                'url' => $url
+            ];
+            $endpoint = new endpoint(0, $record);
+            $endpoint->create();
+        }
+
+        // Create the field mappings.
+        $mapping = [
+            'givenName' => 'firstname',
+            'surname' => 'lastname',
+            'userPrincipalName' => 'email',
+            'displayName' => 'alternatename',
+            'officeLocation' => 'address',
+            'mobilePhone' => 'phone1',
+            'preferredLanguage' => 'lang'
+        ];
+        foreach ($mapping as $external => $internal) {
+            $record = (object) [
+                'issuerid' => $issuer->get('id'),
+                'externalfield' => $external,
+                'internalfield' => $internal
+            ];
+            $userfieldmapping = new user_field_mapping(0, $record);
+            $userfieldmapping->create();
+        }
+        return $issuer;
+    }
+
+    /**
+     * Build a nextcloud ready OAuth 2 service.
+     * @return \core\oauth2\issuer
+     */
+    private static function init_nextcloud() {
+        // Nextcloud has a custom baseurl. Thus, the creation of endpoints has to be done later.
+        $record = (object) [
+            'name' => 'Nextcloud',
+            'image' => 'https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png?x16328',
+            'basicauth' => 1,
+        ];
+
+        $issuer = new issuer(0, $record);
+
+        return $issuer;
+    }
+
+    /**
+     * Create endpoints for nextcloud issuers.
+     * @param issuer $issuer issuer the endpoints should be created for.
+     * @return mixed
+     * @throws \coding_exception
+     * @throws \core\invalid_persistent_exception
+     */
+    private static function create_endpoints_for_nextcloud($issuer) {
+        $baseurl = $issuer->get('baseurl');
+        // Add trailing slash to baseurl, if needed.
+        if (substr($baseurl, -1) !== '/') {
+            $baseurl .= '/';
+        }
+
+        $endpoints = [
+            // Baseurl will be prepended later.
+            'authorization_endpoint' => 'index.php/apps/oauth2/authorize',
+            'token_endpoint' => 'index.php/apps/oauth2/api/v1/token',
+            'userinfo_endpoint' => 'ocs/v2.php/cloud/user?format=json',
+            'webdav_endpoint' => 'remote.php/webdav/',
+            'ocs_endpoint' => 'ocs/v1.php/apps/files_sharing/api/v1/shares',
+        ];
+
+        foreach ($endpoints as $name => $url) {
+            $record = (object) [
+                'issuerid' => $issuer->get('id'),
+                'name' => $name,
+                'url' => $baseurl . $url,
+            ];
+            $endpoint = new \core\oauth2\endpoint(0, $record);
+            $endpoint->create();
+        }
+
+        // Create the field mappings.
+        $mapping = [
+            'ocs-data-email' => 'email',
+            'ocs-data-id' => 'username',
+        ];
+        foreach ($mapping as $external => $internal) {
+            $record = (object) [
+                'issuerid' => $issuer->get('id'),
+                'externalfield' => $external,
+                'internalfield' => $internal
+            ];
+            $userfieldmapping = new \core\oauth2\user_field_mapping(0, $record);
+            $userfieldmapping->create();
+        }
+    }
+
+    /**
+     * Create a linkedin OAuth2 issuer
+     *
+     * @return issuer
+     */
+    private static function init_linkedin(): issuer {
+        $record = (object) [
+            'name' => 'LinkedIn',
+            'image' => 'https://static.licdn.com/scds/common/u/images/logos/favicons/v1/favicon.ico',
+            'baseurl' => 'https://api.linkedin.com/v2',
+            'loginscopes' => 'r_liteprofile r_emailaddress',
+            'loginscopesoffline' => 'r_liteprofile r_emailaddress',
+            'showonloginpage' => true
+        ];
+
+        $issuer = new issuer(0, $record);
+        return $issuer;
+    }
+
+    /**
+     * Create endpoints for linkedin issuers.
+     *
+     * @param issuer $issuer
+     * @throws \coding_exception
+     * @throws \core\invalid_persistent_exception
+     */
+    private static function create_endpoints_for_linkedin(issuer $issuer) {
+        $endpoints = [
+            'authorization_endpoint' => 'https://www.linkedin.com/oauth/v2/authorization',
+            'token_endpoint' => 'https://www.linkedin.com/oauth/v2/accessToken',
+            'email_endpoint' => 'https://api.linkedin.com/v2/emailAddress?q=members&projection=(elements*(handle~))',
+            'userinfo_endpoint' => "https://api.linkedin.com/v2/me?projection=(localizedFirstName,localizedLastName,"
+                . "profilePicture(displayImage~digitalmediaAsset:playableStreams))",
+        ];
+        foreach ($endpoints as $name => $url) {
+            $record = (object) [
+                'issuerid' => $issuer->get('id'),
+                'name' => $name,
+                'url' => $url
+            ];
+            $endpoint = new endpoint(0, $record);
+            $endpoint->create();
+        }
+
+        // Create the field mappings.
+        $mapping = [
+            'localizedFirstName' => 'firstname',
+            'localizedLastName' => 'lastname',
+            'elements[0]-handle~-emailAddress' => 'email',
+            'profilePicture-displayImage~-elements[0]-identifiers[0]-identifier' => 'picture'
+        ];
+        foreach ($mapping as $external => $internal) {
+            $record = (object) [
+                'issuerid' => $issuer->get('id'),
+                'externalfield' => $external,
+                'internalfield' => $internal
+            ];
+            $userfieldmapping = new user_field_mapping(0, $record);
+            $userfieldmapping->create();
+        }
+    }
+
+    /**
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * Initializes a record for one of the standard issuers to be displayed in the settings.
      * The issuer is not yet created in the database.
      * @param string $type One of google, facebook, microsoft, nextcloud, imsobv2p1
@@ -48,10 +360,25 @@ class api {
      */
     public static function init_standard_issuer($type) {
         require_capability('moodle/site:config', context_system::instance());
+<<<<<<< HEAD
 
         $classname = self::get_service_classname($type);
         if (class_exists($classname)) {
             return $classname::init();
+=======
+        if ($type == 'google') {
+            return self::init_google();
+        } else if ($type == 'microsoft') {
+            return self::init_microsoft();
+        } else if ($type == 'facebook') {
+            return self::init_facebook();
+        } else if ($type == 'nextcloud') {
+            return self::init_nextcloud();
+        } else if ($type == 'linkedin') {
+            return self::init_linkedin();
+        } else {
+            throw new moodle_exception('OAuth 2 service type not recognised: ' . $type);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         }
         throw new moodle_exception('OAuth 2 service type not recognised: ' . $type);
     }
@@ -69,6 +396,19 @@ class api {
         if (class_exists($classname)) {
             $classname::create_endpoints($issuer);
             return $issuer;
+<<<<<<< HEAD
+=======
+        } else if ($type == 'microsoft') {
+            return self::create_endpoints_for_microsoft($issuer);
+        } else if ($type == 'facebook') {
+            return self::create_endpoints_for_facebook($issuer);
+        } else if ($type == 'nextcloud') {
+            return self::create_endpoints_for_nextcloud($issuer);
+        } else if ($type == 'linkedin') {
+            return self::create_endpoints_for_linkedin($issuer);
+        } else {
+            throw new moodle_exception('OAuth 2 service type not recognised: ' . $type);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         }
         throw new moodle_exception('OAuth 2 service type not recognised: ' . $type);
     }
@@ -214,7 +554,11 @@ class api {
         }
         // Get all the scopes!
         $scopes = self::get_system_scopes_for_issuer($issuer);
+<<<<<<< HEAD
         $class = self::get_client_classname($issuer->get('servicetype'));
+=======
+        $class = self::get_client_classname($issuer->get('name'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $client = new $class($issuer, null, $scopes, true);
 
         if (!$client->is_logged_in()) {
@@ -237,7 +581,11 @@ class api {
      */
     public static function get_user_oauth_client(issuer $issuer, moodle_url $currenturl, $additionalscopes = '',
             $autorefresh = false) {
+<<<<<<< HEAD
         $class = self::get_client_classname($issuer->get('servicetype'));
+=======
+        $class = self::get_client_classname($issuer->get('name'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $client = new $class($issuer, $currenturl, $additionalscopes, false, $autorefresh);
 
         return $client;
@@ -246,7 +594,11 @@ class api {
     /**
      * Get the client classname for an issuer.
      *
+<<<<<<< HEAD
      * @param string $type The OAuth issuer type (google, facebook...).
+=======
+     * @param string $type The OAuth issuer name
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * @return string The classname for the custom client or core client class if the class for the defined type
      *                 doesn't exist or null type is defined.
      */
@@ -254,11 +606,16 @@ class api {
         // Default core client class.
         $classname = 'core\\oauth2\\client';
 
+<<<<<<< HEAD
         if (!empty($type)) {
             $typeclassname = 'core\\oauth2\\client\\' . $type;
             if (class_exists($typeclassname)) {
                 $classname = $typeclassname;
             }
+=======
+        if (strpos(strtolower($type), 'linkedin') !== false) {
+            $classname = 'core\\oauth2\\client\\linkedin';
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         }
 
         return $classname;
@@ -606,7 +963,11 @@ class api {
         $scopes = self::get_system_scopes_for_issuer($issuer);
 
         // Allow callbacks to inject non-standard scopes to the auth request.
+<<<<<<< HEAD
         $class = self::get_client_classname($issuer->get('servicetype'));
+=======
+        $class = self::get_client_classname($issuer->get('name'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $client = new $class($issuer, $returnurl, $scopes, true);
 
         if (!optional_param('response', false, PARAM_BOOL)) {

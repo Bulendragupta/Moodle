@@ -116,11 +116,17 @@ $string['batchoperationunlock'] = 'unlock submissions';
 $string['batchoperationreverttodraft'] = 'revert submissions to draft';
 $string['batchsetallocatedmarker'] = 'Set allocated marker for {$a} selected user(s).';
 $string['batchsetmarkingworkflowstateforusers'] = 'Set marking workflow state for {$a} selected user(s).';
+<<<<<<< HEAD
 $string['beginassignment'] = 'Begin assignment';
 $string['blindmarking'] = 'Anonymous submissions';
 $string['blindmarkingenabledwarning'] = 'Anonymous submissions are enabled for this activity. Grades will not be added to the gradebook until student identities are revealed via the grading action menu.';
 $string['blindmarking_help'] = 'Anonymous submissions hide the identity of students from markers. Anonymous submission settings will be locked once a submission or grade has been made in relation to this assignment.';
 $string['cachedef_overrides'] = 'User and group override information';
+=======
+$string['blindmarking'] = 'Anonymous submissions';
+$string['blindmarkingenabledwarning'] = 'Anonymous submissions are enabled for this activity. Grades will not be added to the gradebook until student identities are revealed via the grading action menu.';
+$string['blindmarking_help'] = 'Anonymous submissions hide the identity of students from markers. Anonymous submission settings will be locked once a submission or grade has been made in relation to this assignment.';
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['calendardue'] = '{$a} is due';
 $string['calendargradingdue'] = '{$a} is due to be graded';
 $string['caneditsubmission'] = 'You can edit your submission and submit it after the time limit has expired, but it will be marked as late.';

@@ -89,9 +89,12 @@ class preview extends \html_table {
     protected function read_data() {
         global $DB, $CFG;
 
+<<<<<<< HEAD
         // Track whether values for profile fields defined as unique have already been used.
         $profilefieldvalues = [];
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $data = array();
         $this->cir->init();
         $linenum = 1; // Column header is first line.
@@ -138,7 +141,11 @@ class preview extends \html_table {
             }
 
             // Check if rowcols have custom profile field with correct data and update error state.
+<<<<<<< HEAD
             $this->noerror = uu_check_custom_profile_data($rowcols, $profilefieldvalues) && $this->noerror;
+=======
+            $this->noerror = uu_check_custom_profile_data($rowcols) && $this->noerror;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $rowcols['status'] = implode('<br />', $rowcols['status']);
             $data[] = $rowcols;
         }

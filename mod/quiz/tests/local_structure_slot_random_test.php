@@ -420,14 +420,23 @@ class mod_quiz_local_structure_slot_random_test extends advanced_testcase {
         $this->assertEquals(1, $quizslot->maxmark);
         $tagspropery = $quizslot->randomtags;
 
+<<<<<<< HEAD
         $this->assertCount(2, $tagspropery);
+=======
+        $this->assertCount(2, $quizslottags);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertEqualsCanonicalizing(
                 [
                     ['tagid' => $footag->id, 'tagname' => $footag->name],
                     ['tagid' => $bartag->id, 'tagname' => $bartag->name]
                 ],
                 array_map(function($slottag) {
+<<<<<<< HEAD
                     return ['tagid' => $slottag->id, 'tagname' => $slottag->name];
                 }, $tagspropery));
+=======
+                    return ['tagid' => $slottag->tagid, 'tagname' => $slottag->tagname];
+                }, $quizslottags));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 }

@@ -38,8 +38,11 @@ if ($hassiteconfig) {
         new lang_string('pathtodot_help', 'admin'), ''));
     $temp->add(new admin_setting_configexecutable('pathtogs', new lang_string('pathtogs', 'admin'),
         new lang_string('pathtogs_help', 'admin'), '/usr/bin/gs'));
+<<<<<<< HEAD
     $temp->add(new admin_setting_configexecutable('pathtopdftoppm', new lang_string('pathtopdftoppm', 'admin'),
         new lang_string('pathtopdftoppm_help', 'admin'), ''));
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     $temp->add(new admin_setting_configexecutable('pathtopython', new lang_string('pathtopython', 'admin'),
         new lang_string('pathtopythondesc', 'admin'), ''));
     $ADMIN->add('server', $temp);
@@ -48,15 +51,28 @@ if ($hassiteconfig) {
     $temp = new admin_settingpage('supportcontact', new lang_string('supportcontact', 'admin'));
     $primaryadmin = get_admin();
     if ($primaryadmin) {
+<<<<<<< HEAD
         $primaryadminname = fullname($primaryadmin, true);
     } else {
         // No defaults during installation - admin user must be created first.
+=======
+        $primaryadminemail = $primaryadmin->email;
+        $primaryadminname = fullname($primaryadmin, true);
+    } else {
+        // No defaults during installation - admin user must be created first.
+        $primaryadminemail = null;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $primaryadminname = null;
     }
     $temp->add(new admin_setting_configtext('supportname', new lang_string('supportname', 'admin'),
         new lang_string('configsupportname', 'admin'), $primaryadminname, PARAM_NOTAGS));
+<<<<<<< HEAD
     $setting = new admin_setting_requiredtext('supportemail', new lang_string('supportemail', 'admin'),
         new lang_string('configsupportemail', 'admin'), null, PARAM_EMAIL);
+=======
+    $setting = new admin_setting_configtext('supportemail', new lang_string('supportemail', 'admin'),
+        new lang_string('configsupportemail', 'admin'), $primaryadminemail, PARAM_EMAIL);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     $setting->set_force_ltr(true);
     $temp->add($setting);
     $temp->add(new admin_setting_configtext('supportpage', new lang_string('supportpage', 'admin'),
@@ -73,6 +89,7 @@ if ($hassiteconfig) {
     $temp->add(new admin_setting_configduration('sessiontimeout', new lang_string('sessiontimeout', 'admin'),
         new lang_string('configsessiontimeout', 'admin'), 8 * 60 * 60));
 
+<<<<<<< HEAD
     $sessiontimeoutwarning = new admin_setting_configduration('sessiontimeoutwarning',
         new lang_string('sessiontimeoutwarning', 'admin'),
         new lang_string('configsessiontimeoutwarning', 'admin'), 20 * 60);
@@ -89,6 +106,8 @@ if ($hassiteconfig) {
 
     $temp->add($sessiontimeoutwarning);
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     $temp->add(new admin_setting_configtext('sessioncookie', new lang_string('sessioncookie', 'admin'),
         new lang_string('configsessioncookie', 'admin'), '', PARAM_ALPHANUM));
     $temp->add(new admin_setting_configtext('sessioncookiepath', new lang_string('sessioncookiepath', 'admin'),
@@ -172,11 +191,14 @@ if ($hassiteconfig) {
         new lang_string('configproxypassword', 'admin'), ''));
     $temp->add(new admin_setting_configtext('proxybypass', new lang_string('proxybypass', 'admin'),
         new lang_string('configproxybypass', 'admin'), 'localhost, 127.0.0.1'));
+<<<<<<< HEAD
     $temp->add(new admin_setting_configcheckbox('proxylogunsafe', new lang_string('proxylogunsafe', 'admin'),
         new lang_string('configproxylogunsafe_help', 'admin'), 0));
     $temp->add(new admin_setting_configcheckbox('proxyfixunsafe', new lang_string('proxyfixunsafe', 'admin'),
         new lang_string('configproxyfixunsafe_help', 'admin'), 0));
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     $ADMIN->add('server', $temp);
 
     $temp = new admin_settingpage('maintenancemode', new lang_string('sitemaintenancemode', 'admin'));
@@ -549,6 +571,7 @@ if ($hassiteconfig) {
             new lang_string('updatenotifybuilds_desc', 'core_admin'), 0));
         $ADMIN->add('server', $temp);
     }
+<<<<<<< HEAD
 
     // Web services.
     $ADMIN->add('server', new admin_category('webservicesettings', new lang_string('webservices', 'webservice')));
@@ -612,4 +635,6 @@ if ($hassiteconfig) {
     // Web services > Manage tokens.
     $ADMIN->add('webservicesettings', new admin_externalpage('webservicetokens', new lang_string('managetokens', 'webservice'),
         new moodle_url('/admin/webservice/tokens.php')));
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

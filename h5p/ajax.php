@@ -87,7 +87,11 @@ switch ($action) {
         foreach ($_FILES as $uploadedfile) {
             $filename = clean_param($uploadedfile['name'], PARAM_FILE);
             if ($uploadedfile['size'] > $maxsize) {
+<<<<<<< HEAD
                 H5PCore::ajaxError(get_string('maxbytesfile', 'error', ['file' => $filename, 'size' => display_size($maxsize, 0)]));
+=======
+                H5PCore::ajaxError(get_string('maxbytesfile', 'error', ['file' => $filename, 'size' => display_size($maxsize)]));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 return;
             }
             \core\antivirus\manager::scan_file($uploadedfile['tmp_name'], $filename, true);

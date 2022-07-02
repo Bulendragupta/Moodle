@@ -120,11 +120,17 @@ class core_plugin_manager_testcase extends advanced_testcase {
             $present = core_plugin_manager::instance()->get_present_plugins($type);
             if (is_array($present)) {
                 foreach ($present as $plugin => $version) {
+<<<<<<< HEAD
                     $this->assertMatchesRegularExpression('/^[a-z]+[a-z0-9_]*$/', $plugin,
                         'All plugins are supposed to have version.php file.');
                     $this->assertIsObject($version);
                     $this->assertTrue(is_numeric($version->version),
                         'All plugins should have a version, plugin '.$type.'_'.$plugin.' does not have version info.');
+=======
+                    $this->assertRegExp('/^[a-z]+[a-z0-9_]*$/', $plugin, 'All plugins are supposed to have version.php file.');
+                    $this->assertIsObject($version);
+                    $this->assertTrue(is_numeric($version->version), 'All plugins should have a version, plugin '.$type.'_'.$plugin.' does not have version info.');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 }
             } else {
                 // No plugins of this type exist.

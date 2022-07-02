@@ -108,13 +108,17 @@ class qtype_essay_renderer extends qtype_renderer {
         global $CFG;
         $files = $qa->get_last_qt_files('attachments', $options->context->id);
         $filelist = [];
+<<<<<<< HEAD
 
         $step = $qa->get_last_step_with_qt_var('attachments');
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         foreach ($files as $file) {
             $out = html_writer::link($qa->get_response_file_url($file),
                 $this->output->pix_icon(file_file_icon($file), get_mimetype_description($file),
                     'moodle', array('class' => 'icon')) . ' ' . s($file->get_filename()));
+<<<<<<< HEAD
             if (!empty($CFG->enableplagiarism)) {
                 require_once($CFG->libdir . '/plagiarismlib.php');
 
@@ -126,6 +130,8 @@ class qtype_essay_renderer extends qtype_renderer {
                     'userid' => $step->get_user_id(),
                     'file' => $file]);
             }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $filelist[] = html_writer::tag('li', $out, ['class' => 'mb-2']);
         }
 

@@ -51,6 +51,7 @@ class backup_cleanup_task extends scheduled_task {
         $loglifetime = get_config('backup', 'loglifetime');
 
         if (empty($loglifetime)) {
+<<<<<<< HEAD
             mtrace('The \'loglifetime\' config is not set. Can\'t proceed and delete old backup records.');
             return;
         }
@@ -73,6 +74,26 @@ class backup_cleanup_task extends scheduled_task {
 
         // Delete files and dirs older than 1 week.
         \backup_helper::delete_old_backup_dirs(strtotime('-1 week'));
+=======
+            throw new coding_exception('The \'loglifetime\' config is not set. Can\'t proceed and delete old backup records.');
+        }
+
+        // First, get the list of all backupids older than loglifetime.
+        $timecreated = time() - ($loglifetime * DAYSECS);
+        $records = $DB->get_records_select('backup_controllers', 'timecreated < ?', array($timecreated), 'id', 'id, backupid');
+
+        foreach ($records as $record) {
+            // Check if there is no incomplete adhoc task relying on the given backupid.
+            $params = array('%' . $record->backupid . '%');
+            $select = $DB->sql_like('customdata', '?', false);
+            $count = $DB->count_records_select('task_adhoc',  $select, $params);
+            if ($count === 0) {
+                // Looks like there is no adhoc task, so we can delete logs and controllers for this backupid.
+                $DB->delete_records('backup_logs', array('backupid' => $record->backupid));
+                $DB->delete_records('backup_controllers', array('backupid' => $record->backupid));
+            }
+        }
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
 }

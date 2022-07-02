@@ -369,6 +369,60 @@ if ($showcommonelements) {
 //        print_box('&nbsp;', 'clearer');
 }
 
+<<<<<<< HEAD
+=======
+/// Info box
+if ($glossary->intro && $showcommonelements) {
+    echo $OUTPUT->box(format_module_intro('glossary', $glossary, $cm->id), 'generalbox', 'intro');
+}
+
+/// Search box
+if ($showcommonelements ) {
+    $fullsearchchecked = false;
+    if ($fullsearch || $mode != 'search') {
+        $fullsearchchecked = true;
+    }
+
+    $check = [
+        'name' => 'fullsearch',
+        'id' => 'fullsearch',
+        'value' => '1',
+        'checked' => $fullsearchchecked,
+        'label' => $strsearchindefinition
+    ];
+
+    $checkbox = $OUTPUT->render_from_template('core/checkbox', $check);
+
+    $hiddenfields = [
+        (object) ['name' => 'id', 'value' => $cm->id],
+        (object) ['name' => 'mode', 'value' => 'search'],
+    ];
+    $data = [
+        'action' => new moodle_url('/mod/glossary/view.php'),
+        'hiddenfields' => $hiddenfields,
+        'otherfields' => $checkbox,
+        'inputname' => 'hook',
+        'query' => ($mode == 'search') ? s($hook) : '',
+        'searchstring' => get_string('search'),
+        'extraclasses' => 'my-2'
+    ];
+    echo $OUTPUT->render_from_template('core/search_input', $data);
+}
+
+/// Show the add entry button if allowed
+if (has_capability('mod/glossary:write', $context) && $showcommonelements ) {
+    echo '<div class="singlebutton glossaryaddentry">';
+    echo "<form class=\"form form-inline mb-1\" id=\"newentryform\" method=\"get\" action=\"$CFG->wwwroot/mod/glossary/edit.php\">";
+    echo '<div>';
+    echo "<input type=\"hidden\" name=\"cmid\" value=\"$cm->id\" />";
+    echo '<input type="submit" value="'.get_string('addentry', 'glossary').'" class="btn btn-secondary" />';
+    echo '</div>';
+    echo '</form>';
+    echo "</div>\n";
+}
+
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 require("tabs.php");
 
 require("sql.php");

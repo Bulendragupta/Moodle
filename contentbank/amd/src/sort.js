@@ -34,7 +34,11 @@ import Notification from 'core/notification';
  */
 export const init = () => {
     const contentBank = document.querySelector(selectors.regions.contentbank);
+<<<<<<< HEAD
     Prefetch.prefetchStrings('contentbank', ['contentname', 'uses', 'lastmodified', 'size', 'type', 'author']);
+=======
+    Prefetch.prefetchStrings('contentbank', ['contentname', 'lastmodified', 'size', 'type', 'author']);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Prefetch.prefetchStrings('moodle', ['sortbyx', 'sortbyxreverse']);
     registerListenerEvents(contentBank);
 };
@@ -96,9 +100,15 @@ const registerListenerEvents = (contentBank) => {
 
             return;
         }
+<<<<<<< HEAD
 
         if (fileArea && shownItems) {
 
+=======
+
+        if (fileArea && shownItems) {
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             // Sort by file name alphabetical
             const sortByName = e.target.closest(selectors.actions.sortname);
             if (sortByName) {
@@ -107,6 +117,7 @@ const registerListenerEvents = (contentBank) => {
                 return;
             }
 
+<<<<<<< HEAD
             // Sort by uses.
             const sortByUses = e.target.closest(selectors.actions.sortuses);
             if (sortByUses) {
@@ -115,6 +126,8 @@ const registerListenerEvents = (contentBank) => {
                 return;
             }
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             // Sort by date.
             const sortByDate = e.target.closest(selectors.actions.sortdate);
             if (sortByDate) {

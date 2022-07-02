@@ -50,7 +50,12 @@ function xmldb_choice_upgrade($oldversion) {
         // Choice savepoint reached.
         upgrade_mod_savepoint(true, 2020061600, 'choice');
     }
+<<<<<<< HEAD
     // Automatically generated Moodle v4.0.0 release upgrade line.
+=======
+
+    // Automatically generated Moodle v3.10.0 release upgrade line.
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     // Put any upgrade step following this.
 
     return true;

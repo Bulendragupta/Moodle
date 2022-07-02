@@ -49,9 +49,16 @@ class backup_qtype_essay_plugin extends backup_qtype_plugin {
 
         // Now create the qtype own structures.
         $essay = new backup_nested_element('essay', array('id'), array(
+<<<<<<< HEAD
                 'responseformat', 'responserequired', 'responsefieldlines', 'minwordlimit', 'maxwordlimit',
                 'attachments', 'attachmentsrequired', 'graderinfo', 'graderinfoformat', 'responsetemplate',
                 'responsetemplateformat', 'filetypeslist', 'maxbytes'));
+=======
+                'responseformat', 'responserequired', 'responsefieldlines',
+                'attachments', 'attachmentsrequired', 'graderinfo',
+                'graderinfoformat', 'responsetemplate', 'responsetemplateformat',
+                'filetypeslist', 'maxbytes'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Now the own qtype tree.
         $pluginwrapper->add_child($essay);

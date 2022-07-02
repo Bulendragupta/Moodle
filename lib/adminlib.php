@@ -819,7 +819,11 @@ class admin_category implements parentable_part_of_admin_tree, linkable_settings
     }
 
     /**
+<<<<<<< HEAD
      * Get the URL to view this settings page.
+=======
+     * Get the URL to view this page.
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      *
      * @return moodle_url
      */
@@ -6815,6 +6819,35 @@ class admin_page_managemessageoutputs extends admin_externalpage {
 }
 
 /**
+<<<<<<< HEAD
+=======
+ * Default message outputs configuration
+ *
+ * @deprecated since Moodle 3.7 MDL-64495. Please use admin_page_managemessageoutputs instead.
+ * @todo       MDL-64866 This will be deleted in Moodle 3.11.
+ *
+ * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
+class admin_page_defaultmessageoutputs extends admin_page_managemessageoutputs {
+    /**
+     * Calls parent::__construct with specific arguments
+     *
+     * @deprecated since Moodle 3.7 MDL-64495. Please use admin_page_managemessageoutputs instead.
+     * @todo       MDL-64866 This will be deleted in Moodle 3.11.
+     */
+    public function __construct() {
+        global $CFG;
+
+        debugging('admin_page_defaultmessageoutputs class is deprecated. Please use admin_page_managemessageoutputs instead.',
+            DEBUG_DEVELOPER);
+
+        admin_externalpage::__construct('defaultmessageoutputs', get_string('defaultmessageoutputs', 'message'), new moodle_url('/message/defaultoutputs.php'));
+    }
+}
+
+
+/**
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
  * Manage question behaviours page
  *
  * @copyright  2011 The Open University
@@ -11459,6 +11492,7 @@ class admin_setting_filetypes extends admin_setting_configtext {
             return $parentcheck;
         }
 
+<<<<<<< HEAD
         // Check for unknown file types.
         if ($unknown = $this->util->get_unknown_file_types($data)) {
             return get_string('filetypesunknown', 'core_form', implode(', ', $unknown));
@@ -11467,6 +11501,16 @@ class admin_setting_filetypes extends admin_setting_configtext {
         // Check for disallowed file types.
         if ($notlisted = $this->util->get_not_listed($data, $this->onlytypes)) {
             return get_string('filetypesnotallowed', 'core_form', implode(', ', $notlisted));
+=======
+        // No need to call parent's validation here as we are PARAM_RAW.
+
+        if ($this->util->is_listed($data, $this->onlytypes)) {
+            return true;
+
+        } else {
+            $troublemakers = $this->util->get_not_listed($data, $this->onlytypes);
+            return get_string('filetypesnotallowed', 'core_form', implode(' ', $troublemakers));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         }
 
         return true;

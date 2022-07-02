@@ -132,7 +132,10 @@ class roles_backup_restore_test extends advanced_testcase {
         $precheck = $rc->execute_precheck();
         $this->assertTrue($precheck);
         $rc->get_plan()->get_setting('role_assignments')->set_value(true);
+<<<<<<< HEAD
         $rc->get_plan()->get_setting('permissions')->set_value(true);
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $rc->execute_plan();
         $rc->destroy();
 

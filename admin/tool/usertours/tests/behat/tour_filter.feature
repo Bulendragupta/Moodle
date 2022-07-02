@@ -171,8 +171,13 @@ Feature: Apply tour filters to a tour
       | Tour is enabled    | 1                        |
       | CSS selector       | .modtype_wiki            |
     And I add steps to the "Wiki tour" tour:
+<<<<<<< HEAD
       | targettype                | Title   | id_content               | Content type   |
       | Display in middle of page | Welcome | Welcome to the Wiki tour | Manual |
+=======
+      | targettype                | Title   | Content                  |
+      | Display in middle of page | Welcome | Welcome to the Wiki tour |
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I add a new user tour with:
       | Name               | Forum tour               |
       | Description        | A tour with both matches |
@@ -180,8 +185,13 @@ Feature: Apply tour filters to a tour
       | Tour is enabled    | 1                        |
       | CSS selector       | .modtype_forum           |
     And I add steps to the "Forum tour" tour:
+<<<<<<< HEAD
       | targettype                | Title   | id_content                | Content type   |
       | Display in middle of page | Welcome | Welcome to the Forum tour | Manual |
+=======
+      | targettype                | Title   | Content                   |
+      | Display in middle of page | Welcome | Welcome to the Forum tour |
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I am on "Course 1" course homepage
     Then I should see "Welcome to the Wiki tour"
     And I am on "Course 2" course homepage
@@ -200,8 +210,13 @@ Feature: Apply tour filters to a tour
       | Tour is enabled    | 1              |
       | CSS selector       | #page-my-index |
     And I add steps to the "First tour" tour:
+<<<<<<< HEAD
       | targettype                | Title   | id_content                | Content type   |
       | Display in middle of page | Welcome | Welcome to the First tour | Manual |
+=======
+      | targettype                | Title   | Content                   |
+      | Display in middle of page | Welcome | Welcome to the First tour |
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I add a new user tour with:
       | Name               | Second tour     |
       | Description        | The second tour |
@@ -209,8 +224,13 @@ Feature: Apply tour filters to a tour
       | Tour is enabled    | 0               |
       | CSS selector       | #page-my-index  |
     And I add steps to the "Second tour" tour:
+<<<<<<< HEAD
       | targettype                | Title   | id_content                 | Content type   |
       | Display in middle of page | Welcome | Welcome to the Second tour | Manual |
+=======
+      | targettype                | Title   | Content                    |
+      | Display in middle of page | Welcome | Welcome to the Second tour |
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I add a new user tour with:
       | Name               | Third tour     |
       | Description        | The third tour |
@@ -218,8 +238,13 @@ Feature: Apply tour filters to a tour
       | Tour is enabled    | 1               |
       | CSS selector       | #page-my-index  |
     And I add steps to the "Third tour" tour:
+<<<<<<< HEAD
       | targettype                | Title   | id_content                | Content type   |
       | Display in middle of page | Welcome | Welcome to the Third tour | Manual |
+=======
+      | targettype                | Title   | Content                   |
+      | Display in middle of page | Welcome | Welcome to the Third tour |
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I am on homepage
     Then I should see "Welcome to the First tour"
     And I open the User tour settings page

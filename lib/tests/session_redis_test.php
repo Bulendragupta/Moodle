@@ -51,7 +51,10 @@ class core_session_redis_testcase extends advanced_testcase {
     /** @var int $lockexpire how long to wait in seconds before expiring the lock when testing Redis */
     protected $lockexpire = 70;
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     public function setUp(): void {
         global $CFG;
 
@@ -170,9 +173,13 @@ class core_session_redis_testcase extends advanced_testcase {
             $sessblocked->handler_read('sess1');
             $this->fail('Session lock must fail to be obtained.');
         } catch (\core\session\exception $e) {
+<<<<<<< HEAD
             $this->assertStringContainsString("Unable to obtain lock for session id sess1", $e->getMessage());
             $this->assertStringContainsString('within 1 sec.', $e->getMessage());
             $this->assertStringContainsString('session lock timeout (1 min 10 secs) ', $e->getMessage());
+=======
+            $this->assertStringContainsString("Unable to obtain session lock", $e->getMessage());
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Cannot obtain session lock for sid: sess1', file_get_contents($errorlog));
         }
 

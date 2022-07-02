@@ -330,7 +330,11 @@ class manager {
      * Note that, in general, the active list has the same effect as checking for "mod/h5pactivity:submit"
      * but submit capability cannot be used because is a write capability and does not apply to frozen contexts.
      *
+<<<<<<< HEAD
      * @since Moodle 3.11
+=======
+     * @since Moodle 3.10.4
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * @param bool $allpotentialusers if true, the join will return all active users, not only the ones with attempts.
      * @return sql_join the active users attempts join
      */

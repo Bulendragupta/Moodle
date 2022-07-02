@@ -176,7 +176,10 @@ function(
      * @param {int|undefined} daysLimit How many dates (from midnight) to limit the result to
      * @param {int|false} lastId The ID of the last seen event (if any)
      * @param {int|undefined} courseId Course ID to restrict events to
+<<<<<<< HEAD
      * @param {string|undefined} searchValue Search value
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * @return {Promise} A jquery promise
      */
     var load = function(midnight, limit, daysOffset, daysLimit, lastId, courseId, searchValue) {

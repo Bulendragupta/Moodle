@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {{!
     This file is part of Moodle - http://moodle.org/
 
@@ -198,6 +199,295 @@
         }}>{{#str}}cookiesnotice{{/str}}</button>
     </div>
 </div>
+=======
+
+
+
+
+
+{{#error}}
+    <div class="loginerrors">
+        
+        <div class="alert alert-danger" style="margin-bottom: 0rem;" role="alert"><a href="#" id="loginerrormessage" class="accesshide">{{error}}</a></div>
+    </div>
+{{/error}}
+
+
+        <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title></title>
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/style.css">
+    </head>
+    <body>
+        
+        <main class="loginWrapper h-100 position-relative" style=" height: 100% !important;">
+           
+	
+            <header class="py-3">
+                <div class="container-xxl">
+                    <div class="row align-items-center">
+                        <div class="col-lg-6">
+                            <div class="headerLogos">
+                                <a href="#" target="_self" class="me-4"><img src="img/cu-logo.png" alt="Chandigarh University" width="250" class="cuLogo"></a>
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="headerRight d-flex align-items-center justify-content-lg-end justify-content-sm-center">
+                                <div class="phone">
+                                    Call Us: <a href="tel:180041222595">1800 4122 2595</a>
+                                </div>
+                                <div class="socialLinks">
+                                    <a href="https://www.facebook.com/CUDistanceEducation/" target="_blank"><i class="fa fa-facebook-square" aria-hidden="true"></i></a>
+                                    <a href="https://www.instagram.com/accounts/login/?next=/cudistanceeducation/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                    <a href="https://wa.me/917527030513?text=Hi" target="_blank"><i class="fa fa-whatsapp" aria-hidden="true"></i></a>
+                                    <a href="https://twitter.com/CU_Distance" target="_blank"><i class="fa fa-twitter-square" aria-hidden="true"></i></a>
+                                    <a href="https://www.youtube.com/channel/UCgwtRYnobN99LJ_U1mVh25w" target="_blank"><i class="fa fa-youtube" aria-hidden="true"></i></a>
+                                </div>
+                                <div class="ctaButton">
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div id="myCarousel" class="carousel slide carousel-fade " data-bs-ride="carousel">
+                <div class="carousel-inner " style="    position: fixed !important;">
+                    
+                  <div class="carousel-item active h-100" style=" position: fixed !important;background-image: url('img/slide-1.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+                  </div>
+
+                  <div class="carousel-item h-100" style="position: fixed !important ;background-image: url('img/slide-2.jpg'); background-repeat: no-repeat; background-size: cover; background-position: center;">
+                  </div>
+                  <div class="clear-fix"></div>
+                </div>
+            </div>
+
+            <div class="cuidolLmsLogin" >
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 ms-auto">
+                            <div class="cuidolLmsLogin__inner loginRegisterForm">
+                                <h2 class="text-center">
+                                    Kindly fill your<br> <span>Username & Password</span> below <br>to access your account.
+                                </h2>
+                                <div class="cuidolLmsLogin__form">
+                                    <div class="cuidolLmsLogin__form--tabs">
+                                        <a href="/" class="active" id="loginForm">Login</a>
+                                       
+                                    </div>
+
+                                    <div class="cuidolLmsLogin__form--fields loginForm">
+
+                                        {{! <form class="row g-3 needs-validation" novalidate> }}
+
+                                            <form class="row g-3 needs-validation" action="{{loginurl}}" method="post" id="login">
+
+                                                <input type="hidden" name="logintoken" value="{{logintoken}}">
+
+
+                                            <div class="col-md-12">
+
+                                                
+                                                <input type="text" name="username" id="username" class="form-control"  {{!
+                                                    !}}class="form-control form-control-lg" {{!
+                                                    !}}value="{{username}}" {{!
+                                                    !}}placeholder="{{^canloginbyemail}}{{#cleanstr}}username{{/cleanstr}}{{/canloginbyemail}}{{!
+                                                    !}}{{#canloginbyemail}}{{#cleanstr}}usernameemail{{/cleanstr}}{{/canloginbyemail}}" {{!
+                                                    !}}autocomplete="username">
+
+                                              {{! <input type="text" class="form-control" id="validationCustom02" placeholder="Email address" required> }}
+
+                                              <div class="invalid-feedback">
+                                                This field is required!
+                                              </div>
+                                            </div>
+                                            <div class="col-md-12">
+
+                                                <input type="password" name="password" id="password" class="form-control"  value="" {{!
+                                                    !}}class="form-control form-control-lg" {{!
+                                                    !}}placeholder="{{#cleanstr}}password{{/cleanstr}}" {{!
+                                                    !}}autocomplete="current-password">
+
+                                                {{! <input type="text" class="form-control" id="validationCustom03" placeholder="Enter Password" required> }}
+
+
+                                                <div class="invalid-feedback">
+                                                    This field is required!
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12 text-end">
+                                                <p class="m-0"><a href="/" id="forgotPasswordLink">Forgot Password?</a></p>
+                                            </div>
+                                            <div class="col-12">
+
+                                                <button class="btn cta-btn w-100" type="submit" id="loginbtn">{{#str}}login{{/str}}</button>
+
+{{!  <button class="btn cta-btn w-100" type="submit">Sign In</button> }}
+                                            </div>
+                                          </form>
+                                    </div>
+
+                                    <div class="cuidolLmsLogin__form--fields registerForm d-none">
+                                        <form class="row g-3 needs-validation" novalidate>
+                                            <div class="col-md-12">
+                                                <input type="text" class="form-control" id="validationCustom00" placeholder="Full Name" required>
+                                                <div class="invalid-feedback">
+                                                  This field is required!
+                                                </div>
+                                              </div>
+                                              <div class="col-md-12">
+                                                <input type="text" class="form-control" id="validationCustom01" placeholder="User Name" required>
+                                                <div class="invalid-feedback">
+                                                  This field is required!
+                                                </div>
+                                              </div>
+
+                                            <div class="col-md-12">
+                                              <input type="text" class="form-control" id="validationCustom02" placeholder="Email address" required>
+                                              <div class="invalid-feedback">
+                                                This field is required!
+                                              </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <input type="text" class="form-control" id="validationCustom03" placeholder="Enter Password" required>
+                                                <div class="invalid-feedback">
+                                                    This field is required!
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <input type="text" class="form-control" id="validationCustom04" placeholder="Confirm Password" required>
+                                                <div class="invalid-feedback">
+                                                    This field is required!
+                                                </div>
+                                            </div>
+                                            <div class="col-12">
+                                              <button class="btn cta-btn w-100" type="submit">Sign In</button>
+                                            </div>
+                                          </form>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="cuidolLmsLogin__inner forgotForm d-none">
+                                <h2 class="text-center">
+                                    Please enter your <br><span>log-in or recovery email address</span> below and we will send you an email with instructions.
+                                </h2>
+                                <div class="cuidolLmsLogin__form">
+                                    <div class="cuidolLmsLogin__form--fields">
+                                        <form class="row g-3 needs-validation" novalidate>
+                                            <div class="col-md-12">
+                                              <input type="text" class="form-control" id="validationCustom12" placeholder="Email address" required>
+                                              <div class="invalid-feedback">
+                                                This field is required!
+                                              </div>
+                                            </div>
+                                            <div class="col-12">
+                                              <button class="btn cta-btn w-100" type="submit">Sign In</button>
+                                            </div>
+                                          </form>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+
+
+        <script src="js/jquery.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+
+
+        <script>
+            $(document).ready(function(){
+                $("#registerForm").click(function(){
+                    $(".registerForm").removeClass("d-none")
+                    $(".loginForm").addClass("d-none")
+                    
+                    $(this).addClass("active")
+                    $("#loginForm").removeClass("active")
+
+                    return(false);
+                });
+                $("#loginForm").click(function(){
+                    $(".registerForm").addClass("d-none")
+                    $(".loginForm").removeClass("d-none")
+
+                    $(this).addClass("active")
+                    $("#registerForm").removeClass("active")
+
+                    return(false);
+                });
+                $("#forgotPasswordLink").click(function(){
+                    $(".forgotForm").removeClass("d-none")
+                    $(".loginRegisterForm").addClass("d-none")
+                    return(false);
+                });
+            });
+        </script>
+
+        <script>
+            // Example starter JavaScript for disabling form submissions if there are invalid fields
+            (function () {
+            'use strict'
+
+            // Fetch all the forms we want to apply custom Bootstrap validation styles to
+            var forms = document.querySelectorAll('.needs-validation')
+
+            // Loop over them and prevent submission
+            Array.prototype.slice.call(forms)
+                .forEach(function (form) {
+                form.addEventListener('submit', function (event) {
+                    if (!form.checkValidity()) {
+                    event.preventDefault()
+                    event.stopPropagation()
+                    }
+
+                    form.classList.add('was-validated')
+                }, false)
+                })
+            })()
+        </script>
+    </body>
+    </html>
+  
+
+{{#hasidentityproviders}}
+    {{#hasinstructions}}
+    <div class="row justify-content-center">
+    <div class="col-xl-8 push-xl-2 m-2-md col-sm-8 push-sm-2">
+    <div class="card instructionspanel">
+        <div class="card-block">
+            <div class="card-title">
+                <h2>{{#str}}firsttime{{/str}}</h2>
+            </div>
+            <div>
+            {{{instructions}}}
+            {{#cansignup}}
+                <form class="m-t-1" action="{{signupurl}}" method="get" id="signup">
+                    <button type="submit" class="btn btn-secondary">{{#str}}startsignup{{/str}}</button>
+                </form>
+            {{/cansignup}}
+            </div>
+        </div>
+    </div>
+    </div>
+    </div>
+    {{/hasinstructions}}
+{{/hasidentityproviders}}
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 {{#js}}
     {{^error}}

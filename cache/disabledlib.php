@@ -66,6 +66,7 @@ class cache_disabled extends cache {
      * @param mixed &$actualversion If specified, will be set to the actual version number retrieved
      * @return bool
      */
+<<<<<<< HEAD
     protected function get_implementation($key, int $requiredversion, int $strictness, &$actualversion = null) {
         $datasource = $this->get_datasource();
         if ($datasource !== false) {
@@ -82,6 +83,13 @@ class cache_disabled extends cache {
                 return $result;
             }
         }
+=======
+    public function get($key, $strictness = IGNORE_MISSING) {
+        if ($this->get_datasource() !== false) {
+            return $this->get_datasource()->load_for_cache($key);
+        }
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         return false;
     }
 

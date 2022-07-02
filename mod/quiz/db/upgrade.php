@@ -60,6 +60,7 @@ function xmldb_quiz_upgrade($oldversion) {
         upgrade_mod_savepoint(true, 2020061501, 'quiz');
     }
 
+<<<<<<< HEAD
     if ($oldversion < 2021052503) {
         $table = new xmldb_table('quiz');
         $field = new xmldb_field('completionpass');
@@ -167,6 +168,9 @@ function xmldb_quiz_upgrade($oldversion) {
     }
 
     // Automatically generated Moodle v4.0.0 release upgrade line.
+=======
+    // Automatically generated Moodle v3.10.0 release upgrade line.
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     // Put any upgrade step following this.
 
     return true;

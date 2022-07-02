@@ -24,7 +24,11 @@ Feature: Within a moodle instance, an administrator should be able to import mod
     And I should see "There are 1 modified strings."
     And I click on "Save strings to language pack" "button"
     And I click on "Continue" "button"
+<<<<<<< HEAD
     And I should see "An amazing import feature"
+=======
+    And I should see "An amazing import feature" in the "page-header" "region"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
   @javascript
   Scenario: Try to import a PHP file from a non existent component
@@ -46,6 +50,12 @@ Feature: Within a moodle instance, an administrator should be able to import mod
     And I should see "There are 3 modified strings."
     And I click on "Save strings to language pack" "button"
     And I click on "Continue" "button"
+<<<<<<< HEAD
     And I should see "Uploaded custom string"
     And I should see "Another Uploaded string"
     And I should see "An amazing import feature"
+=======
+    And I should see "Uploaded custom string" in the "page-header" "region"
+    And I should see "Another Uploaded string" in the "page-header" "region"
+    And I should see "An amazing import feature" in the "page-header" "region"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

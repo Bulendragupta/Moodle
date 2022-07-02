@@ -1274,6 +1274,7 @@ function upgrade_calendar_override_events_fix(stdClass $info, bool $output = tru
     upgrade_calendar_events_mtrace('', $output);
     return $return;
 }
+<<<<<<< HEAD
 
 /**
  * Add a new item at the end of the usermenu.
@@ -1632,3 +1633,5 @@ function upgrade_fix_file_timestamps() {
 
     $recordset->close();
 }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

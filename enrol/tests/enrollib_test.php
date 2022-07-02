@@ -1488,6 +1488,7 @@ class enrollib_test extends advanced_testcase {
             ],
         ];
     }
+<<<<<<< HEAD
 
     /**
      * Test last_time_enrolments_synced not recorded with "force" option for enrol_check_plugins.
@@ -1581,4 +1582,6 @@ class enrollib_test extends advanced_testcase {
         $this->assertTrue((int)$secondrun > (int)$firstrun);
     }
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

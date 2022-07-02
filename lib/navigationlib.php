@@ -4765,13 +4765,21 @@ class settings_navigation extends navigation_node {
         }
 
         // Prepare data for course content download functionality if it is enabled.
+<<<<<<< HEAD
         if (\core\content::can_export_context($coursecontext, $USER)) {
+=======
+        // Will only be included here if the action menu is already in use, otherwise a button will be added to the UI elsewhere.
+        if (\core\content::can_export_context($coursecontext, $USER) && !empty($coursenode->get_children_key_list())) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $linkattr = \core_course\output\content_export_link::get_attributes($coursecontext);
             $actionlink = new action_link($linkattr->url, $linkattr->displaystring, null, $linkattr->elementattributes);
 
             $coursenode->add($linkattr->displaystring, $actionlink, self::TYPE_SETTING, null, 'download',
                     new pix_icon('t/download', ''));
+<<<<<<< HEAD
             $coursenode->get('download')->set_force_into_more_menu(true);
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         }
 
         // Return we are done

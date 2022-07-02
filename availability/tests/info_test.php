@@ -23,7 +23,11 @@ namespace core_availability;
  * @copyright 2014 The Open University
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+<<<<<<< HEAD
 class info_test extends \advanced_testcase {
+=======
+class info_testcase extends advanced_testcase {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     public function setUp(): void {
         // Load the mock condition so that it can be used.
         require_once(__DIR__ . '/fixtures/mock_condition.php');
@@ -528,6 +532,7 @@ class info_test extends \advanced_testcase {
         $this->assertDebuggingCalled('Error processing availability data for ' .
                 '&lsquo;Page1&rsquo;: Invalid availability text');
     }
+<<<<<<< HEAD
 
     /**
      * Test for the is_available_for_all() method of the info base class.
@@ -558,4 +563,6 @@ class info_test extends \advanced_testcase {
         $CFG->enableavailability = 1;
         $this->assertFalse($info->is_available_for_all());
     }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

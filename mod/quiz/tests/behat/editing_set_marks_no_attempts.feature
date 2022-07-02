@@ -30,7 +30,10 @@ Feature: Edit quiz marks with no attempts
       | First question  | 1    | 2.0     |
       | Second question | 1    | 3.0     |
     And I am on the "Quiz 1" "mod_quiz > Edit" page logged in as "teacher1"
+<<<<<<< HEAD
     And I change window size to "large"
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
   @javascript
   Scenario: Set the max mark for a question.

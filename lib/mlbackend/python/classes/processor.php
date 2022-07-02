@@ -38,7 +38,11 @@ class processor implements  \core_analytics\classifier, \core_analytics\regresso
     /**
      * The required version of the python package that performs all calculations.
      */
+<<<<<<< HEAD
     const REQUIRED_PIP_PACKAGE_VERSION = '3.0.4';
+=======
+    const REQUIRED_PIP_PACKAGE_VERSION = '2.6.5';
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     /**
      * The python package is installed in a server.

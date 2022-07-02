@@ -14,20 +14,36 @@ Feature: Within a moodle instance, an administrator should be able to modify lan
     And I press "Open language pack for editing"
     And I press "Continue"
     And I set the field "Show strings of these components" to "moodle.php"
+<<<<<<< HEAD
     And I set the field "String identifier" to "moodledocslink"
     And I press "Show strings"
     And I set the field "core/moodledocslink" to "moodle documents"
+=======
+    And I set the field "String identifier" to "administrationsite"
+    And I press "Show strings"
+    And I set the field "core/administrationsite" to "Custom string example"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
   @javascript
   Scenario: Edit an string but don't save it to lang pack.
     When I press "Apply changes and continue editing"
+<<<<<<< HEAD
     Then I should not see "moodle documents" in the "page-footer" "region"
     And I should see "Help and documentation" in the "page-footer" "region"
+=======
+    Then I should see "Site administration" in the "page-header" "region"
+    And I should not see "Custom string example" in the "page-header" "region"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
   @javascript
   Scenario: Customize an string as admin and save it to lang pack.
     Given I press "Save changes to the language pack"
     And I should see "There are 1 modified strings."
     When I click on "Continue" "button"
+<<<<<<< HEAD
     Then I should not see "Help and documentation" in the "page-footer" "region"
     And I should see "moodle documents" in the "page-footer" "region"
+=======
+    Then I should see "Custom string example" in the "page-header" "region"
+    And I should not see "Site administration" in the "page-header" "region"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

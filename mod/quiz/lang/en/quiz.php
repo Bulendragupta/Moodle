@@ -182,10 +182,14 @@ $string['comment'] = 'Comment';
 $string['commentorgrade'] = 'Make comment or override grade';
 $string['comments'] = 'Comments';
 $string['completedon'] = 'Completed on';
+<<<<<<< HEAD
 $string['completiondetail:minattempts'] = 'Make attempts: {$a}';
 $string['completiondetail:passorexhaust'] = 'Receive a pass grade or complete all available attempts';
 $string['completionminattempts'] = 'Minimum number of attempts:';
 $string['completionminattemptsdesc'] = 'Minimum number of attempts required: {$a}';
+=======
+$string['completionminattempts'] = 'Minimum number of attempts:';
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['completionminattemptsgroup'] = 'Require attempts';
 $string['completionminattemptserror'] = 'Minimum number of attempts must be lower or equal to attempts allowed.';
 $string['completionpassorattemptsexhausteddesc'] = 'Student must achieve a passing grade, or exhaust all available attempts to complete this activity';
@@ -524,7 +528,10 @@ $string['matchanswer'] = 'Matching answer';
 $string['matchanswerno'] = 'Matching answer {$a}';
 $string['messageprovider:attempt_overdue'] = 'Warning when your quiz attempt becomes overdue';
 $string['messageprovider:confirmation'] = 'Confirmation of your own quiz submissions';
+<<<<<<< HEAD
 $string['messageprovider:attempt_grading_complete'] = 'Notification that your attempt has been graded';
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['messageprovider:submission'] = 'Notification of your students\' quiz submissions';
 $string['max'] = 'Max';
 $string['maxmark'] = 'Maximum mark';
@@ -763,7 +770,10 @@ $string['quizcloseson'] = 'This quiz will close on {$a}.';
 $string['quiz:deleteattempts'] = 'Delete quiz attempts';
 $string['quiz:emailconfirmsubmission'] = 'Receive confirmation of your own quiz submissions';
 $string['quiz:emailnotifysubmission'] = 'Receive notification of your students\' quiz submissions';
+<<<<<<< HEAD
 $string['quiz:emailnotifyattemptgraded'] = 'Receive notification when your attempt has been graded';
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['quiz:emailwarnoverdue'] = 'Receive warning when your quiz attempt becomes overdue';
 $string['quiz:grade'] = 'Grade quizzes manually';
 $string['quiz:ignoretimelimits'] = 'Ignore quiz time limit';

@@ -7002,7 +7002,11 @@ class context_course extends context {
                     } else {
                         $name .= format_string(get_course_display_name_for_list($course), true, array('context' => $this));
                     }
+<<<<<<< HEAD
                 }
+=======
+               }
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             }
         }
         return $name;

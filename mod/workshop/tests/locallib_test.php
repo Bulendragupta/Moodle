@@ -333,7 +333,11 @@ class locallib_test extends \advanced_testcase {
         $percent = -7.098;
 
         // exercise SUT
+<<<<<<< HEAD
         $this->expectException(\coding_exception::class);
+=======
+        $this->expectException(coding_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $part = workshop::percent_to_value($percent, $total);
     }
 
@@ -344,7 +348,11 @@ class locallib_test extends \advanced_testcase {
         $percent = 121.08;
 
         // exercise SUT
+<<<<<<< HEAD
         $this->expectException(\coding_exception::class);
+=======
+        $this->expectException(coding_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $part = workshop::percent_to_value($percent, $total);
     }
 

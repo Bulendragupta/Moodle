@@ -307,6 +307,7 @@ class client extends \oauth2_client {
                 $DB->delete_records('oauth2_refresh_token', ['id' => $refreshtoken->id]);
             }
         }
+<<<<<<< HEAD
 
         return false;
     }
@@ -327,6 +328,28 @@ class client extends \oauth2_client {
         return !$this->system && ($this->autorefresh && !empty($USER->id));
     }
 
+=======
+
+        return false;
+    }
+
+    /**
+     * Whether this client should automatically exchange a refresh token for an access token as part of login checks.
+     *
+     * @return bool true if supported, false otherwise.
+     */
+    protected function can_autorefresh(): bool {
+        global $USER;
+
+        // Auto refresh is only supported when the follow criteria are met:
+        // a) The client is not a system client. The exchange process for system client refresh tokens is handled
+        // externally, via a call to client->upgrade_refresh_token().
+        // b) The user is authenticated.
+        // c) The client has been configured with autorefresh enabled.
+        return !$this->system && ($this->autorefresh && !empty($USER->id));
+    }
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     /**
      * Store the user's refresh token for later use.
      *
@@ -506,11 +529,14 @@ class client extends \oauth2_client {
             return false;
         }
 
+<<<<<<< HEAD
         if (is_null($userinfo)) {
             // Throw an exception displaying the original response, because, at this point, $userinfo shouldn't be empty.
             throw new moodle_exception($response);
         }
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         return $this->map_userinfo_to_fields($userinfo);
     }
 

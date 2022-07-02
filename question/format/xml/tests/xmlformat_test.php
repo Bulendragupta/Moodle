@@ -478,6 +478,7 @@ END;
         $expectedq->attachmentsrequired = 1;
         $expectedq->maxbytes = 0;
         $expectedq->filetypeslist = null;
+<<<<<<< HEAD
         $expectedq->graderinfo['text'] = '<p>Grade <b>generously</b>!</p>';
         $expectedq->graderinfo['format'] = FORMAT_HTML;
         $expectedq->responsetemplate['text'] = '<p>Here is something <b>really</b> interesting.</p>';
@@ -547,6 +548,8 @@ END;
         $expectedq->attachmentsrequired = 1;
         $expectedq->maxbytes = 52428800; // 50MB.
         $expectedq->filetypeslist = '.pdf,.zip.,.docx';
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $expectedq->graderinfo['text'] = '<p>Grade <b>generously</b>!</p>';
         $expectedq->graderinfo['format'] = FORMAT_HTML;
         $expectedq->responsetemplate['text'] = '<p>Here is something <b>really</b> interesting.</p>';

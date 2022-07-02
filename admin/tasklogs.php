@@ -28,7 +28,15 @@ require_once("{$CFG->libdir}/adminlib.php");
 use core_admin\local\systemreports\task_logs;
 use core_reportbuilder\system_report_factory;
 
+<<<<<<< HEAD
 $PAGE->set_url(new \moodle_url('/admin/tasklogs.php'));
+=======
+$pageurl = new \moodle_url('/admin/tasklogs.php');
+$pageurl->param('filter', $filter);
+$pageurl->param('result', $result);
+
+$PAGE->set_url($pageurl);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $PAGE->set_context(context_system::instance());
 $PAGE->set_pagelayout('admin');
 $strheading = get_string('tasklogs', 'admin');

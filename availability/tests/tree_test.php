@@ -23,7 +23,11 @@ namespace core_availability;
  * @copyright 2014 The Open University
  * @license http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+<<<<<<< HEAD
 class tree_test extends \advanced_testcase {
+=======
+class tree_testcase extends \advanced_testcase {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     public function setUp(): void {
         // Load the mock classes so they can be used.
         require_once(__DIR__ . '/fixtures/mock_condition.php');
@@ -37,83 +41,135 @@ class tree_test extends \advanced_testcase {
         try {
             new tree('frog');
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('not object', $e->getMessage());
         }
         try {
             new tree((object)array());
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('missing ->op', $e->getMessage());
         }
         try {
             new tree((object)array('op' => '*'));
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('unknown ->op', $e->getMessage());
         }
         try {
             new tree((object)array('op' => '|'));
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('missing ->show', $e->getMessage());
         }
         try {
             new tree((object)array('op' => '|', 'show' => 0));
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('->show not bool', $e->getMessage());
         }
         try {
             new tree((object)array('op' => '&'));
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('missing ->showc', $e->getMessage());
         }
         try {
             new tree((object)array('op' => '&', 'showc' => 0));
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('->showc not array', $e->getMessage());
         }
         try {
             new tree((object)array('op' => '&', 'showc' => array(0)));
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('->showc value not bool', $e->getMessage());
         }
         try {
             new tree((object)array('op' => '|', 'show' => true));
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('missing ->c', $e->getMessage());
         }
         try {
             new tree((object)array('op' => '|', 'show' => true,
                     'c' => 'side'));
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('->c not array', $e->getMessage());
         }
         try {
             new tree((object)array('op' => '|', 'show' => true,
                     'c' => array(3)));
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('child not object', $e->getMessage());
         }
         try {
             new tree((object)array('op' => '|', 'show' => true,
                     'c' => array((object)array('type' => 'doesnotexist'))));
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Unknown condition type: doesnotexist', $e->getMessage());
         }
         try {
             new tree((object)array('op' => '|', 'show' => true,
                     'c' => array((object)array())));
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('missing ->op', $e->getMessage());
         }
         try {
@@ -122,7 +178,11 @@ class tree_test extends \advanced_testcase {
                     'showc' => array(true, true)
                     ));
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('->c, ->showc mismatch', $e->getMessage());
         }
     }

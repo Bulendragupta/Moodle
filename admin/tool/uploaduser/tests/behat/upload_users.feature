@@ -129,6 +129,7 @@ Feature: Upload users
     And I should see "Users created: 4"
     And I press "Continue"
     # Boost check.
+<<<<<<< HEAD
     And I navigate to "Users > Accounts > Browse list of users" in site administration
     And I click on ".icon[title=Edit]" "css_element" in the "jonest@example.com" "table_row"
     And I should see "Boost"
@@ -136,6 +137,16 @@ Feature: Upload users
     And I navigate to "Users > Accounts > Browse list of users" in site administration
     And I click on ".icon[title=Edit]" "css_element" in the "reznor@example.com" "table_row"
     And I should see "Classic"
+=======
+    And I log in as "jonest"
+    And I am on "Maths" course homepage
+    And "Calendar" "link" should be visible
+    And I log out
+    # Classic check.
+    And I log in as "reznor"
+    And I am on "Maths" course homepage
+    And "Calendar" "link" should not be visible
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
   @javascript
   Scenario: Upload users setting their user theme when allowuserthemes is false

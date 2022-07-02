@@ -331,7 +331,11 @@ class api {
 
         if (empty($section) or $section == 'supportcontact') {
             $settings->supportname = $CFG->supportname;
+<<<<<<< HEAD
             $settings->supportemail = $CFG->supportemail ?? null;
+=======
+            $settings->supportemail = $CFG->supportemail;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $settings->supportpage = $CFG->supportpage;
         }
 
@@ -340,10 +344,13 @@ class api {
             $settings->coursegraceperiodbefore = $CFG->coursegraceperiodbefore;
         }
 
+<<<<<<< HEAD
         if (empty($section) || $section === 'navigation') {
             $settings->enabledashboard = $CFG->enabledashboard;
         }
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         return $settings;
     }
 
@@ -513,7 +520,14 @@ class api {
                 '$mmSideMenuDelegate_mmaNotifications' => new lang_string('notifications', 'message'),
                 '$mmSideMenuDelegate_mmaCalendar' => new lang_string('calendar', 'calendar'),
                 'CoreMainMenuDelegate_AddonBlog' => new lang_string('blog', 'blog'),
+<<<<<<< HEAD
                 'CoreMainMenuDelegate_CoreTag' => new lang_string('tags'),
+=======
+                '$mmSideMenuDelegate_mmaFiles' => new lang_string('files'),
+                'CoreMainMenuDelegate_CoreTag' => new lang_string('tags'),
+                '$mmSideMenuDelegate_website' => new lang_string('webpage'),
+                '$mmSideMenuDelegate_help' => new lang_string('help'),
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 'CoreMainMenuDelegate_QrReader' => new lang_string('scanqrcode', 'tool_mobile'),
             ),
             "$useraccount" => array(
@@ -620,6 +634,7 @@ class api {
                 $warnings[] = ['selfsignedoruntrustedcertificatewarning', 'tool_mobile'];
             } else {
                 $timenow = time();
+<<<<<<< HEAD
                 $infokeys = array_keys($info['certinfo']);
                 $lastkey = end($infokeys);
 
@@ -648,6 +663,26 @@ class api {
                     if ($key != $lastkey &&
                             ($signaturealgorithm == 'sha1WithRSAEncryption' || $signaturealgorithm == 'sha1WithRSA')) {
                         $warnings['insecurealgorithmwarning'] = ['insecurealgorithmwarning', 'tool_mobile'];
+=======
+                $expectedissuer = null;
+                foreach ($info['certinfo'] as $cert) {
+
+                    // Due to a bug in certain curl/openssl versions the signature algorithm isn't always correctly parsed.
+                    // See https://github.com/curl/curl/issues/3706 for reference.
+                    if (!array_key_exists('Signature Algorithm', $cert)) {
+                        // The malformed field that does contain the algorithm we're looking for looks like the following:
+                        // <WHITESPACE>Signature Algorithm: <ALGORITHM><CRLF><ALGORITHM>.
+                        preg_match('/\s+Signature Algorithm: (?<algorithm>[^\s]+)/', $cert['Public Key Algorithm'], $matches);
+
+                        $signaturealgorithm = $matches['algorithm'] ?? '';
+                    } else {
+                        $signaturealgorithm = $cert['Signature Algorithm'];
+                    }
+
+                    // Check if the signature algorithm is weak (Android won't work with SHA-1).
+                    if ($signaturealgorithm == 'sha1WithRSAEncryption' || $signaturealgorithm == 'sha1WithRSA') {
+                        $warnings[] = ['insecurealgorithmwarning', 'tool_mobile'];
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                     }
                     // Check certificate start date.
                     if (strtotime($cert['start date']) > $timenow) {

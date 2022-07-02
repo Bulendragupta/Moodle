@@ -42,7 +42,13 @@ $PAGE->set_pagelayout('standard');
 $PAGE->navbar->ignore_active(true);
 $PAGE->navbar->add(get_string('preferences'), new moodle_url('/user/preferences.php'));
 $PAGE->navbar->add(get_string('useraccount'));
+<<<<<<< HEAD
 $PAGE->navbar->add(get_string('securitykeys', 'webservice'), new moodle_url('/user/managetoken.php'));
+=======
+$PAGE->navbar->add(get_string('securitykeys', 'webservice'),
+        new moodle_url('/user/managetoken.php',
+                array('id' => $tokenid, 'sesskey' => sesskey())));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $PAGE->navbar->add(get_string('wsdocumentation', 'webservice'));
 
 // check web service are enabled

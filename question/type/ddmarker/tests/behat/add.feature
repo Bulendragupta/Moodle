@@ -29,7 +29,10 @@ Feature: Test creating a drag and drop markers question
     And I expand all fieldsets
 
     # Markers.
+<<<<<<< HEAD
     And I set the field "id_shuffleanswers" to "1"
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the field "id_drags_0_label" to "OU"
     And I set the field "id_drags_0_noofdrags" to "1"
     And I set the field "id_drags_1_label" to "Railway station"

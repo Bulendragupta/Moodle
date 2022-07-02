@@ -135,7 +135,11 @@ Feature: Mapping courses in a feedback
     And I log in as "manager"
     And I am on site homepage
     And I follow "Course feedback"
+<<<<<<< HEAD
     And I follow "Mapped courses"
+=======
+    And I follow "Map feedback to courses"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the field "Courses" to "Course 2, Course 3"
     And I press "Save changes"
     And I should see "Course mapping has been changed"

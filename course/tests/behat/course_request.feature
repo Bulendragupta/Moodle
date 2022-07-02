@@ -79,9 +79,14 @@ Feature: Users can request and approve courses
     And I log in as "user1"
     And I am on course index
     And I follow "English category"
+<<<<<<< HEAD
     And I click on "More actions" "button"
     And I click on "Request a course" "link"
     And I should see "English category" in the ".form-autocomplete-selection" "css_element"
+=======
+    And I press "Request a course"
+    And the "Course category" select box should contain "English category"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Course full name  | My new course |
       | Course short name | Mynewcourse   |

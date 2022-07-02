@@ -1,6 +1,7 @@
 This files describes API changes in /completion/* - completion,
 information provided here is intended especially for developers.
 
+<<<<<<< HEAD
 === 4.0 ===
 * New method mark_course_completions_activity_criteria() has been added to mark course completions instantly. It is
   based on cron for completion_criteria_activity.php which is refactored to use it as well.
@@ -35,6 +36,11 @@ information provided here is intended especially for developers.
 * *_get_completion_state() callback functions have been deprecated and should no longer be used. Plugins that define custom
   completion rules must implement the mod_[modname]\completion\custom_completion class that extends the
   \core_completion\activity_custom_completion base class.
+=======
+=== 3.10.8 ===
+* The method \completion_criteria_completion::mark_complete() now has the optional $timecompleted parameter to specify when the
+  criteria was completed.
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 === 3.7 ===
  * External function core_completion_external::get_activities_completion_status new returns the following additional field:

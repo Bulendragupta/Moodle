@@ -224,7 +224,11 @@ class exportable_filearea_test extends advanced_testcase {
     ): exported_item {
         $archive = $this->getMockBuilder(zipwriter::class)
             ->setConstructorArgs([$this->getMockBuilder(\ZipStream\ZipStream::class)->getmock()])
+<<<<<<< HEAD
             ->onlyMethods([
+=======
+            ->setMethods([
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 'add_file_from_stored_file',
                 'is_file_in_archive',
             ])

@@ -49,6 +49,7 @@ Feature: Add cohorts of users
     And the "Current users" select box should not contain "Forth User (forth@example.com)"
 
   @javascript
+<<<<<<< HEAD
   Scenario: Add user to cohort using custom user field search
     Given the following config values are set as admin:
       | showuseridentity | email,profile_field_fruit |
@@ -79,6 +80,8 @@ Feature: Add cohorts of users
     And the "Potential users" select box should contain "First User (first@example.com\, Apple)"
 
   @javascript
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
   Scenario: Add users to a cohort using a bulk user action
     When I navigate to "Users > Accounts > Bulk user actions" in site administration
     And I set the field "Available" to "Third User"
@@ -98,7 +101,11 @@ Feature: Add cohorts of users
 
   @javascript
   Scenario: Edit cohort name in-place
+<<<<<<< HEAD
     When I navigate to "Users > Accounts > Cohorts" in site administration
+=======
+    When I follow "Cohorts"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the field "Edit cohort name" to "Students cohort"
     Then I should not see "Test cohort name"
     And I should see "Students cohort"

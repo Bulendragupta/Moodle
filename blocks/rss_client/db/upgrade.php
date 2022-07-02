@@ -45,6 +45,7 @@ function xmldb_block_rss_client_upgrade($oldversion) {
     // Automatically generated Moodle v3.9.0 release upgrade line.
     // Put any upgrade step following this.
 
+<<<<<<< HEAD
     if ($oldversion < 2021121600) {
         // From Moodle 4.0, this block has been disabled by default in new installations.
         // If the site has no instances of this block, it will disabled during the upgrading process too.
@@ -57,6 +58,9 @@ function xmldb_block_rss_client_upgrade($oldversion) {
     }
 
     // Automatically generated Moodle v4.0.0 release upgrade line.
+=======
+    // Automatically generated Moodle v3.10.0 release upgrade line.
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     // Put any upgrade step following this.
 
     return true;

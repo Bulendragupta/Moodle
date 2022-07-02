@@ -2078,7 +2078,11 @@ class core_renderer extends renderer_base {
         $output = $this->box_start('generalbox modal modal-dialog modal-in-page show', 'notice', $attributes);
         $output .= $this->box_start('modal-content', 'modal-content');
         $output .= $this->box_start('modal-header px-3', 'modal-header');
+<<<<<<< HEAD
         $output .= html_writer::tag('h4', $displayoptions['confirmtitle']);
+=======
+        $output .= html_writer::tag('h4', get_string('confirm'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $output .= $this->box_end();
         $attributes = [
             'role'=>'alert',
@@ -2613,8 +2617,11 @@ class core_renderer extends renderer_base {
      * @return string
      */
     protected function render_user_picture(user_picture $userpicture) {
+<<<<<<< HEAD
         global $CFG;
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $user = $userpicture->user;
         $canviewfullnames = has_capability('moodle/site:viewfullnames', $this->page->context);
 
@@ -4368,6 +4375,28 @@ EOD;
             }
         }
 
+<<<<<<< HEAD
+=======
+        if ($this->should_display_main_logo($headinglevel)) {
+            $sitename = format_string($SITE->fullname, true, ['context' => context_course::instance(SITEID)]);
+            // Logo.
+            $html = html_writer::div(
+                html_writer::empty_tag('img', [
+                    'src' => $this->get_logo_url(null, 150),
+                    'alt' => get_string('logoof', '', $sitename),
+                    'class' => 'img-fluid'
+                ]),
+                'logo'
+            );
+            // Heading.
+            if (!isset($heading)) {
+                $html .= $this->heading($this->page->heading, $headinglevel, 'sr-only');
+            } else {
+                $html .= $this->heading($heading, $headinglevel, 'sr-only');
+            }
+            return $html;
+        }
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $contextheader = new context_header($heading, $headinglevel, $imagedata, $userbuttons);
         return $this->render_context_header($contextheader);
@@ -4420,10 +4449,13 @@ EOD;
         }
 
         // Headings.
+<<<<<<< HEAD
         if (isset($contextheader->prefix)) {
             $prefix = html_writer::div($contextheader->prefix, 'text-muted');
             $heading = $prefix . $heading;
         }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $html .= html_writer::tag('div', $heading, array('class' => 'page-header-headings'));
 
         // Buttons.

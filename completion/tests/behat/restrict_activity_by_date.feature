@@ -25,7 +25,11 @@ Feature: Restrict activity availability through date conditions
       | assignsubmission_onlinetext_enabled | 1                                     |
       | assignsubmission_file_enabled       | 0                                     |
     And I am on the "Test assignment 1" "assign activity" page logged in as "teacher1"
+<<<<<<< HEAD
     And I navigate to "Settings" in current page administration
+=======
+    And I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I expand all fieldsets
 
   @javascript
@@ -41,6 +45,10 @@ Feature: Restrict activity availability through date conditions
     When I am on the "Course 1" course page logged in as student1
     Then I should see "Available from 31 December 2037"
     And "Test assignment 1" "link" should not exist in the "page" "region"
+<<<<<<< HEAD
+=======
+    And "Test assignment 1" activity should be dimmed
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
   @javascript
   Scenario: Show activity hidden to students when available until date is in past

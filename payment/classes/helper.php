@@ -60,9 +60,15 @@ class helper {
     /**
      * Returns the list of gateways that can process payments in the given currency.
      *
+<<<<<<< HEAD
      * @param string $component Name of the component that the paymentarea and itemid belong to
      * @param string $paymentarea Payment area
      * @param int $itemid An identifier that is known to the component
+=======
+     * @param string $component
+     * @param string $paymentarea
+     * @param int $itemid
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * @return string[]
      */
     public static function get_available_gateways(string $component, string $paymentarea, int $itemid): array {
@@ -141,8 +147,13 @@ class helper {
     /**
      * Returns the attributes to place on a pay button.
      *
+<<<<<<< HEAD
      * @param string $component Name of the component that the paymentarea and itemid belong to
      * @param string $paymentarea Payment area
+=======
+     * @param string $component Name of the component that the itemid belongs to
+     * @param string $paymentarea
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * @param int $itemid An internal identifier that is used by the component
      * @param string $description Description of the payment
      * @return array
@@ -151,7 +162,10 @@ class helper {
             string $description): array {
 
         $payable = static::get_payable($component, $paymentarea, $itemid);
+<<<<<<< HEAD
         $successurl = static::get_success_url($component, $paymentarea, $itemid);
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         return [
             'id' => 'gateways-modal-trigger',
@@ -162,14 +176,21 @@ class helper {
             'data-itemid' => $itemid,
             'data-cost' => static::get_cost_as_string($payable->get_amount(), $payable->get_currency()),
             'data-description' => $description,
+<<<<<<< HEAD
             'data-successurl' => $successurl->out(false),
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         ];
     }
 
     /**
+<<<<<<< HEAD
      * Get the name of the service provider class
      *
      * @param string $component The component
+=======
+     * @param string $component
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * @return string
      * @throws \coding_exception
      */
@@ -189,8 +210,13 @@ class helper {
     /**
      * Asks the payable from the related component.
      *
+<<<<<<< HEAD
      * @param string $component Name of the component that the paymentarea and itemid belong to
      * @param string $paymentarea Payment area
+=======
+     * @param string $component Name of the component that the itemid belongs to
+     * @param string $paymentarea
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * @param int $itemid An internal identifier that is used by the component
      * @return local\entities\payable
      */
@@ -201,6 +227,7 @@ class helper {
     }
 
     /**
+<<<<<<< HEAD
      * Fetches the URL of the page the user should be redirected to from the related component
      *
      * @param string $component Name of the component that the paymentarea and itemid belong to
@@ -220,6 +247,14 @@ class helper {
      * @param string $paymentarea Payment area
      * @param int $itemid An identifier that is known to the component
      * @param string $gatewayname The gateway name
+=======
+     * Returns the gateway configuration for given component and gateway
+     *
+     * @param string $component
+     * @param string $paymentarea
+     * @param int $itemid
+     * @param string $gatewayname
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * @return array
      * @throws \moodle_exception
      */
@@ -242,8 +277,13 @@ class helper {
      *
      * @uses \core_payment\local\callback\service_provider::deliver_order()
      *
+<<<<<<< HEAD
      * @param string $component Name of the component that the paymentarea and itemid belong to
      * @param string $paymentarea Payment area
+=======
+     * @param string $component Name of the component that the itemid belongs to
+     * @param string $paymentarea
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * @param int $itemid An internal identifier that is used by the component
      * @param int $paymentid payment id as inserted into the 'payments' table, if needed for reference
      * @param int $userid The userid the order is going to deliver to
@@ -261,8 +301,13 @@ class helper {
      * Each payment gateway may then store the additional information their way.
      *
      * @param int $accountid Account id
+<<<<<<< HEAD
      * @param string $component Name of the component that the paymentarea and itemid belong to
      * @param string $paymentarea Payment area
+=======
+     * @param string $component Name of the component that the itemid belongs to
+     * @param string $paymentarea
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * @param int $itemid An internal identifier that is used by the component
      * @param int $userid Id of the user who is paying
      * @param float $amount Amount of payment

@@ -32,7 +32,13 @@ Feature: Bulk released grades should not be sent to gradebook while submissions 
       | assignfeedback_comments_enabled     | 1                           |
       | assignfeedback_editpdf_enabled      | 1                           |
     # Add a submission.
+<<<<<<< HEAD
     And I am on the "Test assignment name" "assign activity" page logged in as "student1"
+=======
+    And I log in as "student1"
+    And I am on "Course 1" course homepage
+    When I follow "Test assignment name"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should not see "Feedback"
     And I should see "Not marked" in the "Grading status" "table_row"
     And I press "Add submission"
@@ -41,7 +47,13 @@ Feature: Bulk released grades should not be sent to gradebook while submissions 
     And I press "Save changes"
     And I log out
     # Add another submission.
+<<<<<<< HEAD
     And I am on the "Test assignment name" "assign activity" page logged in as "student2"
+=======
+    And I log in as "student2"
+    And I am on "Course 1" course homepage
+    When I follow "Test assignment name"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should not see "Feedback"
     And I should see "Not marked" in the "Grading status" "table_row"
     And I press "Add submission"
@@ -50,26 +62,47 @@ Feature: Bulk released grades should not be sent to gradebook while submissions 
     And I press "Save changes"
     And I log out
     # Mark the submissions.
+<<<<<<< HEAD
     And I am on the "Test assignment name" "assign activity" page logged in as "teacher1"
     And I follow "View all submissions"
+=======
+    And I log in as "teacher1"
+    And I am on "Course 1" course homepage
+    And I follow "Test assignment name"
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "Not marked" in the "I'm student1's submission" "table_row"
     And I click on "Grade" "link" in the "I'm student1's submission" "table_row"
     And I set the field "Grade out of 100" to "50"
     And I set the field "Marking workflow state" to "In review"
     And I set the field "Feedback comments" to "Great job!"
+<<<<<<< HEAD
     And I set the field "Notify student" to "0"
     And I press "Save changes"
     And I am on the "Test assignment name" "assign activity" page
     And I follow "View all submissions"
+=======
+    And I set the field "Notify students" to "0"
+    And I press "Save changes"
+    And I follow "Test assignment name"
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "Not marked" in the "I'm student2's submission" "table_row"
     And I click on "Grade" "link" in the "I'm student2's submission" "table_row"
     And I set the field "Grade out of 100" to "50"
     And I set the field "Marking workflow state" to "In review"
     And I set the field "Feedback comments" to "Great job!"
+<<<<<<< HEAD
     And I set the field "Notify student" to "0"
     And I press "Save changes"
     And I am on the "Test assignment name" "assign activity" page
     And I follow "View all submissions"
+=======
+    And I set the field "Notify students" to "0"
+    And I press "Save changes"
+    And I follow "Test assignment name"
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "In review" in the "I'm student1's submission" "table_row"
     And I should see "In review" in the "I'm student2's submission" "table_row"
 
@@ -81,10 +114,17 @@ Feature: Bulk released grades should not be sent to gradebook while submissions 
     Then I should not see "Student 1 (student1@example.com)"
     And I should not see "Student 2 (student2@example.com)"
     And I set the field "Marking workflow state" to "Released"
+<<<<<<< HEAD
     And I set the field "Notify student" to "No"
     And I press "Save changes"
     And I am on the "Test assignment name" "assign activity" page
     And I follow "View all submissions"
+=======
+    And I set the field "Notify students" to "No"
+    And I press "Save changes"
+    And I follow "Test assignment name"
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "Released" in the "I'm student1's submission" "table_row"
     And I should see "Released" in the "I'm student2's submission" "table_row"
     And I log out
@@ -100,8 +140,15 @@ Feature: Bulk released grades should not be sent to gradebook while submissions 
     Then I should not see "50"
     And I should not see "Great job!"
     And I log out
+<<<<<<< HEAD
     And I am on the "Test assignment name" "assign activity" page logged in as "teacher1"
     And I follow "View all submissions"
+=======
+    And I log in as "teacher1"
+    And I am on "Course 1" course homepage
+    And I follow "Test assignment name"
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the field "Grading action" to "Reveal student identities"
     And I press "Continue"
     Then I should see "Released" in the "Student 1" "table_row"
@@ -129,10 +176,17 @@ Feature: Bulk released grades should not be sent to gradebook while submissions 
     Then I should see "Student 1 (student1@example.com)"
     And I should see "Student 2 (student2@example.com)"
     And I set the field "Marking workflow state" to "Released"
+<<<<<<< HEAD
     And I set the field "Notify student" to "No"
     And I press "Save changes"
     And I am on the "Test assignment name" "assign activity" page
     And I follow "View all submissions"
+=======
+    And I set the field "Notify students" to "No"
+    And I press "Save changes"
+    And I follow "Test assignment name"
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "Released" in the "Student 1" "table_row"
     And I should see "Released" in the "Student 2" "table_row"
     And I log out

@@ -7021,6 +7021,7 @@ function display_size($size, int $decimalplaces = 1, string $fixedunits = ''): s
         $units[] = get_string('sizepb');
     }
 
+<<<<<<< HEAD
     switch ($fixedunits) {
         case 'PB' :
             $magnitude = 5;
@@ -7046,6 +7047,20 @@ function display_size($size, int $decimalplaces = 1, string $fixedunits = ''): s
             break;
         default:
             throw new coding_exception('Unknown fixed units value: ' . $fixedunits);
+=======
+    if ($size >= 1024 ** 5) {
+        $size = round($size / 1024 ** 5 * 10) / 10 . $units[5];
+    } else if ($size >= 1024 ** 4) {
+        $size = round($size / 1024 ** 4 * 10) / 10 . $units[4];
+    } else if ($size >= 1024 ** 3) {
+        $size = round($size / 1024 ** 3 * 10) / 10 . $units[3];
+    } else if ($size >= 1024 ** 2) {
+        $size = round($size / 1024 ** 2 * 10) / 10 . $units[2];
+    } else if ($size >= 1024 ** 1) {
+        $size = round($size / 1024 ** 1 * 10) / 10 . $units[1];
+    } else {
+        $size = intval($size) .' '. $units[0]; // File sizes over 2GB can not work in 32bit PHP anyway.
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     // Special case for magnitude 0 (bytes) - never use decimal places.

@@ -203,7 +203,11 @@ class core_backup_renderer extends plugin_renderer_base {
                         $table->data = array();
                     }
                     $name = get_string('pluginname', $activity->modulename);
+<<<<<<< HEAD
                     $icon = new image_icon('monologo', '', $activity->modulename, ['class' => 'iconlarge icon-pre']);
+=======
+                    $icon = new image_icon('icon', '', $activity->modulename, ['class' => 'iconlarge icon-pre']);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                     $table->data[] = array(
                         $this->output->render($icon).$name,
                         $activity->title,

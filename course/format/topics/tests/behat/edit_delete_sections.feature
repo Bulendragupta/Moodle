@@ -54,7 +54,11 @@ Feature: Sections can be edited and deleted in topics format
 
   @javascript
   Scenario: Inline edit section name in topics format
+<<<<<<< HEAD
     When I set the field "Edit topic name" in the "Topic 1" "section" to "Midterm evaluation"
+=======
+    When I set the field "Edit topic name" in the "li#section-1" "css_element" to "Midterm evaluation"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should not see "Topic 1" in the "region-main" "region"
     And "New name for topic" "field" should not exist
     And I should see "Midterm evaluation" in the "Midterm evaluation" "section"

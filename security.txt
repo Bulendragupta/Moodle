@@ -3,4 +3,8 @@ Acknowledgments: https://moodle.org/security/
 Preferred-Languages: en
 Canonical: https://moodle.org/.well-known/security.txt
 Policy: https://docs.moodle.org/dev/Moodle_security_procedures
+<<<<<<< HEAD
 Expires: 2022-12-05T01:00:00.000Z
+=======
+Expires: Mon, 30 May 2022 01:00:00 +0000
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

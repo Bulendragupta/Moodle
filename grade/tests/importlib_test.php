@@ -205,6 +205,7 @@ class importlib_test extends \advanced_testcase {
         ob_end_clean();
         $this->assertTrue($status);
         $this->assertStringContainsString("++ Grade import success ++", $output);
+<<<<<<< HEAD
     }
 
     /**
@@ -281,5 +282,7 @@ class importlib_test extends \advanced_testcase {
             'useridnumber' => 'uid101',
             'gradeidnumber' => 'gid101',
         ], $unenrolleduser);
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 }

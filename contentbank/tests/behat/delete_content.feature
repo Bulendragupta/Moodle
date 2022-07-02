@@ -63,10 +63,16 @@ Feature: Delete H5P file from the content bank
     And I click on "Save changes" "button"
     When I click on "Site pages" "list_item" in the "Navigation" "block"
     And I click on "Content bank" "link" in the "Navigation" "block"
+<<<<<<< HEAD
     And I should see "content2delete.h5p"
     And I follow "content2delete.h5p"
     And I click on "More" "button"
     Then I should not see "Delete"
+=======
+    And I should see "filltheblanks.h5p"
+    And I follow "filltheblanks.h5p"
+    Then "Delete" "link" should not exist in the "region-main-settings-menu" "region"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Content bank" "link"
     And I click on "Upload" "link"
     And I click on "Choose a file..." "button"

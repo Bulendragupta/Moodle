@@ -26,17 +26,24 @@
 use Firebase\JWT\JWT;
 
 use mod_lti\local\ltiopenid\jwks_helper;
+<<<<<<< HEAD
 use mod_lti\local\ltiopenid\registration_helper;
 
 require_once(__DIR__ . '/../../config.php');
 require_once($CFG->libdir.'/weblib.php');
 require_once($CFG->dirroot . '/mod/lti/locallib.php');
+=======
+
+require_once(__DIR__ . '/../../config.php');
+require_once($CFG->libdir.'/weblib.php');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 require_login();
 $context = context_system::instance();
 require_capability('moodle/site:config', $context);
 
 $starturl = required_param('url', PARAM_URL);
+<<<<<<< HEAD
 $typeid = optional_param('type', -1, PARAM_INT);
 
 $types = lti_get_tools_by_url($starturl, null);
@@ -78,3 +85,19 @@ if (!empty($types) && $typeid == -1) {
     $url->param('registration_token', $regtoken);
     header("Location: ".$url->out(false));
 }
+=======
+$now = time();
+$token = [
+    "sub" => random_string(15),
+    "scope" => "reg",
+    "iat" => $now,
+    "exp" => $now + HOURSECS
+];
+$privatekey = jwks_helper::get_private_key();
+$regtoken = JWT::encode($token, $privatekey['key'], 'RS256', $privatekey['kid']);
+$confurl = new moodle_url('/mod/lti/openid-configuration.php');
+$url = new moodle_url($starturl);
+$url->param('openid_configuration', $confurl->out(false));
+$url->param('registration_token', $regtoken);
+header("Location: ".$url->out(false));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

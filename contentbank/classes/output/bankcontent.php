@@ -99,11 +99,15 @@ class bankcontent implements renderable, templatable {
             $mimetype = $file ? get_mimetype_description($file) : '';
             $contenttypeclass = $content->get_content_type().'\\contenttype';
             $contenttype = new $contenttypeclass($this->context);
+<<<<<<< HEAD
             if ($content->get_visibility() == content::VISIBILITY_UNLISTED) {
                 $name = get_string('visibilitytitleunlisted', 'contentbank', $content->get_name());
             } else {
                 $name = $content->get_name();
             }
+=======
+            $name = $content->get_name();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $author = \core_user::get_user($content->get_content()->usercreated);
             $contentdata[] = array(
                 'name' => $name,
@@ -116,7 +120,10 @@ class bankcontent implements renderable, templatable {
                 'size' => display_size($filesize),
                 'type' => $mimetype,
                 'author' => fullname($author),
+<<<<<<< HEAD
                 'visibilityunlisted' => $content->get_visibility() == content::VISIBILITY_UNLISTED
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             );
         }
         $data->viewlist = get_user_preferences('core_contentbank_view_list');

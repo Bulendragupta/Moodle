@@ -4455,6 +4455,7 @@ class accesslib_test extends advanced_testcase {
      * Ensure that the is_parent_of() function works as anticipated.
      *
      * @dataProvider is_parent_of_provider
+<<<<<<< HEAD
      * @covers \context::is_parent_of
      * @covers \context_block::is_parent_of
      * @covers \context_course::is_parent_of
@@ -4462,6 +4463,8 @@ class accesslib_test extends advanced_testcase {
      * @covers \context_module::is_parent_of
      * @covers \context_system::is_parent_of
      * @covers \context_user::is_parent_of
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * @param   string $contextpath The path of the context being compared with
      * @param   string $testpath The path of the context being compared
      * @param   bool $testself Whether to check the current context
@@ -4470,7 +4473,11 @@ class accesslib_test extends advanced_testcase {
     public function test_is_parent_of(string $contextpath, string $testpath, bool $testself, bool $expected): void {
         $context = $this->getMockBuilder(\context::class)
             ->disableOriginalConstructor()
+<<<<<<< HEAD
             ->onlyMethods([
+=======
+            ->setMethods([
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 'get_url',
                 'get_capabilities',
             ])
@@ -4482,7 +4489,11 @@ class accesslib_test extends advanced_testcase {
 
         $comparisoncontext = $this->getMockBuilder(\context::class)
             ->disableOriginalConstructor()
+<<<<<<< HEAD
             ->onlyMethods([
+=======
+            ->setMethods([
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 'get_url',
                 'get_capabilities',
             ])
@@ -4564,6 +4575,7 @@ class accesslib_test extends advanced_testcase {
      * Ensure that the is_child_of() function works as anticipated.
      *
      * @dataProvider is_child_of_provider
+<<<<<<< HEAD
      * @covers \context::is_child_of
      * @covers \context_block::is_child_of
      * @covers \context_course::is_child_of
@@ -4571,6 +4583,8 @@ class accesslib_test extends advanced_testcase {
      * @covers \context_module::is_child_of
      * @covers \context_system::is_child_of
      * @covers \context_user::is_child_of
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * @param   string $contextpath The path of the context being compared with
      * @param   string $testpath The path of the context being compared
      * @param   bool $testself Whether to check the current context
@@ -4579,7 +4593,11 @@ class accesslib_test extends advanced_testcase {
     public function test_is_child_of(string $contextpath, string $testpath, bool $testself, bool $expected): void {
         $context = $this->getMockBuilder(\context::class)
             ->disableOriginalConstructor()
+<<<<<<< HEAD
             ->onlyMethods([
+=======
+            ->setMethods([
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 'get_url',
                 'get_capabilities',
             ])
@@ -4591,7 +4609,11 @@ class accesslib_test extends advanced_testcase {
 
         $comparisoncontext = $this->getMockBuilder(\context::class)
             ->disableOriginalConstructor()
+<<<<<<< HEAD
             ->onlyMethods([
+=======
+            ->setMethods([
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 'get_url',
                 'get_capabilities',
             ])

@@ -41,7 +41,11 @@ Feature: Message users in the summary report
       | user     | course | role    |
       | student3 | C1     | student |
     When I am on the forum1 "forum activity" page logged in as teacher1
+<<<<<<< HEAD
     And I navigate to "Reports" in current page administration
+=======
+    And I navigate to "Forum summary report" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Select 'Student 1'" "checkbox"
     And I click on "Select 'Student 3'" "checkbox"
     And I set the field "With selected users..." to "Send a message"
@@ -61,7 +65,11 @@ Feature: Message users in the summary report
   @javascript
   Scenario: Message all users
     When I am on the forum1 "forum activity" page logged in as teacher1
+<<<<<<< HEAD
     And I navigate to "Reports" in current page administration
+=======
+    And I navigate to "Forum summary report" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Select all" "checkbox"
     And I set the field "With selected users..." to "Send a message"
     Then I should see "Send message to 3 people"
@@ -71,6 +79,10 @@ Feature: Message users in the summary report
     Given the following config values are set as admin:
       | messaging | 0 |
     When I am on the forum1 "forum activity" page logged in as teacher1
+<<<<<<< HEAD
     And I navigate to "Reports" in current page administration
+=======
+    And I navigate to "Forum summary report" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should not see "With selected users..."
     And I should not see "Select all"

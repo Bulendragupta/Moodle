@@ -34,7 +34,11 @@ class core_googlelib_testcase extends advanced_testcase {
             $service->videoCategories->listVideoCategories('snippet', ['regionCode' => 'us']);
             $this->fail('Exception expected');
         } catch (Google_Service_Exception $e) {
+<<<<<<< HEAD
             $this->assertMatchesRegularExpression('/API key not valid/', $e->getMessage());
+=======
+            $this->assertEquals(1, preg_match('/API key not valid/', $e->getMessage()));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         }
     }
 }

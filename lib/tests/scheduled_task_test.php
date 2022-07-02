@@ -178,9 +178,15 @@ class core_scheduled_task_testcase extends advanced_testcase {
         $task = reset($tasks);
         $task->set_minute('1');
         $task->set_hour('2');
+<<<<<<< HEAD
         $task->set_day('3');
         $task->set_month('4');
         $task->set_day_of_week('5');
+=======
+        $task->set_month('3');
+        $task->set_day_of_week('4');
+        $task->set_day('5');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $task->set_customised('1');
         \core\task\manager::configure_scheduled_task($task);
 
@@ -213,6 +219,7 @@ class core_scheduled_task_testcase extends advanced_testcase {
         // Assert that the second task was added back.
         $taskafterreset = \core\task\manager::get_scheduled_task(core\task\session_cleanup_task::class);
         $this->assertNotFalse($taskafterreset);
+<<<<<<< HEAD
 
         $this->assertTaskEquals($task, $taskafterreset);
         $this->assertCount(count($tasklist), \core\task\manager::load_scheduled_tasks_for_component('moodle'));
@@ -221,6 +228,16 @@ class core_scheduled_task_testcase extends advanced_testcase {
     public function test_reset_scheduled_tasks_for_component_changed_in_source(): void {
         $this->resetAfterTest(true);
 
+=======
+
+        $this->assertTaskEquals($task, $taskafterreset);
+        $this->assertCount(count($tasklist), \core\task\manager::load_scheduled_tasks_for_component('moodle'));
+    }
+
+    public function test_reset_scheduled_tasks_for_component_changed_in_source(): void {
+        $this->resetAfterTest(true);
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         // Delete a task to simulate the fact that its new.
         // Note: This test must use a task which does not use any random values.
         $task = \core\task\manager::get_scheduled_task(core\task\session_cleanup_task::class);
@@ -231,9 +248,15 @@ class core_scheduled_task_testcase extends advanced_testcase {
         // Edit a task to simulate a change in its definition (as if it was not customised).
         $task->set_minute('1');
         $task->set_hour('2');
+<<<<<<< HEAD
         $task->set_day('3');
         $task->set_month('4');
         $task->set_day_of_week('5');
+=======
+        $task->set_month('3');
+        $task->set_day_of_week('4');
+        $task->set_day('5');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         \core\task\manager::configure_scheduled_task($task);
 
         // Fetch the task out for comparison.
@@ -539,6 +562,7 @@ class core_scheduled_task_testcase extends advanced_testcase {
     }
 
     /**
+<<<<<<< HEAD
      * Data provider for test_scheduled_task_override_values.
      */
     public static function provider_schedule_overrides(): array {
@@ -703,6 +727,8 @@ class core_scheduled_task_testcase extends advanced_testcase {
     }
 
     /**
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * Assert that the specified tasks are equal.
      *
      * @param   \core\task\task_base $task
@@ -773,6 +799,7 @@ class core_scheduled_task_testcase extends advanced_testcase {
         // Confirm, that lastruntime is still in place.
         $this->assertEquals(123456789, $taskafterreset->get_last_run_time());
     }
+<<<<<<< HEAD
 
     /**
      * Data provider for {@see test_is_component_enabled}
@@ -814,4 +841,6 @@ class core_scheduled_task_testcase extends advanced_testcase {
         $task = new \core\task\scheduled_test_task();
         $this->assertTrue($task->is_component_enabled());
     }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

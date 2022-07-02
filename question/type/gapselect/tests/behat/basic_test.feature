@@ -37,6 +37,10 @@ Feature: Test all the basic functionality of this question type
 
     # Preview it.
     And I choose "Preview" action for "Select missing words 001" in the question bank
+<<<<<<< HEAD
+=======
+    And I switch to "questionpreview" window
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     # Gaps (drop-down menus) do not have labels. ids and names are generated
     # dynamically and therefore not reliable, i.e. this is an accessibility bug

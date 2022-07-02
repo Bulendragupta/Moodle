@@ -247,12 +247,16 @@ class qtype_essay_question extends question_with_responses {
             'filetypeslist' => $this->filetypeslist,
             'responsetemplate' => $this->responsetemplate,
             'responsetemplateformat' => $this->responsetemplateformat,
+<<<<<<< HEAD
             'minwordlimit' => $this->minwordlimit,
             'maxwordlimit' => $this->maxwordlimit,
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         ];
 
         return $settings;
     }
+<<<<<<< HEAD
 
     /**
      * Check the input word count and return a message to user
@@ -313,4 +317,6 @@ class qtype_essay_question extends question_with_responses {
             return get_string('wordcount', 'qtype_essay', $count);
         }
     }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

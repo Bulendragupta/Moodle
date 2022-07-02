@@ -33,7 +33,11 @@ namespace core_payment;
  * @copyright  2020 Marina Glancy
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+<<<<<<< HEAD
 class generator_test extends \advanced_testcase {
+=======
+class helper_testcase extends \advanced_testcase {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     public function test_create_account() {
         global $DB;

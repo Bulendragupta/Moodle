@@ -34,8 +34,11 @@ $string['contentrenamed'] = 'The content has been renamed.';
 $string['contentsmoved'] = 'Content bank contents moved to {$a}.';
 $string['contenttypenoaccess'] = 'You cannot view this {$a} instance.';
 $string['contenttypenoedit'] = 'You can not edit this content';
+<<<<<<< HEAD
 $string['contentvisibilitychanged'] = 'The content has been made {$a}.';
 $string['contentvisibilitynotset'] = 'An error was encountered while trying to set the content visibility.';
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['contextnotallowed'] = 'You are not allowed to access the content bank in this context.';
 $string['emptynamenotallowed'] = 'Empty name is not allowed';
 $string['eventcontentcreated'] = 'Content created';
@@ -46,7 +49,10 @@ $string['eventcontentuploaded'] = 'Content uploaded';
 $string['eventcontentviewed'] = 'Content viewed';
 $string['errordeletingcontentfromcategory'] = 'Error deleting content from category {$a}.';
 $string['errornofile'] = 'A compatible file is needed to create content.';
+<<<<<<< HEAD
 $string['exit'] = 'Exit';
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['deletecontent'] = 'Delete content';
 $string['deletecontentconfirm'] = 'Are you sure you want to delete the content <em>\'{$a->name}\'</em> and all associated files? This action cannot be undone.';
 $string['deletecontentconfirmlinked'] = 'The content will only be deleted from the content bank. Any places which currently link to it will be automatically updated to use a copy of the content instead.';

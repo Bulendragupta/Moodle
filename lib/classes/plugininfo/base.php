@@ -536,10 +536,28 @@ abstract class base {
         }
 
         $settings = admin_get_root()->locate($section);
+<<<<<<< HEAD
         if ($settings && $settings instanceof \core_admin\local\settings\linkable_settings_page) {
             return $settings->get_settings_page_url();
         }
 
+=======
+        if ($settings) {
+            if ($settings instanceof \admin_settingpage) {
+                return new moodle_url('/admin/settings.php', [
+                    'section' => $section,
+                ]);
+            }
+
+            if ($settings instanceof \admin_externalpage) {
+                return new moodle_url($settings->url);
+            }
+
+            if ($settings instanceof \admin_category) {
+                return $settings->get_settings_page_url();
+            }
+        }
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         return null;
     }
 

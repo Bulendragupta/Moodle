@@ -627,8 +627,13 @@ class moodle_content_writer implements content_writer {
         $targetpath = ['js', 'general.js'];
         $this->copy_data($jspath, $targetpath);
 
+<<<<<<< HEAD
         $jquery = ['lib', 'jquery', 'jquery-3.6.0.min.js'];
         $jquerydestination = ['js', 'jquery-3.6.0.min.js'];
+=======
+        $jquery = ['lib', 'jquery', 'jquery-3.5.1.min.js'];
+        $jquerydestination = ['js', 'jquery-3.5.1.min.js'];
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->copy_data($jquery, $jquerydestination);
 
         $requirecurrentpath = ['lib', 'requirejs', 'require.min.js'];

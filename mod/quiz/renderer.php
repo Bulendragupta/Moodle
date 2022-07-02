@@ -703,6 +703,7 @@ class mod_quiz_renderer extends plugin_renderer_base {
         foreach ($slots as $slot) {
             // Add a section headings if we need one here.
             $heading = $attemptobj->get_heading_before_slot($slot);
+<<<<<<< HEAD
             if ($heading !== null) {
                 // There is a heading here.
                 $rowclasses = 'quizsummaryheading';
@@ -715,6 +716,19 @@ class mod_quiz_renderer extends plugin_renderer_base {
                     $rowclasses .= ' dimmed_text';
                 }
                 $cell = new html_table_cell(format_string($heading));
+=======
+            if ($heading) {
+                $heading = format_string($heading);
+            }
+            $sections = $attemptobj->get_quizobj()->get_sections();
+            if (!is_null($heading) && empty($heading) && count($sections) > 1) {
+                $heading = get_string('sectionnoname', 'quiz');
+                $heading = \html_writer::span($heading, 'dimmed_text');
+            }
+
+            if ($heading) {
+                $cell = new html_table_cell($heading);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 $cell->header = true;
                 $cell->colspan = $tablewidth;
                 $table->data[] = array($cell);

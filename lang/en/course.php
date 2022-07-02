@@ -81,10 +81,13 @@ $string['customfieldsettings'] = 'Common course custom fields settings';
 $string['downloadcourseconfirmation'] = 'You are about to download a zip file of course content (excluding items which cannot be downloaded and any files larger than {$a}).';
 $string['downloadcoursecontent'] = 'Download course content';
 $string['downloadcoursecontent_help'] = 'This setting determines whether course content may be downloaded by users with the download course content capability (by default users with the role of student or teacher).';
+<<<<<<< HEAD
 $string['downloadcontent'] = 'Include in course content download';
 $string['downloadcontent_help'] = 'Should this activity or resource be included in the zip file of course content available for download? File, Folder, Page and Label can be fully downloaded. For all other activities and resources, only the name and description are downloaded. This option requires download course content to be enabled in the course settings.
 
 The setting has no effect on mobile app content download for offline usage.';
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['enabledownloadcoursecontent'] = 'Enable download course content';
 $string['errorendbeforestart'] = 'The end date ({$a}) is before the course start date.';
 $string['favourite'] = 'Starred course';

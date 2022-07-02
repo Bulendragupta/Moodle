@@ -72,7 +72,21 @@ if ($errormsg !== '') {
 
 $showsettingslinks = true;
 
+<<<<<<< HEAD
 if ($query && $hassiteconfig) {
+=======
+if ($hassiteconfig) {
+    $data = [
+        'action' => new moodle_url('/admin/search.php'),
+        'btnclass' => 'btn-primary',
+        'inputname' => 'query',
+        'searchstring' => get_string('search'),
+        'query' => $query,
+        'extraclasses' => 'd-flex justify-content-center'
+    ];
+    echo $OUTPUT->render_from_template('core/search_input', $data);
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     echo '<hr>';
     echo admin_search_settings_html($query);
     $showsettingslinks = false;

@@ -48,7 +48,11 @@ Feature: Remove a submission
       | Test assignment name  | student1  | I'm the student submission  |
 
     And I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I open the action menu in "Student 1" "table_row"
     When I follow "Remove submission"
     And I click on "Continue" "button"
@@ -58,7 +62,11 @@ Feature: Remove a submission
 
     And I am on the "Test assignment name" Activity page logged in as student1
     And I should not see "I'm the student submission"
+<<<<<<< HEAD
     And I should see "No submissions have been made yet" in the "Submission status" "table_row"
+=======
+    And I should see "No attempt" in the "Submission status" "table_row"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
   @javascript @skip_chrome_zerosize
   Scenario: Remove a group submission should remove the data from all group members
@@ -76,7 +84,11 @@ Feature: Remove a submission
       | Test assignment name  | student1  | I'm the student submission  |
 
     And I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I open the action menu in "Student 1" "table_row"
     When I follow "Remove submission"
     And I click on "Continue" "button"
@@ -108,13 +120,18 @@ Feature: Remove a submission
     And I log out
 
     When I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should not see "I'm the student submission"
     And "Student 1" row "Status" column of "generaltable" table should contain "No submission"
     And I log out
 
     And I am on the "Test assignment name" Activity page logged in as student1
     And I should not see "I'm the student submission"
+<<<<<<< HEAD
     And I should see "No submissions have been made yet" in the "Submission status" "table_row"
 
   @javascript @skip_chrome_zerosize @_file_upload
@@ -153,3 +170,6 @@ Feature: Remove a submission
     And I open the action menu in "Student 1" "table_row"
     And I follow "Remove submission"
     And I should see "Are you sure you want to remove the submission for Student 1? Please note that this will not reset the student's time limit. You can give more time by adding a time limit user override."
+=======
+    And I should see "No attempt" in the "Submission status" "table_row"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

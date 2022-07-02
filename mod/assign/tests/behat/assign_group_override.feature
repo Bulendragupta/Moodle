@@ -35,8 +35,12 @@ Feature: Assign group override
 
   Scenario: Add, modify then delete a group override
     Given I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I navigate to "Overrides" in current page administration
     And I select "Group overrides" from the "jump" singleselect
+=======
+    When I navigate to "Group overrides" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Add group override"
     And I set the following fields to these values:
       | Override group | Group 1              |
@@ -54,8 +58,12 @@ Feature: Assign group override
 
   Scenario: Duplicate a user override
     Given I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I navigate to "Overrides" in current page administration
     And I select "Group overrides" from the "jump" singleselect
+=======
+    When I navigate to "Group overrides" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Add group override"
     And I set the following fields to these values:
       | Override group | Group 1              |
@@ -72,7 +80,11 @@ Feature: Assign group override
 
   Scenario: Allow a group to have a different due date
     Given I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I navigate to "Settings" in current page administration
+=======
+    When I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Allow submissions from | disabled             |
       | Due date               | ##1 Jan 2000 08:00## |
@@ -95,7 +107,11 @@ Feature: Assign group override
 
   Scenario: Allow a group to have a different cut off date
     Given I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I navigate to "Settings" in current page administration
+=======
+    When I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Due date               | disabled             |
       | Allow submissions from | disabled             |
@@ -118,7 +134,11 @@ Feature: Assign group override
 
   Scenario: Allow a group to have a different start date
     Given I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I navigate to "Settings" in current page administration
+=======
+    When I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Due date               | disabled                 |
       | Allow submissions from | ##1 January 2030 08:00## |
@@ -143,12 +163,19 @@ Feature: Assign group override
   @javascript
   Scenario: Add both a user and group override and verify that both are applied correctly
     Given I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I navigate to "Settings" in current page administration
+=======
+    When I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Due date               | disabled                 |
       | Allow submissions from | ##1 January 2040 08:00## |
       | Cut-off date           | disabled                 |
+<<<<<<< HEAD
       | Group mode             | Visible groups           |
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Save and display"
     And I navigate to "Overrides" in current page administration
     And I select "Group overrides" from the "jump" singleselect
@@ -184,8 +211,12 @@ Feature: Assign group override
       | activity | name         | intro                    | course | groupmode |
       | assign   | Assignment 2 | Assignment 2 description | C1     | 1         |
     And I am on the "Assignment 2" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I navigate to "Overrides" in current page administration
     And I select "Group overrides" from the "jump" singleselect
+=======
+    When I navigate to "Group overrides" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "No groups you can access."
     And the "Add group override" "button" should be disabled
 
@@ -201,8 +232,12 @@ Feature: Assign group override
       | user     | group |
       | teacher1 | G1    |
     And I am on the "Assignment 2" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I navigate to "Overrides" in current page administration
     And I select "Group overrides" from the "jump" singleselect
+=======
+    When I navigate to "Group overrides" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Add group override"
     Then the "Override group" select box should contain "Group 1"
     And the "Override group" select box should not contain "Group 2"
@@ -219,8 +254,12 @@ Feature: Assign group override
       | user     | group |
       | teacher1 | G1    |
     And I am on the "Assignment 2" Activity page logged in as admin
+<<<<<<< HEAD
     And I navigate to "Overrides" in current page administration
     And I select "Group overrides" from the "jump" singleselect
+=======
+    And I navigate to "Group overrides" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Add group override"
     And I set the following fields to these values:
       | Override group         | Group 1                  |
@@ -233,7 +272,11 @@ Feature: Assign group override
     And I log out
 
     When I am on the "Assignment 2" Activity page logged in as teacher1
+<<<<<<< HEAD
     And I navigate to "Overrides" in current page administration
     And I select "Group overrides" from the "jump" singleselect
+=======
+    And I navigate to "Group overrides" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "Group 1" in the ".generaltable" "css_element"
     And I should not see "Group 2" in the ".generaltable" "css_element"

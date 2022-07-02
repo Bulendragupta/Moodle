@@ -60,6 +60,10 @@ class renderer extends plugin_renderer_base {
     public function render_contact_dpo_link() {
         $params = [
             'data-action' => 'contactdpo',
+<<<<<<< HEAD
+=======
+            'data-replytoemail' => $replytoemail,
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         ];
         return html_writer::link('#', get_string('contactdataprotectionofficer', 'tool_dataprivacy'), $params);
     }

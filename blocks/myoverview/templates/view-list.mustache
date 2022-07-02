@@ -37,6 +37,7 @@
 }}
 
 <ul class="list-group">
+<<<<<<< HEAD
     {{#courses}}
         <li class="list-group-item course-listitem border-left-0 border-right-0 border-top-0 px-2 rounded-0"
             data-region="course-content"
@@ -52,6 +53,25 @@
                 <div class="col-md-9 d-flex flex-column">
                     {{#showshortname}}
                         <div class="text-muted muted d-flex flex-wrap">
+=======
+{{#courses}}
+    <li class="list-group-item course-listitem"
+        data-region="course-content"
+        data-course-id="{{{id}}}">
+        <div class="row">
+            <div class="{{#hasprogress}}col-md-6{{/hasprogress}}{{^hasprogress}}col-md-11 col-md-11{{/hasprogress}} d-flex align-items-center">
+                <div>
+                    <div class="text-muted muted d-flex flex-wrap">
+                        {{#showcoursecategory}}
+                            <span class="sr-only">
+                                {{#str}}aria:coursecategory, core_course{{/str}}
+                            </span>
+                            <span class="categoryname">
+                                {{{coursecategory}}}
+                            </span>
+                        {{/showcoursecategory}}
+                        {{#showshortname}}
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                             {{#showcoursecategory}}
                                 <div class="pl-1 pr-1">|</div>
                             {{/showcoursecategory}}

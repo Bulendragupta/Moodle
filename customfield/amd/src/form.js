@@ -20,6 +20,7 @@
  * @copyright  2018 Toni Barbera
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+<<<<<<< HEAD
 
 import 'core/inplace_editable';
 import {call as fetchMany} from 'core/ajax';
@@ -193,6 +194,155 @@ const setupSortableLists = rootNode => {
         }
     );
     sortCat.getElementName = nodeElement => Promise.resolve(getCategoryNameFor(nodeElement));
+=======
+define([
+    'jquery',
+    'core/str',
+    'core/notification',
+    'core/ajax',
+    'core/templates',
+    'core/sortable_list',
+    'core/pending',
+    'core/inplace_editable',
+], function($, Str, Notification, Ajax, Templates, SortableList, Pending) {
+
+    /**
+     * Display confirmation dialogue
+     *
+     * @param {Number} id
+     * @param {String} type
+     * @param {String} component
+     * @param {String} area
+     * @param {Number} itemid
+     */
+    var confirmDelete = function(id, type, component, area, itemid) {
+        var pendingPromise = new Pending('core_customfield/form:confirmDelete');
+        Str.get_strings([
+            {'key': 'confirm'},
+            {'key': 'confirmdelete' + type, component: 'core_customfield'},
+            {'key': 'yes'},
+            {'key': 'no'},
+        ])
+        .then(function(s) {
+            Notification.confirm(s[0], s[1], s[2], s[3], function() {
+                var pendingDeletePromise = new Pending('core_customfield/form:confirmDelete');
+                var func = (type === 'field') ? 'core_customfield_delete_field' : 'core_customfield_delete_category';
+                Ajax.call([
+                    {methodname: func, args: {id: id}},
+                    {methodname: 'core_customfield_reload_template', args: {component: component, area: area, itemid: itemid}}
+                ])[1]
+                .then(function(response) {
+                    return Templates.render('core_customfield/list', response);
+                })
+                .then(function(html, js) {
+                    Templates.replaceNode($('[data-region="list-page"]'), html, js);
+                    return null;
+                })
+                .then(pendingDeletePromise.resolve)
+                .catch(Notification.exception);
+            });
+
+            return;
+        })
+        .then(pendingPromise.resolve)
+        .catch(Notification.exception);
+    };
+
+    /**
+     * Creates a new custom fields category with default name and updates the list
+     *
+     * @param {String} component
+     * @param {String} area
+     * @param {Number} itemid
+     */
+    var createNewCategory = function(component, area, itemid) {
+        var pendingPromise = new Pending('core_customfield/form:confirmDelete');
+        var promises = Ajax.call([
+            {methodname: 'core_customfield_create_category', args: {component: component, area: area, itemid: itemid}},
+            {methodname: 'core_customfield_reload_template', args: {component: component, area: area, itemid: itemid}}
+        ]);
+        var categoryid;
+
+        promises[0].then(function(response) {
+            categoryid = response;
+            return null;
+        }).catch(Notification.exception);
+
+        promises[1].then(function(response) {
+            return Templates.render('core_customfield/list', response);
+        })
+        .then(function(html, js) {
+            Templates.replaceNode($('[data-region="list-page"]'), html, js);
+            window.location.href = '#category-' + categoryid;
+            return null;
+        })
+        .catch(Notification.exception);
+
+        Promise.all(promises)
+        .then(pendingPromise.resolve)
+        .catch();
+    };
+
+    return {
+        /**
+         * Initialise the custom fields manager
+         */
+        init: function() {
+            var mainlist = $('#customfield_catlist');
+            var component = mainlist.attr('data-component');
+            var area = mainlist.attr('data-area');
+            var itemid = mainlist.attr('data-itemid');
+
+            $("[data-role=deletefield]").on('click', function(e) {
+                confirmDelete($(this).attr('data-id'), 'field', component, area, itemid);
+                e.preventDefault();
+            });
+
+            $("[data-role=deletecategory]").on('click', function(e) {
+                confirmDelete($(this).attr('data-id'), 'category', component, area, itemid);
+                e.preventDefault();
+            });
+
+            $('[data-role=addnewcategory]').on('click', function() {
+                createNewCategory(component, area, itemid);
+            });
+
+            var categoryName = function(element) {
+                return element
+                    .closest('[data-category-id]')
+                    .find('[data-inplaceeditable][data-itemtype=category][data-component=core_customfield]')
+                    .attr('data-value');
+            };
+
+            // Sort category.
+            var sortCat = new SortableList(
+                $('#customfield_catlist .categorieslist'),
+                {moveHandlerSelector: '.movecategory [data-drag-type=move]'}
+            );
+
+            sortCat.getElementName = function(el) {
+                return $.Deferred().resolve(categoryName(el));
+            };
+
+            $('[data-category-id]').on('sortablelist-drop', function(evt, info) {
+                if (info.positionChanged) {
+                    var pendingPromise = new Pending('core_customfield/form:categoryid:on:sortablelist-drop');
+                    Ajax.call([
+                        {
+                            methodname: 'core_customfield_move_category',
+                            args: {
+                                id: info.element.data('category-id'),
+                                beforeid: info.targetNextElement.data('category-id')
+                            }
+
+                        },
+                    ])[0]
+                    .then(pendingPromise.resolve)
+                    .catch(Notification.exception);
+                }
+                evt.stopPropagation(); // Important for nested lists to prevent multiple targets.
+            });
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     // Note: The sortable list currently uses jQuery events.
     jQuery('[data-category-id]').on(SortableList.EVENTS.DROP, (evt, info) => {
@@ -204,6 +354,7 @@ const setupSortableLists = rootNode => {
                     id: info.element.data('category-id'),
                     beforeid: info.targetNextElement.data('category-id')
                 }
+<<<<<<< HEAD
 
             }])[0]
             .then(pendingPromise.resolve)
@@ -265,6 +416,52 @@ const setupSortableLists = rootNode => {
                 } else if (fields.length && noFields) {
                     noFields.remove();
                 }
+=======
+            };
+
+            $('[data-field-name]').on('sortablelist-drop', function(evt, info) {
+                evt.stopPropagation(); // Important for nested lists to prevent multiple targets.
+                if (info.positionChanged) {
+                    var pendingPromise = new Pending('core_customfield/form:fieldname:on:sortablelist-drop');
+                    Ajax.call([
+                        {
+                            methodname: 'core_customfield_move_field',
+                            args: {
+                                id: info.element.data('field-id'),
+                                beforeid: info.targetNextElement.data('field-id'),
+                                categoryid: Number(info.targetList.closest('[data-category-id]').attr('data-category-id'))
+                            },
+                        },
+                    ])[0]
+                    .then(pendingPromise.resolve)
+                    .catch(Notification.exception);
+                }
+            });
+
+            $('[data-field-name]').on('sortablelist-drag', function(evt) {
+                var pendingPromise = new Pending('core_customfield/form:fieldname:on:sortablelist-drag');
+
+                evt.stopPropagation(); // Important for nested lists to prevent multiple targets.
+
+                // Refreshing fields tables.
+                Str.get_string('therearenofields', 'core_customfield').then(function(s) {
+                    $('#customfield_catlist .categorieslist').children().each(function() {
+                        var fields = $(this).find($('.field')),
+                            nofields = $(this).find($('.nofields'));
+                        if (!fields.length && !nofields.length) {
+                            $(this).find('tbody').append(
+                                '<tr class="nofields"><td colspan="5">' + s + '</td></tr>'
+                            );
+                        }
+                        if (fields.length && nofields.length) {
+                            nofields.remove();
+                        }
+                    });
+                    return null;
+                })
+                .then(pendingPromise.resolve)
+                .catch(Notification.exception);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             });
             return;
         })

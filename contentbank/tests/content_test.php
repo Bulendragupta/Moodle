@@ -327,6 +327,7 @@ class content_test extends \advanced_testcase {
 
         $this->assertInstanceOf(get_class($type), $contenttype);
     }
+<<<<<<< HEAD
 
     /**
      * Tests for 'is_view_allowed'.
@@ -421,4 +422,6 @@ class content_test extends \advanced_testcase {
         $content2 = array_shift($contents);
         $this->assertCount(0, $content2->get_uses());
     }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

@@ -49,6 +49,7 @@
 
 .block_private_files [role="treeitem"]:not([aria-expanded]) {
     background-image:
+<<<<<<< HEAD
         repeating-linear-gradient(
             to right,
             rgba(0, 0, 0, .5) 0,
@@ -63,6 +64,10 @@
             rgba(255, 255, 255, 0) 1px,
             rgba(255, 255, 255, 0) 2px
         );
+=======
+        repeating-linear-gradient(to right, rgba(0, 0, 0, .5) 0, rgba(0, 0, 0, .5) 1px, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0) 2px),
+        repeating-linear-gradient(to top, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.5) 1px, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0) 2px);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     background-repeat: no-repeat, no-repeat;
     /*rtl:remove*/
     background-position: left 10px top 50%, left 8px top 0;
@@ -77,6 +82,7 @@
 }
 
 .block_private_files [role="group"] {
+<<<<<<< HEAD
     background-image:
         repeating-linear-gradient(
             to top,
@@ -85,6 +91,9 @@
             rgba(255, 255, 255, 0) 1px,
             rgba(255, 255, 255, 0) 2px
         );
+=======
+    background-image: repeating-linear-gradient(to top, rgba(0, 0, 0, 0.5) 0, rgba(0, 0, 0, 0.5) 1px, rgba(255, 255, 255, 0) 1px, rgba(255, 255, 255, 0) 2px);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     background-repeat: no-repeat;
     background-position: left 8px top 100%;
     background-size: 1px 100%;

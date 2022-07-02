@@ -177,7 +177,11 @@ class core_h5p_generator extends \component_generator_base {
             'http://tutorial.org', 'http://example.org');
         $lib1 = $libraries[] = $this->create_library_record('Library1', 'Lib1', 2, 0, 1, '', null, null,  'http://example.org');
         $lib2 = $libraries[] = $this->create_library_record('Library2', 'Lib2', 2, 1, 1, '', null, 'http://tutorial.org');
+<<<<<<< HEAD
         $lib3 = $libraries[] = $this->create_library_record('Library3', 'Lib3', 3, 2, 1, '', null, null, null, true, 0);
+=======
+        $lib3 = $libraries[] = $this->create_library_record('Library3', 'Lib3', 3, 2);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $lib4 = $libraries[] = $this->create_library_record('Library4', 'Lib4', 1, 1);
         $lib5 = $libraries[] = $this->create_library_record('Library5', 'Lib5', 1, 3);
 
@@ -251,13 +255,20 @@ class core_h5p_generator extends \component_generator_base {
      * @param string $addto The plugin configuration data
      * @param string $tutorial The tutorial URL
      * @param string $examlpe The example URL
+<<<<<<< HEAD
      * @param bool $enabled Whether the library is enabled or not
      * @param int $runnable Whether the library is runnable (1) or not (0)
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * @return stdClass An object representing the added library record
      */
     public function create_library_record(string $machinename, string $title, int $majorversion = 1,
             int $minorversion = 0, int $patchversion = 1, string $semantics = '', string $addto = null,
+<<<<<<< HEAD
             string $tutorial = null, string $example = null, bool $enabled = true, int $runnable = 1): stdClass {
+=======
+            string $tutorial = null, string $example = null): stdClass {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         global $DB;
 
         $content = [
@@ -274,9 +285,14 @@ class core_h5p_generator extends \component_generator_base {
             'semantics' => $semantics,
             'addto' => $addto,
             'tutorial' => $tutorial,
+<<<<<<< HEAD
             'example' => $example,
             'enabled' => $enabled,
         ];
+=======
+            'example' => $example
+        );
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $libraryid = $DB->insert_record('h5p_libraries', $content);
 

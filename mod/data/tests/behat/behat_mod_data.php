@@ -50,6 +50,10 @@ class behat_mod_data extends behat_base {
     public function i_add_a_field_to_database_and_i_fill_the_form_with($fieldtype, $activityname, TableNode $fielddata) {
         $this->execute('behat_navigation::i_am_on_page_instance', [$this->escape($activityname), 'data activity']);
 
+<<<<<<< HEAD
+=======
+        // Open "Fields" tab if it is not already open.
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $fieldsstr = get_string('fields', 'mod_data');
 
         $this->execute("behat_navigation::i_navigate_to_in_current_page_administration", $fieldsstr);
@@ -77,6 +81,7 @@ class behat_mod_data extends behat_base {
         $this->execute('behat_navigation::i_am_on_page_instance', [$this->escape($activityname), 'mod_data > add entry']);
         $this->execute("behat_forms::i_set_the_following_fields_to_these_values", $entrydata);
     }
+<<<<<<< HEAD
 
     /**
      * Convert page names to URLs for steps like 'When I am on the "[identifier]" "[page type]" page'.
@@ -99,6 +104,30 @@ class behat_mod_data extends behat_base {
                     'd' => $this->get_cm_by_activity_name('data', $identifier)->instance,
                 ]);
 
+=======
+
+    /**
+     * Convert page names to URLs for steps like 'When I am on the "[identifier]" "[page type]" page'.
+     *
+     * Recognised page names are:
+     * | pagetype  | name meaning  | description                  |
+     * | Add entry | Database name | Add an entry page (view.php) |
+     *
+     * @param string $type identifies which type of page this is, e.g. 'Add entry'.
+     * @param string $identifier identifies the particular page, e.g. 'My database name'.
+     * @return moodle_url the corresponding URL.
+     * @throws Exception with a meaningful error message if the specified page cannot be found.
+     */
+    protected function resolve_page_instance_url(string $type, string $identifier): moodle_url {
+        global $DB;
+
+        switch (strtolower($type)) {
+            case 'add entry':
+                return new moodle_url('/mod/data/edit.php', [
+                    'd' => $this->get_cm_by_activity_name('data', $identifier)->instance,
+                ]);
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             default:
                 throw new Exception("Unrecognised page type '{$type}'");
         }

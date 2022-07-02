@@ -743,7 +743,10 @@ class completionlib_test extends advanced_testcase {
      * @param bool $sameuser Whether the user calling get_data() is the user itself.
      * @param bool $hasrecord Whether to create a course_modules_completion record.
      * @param int $completion The completion state expected.
+<<<<<<< HEAD
      * @covers ::get_data
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      */
     public function test_get_data(bool $wholecourse, bool $sameuser, bool $hasrecord, int $completion) {
         global $DB;
@@ -751,17 +754,30 @@ class completionlib_test extends advanced_testcase {
         $this->setup_data();
         $user = $this->user;
 
+<<<<<<< HEAD
         $choicegenerator = $this->getDataGenerator()->get_plugin_generator('mod_choice');
         $choice = $choicegenerator->create_instance([
             'course' => $this->course->id,
             'completion' => COMPLETION_TRACKING_AUTOMATIC,
             'completionview' => true,
             'completionsubmit' => true,
+=======
+        /** @var \mod_choice_generator $choicegenerator */
+        $choicegenerator = $this->getDataGenerator()->get_plugin_generator('mod_choice');
+        $choice = $choicegenerator->create_instance([
+            'course' => $this->course->id,
+            'completion' => true,
+            'completionview' => true,
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         ]);
 
         $cm = get_coursemodule_from_instance('choice', $choice->id);
 
+<<<<<<< HEAD
         // Let's manually create a course completion record instead of going through the hoops to complete an activity.
+=======
+        // Let's manually create a course completion record instead of going thru the hoops to complete an activity.
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         if ($hasrecord) {
             $cmcompletionrecord = (object)[
                 'coursemoduleid' => $cm->id,
@@ -788,7 +804,10 @@ class completionlib_test extends advanced_testcase {
         $completioninfo = new completion_info($this->course);
 
         $result = $completioninfo->get_data($cm, $wholecourse, $user->id);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         // Course module ID of the returned completion data must match this activity's course module ID.
         $this->assertEquals($cm->id, $result->coursemoduleid);
         // User ID of the returned completion data must match the user's ID.
@@ -801,6 +820,7 @@ class completionlib_test extends advanced_testcase {
             $this->assertEquals(0, $result->id);
         }
 
+<<<<<<< HEAD
         // Check that we are including relevant completion data for the module.
         if (!$wholecourse) {
             $this->assertTrue(property_exists($result, 'viewed'));
@@ -869,6 +889,26 @@ class completionlib_test extends advanced_testcase {
         foreach ($modinfo->cms as $testcm) {
             $result = $completioninfo->get_data($testcm, false);
             $this->assertEquals($result, $results[$testcm->id]);
+=======
+        // Check caching.
+        $key = "{$user->id}_{$this->course->id}";
+        $cache = cache::make('core', 'completion');
+        if ($iscached) {
+            // If we expect this to be cached, then fetching the result must match the cached data.
+            $this->assertEquals($result, (object)$cache->get($key)[$cm->id]);
+
+            // Check cached data for other course modules in the course.
+            // The sample module created in setup_data() should suffice to confirm this.
+            $othercm = get_coursemodule_from_instance('forum', $this->module1->id);
+            if ($wholecourse) {
+                $this->assertArrayHasKey($othercm->id, $cache->get($key));
+            } else {
+                $this->assertArrayNotHasKey($othercm->id, $cache->get($key));
+            }
+        } else {
+            // Otherwise, this should not be cached.
+            $this->assertFalse($cache->get($key));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         }
     }
 
@@ -1450,8 +1490,11 @@ class completionlib_test extends advanced_testcase {
 
     /**
      * Test course completed message.
+<<<<<<< HEAD
      *
      * @covers \core\event\course_completed
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      */
     public function test_course_completed_message() {
         $this->setup_data();

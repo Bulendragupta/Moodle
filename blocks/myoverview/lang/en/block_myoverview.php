@@ -87,8 +87,14 @@ $string['sortbylastaccessed'] = 'Sort by last accessed';
 $string['sortbyshortname'] = 'Sort by short name';
 $string['privacy:request:preference:set'] = 'The value of the setting \'{$a->name}\' was \'{$a->value}\'';
 
+<<<<<<< HEAD
 // Deprecated since Moodle 4.0.
 $string['clearsearch'] = "Clear search";
 $string['aria:lastaccessed'] = 'Sort courses by last accessed date';
 $string['aria:shortname'] = 'Sort courses by course short name';
 $string['aria:title'] = 'Sort courses by course name';
+=======
+// Deprecated since Moodle 3.7.
+$string['complete'] = 'complete';
+$string['nocourses'] = 'No courses';
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

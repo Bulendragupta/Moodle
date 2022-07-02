@@ -82,6 +82,7 @@ class paygw extends base {
         return array_combine($order, $order);
     }
 
+<<<<<<< HEAD
     public static function enable_plugin(string $pluginname, int $enabled): bool {
         global $CFG;
 
@@ -107,6 +108,8 @@ class paygw extends base {
         return $haschanged;
     }
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     /**
      * Sets the current plugin as enabled or disabled
      * When enabling tries to guess the sortorder based on default rank returned by the plugin.
@@ -114,7 +117,29 @@ class paygw extends base {
      * @param bool $newstate
      */
     public function set_enabled(bool $newstate = true) {
+<<<<<<< HEAD
         self::enable_plugin($this->name, $newstate);
+=======
+        $enabled = self::get_enabled_plugins();
+        if (array_key_exists($this->name, $enabled) == $newstate) {
+            // Nothing to do.
+            return;
+        }
+        if ($newstate) {
+            // Enable gateway plugin.
+            $plugins = \core_plugin_manager::instance()->get_plugins_of_type('paygw');
+            if (!array_key_exists($this->name, $plugins)) {
+                // Can not be enabled.
+                return;
+            }
+            $enabled[$this->name] = $this->name;
+            self::set_enabled_plugins($enabled);
+        } else {
+            // Disable gateway plugin.
+            unset($enabled[$this->name]);
+            self::set_enabled_plugins($enabled);
+        }
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**

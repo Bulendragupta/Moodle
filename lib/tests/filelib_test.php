@@ -164,6 +164,14 @@ class core_filelib_testcase extends advanced_testcase {
         $this->assertSame('done', $response->results);
         $this->assertSame('', $response->error);
 
+        $response = download_file_content("$testurl?redir=2&verbose=1", null, null, true);
+        $this->assertInstanceOf('stdClass', $response);
+        $this->assertSame('200', $response->status);
+        $this->assertTrue(is_array($response->headers));
+        $this->assertRegExp('|^HTTP/1\.[01] 200 OK$|', rtrim($response->response_code));
+        $this->assertSame('done', $response->results);
+        $this->assertSame('', $response->error);
+
         // Commented out this block if there are performance problems.
         /*
         $contents = download_file_content("$testurl?redir=6");

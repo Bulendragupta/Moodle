@@ -38,12 +38,15 @@ $lng = required_param('lng', PARAM_LANG);
 admin_externalpage_setup('toolcustomlang', '', null,
     new moodle_url('/admin/tool/customlang/import.php', ['lng' => $lng]));
 
+<<<<<<< HEAD
 $PAGE->set_context(context_system::instance());
 
 $PAGE->set_secondary_active_tab('siteadminnode');
 $PAGE->set_primary_active_tab('siteadminnode');
 $PAGE->navbar->add(get_string('import', 'tool_customlang'), $PAGE->url);
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $output = $PAGE->get_renderer('tool_customlang');
 
 $form = new import(null, ['lng' => $lng]);

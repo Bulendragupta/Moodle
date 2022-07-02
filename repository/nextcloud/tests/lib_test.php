@@ -633,7 +633,11 @@ JSON;
     public function test_supported_returntypes() {
         global $DB;
         $this->assertEquals(FILE_INTERNAL | FILE_REFERENCE, $this->repo->supported_returntypes());
+<<<<<<< HEAD
         $dataobject = new \stdClass();
+=======
+        $dataobject = new stdClass();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $dataobject->timecreated = time();
         $dataobject->timemodified = time();
         $dataobject->usermodified = 2;
@@ -858,7 +862,11 @@ XML;
             'referecncelastsync done recently' => [
                 [
                     'storedfile_record' => [
+<<<<<<< HEAD
                             'contextid' => \context_system::instance()->id,
+=======
+                            'contextid' => context_system::instance()->id,
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                             'component' => 'core',
                             'filearea'  => 'unittest',
                             'itemid'    => 0,
@@ -880,7 +888,11 @@ XML;
             'file without link' => [
                 [
                     'storedfile_record' => [
+<<<<<<< HEAD
                         'contextid' => \context_system::instance()->id,
+=======
+                        'contextid' => context_system::instance()->id,
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                         'component' => 'core',
                         'filearea'  => 'unittest',
                         'itemid'    => 0,
@@ -900,7 +912,11 @@ XML;
             'file extenstion to exclude' => [
                 [
                     'storedfile_record' => [
+<<<<<<< HEAD
                         'contextid' => \context_system::instance()->id,
+=======
+                        'contextid' => context_system::instance()->id,
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                         'component' => 'core',
                         'filearea'  => 'unittest',
                         'itemid'    => 0,
@@ -921,7 +937,11 @@ XML;
             'file extenstion for image' => [
                 [
                     'storedfile_record' => [
+<<<<<<< HEAD
                         'contextid' => \context_system::instance()->id,
+=======
+                        'contextid' => context_system::instance()->id,
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                         'component' => 'core',
                         'filearea'  => 'unittest',
                         'itemid'    => 0,
@@ -956,7 +976,11 @@ XML;
         $this->resetAfterTest(true);
 
         if (isset($storedfilemethodsmock[0])) {
+<<<<<<< HEAD
             $storedfile = $this->createMock(\stored_file::class);
+=======
+            $storedfile = $this->createMock(stored_file::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
             if ($storedfilemethodsmock[0] === 'get_referencelastsync') {
                 if (!$expectedresult) {
@@ -972,7 +996,11 @@ XML;
 
             if ((isset($storedfileargs['mock_curl']) && $storedfileargs)) {
                 // Lets mock curl, else it would not serve the purpose here.
+<<<<<<< HEAD
                 $curl = $this->createMock(\curl::class);
+=======
+                $curl = $this->createMock(curl::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 $curl->method('download_one')->willReturn(true);
                 $curl->method('get_info')->willReturn(['http_code' => 200]);
 

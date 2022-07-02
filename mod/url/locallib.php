@@ -179,7 +179,13 @@ function url_print_header($url, $cm, $course) {
  * @param bool $ignoresettings print even if not specified in modedit
  * @return string
  */
+<<<<<<< HEAD
 function url_get_intro(object $url, object $cm, bool $ignoresettings = false): string {
+=======
+function url_print_intro($url, $cm, $course, $ignoresettings=false) {
+    global $OUTPUT;
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     $options = empty($url->displayoptions) ? [] : (array) unserialize_array($url->displayoptions);
     if ($ignoresettings or !empty($options['printintro'])) {
         if (trim(strip_tags($url->intro))) {

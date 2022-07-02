@@ -64,7 +64,11 @@ class condition_test extends \advanced_testcase {
         $this->assertFalse($cond->is_available(false, $info, true, $user->id));
         $information = $cond->get_description(false, false, $info);
         $information = \core_availability\info::format_info($information, $course);
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression('~You belong to.*G1!~', $information);
+=======
+        $this->assertRegExp('~You belong to.*G1!~', $information);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertTrue($cond->is_available(true, $info, true, $user->id));
 
         // Add user to groups and refresh cache.
@@ -77,7 +81,11 @@ class condition_test extends \advanced_testcase {
         $this->assertFalse($cond->is_available(true, $info, true, $user->id));
         $information = $cond->get_description(false, true, $info);
         $information = \core_availability\info::format_info($information, $course);
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression('~do not belong to.*G1!~', $information);
+=======
+        $this->assertRegExp('~do not belong to.*G1!~', $information);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Check group 2 works also.
         $cond = new condition((object)array('id' => (int)$group2->id));
@@ -89,7 +97,11 @@ class condition_test extends \advanced_testcase {
         $this->assertFalse($cond->is_available(true, $info, true, $user->id));
         $information = $cond->get_description(false, true, $info);
         $information = \core_availability\info::format_info($information, $course);
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression('~do not belong to any~', $information);
+=======
+        $this->assertRegExp('~do not belong to any~', $information);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Admin user doesn't belong to a group, but they can access it
         // either way (positive or NOT).
@@ -102,7 +114,11 @@ class condition_test extends \advanced_testcase {
         $this->assertFalse($cond->is_available(false, $info, true, $user->id));
         $information = $cond->get_description(false, false, $info);
         $information = \core_availability\info::format_info($information, $course);
+<<<<<<< HEAD
         $this->assertMatchesRegularExpression('~You belong to.*\(Missing group\)~', $information);
+=======
+        $this->assertRegExp('~You belong to.*\(Missing group\)~', $information);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**
@@ -115,7 +131,11 @@ class condition_test extends \advanced_testcase {
         try {
             $cond = new condition($structure);
             $this->fail();
+<<<<<<< HEAD
         } catch (\coding_exception $e) {
+=======
+        } catch (coding_exception $e) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             $this->assertStringContainsString('Invalid ->id', $e->getMessage());
         }
 

@@ -424,7 +424,10 @@ class manager {
         if (isset($record->pid)) {
             $task->set_pid($record->pid);
         }
+<<<<<<< HEAD
         $task->set_overridden(self::scheduled_task_has_override($classname));
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         return $task;
     }
@@ -1180,7 +1183,11 @@ class manager {
         $params = ['now1' => time(), 'now2' => time()];
 
         $sql = "SELECT subquery.*
+<<<<<<< HEAD
                   FROM (SELECT " . $DB->sql_concat("'s'", 'ts.id') . " as uniqueid,
+=======
+                  FROM (SELECT concat('s', ts.id) as uniqueid,
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                                ts.id,
                                'scheduled' as type,
                                ts.classname,
@@ -1191,7 +1198,11 @@ class manager {
                           FROM {task_scheduled} ts
                          WHERE ts.timestarted IS NOT NULL
                          UNION ALL
+<<<<<<< HEAD
                         SELECT " . $DB->sql_concat("'a'", 'ta.id') . " as uniqueid,
+=======
+                        SELECT concat('a', ta.id) as uniqueid,
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                                ta.id,
                                'adhoc' as type,
                                ta.classname,
@@ -1207,6 +1218,7 @@ class manager {
     }
 
     /**
+<<<<<<< HEAD
      * Cleanup stale task metadata.
      */
     public static function cleanup_metadata() {
@@ -1272,6 +1284,8 @@ class manager {
     }
 
     /**
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * This function is used to indicate that any long running cron processes should exit at the
      * next opportunity and restart. This is because something (e.g. DB changes) has changed and
      * the static caches may be stale.

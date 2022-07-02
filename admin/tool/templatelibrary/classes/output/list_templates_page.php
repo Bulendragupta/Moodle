@@ -62,6 +62,12 @@ class list_templates_page implements renderable, templatable {
      * @return stdClass
      */
     public function export_for_template(renderer_base $output) {
+<<<<<<< HEAD
+=======
+        $data = new stdClass();
+        $data->allcomponents = array();
+        $data->search = $this->search;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $fulltemplatenames = api::list_templates();
         $pluginmanager = core_plugin_manager::instance();
         $components = [];
@@ -78,10 +84,22 @@ class list_templates_page implements renderable, templatable {
                     ? get_string('core', 'tool_templatelibrary')
                     : $pluginmanager->plugintype_name_plural($type);
 
+<<<<<<< HEAD
                 $components[$type] = (object) [
                     'type' => $typename,
                     'plugins' => [],
                 ];
+=======
+        $components = array_keys($components);
+        foreach ($components as $component) {
+            $info = new stdClass();
+            $info->component = $component;
+            $info->selected = ($component === $this->component);
+            if (strpos($component, 'core') === 0) {
+                $info->name = get_string('coresubsystem', 'tool_templatelibrary', $component);
+            } else {
+                $info->name = $pluginmanager->plugin_name($component);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             }
 
             $pluginname = $coresubsystem

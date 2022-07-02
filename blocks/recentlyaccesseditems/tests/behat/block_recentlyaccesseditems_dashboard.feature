@@ -22,6 +22,11 @@ Feature: The recently accessed items block allows users to easily access their m
       | idnumber | Test forum name |
       | name     | Test forum name |
     And I log in as "student1"
+<<<<<<< HEAD
+=======
+    And I press "Customise this page"
+    And I add the "Recently accessed items" block
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
   Scenario: User has not accessed any item
     Then I should see "No recent items" in the "Recently accessed items" "block"
@@ -29,7 +34,11 @@ Feature: The recently accessed items block allows users to easily access their m
   Scenario: User has accessed some items
     Given I change window size to "large"
     When I am on the "Test forum name" "forum activity" page
+<<<<<<< HEAD
     And I follow "Dashboard"
+=======
+    And I follow "Dashboard" in the user menu
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "Test forum name" in the "Recently accessed items" "block"
     And I should not see "Show more items" in the "Recently accessed items" "block"
 

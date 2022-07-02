@@ -102,7 +102,11 @@ function resource_display_embed($resource, $cm, $course, $file) {
     // Let the module handle the display.
     $PAGE->activityheader->set_description(resource_get_intro($resource, $cm));
 
+<<<<<<< HEAD
     resource_print_header($resource, $cm, $course);
+=======
+    echo format_text($code, FORMAT_HTML, ['noclean' => true]);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     echo format_text($code, FORMAT_HTML, ['noclean' => true]);
 
@@ -393,7 +397,13 @@ function resource_get_optional_details($resource, $cm) {
  * @param bool $ignoresettings print even if not specified in modedit
  * @return string
  */
+<<<<<<< HEAD
 function resource_get_intro(object $resource, object $cm, bool $ignoresettings = false): string {
+=======
+function resource_print_intro($resource, $cm, $course, $ignoresettings=false) {
+    global $OUTPUT;
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     $options = empty($resource->displayoptions) ? [] : (array) unserialize_array($resource->displayoptions);
 
     $extraintro = resource_get_optional_details($resource, $cm);

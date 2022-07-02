@@ -68,7 +68,68 @@ require_login($course, false);
 if (!calendar_user_can_add_event($course)) {
     print_error('errorcannotimport', 'calendar');
 }
+<<<<<<< HEAD
 $PAGE->navbar->add(get_string('managesubscriptions', 'calendar'), $PAGE->url);
+=======
+
+// Populate the 'group' select box based on the given 'groupcourseid', if necessary.
+$groups = [];
+if (!empty($groupcourseid)) {
+    require_once($CFG->libdir . '/grouplib.php');
+    $groupcoursedata = groups_get_course_data($groupcourseid);
+    if (!empty($groupcoursedata->groups)) {
+        foreach ($groupcoursedata->groups as $groupid => $groupdata) {
+            $groups[$groupid] = $groupdata->name;
+        }
+    }
+}
+$customdata = [
+    'courseid' => $course->id,
+    'groups' => $groups,
+];
+$form = new \core_calendar\local\event\forms\managesubscriptions($url, $customdata);
+$form->set_data(array(
+    'course' => $course->id
+));
+
+$formdata = $form->get_data();
+if (!empty($formdata)) {
+    require_sesskey(); // Must have sesskey for all actions.
+    $subscriptionid = calendar_add_subscription($formdata);
+    if ($formdata->importfrom == CALENDAR_IMPORT_FROM_FILE) {
+        // Blank the URL if it's a file import.
+        $formdata->url = '';
+        $calendar = $form->get_file_content('importfile');
+        $ical = new iCalendar();
+        $ical->unserialize($calendar);
+        $importresults = calendar_import_icalendar_events($ical, null, $subscriptionid);
+    } else {
+        try {
+            $importresults = calendar_update_subscription_events($subscriptionid);
+        } catch (moodle_exception $e) {
+            // Delete newly added subscription and show invalid url error.
+            calendar_delete_subscription($subscriptionid);
+            print_error($e->errorcode, $e->module, $PAGE->url);
+        }
+    }
+    // Redirect to prevent refresh issues.
+    redirect($PAGE->url, $importresults);
+} else if (!empty($subscriptionid)) {
+    // The user is wanting to perform an action upon an existing subscription.
+    require_sesskey(); // Must have sesskey for all actions.
+    if (calendar_can_edit_subscription($subscriptionid)) {
+        try {
+            $importresults = calendar_process_subscription_row($subscriptionid, $pollinterval, $action);
+            redirect($PAGE->url, $importresults);
+        } catch (moodle_exception $e) {
+            // If exception caught, then user should be redirected to page where he/she came from.
+            print_error($e->errorcode, $e->module, $PAGE->url);
+        }
+    } else {
+        print_error('nopermissions', 'error', $PAGE->url, get_string('managesubscriptions', 'calendar'));
+    }
+}
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 $types = calendar_get_allowed_event_types($courseid);
 
@@ -157,9 +218,15 @@ foreach($subscriptions as $subscription) {
 }
 
 // Display a table of subscriptions.
+<<<<<<< HEAD
 if (empty($subscription)) {
     echo $renderer->render_no_calendar_subscriptions();
 } else {
     echo $renderer->subscription_details($courseid, $subscriptions);
 }
+=======
+echo $renderer->subscription_details($courseid, $subscriptions);
+// Display the add subscription form.
+$form->display();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 echo $OUTPUT->footer();

@@ -210,7 +210,10 @@ class qtype_ddwtos_test_helper extends question_test_helper {
         test_question_maker::set_standard_combined_feedback_form_data($fromform);
         $fromform->shownumcorrect = 0;
         $fromform->penalty = 0.3333333;
+<<<<<<< HEAD
         $fromform->status = \core_question\local\bank\question_version_status::QUESTION_STATUS_READY;
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         return $fromform;
     }

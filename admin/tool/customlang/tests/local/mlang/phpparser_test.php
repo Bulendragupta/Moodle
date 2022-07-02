@@ -34,7 +34,11 @@ use moodle_exception;
  * @copyright  2015 Damyon Wiese
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
+<<<<<<< HEAD
 class phpparser_test extends advanced_testcase {
+=======
+class phpparser_testcase extends advanced_testcase {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 
     /**

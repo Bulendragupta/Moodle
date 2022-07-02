@@ -37,7 +37,11 @@ class service_provider implements \core_payment\local\callback\service_provider 
      * Callback function that returns the enrolment cost and the accountid
      * for the course that $instanceid enrolment instance belongs to.
      *
+<<<<<<< HEAD
      * @param string $paymentarea Payment area
+=======
+     * @param string $paymentarea
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * @param int $instanceid The enrolment instance id
      * @return \core_payment\local\entities\payable
      */
@@ -50,6 +54,7 @@ class service_provider implements \core_payment\local\callback\service_provider 
     }
 
     /**
+<<<<<<< HEAD
      * Callback function that returns the URL of the page the user should be redirected to in the case of a successful payment.
      *
      * @param string $paymentarea Payment area
@@ -65,6 +70,8 @@ class service_provider implements \core_payment\local\callback\service_provider 
     }
 
     /**
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * Callback function that delivers what the user paid for to them.
      *
      * @param string $paymentarea

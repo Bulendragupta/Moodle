@@ -158,9 +158,13 @@ class manager {
      * @param   string  $action     The action to perform.
      */
     public function execute($action) {
+<<<<<<< HEAD
         global $PAGE;
         $this->setup_admin_externalpage($action);
         $PAGE->set_primary_active_tab('siteadminnode');
+=======
+        $this->setup_admin_externalpage($action);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Add the main content.
         switch($action) {
@@ -628,7 +632,30 @@ class manager {
      * @return  array
      */
     public static function get_matching_tours(\moodle_url $pageurl): array {
+<<<<<<< HEAD
         global $PAGE;
+=======
+        global $PAGE, $USER;
+
+        // The following three checks make sure that the user is fully ready to use the site. If not, we do not show any tours.
+        // We need the user to get properly set up so that all require_login() and other bits work as expected.
+
+        if (user_not_fully_set_up($USER)) {
+            return [];
+        }
+
+        if (get_user_preferences('auth_forcepasswordchange', false)) {
+            return [];
+        }
+
+        if (empty($USER->policyagreed) && !is_siteadmin()) {
+            $manager = new \core_privacy\local\sitepolicy\manager();
+
+            if ($manager->is_defined(isguestuser())) {
+                return [];
+            }
+        }
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         if (\core_user::awaiting_action()) {
             // User not fully ready to use the site. Don't show any tours, we need the user to get properly set up so

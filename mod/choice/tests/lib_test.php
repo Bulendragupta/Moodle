@@ -157,7 +157,11 @@ class lib_test extends \externallib_advanced_testcase {
         $optionids2 = array_keys($choicewithoptions2->option);
 
         // Make sure we cannot submit options from a different choice instance.
+<<<<<<< HEAD
         $this->expectException(\moodle_exception::class);
+=======
+        $this->expectException(moodle_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         choice_user_submit_response($optionids2[0], $choice1, $USER->id, $course, $cm);
     }
 

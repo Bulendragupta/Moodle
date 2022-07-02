@@ -4,7 +4,11 @@
     <location>CAS</location>
     <name>CAS</name>
     <license>Apache</license>
+<<<<<<< HEAD
     <version>1.4.0</version>
+=======
+    <version>1.3.8</version>
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     <licenseversion>2.0</licenseversion>
   </library>
 </libraries>

@@ -65,6 +65,7 @@ require_login($course, false, $cm);
 
 $context = context_module::instance($cm->id);
 require_capability('mod/data:manageentries', $context);
+<<<<<<< HEAD
 
 $form = new mod_data_import_form(new moodle_url('/mod/data/import.php'), ['dataid' => $data->id,
     'backtourl' => $redirectbackto]);
@@ -74,6 +75,8 @@ if ($form->is_cancelled()) {
         new \moodle_url('/mod/data/view.php', ['d' => $data->id]);
     redirect($redirectbackto);
 }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 /// Print the page header
 $PAGE->navbar->add(get_string('add', 'data'));
@@ -94,8 +97,13 @@ if ($formdata = $form->get_data()) {
         echo $OUTPUT->notification(get_string('recordsnotsaved', 'data'), 'notifysuccess');
     }
 
+<<<<<<< HEAD
     echo $OUTPUT->continue_button($redirectbackto);
 } else {
+=======
+$form = new mod_data_import_form(new moodle_url('/mod/data/import.php'), ['dataid' => $data->id]);
+if (!$formdata = $form->get_data()) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     /// Upload records section. Only for teachers and the admin.
     echo $OUTPUT->box_start('generalbox boxaligncenter boxwidthwide');
     $form->display();

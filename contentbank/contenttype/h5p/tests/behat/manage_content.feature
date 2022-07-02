@@ -51,5 +51,9 @@ Feature: Manage H5P content from the content bank
     And I expand "Site pages" node
     And I click on "Content bank" "link"
     When I follow "filltheblanks.h5p"
+<<<<<<< HEAD
     And I click on "More" "button"
     Then I should not see "Rename"
+=======
+    Then "Rename" "link" should not exist in the "region-main-settings-menu" "region"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

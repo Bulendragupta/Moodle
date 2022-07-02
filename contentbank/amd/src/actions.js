@@ -249,6 +249,7 @@ function($, Ajax, Notification, Str, Templates, Url, ModalFactory, ModalEvents) 
             }
             requestType = 'error';
             return data.warnings[0].message;
+<<<<<<< HEAD
 
         }).then(function(message) {
             var params = null;
@@ -292,6 +293,8 @@ function($, Ajax, Notification, Str, Templates, Url, ModalFactory, ModalEvents) 
             }
             requestType = 'error';
             return data.warnings[0].message;
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         }).then(function(message) {
             var params = null;

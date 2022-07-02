@@ -57,7 +57,11 @@ class api_test extends \advanced_testcase {
             'roleid' => $this->roleid,
             'cohortid' => $this->cohort->id
         );
+<<<<<<< HEAD
         $this->expectException(\required_capability_exception::class);
+=======
+        $this->expectException(required_capability_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         api::create_cohort_role_assignment($params);
     }
 
@@ -95,7 +99,11 @@ class api_test extends \advanced_testcase {
         );
         $result = api::create_cohort_role_assignment($params);
         $this->setUser($this->userassignto);
+<<<<<<< HEAD
         $this->expectException(\required_capability_exception::class);
+=======
+        $this->expectException(required_capability_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         api::delete_cohort_role_assignment($result->get('id'));
     }
 
@@ -107,7 +115,11 @@ class api_test extends \advanced_testcase {
             'cohortid' => $this->cohort->id
         );
         $result = api::create_cohort_role_assignment($params);
+<<<<<<< HEAD
         $this->expectException(\dml_missing_record_exception::class);
+=======
+        $this->expectException(dml_missing_record_exception::class);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         api::delete_cohort_role_assignment($result->get('id') + 1);
     }
 

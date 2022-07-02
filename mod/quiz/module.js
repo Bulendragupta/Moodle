@@ -75,9 +75,12 @@ M.mod_quiz.timer = {
         M.mod_quiz.timer.preview = preview;
         M.mod_quiz.timer.update();
         Y.one('#quiz-timer-wrapper').setStyle('display', 'flex');
+<<<<<<< HEAD
         require(['core_form/changechecker'], function(FormChangeChecker) {
             M.mod_quiz.timer.FormChangeChecker = FormChangeChecker;
         });
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     },
 
     /**
@@ -244,12 +247,20 @@ M.mod_quiz.nav.init = function(Y) {
 
     // Navigation buttons should be disabled when the files are uploading.
     require(['core_form/events'], function(formEvent) {
+<<<<<<< HEAD
         document.addEventListener(formEvent.eventTypes.uploadStarted, function() {
+=======
+        document.addEventListener(formEvent.types.uploadStarted, function() {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             M.mod_quiz.filesUpload.numberFilesUploading++;
             M.mod_quiz.filesUpload.disableNavPanel();
         });
 
+<<<<<<< HEAD
         document.addEventListener(formEvent.eventTypes.uploadCompleted, function() {
+=======
+        document.addEventListener(formEvent.types.uploadCompleted, function() {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             M.mod_quiz.filesUpload.numberFilesUploading--;
             M.mod_quiz.filesUpload.disableNavPanel();
         });

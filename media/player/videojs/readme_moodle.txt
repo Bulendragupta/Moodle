@@ -34,6 +34,23 @@ Import plugins:
    with
      define(['media_videojs/video-lazy', './local/ogv/ogv']
 
+<<<<<<< HEAD
+=======
+3. Download https://github.com/videojs/video-js-swf/blob/master/dist/video-js.swf
+   and place it into 'videojs/video-js.swf'
+
+4. Download the latest release from https://github.com/HuongNV13/videojs-ogvjs/releases
+   (do not choose "Source code")
+
+5. Copy videojs-ogvjs.js into 'amd/src/videojs-ogvjs-lazy.js'
+   In the beginning of the js file:
+
+   Replace
+     define(['video.js', 'OGVCompat', 'OGVLoader', 'OGVPlayer']
+   with
+     define(['media_videojs/video-lazy', './local/ogv/ogv']
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
    Replace
      function (videojs, OGVCompat, OGVLoader, OGVPlayer)
    with
@@ -46,4 +63,8 @@ Import plugins:
    with
      var OGVCompat__default = /*#__PURE__*/_interopDefaultLegacy(ogvBase.OGVCompat);
      var OGVLoader__default = /*#__PURE__*/_interopDefaultLegacy(ogvBase.OGVLoader);
+<<<<<<< HEAD
      var OGVPlayer__default = /*#__PURE__*/_interopDefaultLegacy(ogvBase.OGVPlayer);
+=======
+     var OGVPlayer__default = /*#__PURE__*/_interopDefaultLegacy(ogvBase.OGVPlayer);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

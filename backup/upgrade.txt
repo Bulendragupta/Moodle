@@ -1,6 +1,7 @@
 This files describes API changes in /backup/*,
 information provided here is intended especially for developers.
 
+<<<<<<< HEAD
 === 4.0 ===
 
 * Backup UI labels now accept empty/whitespace-only contents.
@@ -12,6 +13,13 @@ information provided here is intended especially for developers.
 
 === 3.10 ===
 
+=======
+=== 3.10.10 ===
+
+* Backup UI labels now accept empty/whitespace-only contents.
+
+=== 3.10 ===
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
  * Local plugins can now hook into a backup and restore process of grade items by
    using define_grade_item_plugin_structure method (See MDL-69418).
 

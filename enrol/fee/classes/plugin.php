@@ -164,6 +164,7 @@ class enrol_fee_plugin extends enrol_plugin {
      * @return string html text, usually a form in a text box
      */
     public function enrol_page_hook(stdClass $instance) {
+<<<<<<< HEAD
         return $this->show_payment_info($instance);
     }
 
@@ -190,6 +191,9 @@ class enrol_fee_plugin extends enrol_plugin {
      */
     private function show_payment_info(stdClass $instance) {
         global $USER, $OUTPUT, $DB;
+=======
+        global $CFG, $USER, $OUTPUT, $PAGE, $DB;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         ob_start();
 
@@ -208,6 +212,22 @@ class enrol_fee_plugin extends enrol_plugin {
         $course = $DB->get_record('course', array('id' => $instance->courseid));
         $context = context_course::instance($course->id);
 
+<<<<<<< HEAD
+=======
+        $shortname = format_string($course->shortname, true, array('context' => $context));
+        $strloginto = get_string("loginto", "", $shortname);
+        $strcourses = get_string("courses");
+
+        // Pass $view=true to filter hidden caps if the user cannot see them.
+        if ($users = get_users_by_capability($context, 'moodle/course:update', 'u.*', 'u.id ASC',
+                                             '', '', '', '', false, true)) {
+            $users = sort_by_roleassignment_authority($users, $context);
+            $teacher = array_shift($users);
+        } else {
+            $teacher = false;
+        }
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         if ( (float) $instance->cost <= 0 ) {
             $cost = (float) $this->get_config('cost');
         } else {
@@ -219,12 +239,19 @@ class enrol_fee_plugin extends enrol_plugin {
         } else {
 
             $data = [
+<<<<<<< HEAD
                 'isguestuser' => isguestuser() || !isloggedin(),
+=======
+                'isguestuser' => isguestuser(),
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 'cost' => \core_payment\helper::get_cost_as_string($cost, $instance->currency),
                 'instanceid' => $instance->id,
                 'description' => get_string('purchasedescription', 'enrol_fee',
                     format_string($course->fullname, true, ['context' => $context])),
+<<<<<<< HEAD
                 'successurl' => \enrol_fee\payment\service_provider::get_success_url('fee', $instance->id)->out(false),
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             ];
             echo $OUTPUT->render_from_template('enrol_fee/payment_region', $data);
         }

@@ -9,11 +9,19 @@ on:
       - v[0-9]+.[0-9]+.[0-9]+*
 
 env:
+<<<<<<< HEAD
   php: 8.0
 
 jobs:
   Grunt:
     runs-on: ubuntu-20.04
+=======
+  php: 7.4
+
+jobs:
+  Grunt:
+    runs-on: ubuntu-18.04
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     steps:
       - name: Checking out code
@@ -54,6 +62,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
+<<<<<<< HEAD
           - os: ubuntu-20.04
             php: 7.3
             extensions:
@@ -62,6 +71,14 @@ jobs:
             php: 8.0
             db: pgsql
             extensions: xmlrpc-beta
+=======
+          - os: ubuntu-18.04
+            php: 7.2
+            db: mysqli
+          - os: ubuntu-18.04
+            php: 7.4
+            db: pgsql
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     steps:
       - name: Setting up DB mysql
@@ -79,7 +96,11 @@ jobs:
         if: ${{ matrix.db == 'pgsql' }}
         uses: m4nu56/postgresql-action@v1
         with:
+<<<<<<< HEAD
           postgresql version: 10
+=======
+          postgresql version: 9.6
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
           postgresql db: test
           postgresql user: test
           postgresql password: test
@@ -91,8 +112,11 @@ jobs:
         uses: shivammathur/setup-php@v2
         with:
           php-version: ${{ matrix.php }}
+<<<<<<< HEAD
           extensions: ${{ matrix.extensions }}
           ini-values: max_input_vars=5000
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
           coverage: none
 
       - name: Checking out code from ${{ env.GITHUB_REF_SLUG }}
@@ -111,5 +135,9 @@ jobs:
       - name: Running PHPUnit tests
         env:
           dbtype: ${{ matrix.db }}
+<<<<<<< HEAD
           phpunit_options: ${{ secrets.phpunit_options }}
         run: vendor/bin/phpunit $phpunit_options
+=======
+        run: vendor/bin/phpunit -v
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

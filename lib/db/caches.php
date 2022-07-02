@@ -504,6 +504,7 @@ $definitions = array(
         'simplekeys'             => true,
         'staticacceleration'     => true,
         'staticaccelerationsize' => 100
+<<<<<<< HEAD
     ],
 
     // Course image cache.
@@ -545,5 +546,7 @@ $definitions = array(
         'simpledata' => true,
         'staticacceleration' => true,
         'ttl' => 1800,
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     ],
 );

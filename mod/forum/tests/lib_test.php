@@ -548,7 +548,11 @@ class lib_test extends \advanced_testcase {
         // Prevent the non-editing teacher from reading private replies in forum 2.
         $teacherroleid = $DB->get_field('role', 'id', ['shortname' => 'teacher']);
         $forum2cm = get_coursemodule_from_instance('forum', $forum2->id);
+<<<<<<< HEAD
         $forum2context = \context_module::instance($forum2cm->id);
+=======
+        $forum2context = context_module::instance($forum2cm->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         role_change_permission($teacherroleid, $forum2context, 'mod/forum:readprivatereplies', CAP_PREVENT);
 
         // Create discussion by s1.
@@ -675,7 +679,11 @@ class lib_test extends \advanced_testcase {
         // Prevent the non-editing teacher from reading private replies in forum 2.
         $teacherroleid = $DB->get_field('role', 'id', ['shortname' => 'teacher']);
         $forum2cm = get_coursemodule_from_instance('forum', $forum2->id);
+<<<<<<< HEAD
         $forum2context = \context_module::instance($forum2cm->id);
+=======
+        $forum2context = context_module::instance($forum2cm->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         role_change_permission($teacherroleid, $forum2context, 'mod/forum:readprivatereplies', CAP_PREVENT);
 
         // Create discussion by s1.

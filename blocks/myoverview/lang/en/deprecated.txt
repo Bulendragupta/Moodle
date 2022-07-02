@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 clearsearch,block_myoverview
 aria:shortname,block_myoverview
 aria:lastaccessed,block_myoverview
 aria:title,block_myoverview
+=======
+nocourses,block_myoverview
+complete,block_myoverview
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

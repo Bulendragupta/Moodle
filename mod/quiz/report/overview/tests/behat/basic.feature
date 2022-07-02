@@ -50,7 +50,11 @@ Feature: Basic use of the Grades report
   Scenario: Using the Grades report
     # Basic check of the Grades report
     When I am on the "Quiz 1" "quiz activity" page logged in as teacher1
+<<<<<<< HEAD
     And I navigate to "Results" in current page administration
+=======
+    And I navigate to "Results > Grades" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "Attempts: 2"
     # Check student1's grade
     And I should see "25.00" in the "S1 Student1" "table_row"

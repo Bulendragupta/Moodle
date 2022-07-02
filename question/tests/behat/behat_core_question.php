@@ -23,11 +23,19 @@ use Behat\Mink\Exception\ExpectationException as ExpectationException;
 use Behat\Mink\Exception\ElementNotFoundException as ElementNotFoundException;
 
 /**
+<<<<<<< HEAD
  * Steps definitions related with the question bank management.
  *
  * @package    core_question
  * @category   test
  * @copyright  2013 David Monllaó
+=======
+ * Behat navigation hooks for core_question.
+ *
+ * @package    core_question
+ * @category   test
+ * @copyright  2022 The Open University
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 class behat_core_question extends behat_question_base {
@@ -72,21 +80,37 @@ class behat_core_question extends behat_question_base {
                         ['courseid' => $this->get_course_id($identifier)]);
 
             case 'course question import':
+<<<<<<< HEAD
                 return new moodle_url('/question/bank/importquestions/import.php',
                         ['courseid' => $this->get_course_id($identifier)]);
 
             case 'course question export':
                 return new moodle_url('/question/bank/exportquestions/export.php',
+=======
+                return new moodle_url('/question/import.php',
+                        ['courseid' => $this->get_course_id($identifier)]);
+
+            case 'course question export':
+                return new moodle_url('/question/export.php',
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                         ['courseid' => $this->get_course_id($identifier)]);
 
             case 'preview':
                 [$questionid, $otheridtype, $otherid] = $this->find_question_by_name($identifier);
+<<<<<<< HEAD
                 return new moodle_url('/question/bank/previewquestion/preview.php',
+=======
+                return new moodle_url('/question/preview.php',
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                         ['id' => $questionid, $otheridtype => $otherid]);
 
             case 'edit':
                 [$questionid, $otheridtype, $otherid] = $this->find_question_by_name($identifier);
+<<<<<<< HEAD
                 return new moodle_url('/question/bank/editquestion/question.php',
+=======
+                return new moodle_url('/question/question.php',
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                         ['id' => $questionid, $otheridtype => $otherid]);
 
             default:
@@ -117,6 +141,7 @@ class behat_core_question extends behat_question_base {
             throw new coding_exception('Unsupported context level ' . $context->contextlevel);
         }
     }
+<<<<<<< HEAD
 
     /**
      * Creates a question in the current course questions bank with the provided data.
@@ -214,4 +239,6 @@ class behat_core_question extends behat_question_base {
         $this->execute("behat_general::i_click_on",
             ["#bulkactionsui-container input[name='$action']", "css_element"]);
     }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

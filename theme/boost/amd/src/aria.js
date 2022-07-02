@@ -29,8 +29,13 @@ import Pending from 'core/pending';
  */
 const dropdownFix = () => {
     let focusEnd = false;
+<<<<<<< HEAD
     const setFocusEnd = (end = true) => {
         focusEnd = end;
+=======
+    const setFocusEnd = () => {
+        focusEnd = true;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     };
     const getFocusEnd = () => {
         const result = focusEnd;
@@ -38,6 +43,30 @@ const dropdownFix = () => {
         return result;
     };
 
+<<<<<<< HEAD
+=======
+    // Special handling for "up" keyboard control.
+    document.addEventListener('keydown', e => {
+        if (e.target.matches('[data-toggle="dropdown"]')) {
+            const trigger = e.key;
+
+            // Up key opens the menu at the end.
+            if (trigger == 'ArrowUp') {
+                // Focus the end of the menu, not the beginning.
+                setFocusEnd();
+            }
+
+            // Space key or Enter key opens the menu.
+            if (trigger == ' ' || trigger == 'Enter') {
+                // Cancel random scroll.
+                e.preventDefault();
+                // Open the menu instead.
+                e.target.click();
+            }
+        }
+    });
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     // Special handling for navigation keys when menu is open.
     const shiftFocus = element => {
         const delayedFocus = pendingPromise => {
@@ -47,6 +76,7 @@ const dropdownFix = () => {
         setTimeout(delayedFocus, 50, new Pending('core/aria:delayed-focus'));
     };
 
+<<<<<<< HEAD
     // Event handling for the dropdown menu button.
     const handleMenuButton = e => {
         const trigger = e.key;
@@ -87,6 +117,18 @@ const dropdownFix = () => {
                 setFocusEnd(false);
             }
 
+=======
+    $('.dropdown').on('shown.bs.dropdown', e => {
+        // We need to focus on the first menuitem.
+        const menu = e.target.querySelector('[role="menu"]');
+        let menuItems = false;
+        let foundMenuItem = false;
+
+        if (menu) {
+            menuItems = menu.querySelectorAll('[role="menuitem"]');
+        }
+        if (menuItems && menuItems.length > 0) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             if (getFocusEnd()) {
                 foundMenuItem = menuItems[menuItems.length - 1];
             } else {
@@ -94,12 +136,19 @@ const dropdownFix = () => {
                 foundMenuItem = menuItems[0];
             }
         }
+<<<<<<< HEAD
 
         if (foundMenuItem) {
             shiftFocus(foundMenuItem);
         }
     };
 
+=======
+        if (foundMenuItem) {
+            shiftFocus(foundMenuItem);
+        }
+    });
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     // Search for menu items by finding the first item that has
     // text starting with the typed character (case insensitive).
     document.addEventListener('keypress', e => {
@@ -128,6 +177,7 @@ const dropdownFix = () => {
 
     // Keyboard navigation for arrow keys, home and end keys.
     document.addEventListener('keydown', e => {
+<<<<<<< HEAD
 
         // We only want to set focus when users access the dropdown via keyboard as per
         // guidelines defined in w3 aria practices 1.1 menu-button.
@@ -135,6 +185,8 @@ const dropdownFix = () => {
             handleMenuButton(e);
         }
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         if (e.target.matches('.dropdown [role="menu"] [role="menuitem"]')) {
             const trigger = e.key;
             let next = false;
@@ -159,6 +211,10 @@ const dropdownFix = () => {
                     // Wrap to first item.
                     next = menuItems[0];
                 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             } else if (trigger == 'ArrowUp') {
                 // Up key.
                 for (let i = 1; i < menuItems.length; i++) {
@@ -171,6 +227,7 @@ const dropdownFix = () => {
                     // Wrap to last item.
                     next = menuItems[menuItems.length - 1];
                 }
+<<<<<<< HEAD
             } else if (trigger == 'Home') {
                 // Home key.
                 next = menuItems[0];
@@ -180,6 +237,17 @@ const dropdownFix = () => {
                 next = menuItems[menuItems.length - 1];
             }
 
+=======
+
+            } else if (trigger == 'Home') {
+                // Home key.
+                next = menuItems[0];
+
+            } else if (trigger == 'End') {
+                // End key.
+                next = menuItems[menuItems.length - 1];
+            }
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             // Variable next is set if we do want to act on the keypress.
             if (next) {
                 e.preventDefault();
@@ -192,8 +260,12 @@ const dropdownFix = () => {
     $('.dropdown').on('hidden.bs.dropdown', e => {
         // We need to focus on the menu trigger.
         const trigger = e.target.querySelector('[data-toggle="dropdown"]');
+<<<<<<< HEAD
         const focused = document.activeElement != document.body ? document.activeElement : null;
         if (trigger && focused && e.target.contains(focused)) {
+=======
+        if (trigger) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             shiftFocus(trigger);
         }
     });
@@ -226,7 +298,11 @@ const updateTabFocus = e => {
     const arrowPrevious = vertical ? 'ArrowUp' : (rtl ? 'ArrowRight' : 'ArrowLeft');
     const tabs = Array.prototype.filter.call(
         tabList.querySelectorAll('[role="tab"]'),
+<<<<<<< HEAD
         tab => !!tab.offsetHeight); // We only work with the visible tabs.
+=======
+        tab => getComputedStyle(tab).display !== 'none'); // We only work with the visible tabs.
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     for (let i = 0; i < tabs.length; i++) {
         tabs[i].index = i;
@@ -256,6 +332,18 @@ const updateTabFocus = e => {
         case 'End':
             e.preventDefault();
             tabs[tabs.length - 1].focus();
+<<<<<<< HEAD
+=======
+            break;
+        case 'Enter':
+        case ' ':
+            e.preventDefault();
+            $(e.target).tab('show');
+            tabs.forEach(tab => {
+                tab.tabIndex = -1;
+            });
+            e.target.tabIndex = 0;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 };
 
@@ -264,7 +352,11 @@ const updateTabFocus = e => {
  */
 const tabElementFix = () => {
     document.addEventListener('keydown', e => {
+<<<<<<< HEAD
         if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(e.key)) {
+=======
+        if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'Home', 'End', 'Enter', ' '].includes(e.key)) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             if (e.target.matches('[role="tablist"] [role="tab"]')) {
                 updateTabFocus(e);
             }
@@ -272,8 +364,13 @@ const tabElementFix = () => {
     });
 
     document.addEventListener('click', e => {
+<<<<<<< HEAD
         if (e.target.matches('[role="tablist"] [data-toggle="tab"], [role="tablist"] [data-toggle="pill"]')) {
             const tabs = e.target.closest('[role="tablist"]').querySelectorAll('[data-toggle="tab"], [data-toggle="pill"]');
+=======
+        if (e.target.matches('[role="tablist"] [role="tab"]')) {
+            const tabs = e.target.closest('[role="tablist"]').querySelectorAll('[role="tab"]');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             e.preventDefault();
             $(e.target).tab('show');
             tabs.forEach(tab => {
@@ -284,6 +381,7 @@ const tabElementFix = () => {
     });
 };
 
+<<<<<<< HEAD
 /**
  * Fix keyboard interaction with Bootstrap Collapse elements.
  *
@@ -301,9 +399,14 @@ const collapseFix = () => {
     });
 };
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 export const init = () => {
     dropdownFix();
     autoFocus();
     tabElementFix();
+<<<<<<< HEAD
     collapseFix();
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 };

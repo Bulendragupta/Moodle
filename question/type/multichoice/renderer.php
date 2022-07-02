@@ -104,6 +104,7 @@ abstract class qtype_multichoice_renderer_base extends qtype_with_combined_feedb
                 ));
             }
 
+<<<<<<< HEAD
             $choicenumber = '';
             if ($question->answernumbering !== 'none') {
                 $choicenumber = html_writer::span(
@@ -114,6 +115,18 @@ abstract class qtype_multichoice_renderer_base extends qtype_with_combined_feedb
 
             $radiobuttons[] = $hidden . html_writer::empty_tag('input', $inputattributes) .
                     html_writer::div($choicenumber . $choice, 'd-flex w-auto', [
+=======
+            $questionnumber = '';
+            if ($question->answernumbering !== 'none') {
+                $questionnumber = html_writer::span(
+                        $this->number_in_style($value, $question->answernumbering), 'answernumber');
+            }
+            $answertext = $question->format_text($ans->answer, $ans->answerformat, $qa, 'question', 'answer', $ansid);
+            $questionanswer = html_writer::div($answertext, 'flex-fill ml-1');
+
+            $radiobuttons[] = $hidden . html_writer::empty_tag('input', $inputattributes) .
+                    html_writer::div($questionnumber . $questionanswer, 'd-flex w-auto', [
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                         'id' => $inputattributes['id'] . '_label',
                         'data-region' => 'answer-label',
                     ]);

@@ -326,7 +326,11 @@ class manager_test extends \advanced_testcase {
             $this->helper_create_step((object) ['tourid' => $tour->get_id()]);
         }
 
+<<<<<<< HEAD
         $matches = \tool_usertours\manager::get_matching_tours(new \moodle_url($url));
+=======
+        $matches = \tool_usertours\manager::get_matching_tours(new moodle_url($url));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertEquals(count($expected), count($matches));
         for ($i = 0; $i < count($matches); $i++) {
             $this->assertEquals($expected[$i], $matches[$i]->get_name());
@@ -354,12 +358,20 @@ class manager_test extends \advanced_testcase {
             'tourid' => $tour->get_id(),
         ]);
 
+<<<<<<< HEAD
         $matches = \tool_usertours\manager::get_matching_tours(new \moodle_url('/'));
+=======
+        $matches = \tool_usertours\manager::get_matching_tours(new moodle_url('/'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertEquals(1, count($matches));
 
         $CFG->sitepolicyguest = 'https://example.com';
 
+<<<<<<< HEAD
         $matches = \tool_usertours\manager::get_matching_tours(new \moodle_url('/'));
+=======
+        $matches = \tool_usertours\manager::get_matching_tours(new moodle_url('/'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $this->assertEmpty($matches);
     }
 }

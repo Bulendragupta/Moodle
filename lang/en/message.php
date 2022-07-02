@@ -275,6 +275,17 @@ $string['you'] = 'You:';
 $string['youhaveblockeduser'] = 'You have blocked this user.';
 $string['yourcontactrequestpending'] = 'Your contact request is pending with {$a}';
 
+<<<<<<< HEAD
+=======
+// Deprecated since Moodle 3.7.
+$string['nomessages'] = 'No messages';
+$string['outputdisabled'] = 'Output disabled';
+$string['outputdoesnotexist'] = 'Message output does not exist';
+$string['outputenabled'] = 'Output enabled';
+$string['outputnotconfigured'] = 'Not configured';
+$string['canceledit'] = 'Cancel editing messages';
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 // Deprecated since Moodle 3.9.
 $string['messagecontactrequestsnotification'] = '{$a} is requesting to be added as a contact.';
 $string['messagecontactrequestsnotificationsubject'] = 'Contact request from {$a}';

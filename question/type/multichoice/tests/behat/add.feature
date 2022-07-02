@@ -40,6 +40,7 @@ Feature: Test creating a Multiple choice question
   Scenario: Create a Multiple choice question with single response
     When I am on the "Course 1" "core_question > course question bank" page logged in as teacher
     And I add a "Multiple choice" question filling the form with:
+<<<<<<< HEAD
       | Question name              | Multi-choice-002                       |
       | Question text              | Find the capital city of England.      |
       | General feedback           | London is the capital city of England. |
@@ -60,6 +61,24 @@ Feature: Test creating a Multiple choice question
       | id_fraction_4              | None                                   |
       | Hint 1                     | First hint                             |
       | Hint 2                     | Second hint                            |
+=======
+      | Question name            | Multi-choice-002                       |
+      | Question text            | Find the capital city of England.      |
+      | General feedback         | London is the capital city of England. |
+      | One or multiple answers? | One answer only                        |
+      | Choice 1                 | Manchester                             |
+      | Choice 2                 | Buckingham                             |
+      | Choice 3                 | London                                 |
+      | Choice 4                 | Barcelona                              |
+      | Choice 5                 | Paris                                  |
+      | id_fraction_0            | None                                   |
+      | id_fraction_1            | None                                   |
+      | id_fraction_2            | 100%                                   |
+      | id_fraction_3            | None                                   |
+      | id_fraction_4            | None                                   |
+      | Hint 1                   | First hint                             |
+      | Hint 2                   | Second hint                            |
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "Multi-choice-002"
     # Checking that the next new question form displays user preferences settings.
     And I press "Create a new question ..."

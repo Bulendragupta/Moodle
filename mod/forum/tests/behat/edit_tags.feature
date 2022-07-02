@@ -48,7 +48,11 @@ Feature: Edited forum posts handle tags correctly
     And I press "Continue"
     And I log out
     And I am on the "Test forum name" "forum activity" page logged in as teacher1
+<<<<<<< HEAD
     And I click on "Add discussion topic" "link"
+=======
+    And I click on "Add a new discussion topic" "link"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Advanced" "button"
     And I expand all fieldsets
     And I open the autocomplete suggestions list

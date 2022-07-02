@@ -1,6 +1,7 @@
 This files describes API changes in /message/ messaging system,
 information provided here is intended especially for developers.
 
+<<<<<<< HEAD
 === 4.0 ===
 
 The following functions have been finally deprecated and can not be used anymore:
@@ -11,6 +12,9 @@ it can still be installed as a third-party plugin.
 * The type of the parameter $read in the function message_get_messages has changed from boolean to integer. It now accepts either MESSAGE_GET_UNREAD, MESSAGE_GET_READ or MESSAGE_GET_READ_AND_UNREAD.
 
 === 3.11.2 ===
+=======
+=== 3.10.6 ===
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 * The `message_page_type_list` method was previouly deprecated, however it was still
   used so has been recreated in message/lib.php

@@ -327,12 +327,18 @@ body:not(.editing)  .sitetopic ul.section {
     margin: .5em 0;
 }
 
+<<<<<<< HEAD
 .editing .section.main:not(.course-section) {
     .activity:hover,
     .activity.action-menu-shown,
     .sectionname:hover {
         background-color: $table-accent-bg;
     }
+=======
+.editing .section .activity:hover,
+.editing .section .activity.action-menu-shown {
+    background-color: $table-accent-bg;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }
 
 .course-content .current {
@@ -343,7 +349,11 @@ body:not(.editing)  .sitetopic ul.section {
     border-left: $primary 3px solid;
     bottom: 0;
     content: "";
+<<<<<<< HEAD
     left: -8px;
+=======
+    border-left: $primary 2px solid;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     position: absolute;
     top: 0;
 }
@@ -806,6 +816,20 @@ span.editinstructions {
     display: none;
 }
 
+<<<<<<< HEAD
+=======
+.courses .coursebox {
+    &.collapsed {
+        padding-top: $spacer / 2;
+        padding-bottom: $spacer / 2;
+    }
+
+    &.even {
+        background-color: $table-accent-bg;
+    }
+}
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 .courses > .paging.paging-morelink {
     text-align: center;
     padding: $spacer;

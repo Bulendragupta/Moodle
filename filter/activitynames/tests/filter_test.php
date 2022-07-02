@@ -106,8 +106,13 @@ class filter_test extends \advanced_testcase {
         // Create a test courses.
         $course1 = $this->getDataGenerator()->create_course();
         $course2 = $this->getDataGenerator()->create_course();
+<<<<<<< HEAD
         $context1 = \context_course::instance($course1->id);
         $context2 = \context_course::instance($course2->id);
+=======
+        $context1 = context_course::instance($course1->id);
+        $context2 = context_course::instance($course2->id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Create page 1.
         $page1 = $this->getDataGenerator()->create_module('page',

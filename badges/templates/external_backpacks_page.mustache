@@ -25,6 +25,7 @@
     Example context (json):
     {
         "backpacks": [
+<<<<<<< HEAD
             {
                 "backpackweburl": "http://localhost/",
                 "sitebackpack": true,
@@ -32,6 +33,9 @@
                 "canmoveup": true,
                 "canmovedown": false
             }
+=======
+            {"backpackweburl": "http://localhost/", "sitebackpack": true, "cantest": true}
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         ]
     }
 }}
@@ -55,6 +59,7 @@
         <tr data-backpackurl="{{{backpackweburl}}}">
             <td> {{{backpackweburl}}} </td>
             <td>
+<<<<<<< HEAD
                 {{#canmoveup}}
                     <a href="{{baseurl}}?id={{id}}&action=moveup">{{#pix}}t/up, core,{{#str}}moveup{{/str}}{{/pix}}</a>
                 {{/canmoveup}}
@@ -71,6 +76,10 @@
             <td>
                 <a href="{{baseurl}}?id={{id}}&action=edit">{{#pix}}t/edit, core,{{#str}}editsettings{{/str}}{{/pix}}</a>
             {{^sitebackpack}}
+=======
+                <a href="{{baseurl}}?id={{id}}&action=edit">{{#pix}}t/edit, core,{{#str}}editsettings{{/str}}{{/pix}}</a>
+            {{^iscurrent}}
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
                 <a href="{{baseurl}}?id={{id}}&action=delete" role="button" data-action="deletebackpack">
                     {{#pix}}t/delete, core,{{#str}}delete{{/str}}{{/pix}}
                 </a>

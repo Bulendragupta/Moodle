@@ -205,7 +205,11 @@ M.mod_quiz.autosave = {
         this.form.on('submit', this.stop_autosaving, this);
 
         require(['core_form/events'], function(FormEvent) {
+<<<<<<< HEAD
             window.addEventListener(FormEvent.eventTypes.uploadChanged, this.value_changed.bind(this));
+=======
+            window.addEventListener(FormEvent.types.uploadChanged, this.value_changed.bind(this));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         }.bind(this));
 
         this.init_tinymce(this.TINYMCE_DETECTION_REPEATS);

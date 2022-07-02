@@ -69,8 +69,19 @@ Feature: Apply accessibility to a tour
     Then ".navbar-brand[aria-describedby^='tour-step-tool_usertours']" "css_element" should exist
     And ".navbar-brand[tabindex]" "css_element" should exist
     When I click on "Next" "button"
+<<<<<<< HEAD
     Then ".navbar-brand[aria-describedby^='tour-step-tool_usertours']" "css_element" should not exist
     And ".navbar-brand[tabindex]:not([tabindex='-1'])" "css_element" should not exist
     When I click on "End tour" "button"
     Then ".navbar-brand[aria-describedby^='tour-step-tool_usertours']" "css_element" should not exist
     And ".navbar-brand[tabindex]:not([tabindex='0'])" "css_element" should not exist
+=======
+    Then "input[aria-describedby^='tour-step-tool_usertours'],button[aria-describedby^='tour-step-tool_usertours']" "css_element" should not exist
+    And "input[tabindex]:not([tabindex='-1']),button[tabindex]:not([tabindex='-1'])" "css_element" should not exist
+    When I click on "Previous" "button"
+    Then "input[aria-describedby^='tour-step-tool_usertours'],button[aria-describedby^='tour-step-tool_usertours']" "css_element" should exist
+    And "input[tabindex],button[tabindex]" "css_element" should exist
+    When I click on "End tour" "button"
+    Then "input[aria-describedby^='tour-step-tool_usertours'],button[aria-describedby^='tour-step-tool_usertours']" "css_element" should not exist
+    And "input[tabindex]:not([tabindex='0']),button[tabindex]:not([tabindex='0'])" "css_element" should not exist
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

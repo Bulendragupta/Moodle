@@ -663,9 +663,12 @@ $string['emaildisableclick'] = 'Click here to disable all email from being sent 
 $string['emaildisplay'] = 'Email display';
 $string['emaildisplay_help'] = 'Privileged users (such as teachers and managers) will always be able to see your email address.';
 $string['emaildisplaycourse'] = 'Allow only other course participants to see my email address';
+<<<<<<< HEAD
 $string['emaildisplaycoursemembersonly'] = '(Visible to other course participants)';
 $string['emaildisplayeveryone'] = '(Visible to everyone)';
 $string['emaildisplayhide'] = '(Hidden from all non-privileged users)';
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['emaildisplayno'] = 'Hide my email address from non-privileged users';
 $string['emaildisplayyes'] = 'Allow everyone to see my email address';
 $string['emailenable'] = 'This email address is enabled';
@@ -1207,7 +1210,10 @@ $string['loginstepsnone'] = '<p>Hi!</p>
 <p>All you need to do is make up a username and password and use it in the form on this page!</p>
 <p>If someone else has already chosen your username then you\'ll have to try again using a different username.</p>';
 $string['loginto'] = 'Log in to {$a}';
+<<<<<<< HEAD
 $string['loginagain'] = 'Log in again';
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['logoof'] = 'Logo of {$a}';
 $string['logout'] = 'Log out';
 $string['logoutconfirm'] = 'Do you really want to log out?';
@@ -1271,7 +1277,10 @@ $string['messageprovider:badgerecipientnotice'] = 'Badge recipient notifications
 $string['messageprovider:competencyplancomment'] = 'Comment posted on a learning plan';
 $string['messageprovider:competencyusercompcomment'] = 'Comment posted on a competency';
 $string['messageprovider:coursecompleted'] = 'Course completed';
+<<<<<<< HEAD
 $string['messageprovider:coursecontentupdated'] = 'Course content changes';
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['messageprovider:courserequestapproved'] = 'Course creation request approval notification';
 $string['messageprovider:courserequested'] = 'Course creation request notification';
 $string['messageprovider:courserequestrejected'] = 'Course creation request rejection notification';
@@ -1568,8 +1577,11 @@ $string['numyears'] = '{$a} years';
 $string['ok'] = 'OK';
 $string['oldpassword'] = 'Current password';
 $string['olduserdirectory'] = 'This is the OLD users directory, and is no longer needed. You may safely delete it. The files it contains have been copied to the NEW user directory.';
+<<<<<<< HEAD
 $string['opendrawerblocks'] = 'Open block drawer';
 $string['opendrawerindex'] = 'Open course index';
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['opensinnewwindow'] = 'Opens in new window';
 $string['optional'] = 'optional';
 $string['options'] = 'options';

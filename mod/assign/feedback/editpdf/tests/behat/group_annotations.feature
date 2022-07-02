@@ -42,7 +42,11 @@ Feature: In a group assignment, teacher can annotate PDF files for all users
       | file    | mod/assign/feedback/editpdf/tests/fixtures/submission.pdf  |
 
     And I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Grade" "link" in the "Submitted for grading" "table_row"
     And I wait for the complete PDF to load
     And I click on ".navigate-next-button" "css_element"

@@ -1276,7 +1276,11 @@ class upgradelib_test extends advanced_testcase {
         $ical->unserialize($calendar);
 
         // Import subscription events.
+<<<<<<< HEAD
         calendar_import_events_from_ical($ical, $id);
+=======
+        calendar_import_icalendar_events($ical, null, $id);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Subscription should have added 18 events.
         $eventscount = $DB->count_records('event');
@@ -1526,6 +1530,7 @@ class upgradelib_test extends advanced_testcase {
         $this->assertEquals('admin_dir_usage', $result->getInfo());
         $this->assertFalse($result->getStatus());
     }
+<<<<<<< HEAD
 
     /**
      * Test the check_xmlrpc_usage check when the XML-RPC web service method is not set.
@@ -1723,4 +1728,6 @@ calendar,core_calendar|/calendar/view.php?view=month',
         $this->assertTrue($updatedold->timecreated >= $origtime);
         $this->assertTrue($updatedold->timemodified >= $origtime);
     }
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 }

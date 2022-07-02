@@ -405,6 +405,10 @@ $string['timemodified'] = 'Time modified';
 $string['todatabase'] = 'to this database.';
 $string['type'] = 'Field type';
 $string['undefinedprocessactionmethod'] = 'No action method defined in Data_Preset to handle action "{$a}".';
+<<<<<<< HEAD
+=======
+$string['unsupportedexport'] = '({$a->fieldtype}) cannot be exported.';
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 $string['unsupportedfields'] = 'Unsupported fields';
 $string['unsupportedfieldslist'] = 'The following fields cannot be exported:';
 $string['updatefield'] = 'Update an existing field';

@@ -1333,8 +1333,12 @@ class behat_course extends behat_base {
      * @return bool
      */
     protected function is_editing_on() {
+<<<<<<< HEAD
         $body = $this->find('xpath', "//body", false, false, 0);
         return $body->hasClass('editing');
+=======
+        return $this->getSession()->getPage()->findButton(get_string('turneditingoff')) ? true : false;
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**

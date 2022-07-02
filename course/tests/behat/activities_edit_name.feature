@@ -20,9 +20,12 @@ Feature: Edit activity name in-place
       | name        | Test forum name        |
       | description | Test forum description |
       | idnumber    | forum1                 |
+<<<<<<< HEAD
 
   @javascript
   Scenario: Edit activity name in-place
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     When I log in as "teacher1"
     And I am on "Course 1" course homepage with editing mode on
     # Rename activity
@@ -34,7 +37,11 @@ Feature: Edit activity name in-place
     And I should see "Good news"
     And I should not see "Test forum name"
     # Cancel renaming
+<<<<<<< HEAD
     And I click on "Edit title" "link" in the "[data-value='Good news']" "css_element"
+=======
+    And I click on "Edit title" "link" in the "//div[contains(@class,'activityinstance') and contains(.,'Good news')]" "xpath_element"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I type "Terrible news"
     And I press the escape key
     And "New name for activity Good news" "field" should not exist
@@ -43,6 +50,7 @@ Feature: Edit activity name in-place
     And I am on "Course 1" course homepage
     And I should see "Good news"
     And I should not see "Terrible news"
+<<<<<<< HEAD
 
   @javascript
   Scenario: Edit activity name in-place ensuring correct encoding
@@ -51,3 +59,5 @@ Feature: Edit activity name in-place
     And I set the field "Edit title" in the "Test forum name" "activity" to "Good & bad news"
     Then I should not see "Test forum name" in the ".course-content" "css_element"
     And I should see "Good & bad news" in the ".course-content" "css_element"
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

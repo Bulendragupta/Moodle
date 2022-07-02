@@ -158,7 +158,14 @@ echo $outputhtml;
 echo html_writer::end_tag('fieldset');
 echo html_writer::end_tag('form');
 
+<<<<<<< HEAD
 // Add the form change checker.
 $PAGE->requires->js_call_amd('core_form/changechecker', 'watchFormById', ['adminsettings']);
+=======
+$PAGE->requires->yui_module('moodle-core-formchangechecker', 'M.core_formchangechecker.init', [[
+    'formid' => 'adminsettings'
+]]);
+$PAGE->requires->string_for_js('changesmadereallygoaway', 'moodle');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 echo $OUTPUT->footer();

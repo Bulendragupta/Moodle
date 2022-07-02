@@ -186,6 +186,7 @@ Feature: Teacher can search and enrol users one by one into the course
     And the following config values are set as admin:
       | showuseridentity | idnumber,email,phone1,phone2,department,institution |
     And I am on "Course 001" course homepage
+<<<<<<< HEAD
     And I navigate to course participants
     And I press "Enrol users"
     And I click on "Select users" "field"
@@ -211,6 +212,13 @@ Feature: Teacher can search and enrol users one by one into the course
     And I press tab
     And I type "Q994"
     And I should see "No suggestions"
+=======
+    And I navigate to course participants
+    And I press "Enrol users"
+    And I click on "Select users" "field"
+    And I type "student100@example.com"
+    And I should see "student100@example.com, 1234567892, 1234567893, ABC1, ABC2"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 # The following tests are commented out as a result of MDL-66339.
 #  @javascript

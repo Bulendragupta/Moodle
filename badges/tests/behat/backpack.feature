@@ -5,9 +5,15 @@ Feature: Backpack badges
 
   Background:
     Given the following "badge external backpacks" exist:
+<<<<<<< HEAD
       | backpackapiurl                               | backpackweburl           | apiversion | sortorder |
       | https://dc.imsglobal.org/obchost/ims/ob/v2p1 | https://dc.imsglobal.org | 2.1        | 2         |
       | https://test.com/                            | https://test.com/        | 2          | 3         |
+=======
+      | backpackapiurl                               | backpackweburl           | apiversion |
+      | https://dc.imsglobal.org/obchost/ims/ob/v2p1 | https://dc.imsglobal.org | 2.1        |
+      | https://test.com/                            | https://test.com/        | 2          |
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And the following "users" exist:
       | username | firstname | lastname | email                |
       | student1 | Student   | 1        | student1@example.com |
@@ -143,6 +149,7 @@ Feature: Backpack badges
     And "Delete" "button" should not be visible
 
   @javascript
+<<<<<<< HEAD
   Scenario: Move up and down site backpack
     Given I am on homepage
     And I log in as "admin"
@@ -158,6 +165,8 @@ Feature: Backpack badges
     And "Move down" "icon" should not exist in the "https://dc.imsglobal.org" "table_row"
 
   @javascript
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
   Scenario: Add a new site backpack with authentication details checkbox
     Given I am on homepage
     And I log in as "admin"

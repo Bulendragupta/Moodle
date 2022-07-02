@@ -46,6 +46,7 @@ define(['jquery', 'core/ajax', 'core/paged_content_factory', 'core/notification'
 
     /**
      * Get the tool list container element.
+<<<<<<< HEAD
      *
      * @method getToolListContainer
      * @private
@@ -57,6 +58,8 @@ define(['jquery', 'core/ajax', 'core/paged_content_factory', 'core/notification'
 
     /**
      * Get the tool card container element.
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      *
      * @method getToolCardContainer
      * @private
@@ -128,7 +131,11 @@ define(['jquery', 'core/ajax', 'core/paged_content_factory', 'core/notification'
         $(SELECTORS.EXTERNAL_REGISTRATION_PAGE_CONTAINER).removeClass('hidden');
         var container = $(SELECTORS.EXTERNAL_REGISTRATION_TEMPLATE_CONTAINER);
         container.append($("<iframe src='startltiadvregistration.php?url="
+<<<<<<< HEAD
                          + encodeURIComponent(url) + "&sesskey=" + config.sesskey + "'></iframe>"));
+=======
+                         + encodeURIComponent(url) + "'></iframe>"));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         showExternalRegistration();
         window.addEventListener("message", closeLTIAdvRegistration, false);
     };
@@ -398,6 +405,23 @@ define(['jquery', 'core/ajax', 'core/paged_content_factory', 'core/notification'
                     return {html, js};
                 }
             );
+    };
+
+    /**
+     * Start the LTI Advantage registration.
+     *
+     * @method addLTIAdvTool
+     * @private
+     */
+    var addLTIAdvTool = function() {
+        var url = getToolURL().trim();
+
+        if (url) {
+            $(SELECTORS.TOOL_URL).val('');
+            hideToolList();
+            initiateRegistration(url);
+        }
+
     };
 
     /**

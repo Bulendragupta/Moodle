@@ -124,6 +124,7 @@ class managesubscriptions extends \moodleform {
                 }
             }
         } else if (($data['importfrom'] == CALENDAR_IMPORT_FROM_URL)) {
+<<<<<<< HEAD
             if (empty($data['url'])) {
                 $errors['url'] = get_string('errorrequiredurlorfile', 'calendar');
             } else {
@@ -134,6 +135,14 @@ class managesubscriptions extends \moodleform {
                 } catch (\moodle_exception $e) {
                     $errors['url'] = get_string('errorinvalidicalurl', 'calendar');
                 }
+=======
+            // Clean input calendar url.
+            $url = clean_param($data['url'], PARAM_URL);
+            try {
+                calendar_get_icalendar($url);
+            } catch (\moodle_exception $e) {
+                $errors['url']  = get_string('errorinvalidicalurl', 'calendar');
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             }
         } else {
             // Shouldn't happen.

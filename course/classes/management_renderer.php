@@ -1304,7 +1304,11 @@ class core_course_management_renderer extends plugin_renderer_base {
      * @return string
      */
     public function course_search_form($value = '') {
+<<<<<<< HEAD
         debugging('course_search_form() is deprecated. Use the class manage_categories_action_bar instead.', DEBUG_DEVELOPER);
+=======
+
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $data = [
             'action' => new moodle_url('/course/management.php'),
             'btnclass' => 'btn-primary',

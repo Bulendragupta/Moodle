@@ -116,7 +116,10 @@ class core_adhoc_task_testcase extends advanced_testcase {
 
     /**
      * Test queueing an adhoc task belonging to a component, where we set the task component accordingly
+<<<<<<< HEAD
      * @covers ::queue_adhoc_task
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      */
     public function test_queue_adhoc_task_for_component(): void {
         $this->resetAfterTest();
@@ -130,7 +133,10 @@ class core_adhoc_task_testcase extends advanced_testcase {
 
     /**
      * Test queueing an adhoc task belonging to a component, where we do not set the task component
+<<<<<<< HEAD
      * @covers ::queue_adhoc_task
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      */
     public function test_queue_task_for_component_without_set_component(): void {
         $this->resetAfterTest();
@@ -146,7 +152,10 @@ class core_adhoc_task_testcase extends advanced_testcase {
 
     /**
      * Test queueing an adhoc task belonging to an invalid component, where we do not set the task component
+<<<<<<< HEAD
      * @covers ::queue_adhoc_task
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      */
     public function test_queue_task_for_invalid_component_without_set_component(): void {
         $this->resetAfterTest();

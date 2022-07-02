@@ -110,11 +110,14 @@ class post extends exporter {
                 'default' => null,
                 'null' => NULL_ALLOWED
             ],
+<<<<<<< HEAD
             'timemodified' => [
                 'type' => PARAM_INT,
                 'default' => null,
                 'null' => NULL_ALLOWED
             ],
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             'unread' => [
                 'type' => PARAM_BOOL,
                 'optional' => true,

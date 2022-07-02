@@ -510,6 +510,7 @@ class locallib_test extends \advanced_testcase {
         return array($quiz, $tagobjects);
     }
 
+<<<<<<< HEAD
     public function test_quiz_override_summary() {
         global $DB, $PAGE;
         $this->resetAfterTest();
@@ -518,6 +519,85 @@ class locallib_test extends \advanced_testcase {
         $quizgenerator = $generator->get_plugin_generator('mod_quiz');
         /** @var mod_quiz_renderer $renderer */
         $renderer = $PAGE->get_renderer('mod_quiz');
+=======
+    public function test_quiz_retrieve_slot_tags() {
+        global $DB;
+
+        $this->resetAfterTest();
+        $this->setAdminUser();
+
+        list($quiz, $tags) = $this->setup_quiz_and_tags(1, 1, [['foo', 'bar']], ['baz']);
+
+        // Get the random question's slotid. It is at the second slot.
+        $slotid = $DB->get_field('quiz_slots', 'id', array('quizid' => $quiz->id, 'slot' => 2));
+        $slottags = quiz_retrieve_slot_tags($slotid);
+
+        $this->assertEqualsCanonicalizing(
+                [
+                    ['tagid' => $tags['foo']->id, 'tagname' => $tags['foo']->name],
+                    ['tagid' => $tags['bar']->id, 'tagname' => $tags['bar']->name]
+                ],
+                array_map(function($slottag) {
+                    return ['tagid' => $slottag->tagid, 'tagname' => $slottag->tagname];
+                }, $slottags));
+    }
+
+    public function test_quiz_retrieve_slot_tags_with_removed_tag() {
+        global $DB;
+
+        $this->resetAfterTest();
+        $this->setAdminUser();
+
+        list($quiz, $tags) = $this->setup_quiz_and_tags(1, 1, [['foo', 'bar']], ['baz']);
+
+        // Get the random question's slotid. It is at the second slot.
+        $slotid = $DB->get_field('quiz_slots', 'id', array('quizid' => $quiz->id, 'slot' => 2));
+        $slottags = quiz_retrieve_slot_tags($slotid);
+
+        // Now remove the foo tag and check again.
+        core_tag_tag::delete_tags([$tags['foo']->id]);
+        $slottags = quiz_retrieve_slot_tags($slotid);
+
+        $this->assertEqualsCanonicalizing(
+                [
+                    ['tagid' => null, 'tagname' => $tags['foo']->name],
+                    ['tagid' => $tags['bar']->id, 'tagname' => $tags['bar']->name]
+                ],
+                array_map(function($slottag) {
+                    return ['tagid' => $slottag->tagid, 'tagname' => $slottag->tagname];
+                }, $slottags));
+    }
+
+    public function test_quiz_retrieve_slot_tags_for_standard_question() {
+        global $DB;
+
+        $this->resetAfterTest();
+        $this->setAdminUser();
+
+        list($quiz, $tags) = $this->setup_quiz_and_tags(1, 1, [['foo', 'bar']]);
+
+        // Get the standard question's slotid. It is at the first slot.
+        $slotid = $DB->get_field('quiz_slots', 'id', array('quizid' => $quiz->id, 'slot' => 1));
+
+        // There should be no slot tags for a non-random question.
+        $this->assertCount(0, quiz_retrieve_slot_tags($slotid));
+    }
+
+    public function test_quiz_retrieve_slot_tag_ids() {
+        global $DB;
+
+        $this->resetAfterTest();
+        $this->setAdminUser();
+
+        list($quiz, $tags) = $this->setup_quiz_and_tags(1, 1, [['foo', 'bar']], ['baz']);
+
+        // Get the random question's slotid. It is at the second slot.
+        $slotid = $DB->get_field('quiz_slots', 'id', array('quizid' => $quiz->id, 'slot' => 2));
+        $tagids = quiz_retrieve_slot_tag_ids($slotid);
+
+        $this->assertEqualsCanonicalizing([$tags['foo']->id, $tags['bar']->id], $tagids);
+    }
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Course with quiz and a group - plus some others, to verify they don't get counted.
         $course = $generator->create_course();
@@ -529,6 +609,7 @@ class locallib_test extends \advanced_testcase {
 
         // Initial test (as admin) with no data.
         $this->setAdminUser();
+<<<<<<< HEAD
         $this->assertEquals(['group' => 0, 'user' => 0, 'mode' => 'allgroups'],
                 quiz_override_summary($quiz, $cm));
         $this->assertEquals(['group' => 0, 'user' => 0, 'mode' => 'onegroup'],
@@ -610,6 +691,181 @@ class locallib_test extends \advanced_testcase {
                 quiz_override_summary($quiz, $cm));
         $this->assertEquals('Settings overrides exist (Groups: 2, Users: 2)',
                 html_to_text($renderer->quiz_override_summary_links($quiz, $cm), 0, false));
+=======
+
+        list($quiz, $tags) = $this->setup_quiz_and_tags(1, 1, [['foo', 'bar']], ['baz']);
+
+        // Get the standard question's slotid. It is at the first slot.
+        $slotid = $DB->get_field('quiz_slots', 'id', array('quizid' => $quiz->id, 'slot' => 1));
+        $tagids = quiz_retrieve_slot_tag_ids($slotid);
+
+        $this->assertEqualsCanonicalizing([], $tagids);
+    }
+
+    /**
+     * Data provider for the get_random_question_summaries test.
+     */
+    public function get_quiz_retrieve_tags_for_slot_ids_test_cases() {
+        return [
+            'no questions' => [
+                'questioncount' => 0,
+                'randomquestioncount' => 0,
+                'randomquestiontags' => [],
+                'unusedtags' => [],
+                'removeslottagids' => [],
+                'expected' => []
+            ],
+            'only regular questions' => [
+                'questioncount' => 2,
+                'randomquestioncount' => 0,
+                'randomquestiontags' => [],
+                'unusedtags' => ['unused1', 'unused2'],
+                'removeslottagids' => [],
+                'expected' => [
+                    1 => [],
+                    2 => []
+                ]
+            ],
+            'only random questions 1' => [
+                'questioncount' => 0,
+                'randomquestioncount' => 2,
+                'randomquestiontags' => [
+                    0 => ['foo'],
+                    1 => []
+                ],
+                'unusedtags' => ['unused1', 'unused2'],
+                'removeslottagids' => [],
+                'expected' => [
+                    1 => ['foo'],
+                    2 => []
+                ]
+            ],
+            'only random questions 2' => [
+                'questioncount' => 0,
+                'randomquestioncount' => 2,
+                'randomquestiontags' => [
+                    0 => ['foo', 'bop'],
+                    1 => ['bar']
+                ],
+                'unusedtags' => ['unused1', 'unused2'],
+                'removeslottagids' => [],
+                'expected' => [
+                    1 => ['foo', 'bop'],
+                    2 => ['bar']
+                ]
+            ],
+            'only random questions 3' => [
+                'questioncount' => 0,
+                'randomquestioncount' => 2,
+                'randomquestiontags' => [
+                    0 => ['foo', 'bop'],
+                    1 => ['bar', 'foo']
+                ],
+                'unusedtags' => ['unused1', 'unused2'],
+                'removeslottagids' => [],
+                'expected' => [
+                    1 => ['foo', 'bop'],
+                    2 => ['bar', 'foo']
+                ]
+            ],
+            'combination of questions 1' => [
+                'questioncount' => 2,
+                'randomquestioncount' => 2,
+                'randomquestiontags' => [
+                    0 => ['foo'],
+                    1 => []
+                ],
+                'unusedtags' => ['unused1', 'unused2'],
+                'removeslottagids' => [],
+                'expected' => [
+                    1 => [],
+                    2 => [],
+                    3 => ['foo'],
+                    4 => []
+                ]
+            ],
+            'combination of questions 2' => [
+                'questioncount' => 2,
+                'randomquestioncount' => 2,
+                'randomquestiontags' => [
+                    0 => ['foo', 'bop'],
+                    1 => ['bar']
+                ],
+                'unusedtags' => ['unused1', 'unused2'],
+                'removeslottagids' => [],
+                'expected' => [
+                    1 => [],
+                    2 => [],
+                    3 => ['foo', 'bop'],
+                    4 => ['bar']
+                ]
+            ],
+            'combination of questions 3' => [
+                'questioncount' => 2,
+                'randomquestioncount' => 2,
+                'randomquestiontags' => [
+                    0 => ['foo', 'bop'],
+                    1 => ['bar', 'foo']
+                ],
+                'unusedtags' => ['unused1', 'unused2'],
+                'removeslottagids' => [],
+                'expected' => [
+                    1 => [],
+                    2 => [],
+                    3 => ['foo', 'bop'],
+                    4 => ['bar', 'foo']
+                ]
+            ],
+            'load from name 1' => [
+                'questioncount' => 2,
+                'randomquestioncount' => 2,
+                'randomquestiontags' => [
+                    0 => ['foo'],
+                    1 => []
+                ],
+                'unusedtags' => ['unused1', 'unused2'],
+                'removeslottagids' => [3],
+                'expected' => [
+                    1 => [],
+                    2 => [],
+                    3 => ['foo'],
+                    4 => []
+                ]
+            ],
+            'load from name 2' => [
+                'questioncount' => 2,
+                'randomquestioncount' => 2,
+                'randomquestiontags' => [
+                    0 => ['foo', 'bop'],
+                    1 => ['bar']
+                ],
+                'unusedtags' => ['unused1', 'unused2'],
+                'removeslottagids' => [3],
+                'expected' => [
+                    1 => [],
+                    2 => [],
+                    3 => ['foo', 'bop'],
+                    4 => ['bar']
+                ]
+            ],
+            'load from name 3' => [
+                'questioncount' => 2,
+                'randomquestioncount' => 2,
+                'randomquestiontags' => [
+                    0 => ['foo', 'bop'],
+                    1 => ['bar', 'foo']
+                ],
+                'unusedtags' => ['unused1', 'unused2'],
+                'removeslottagids' => [3],
+                'expected' => [
+                    1 => [],
+                    2 => [],
+                    3 => ['foo', 'bop'],
+                    4 => ['bar', 'foo']
+                ]
+            ]
+        ];
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**

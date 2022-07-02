@@ -215,7 +215,11 @@ Feature: Perform basic calendar functionality
     Then "Course 1" "autocomplete_suggestions" should exist
     And "Course 2" "autocomplete_suggestions" should not exist
     And "Course 3" "autocomplete_suggestions" should not exist
+<<<<<<< HEAD
     And I click on "Close" "button" in the "New event" "dialogue"
+=======
+    And I click on "Close" "button"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I am on site homepage
     And I navigate to "Appearance > Calendar" in site administration
     And I set the field "Admins see all" to "1"
@@ -255,6 +259,7 @@ Feature: Perform basic calendar functionality
   Scenario: The calendar page must be accessible
     Given I log in as "student1"
     And I am on "Course 1" course homepage
+<<<<<<< HEAD
     When I follow "Full calendar"
     Then the page should meet accessibility standards
     And the page should meet "wcag131, wcag143, wcag412" accessibility standards
@@ -276,3 +281,9 @@ Feature: Perform basic calendar functionality
     And I should not see "Event 1:1"
     And I hover over day "1" of this month in the full calendar page
     And I should see "Event 1:1"
+=======
+    When I follow "This month"
+    Then the page should meet accessibility standards
+    And the page should meet "wcag131, wcag143, wcag412" accessibility standards
+    And the page should meet accessibility standards with "wcag131, wcag143, wcag412" extra tests
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

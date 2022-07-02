@@ -77,6 +77,7 @@ function xmldb_block_recentlyaccesseditems_upgrade($oldversion, $block) {
     // Automatically generated Moodle v3.9.0 release upgrade line.
     // Put any upgrade step following this.
 
+<<<<<<< HEAD
     if ($oldversion < 2022030200) {
         // Update all recentlyaccesseditems blocks in the my-index to be in the main side-post region.
         upgrade_block_set_defaultregion('recentlyaccesseditems', '__default', 'my-index', 'side-post');
@@ -89,6 +90,9 @@ function xmldb_block_recentlyaccesseditems_upgrade($oldversion, $block) {
     }
 
     // Automatically generated Moodle v4.0.0 release upgrade line.
+=======
+    // Automatically generated Moodle v3.10.0 release upgrade line.
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     // Put any upgrade step following this.
 
     return true;

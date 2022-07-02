@@ -14,19 +14,27 @@ Removed:
 Added:
  * readme_moodle.txt
 
+<<<<<<< HEAD
 NOTICE:
  * We are following the composer version, 1.24.x according the suggestion from Joubel.
+=======
+Downloaded version: 1.24.2 release
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
 Changes:
 1. In order to allow the dependency path to be overridden by child H5PCore classes, a couple of minor changes have been added to the
 h5p.classes.php file:
-    - Into the getDependenciesFiles method, the line 2435:
+    - Into the getDependenciesFiles method, the line 2440:
         $dependency['path'] = 'libraries/' . H5PCore::libraryToString($dependency, TRUE);
 
       has been changed to:
         $dependency['path'] = $this->getDependencyPath($dependency);
 
+<<<<<<< HEAD
      - The method getDependencyPath has been added (line 2460). It might be rewritten by child classes.
+=======
+     - The method getDependencyPath has been added (line 2466). It might be rewritten by child classes.
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 A PR has been sent to the H5P library with these changes:
 https://github.com/h5p/h5p-php-library/compare/master...andrewnicols:libraryPathSubclass
 Hopefully, when upgrading, these patch won't be needed because it will be included in the H5P library by default.

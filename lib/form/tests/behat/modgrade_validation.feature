@@ -75,7 +75,11 @@ Feature: Using the activity grade form element
       | Group mode | No groups |
     And I log out
     And I am on the "Test forum name" "forum activity" page logged in as student1
+<<<<<<< HEAD
     And I click on "Add discussion topic" "link"
+=======
+    And I click on "Add a new discussion topic" "link"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Subject  | Discussion subject |
       | Message | Discussion message |
@@ -85,7 +89,11 @@ Feature: Using the activity grade form element
     And I follow "Discussion subject"
     And I set the field "rating" to "D"
     And I am on the "Test forum name" "forum activity" page
+<<<<<<< HEAD
     And I navigate to "Settings" in current page administration
+=======
+    And I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     When I expand all fieldsets
     Then I should see "Some grades have already been awarded, so the grade type and scale cannot be changed"
     # Try saving the form and visiting it back to verify that everything is working ok.
@@ -100,13 +108,21 @@ Feature: Using the activity grade form element
   @javascript
   Scenario: Attempting to change the scale when grades already exist in non-rating activity
     Given I am on the "Test assignment name" "assign activity" page logged in as "teacher1"
+<<<<<<< HEAD
     And I navigate to "Settings" in current page administration
+=======
+    And I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | grade[modgrade_type] | Scale |
       | grade[modgrade_scale] | ABCDEF |
     And I press "Save and display"
     And I am on the "Test assignment name" "assign activity" page
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Grade" "link" in the "Student 1" "table_row"
     And I set the field "Grade" to "C"
     And I press "Save changes"
@@ -135,7 +151,11 @@ Feature: Using the activity grade form element
     And I press "Save and return to course"
     And I log out
     And I am on the "Test forum name" "forum activity" page logged in as student1
+<<<<<<< HEAD
     And I click on "Add discussion topic" "link"
+=======
+    And I click on "Add a new discussion topic" "link"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Subject  | Discussion subject |
       | Message | Discussion message |
@@ -145,7 +165,11 @@ Feature: Using the activity grade form element
     And I follow "Discussion subject"
     And I set the field "rating" to "100"
     And I am on the "Test forum name" "forum activity" page
+<<<<<<< HEAD
     And I navigate to "Settings" in current page administration
+=======
+    And I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     When I expand all fieldsets
     Then I should see "You cannot change the type, as grades already exist for this item."
     And the "Maximum grade" "field" should be disabled
@@ -153,7 +177,11 @@ Feature: Using the activity grade form element
   @javascript
   Scenario: Attempting to change the maximum grade when no rescaling option has been chosen
     Given I am on the "Test assignment name" "assign activity" page logged in as teacher1
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I click on "Grade" "link" in the "Student 1" "table_row"
     And I set the field "Grade out of 100" to "50"
     And I press "Save changes"

@@ -91,11 +91,40 @@ class behat_calendar extends behat_base {
     }
 
     /**
+<<<<<<< HEAD
      * Hover over a specific day in the mini-calendar.
+=======
+     * Click a specific day in the calendar.
+     *
+     * @Given /^I click day "(?P<dayofmonth>\d+)" of this month in the calendar$/
+     * @param int $day The day of the current month
+     */
+    public function i_click_day_of_this_month_in_calendar($day) {
+        $summarytitle = userdate(time(), get_string('strftimemonthyear'));
+        // The current month table.
+        $currentmonth = "table[descendant::*[self::caption[contains(concat(' ', normalize-space(.), ' '), ' {$summarytitle} ')]]]";
+
+        // Strings for the class cell match.
+        $cellclasses  = "contains(concat(' ', normalize-space(@class), ' '), ' day ')";
+        $daycontains  = "text()[contains(concat(' ', normalize-space(.), ' '), ' {$day} ')]";
+        $daycell      = "td[{$cellclasses}]";
+        $dayofmonth   = "a[{$daycontains}]";
+
+        $xpath = '//' . $currentmonth . '/descendant::' . $daycell . '/' . $dayofmonth;
+        $this->execute("behat_general::wait_until_the_page_is_ready");
+        $this->execute("behat_general::i_click_on", array($xpath, "xpath_element"));
+        $this->execute("behat_general::wait_until_the_page_is_ready");
+
+    }
+
+    /**
+     * Hover over a specific day in the calendar.
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      *
      * @Given /^I hover over day "(?P<dayofmonth>\d+)" of this month in the mini-calendar block$/
      * @param int $day The day of the current month
      */
+<<<<<<< HEAD
     public function i_hover_over_day_of_this_month_in_mini_calendar_block(int $day): void {
         $this->execute("behat_general::i_hover_in_the",
             [$day, 'core_calendar > calendar day', '', 'core_calendar > mini calendar block']);
@@ -122,6 +151,22 @@ class behat_calendar extends behat_base {
         $todaysday = trim(strftime('%d'));
         $todaysday = ltrim($todaysday, '0');
         $this->i_hover_over_day_of_this_month_in_mini_calendar_block($todaysday);
+=======
+    public function i_hover_over_day_of_this_month_in_calendar($day) {
+        $summarytitle = userdate(time(), get_string('strftimemonthyear'));
+        // The current month table.
+        $currentmonth = "table[descendant::*[self::caption[contains(concat(' ', normalize-space(.), ' '), ' {$summarytitle} ')]]]";
+
+        // Strings for the class cell match.
+        $cellclasses  = "contains(concat(' ', normalize-space(@class), ' '), ' day ')";
+        $daycontains  = "text()[contains(concat(' ', normalize-space(.), ' '), ' {$day} ')]";
+        $daycell      = "td[{$cellclasses}]";
+        $dayofmonth   = "a[{$daycontains}]";
+
+        $xpath = '//' . $currentmonth . '/descendant::' . $daycell . '/' . $dayofmonth;
+        $this->execute("behat_general::wait_until_the_page_is_ready");
+        $this->execute("behat_general::i_hover", [$xpath, "xpath_element"]);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     /**

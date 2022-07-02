@@ -21,5 +21,9 @@ Feature: Transform date time string arguments
     And I log in as "teacher1"
     And I am on "Course 1" course homepage
     And I follow "Test assignment name"
+<<<<<<< HEAD
     And I should see "##yesterday##%d %B %Y##"
+=======
+    And I should see "##yesterday##%A, %d %B %Y##"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I log out

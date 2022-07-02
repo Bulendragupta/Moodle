@@ -45,6 +45,7 @@ class antivirus_test extends advanced_testcase {
         touch($this->tempfile);
     }
 
+<<<<<<< HEAD
     /**
      * Enable logging.
      *
@@ -67,6 +68,8 @@ class antivirus_test extends advanced_testcase {
         return $av->get_result()->status;
     }
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     protected function tearDown(): void {
         @unlink($this->tempfile);
     }

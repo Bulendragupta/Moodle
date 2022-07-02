@@ -85,6 +85,42 @@ class externallib_test extends mod_lti_testcase {
     }
 
     /**
+<<<<<<< HEAD
+=======
+     * Generate a tool type.
+     *
+     * @param string $uniqueid Each tool type needs a different base url. Provide a unique string for every tool type created.
+     * @param int|null $toolproxyid Optional proxy to associate with tool type.
+     * @return stdClass A tool type.
+     */
+    protected function generate_tool_type(string $uniqueid, int $toolproxyid = null) : stdClass {
+        // Create a tool type.
+        $type = new stdClass();
+        $type->state = LTI_TOOL_STATE_CONFIGURED;
+        $type->name = "Test tool $uniqueid";
+        $type->description = "Example description $uniqueid";
+        $type->toolproxyid = $toolproxyid;
+        $type->baseurl = $this->getExternalTestFileUrl("/test$uniqueid.html");
+        lti_add_type($type, new stdClass());
+        return $type;
+    }
+
+    /**
+     * Generate a tool proxy.
+     *
+     * @param string $uniqueid Each tool proxy needs a different reg url. Provide a unique string for every tool proxy created.
+     * @return stdClass A tool proxy.
+     */
+    protected function generate_tool_proxy(string $uniqueid) : stdClass {
+        // Create a tool proxy.
+        $proxy = mod_lti_external::create_tool_proxy("Test proxy $uniqueid",
+                $this->getExternalTestFileUrl("/proxy$uniqueid.html"), array(), array());
+        $proxy = (object)external_api::clean_returnvalue(mod_lti_external::create_tool_proxy_returns(), $proxy);
+        return $proxy;
+    }
+
+    /**
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
      * Test get_tool_proxies.
      */
     public function test_mod_lti_get_tool_proxies() {
@@ -96,7 +132,11 @@ class externallib_test extends mod_lti_testcase {
 
         // Fetch all proxies.
         $proxies = mod_lti_external::get_tool_proxies(false);
+<<<<<<< HEAD
         $proxies = \external_api::clean_returnvalue(mod_lti_external::get_tool_proxies_returns(), $proxies);
+=======
+        $proxies = external_api::clean_returnvalue(mod_lti_external::get_tool_proxies_returns(), $proxies);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $this->assertCount(2, $proxies);
         $this->assertEqualsCanonicalizing([(array) $proxy, (array) $orphanedproxy], $proxies);
@@ -114,7 +154,11 @@ class externallib_test extends mod_lti_testcase {
 
         // Fetch all proxies.
         $proxies = mod_lti_external::get_tool_proxies(true);
+<<<<<<< HEAD
         $proxies = \external_api::clean_returnvalue(mod_lti_external::get_tool_proxies_returns(), $proxies);
+=======
+        $proxies = external_api::clean_returnvalue(mod_lti_external::get_tool_proxies_returns(), $proxies);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         $this->assertCount(1, $proxies);
         $this->assertEqualsCanonicalizing([(array) $orphanedproxy], $proxies);

@@ -382,6 +382,10 @@ class provider implements
             'lastip' => $user->lastip,
             'secret' => $user->secret,
             'picture' => $user->picture,
+<<<<<<< HEAD
+=======
+            'url' => $user->url,
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             'description' => format_text(
                 writer::with_context($context)->rewrite_pluginfile_urls(
                     [],

@@ -237,7 +237,11 @@ Feature: Anonymous feedback
 
   Scenario: Collecting new non-anonymous feedback from a previously anonymous feedback activity
     When I am on the "Course feedback" "feedback activity" page logged in as teacher
+<<<<<<< HEAD
     And I navigate to "Settings" in current page administration
+=======
+    And I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Allow multiple submissions | Yes |
     And I press "Save and display"
@@ -268,7 +272,11 @@ Feature: Anonymous feedback
     And I log out
     # Now check the responses are correct.
     And I am on the "Course feedback" "feedback activity" page logged in as teacher
+<<<<<<< HEAD
     And I follow "Responses"
+=======
+    And I follow "Show responses"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I should see "Anonymous entries (1)"
     And I should see "Non anonymous entries (1)"
     And I click on "," "link" in the "Username 1" "table_row"

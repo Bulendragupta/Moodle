@@ -9,6 +9,7 @@ Feature: A teacher checks the grade history report in a course
     Given the following "courses" exist:
       | fullname | shortname | category | groupmode |
       | Course 1 | C1        | 0        | 1         |
+<<<<<<< HEAD
     And the following "custom profile fields" exist:
       | datatype | shortname  | name           |
       | text     | food       | Favourite food |
@@ -18,6 +19,14 @@ Feature: A teacher checks the grade history report in a course
       | teacher2 | Teacher   | 2        | teacher2@example.com |                    |
       | student1 | Student   | 1        | student1@example.com | apple              |
       | student2 | Student   | 2        | student2@example.com | orange             |
+=======
+    And the following "users" exist:
+      | username | firstname | lastname | email                |
+      | teacher1 | Teacher   | 1        | teacher1@example.com |
+      | teacher2 | Teacher   | 2        | teacher2@example.com |
+      | student1 | Student   | 1        | student1@example.com |
+      | student2 | Student   | 2        | student2@example.com |
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And the following "course enrolments" exist:
       | user     | course | role           |
       | teacher1 | C1     | editingteacher |
@@ -28,8 +37,11 @@ Feature: A teacher checks the grade history report in a course
       | activity | course | section | name                         | intro                                         |
       | assign   | C1     | 1       | The greatest assignment ever | Write a behat test for Moodle - it's amazing  |
       | assign   | C1     | 1       | Rewarding assignment         | After writing your behat test go grab a beer! |
+<<<<<<< HEAD
     Given the following config values are set as admin:
       | showuseridentity | email,profile_field_food |
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I log in as "teacher1"
     And I am on "Course 1" course homepage with editing mode on
     And I navigate to "View > Grader report" in the course gradebook

@@ -24,7 +24,11 @@ Feature: Importing glossary entries
     And I am on "Course 1" course homepage with editing mode on
     And I add the "Recent activity" block
     And I am on the "Glossary 1" "glossary activity" page
+<<<<<<< HEAD
     And I press "Import entries"
+=======
+    And I navigate to "Import entries" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I upload "mod/glossary/tests/fixtures/texfilter_glossary_en.xml" file to "File to import" filemanager
     When I press "Submit"
     Then I should see "103" in the "Total entries:" "table_row"
@@ -39,7 +43,11 @@ Feature: Importing glossary entries
     And I am on "Course 1" course homepage with editing mode on
     And I add the "Tags" block
     And I am on the "Glossary 1" "glossary activity" page
+<<<<<<< HEAD
     And I press "Import entries"
+=======
+    And I navigate to "Import entries" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I upload "mod/glossary/tests/fixtures/musicians.xml" file to "File to import" filemanager
     When I press "Submit"
     And I am on "Course 1" course homepage

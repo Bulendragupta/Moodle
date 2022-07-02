@@ -1180,6 +1180,41 @@ function sort_categories_by_tree(&$categories, $id = 0, $level = 1): array {
 /**
  * Get the default category for the context.
  *
+<<<<<<< HEAD
+=======
+ * @param integer $courseid the id of the course to get the categories for.
+ * @param integer $published if true, include publised categories from other courses.
+ * @param integer $only_editable if true, exclude categories this user is not allowed to edit.
+ * @param integer $selected optionally, the id of a category to be selected by
+ *      default in the dropdown.
+ */
+function question_category_select_menu($contexts, $top = false, $currentcat = 0,
+        $selected = "", $nochildrenof = -1) {
+    $categoriesarray = question_category_options($contexts, $top, $currentcat,
+            false, $nochildrenof, false);
+    if ($selected) {
+        $choose = '';
+    } else {
+        $choose = 'choosedots';
+    }
+    $options = array();
+    foreach ($categoriesarray as $group => $opts) {
+        $options[] = array($group => $opts);
+    }
+    echo html_writer::label(get_string('questioncategory', 'core_question'), 'id_movetocategory', false, array('class' => 'accesshide'));
+    $attrs = array(
+        'id' => 'id_movetocategory',
+        'class' => 'custom-select',
+        'data-action' => 'toggle',
+        'data-togglegroup' => 'qbank',
+        'data-toggle' => 'action',
+        'disabled' => true,
+    );
+    echo html_writer::select($options, 'category', $selected, $choose, $attrs);
+}
+
+/**
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
  * @param integer $contextid a context id.
  * @return object|bool the default question category for that context, or false if none.
  */
@@ -1297,9 +1332,138 @@ function question_make_default_categories($contexts): object {
 }
 
 /**
+<<<<<<< HEAD
  * Get the list of categories.
  *
  * @param int $categoryid
+=======
+ * Get all the category objects, including a count of the number of questions in that category,
+ * for all the categories in the lists $contexts.
+ *
+ * @param mixed $contexts either a single contextid, or a comma-separated list of context ids.
+ * @param string $sortorder used as the ORDER BY clause in the select statement.
+ * @param bool $top Whether to return the top categories or not.
+ * @return array of category objects.
+ */
+function get_categories_for_contexts($contexts, $sortorder = 'parent, sortorder, name ASC', $top = false) {
+    global $DB;
+    $topwhere = $top ? '' : 'AND c.parent <> 0';
+    return $DB->get_records_sql("
+            SELECT c.*, (SELECT count(1) FROM {question} q
+                        WHERE c.id = q.category AND q.hidden='0' AND q.parent='0') AS questioncount
+              FROM {question_categories} c
+             WHERE c.contextid IN ($contexts) $topwhere
+          ORDER BY $sortorder");
+}
+
+/**
+ * Output an array of question categories.
+ *
+ * @param array $contexts The list of contexts.
+ * @param bool $top Whether to return the top categories or not.
+ * @param int $currentcat
+ * @param bool $popupform
+ * @param int $nochildrenof
+ * @param boolean $escapecontextnames Whether the returned name of the thing is to be HTML escaped or not.
+ * @return array
+ */
+function question_category_options($contexts, $top = false, $currentcat = 0,
+        $popupform = false, $nochildrenof = -1, $escapecontextnames = true) {
+    global $CFG;
+    $pcontexts = array();
+    foreach ($contexts as $context) {
+        $pcontexts[] = $context->id;
+    }
+    $contextslist = join(', ', $pcontexts);
+
+    $categories = get_categories_for_contexts($contextslist, 'parent, sortorder, name ASC', $top);
+
+    if ($top) {
+        $categories = question_fix_top_names($categories);
+    }
+
+    $categories = question_add_context_in_key($categories);
+    $categories = add_indented_names($categories, $nochildrenof);
+
+    // sort cats out into different contexts
+    $categoriesarray = array();
+    foreach ($pcontexts as $contextid) {
+        $context = context::instance_by_id($contextid);
+        $contextstring = $context->get_context_name(true, true, $escapecontextnames);
+        foreach ($categories as $category) {
+            if ($category->contextid == $contextid) {
+                $cid = $category->id;
+                if ($currentcat != $cid || $currentcat == 0) {
+                    $a = new stdClass;
+                    $a->name = format_string($category->indentedname, true,
+                            array('context' => $context));
+                    if ($category->idnumber !== null && $category->idnumber !== '') {
+                        $a->idnumber = s($category->idnumber);
+                    }
+                    if (!empty($category->questioncount)) {
+                        $a->questioncount = $category->questioncount;
+                    }
+                    if (isset($a->idnumber) && isset($a->questioncount)) {
+                        $formattedname = get_string('categorynamewithidnumberandcount', 'question', $a);
+                    } else if (isset($a->idnumber)) {
+                        $formattedname = get_string('categorynamewithidnumber', 'question', $a);
+                    } else if (isset($a->questioncount)) {
+                        $formattedname = get_string('categorynamewithcount', 'question', $a);
+                    } else {
+                        $formattedname = $a->name;
+                    }
+                    $categoriesarray[$contextstring][$cid] = $formattedname;
+                }
+            }
+        }
+    }
+    if ($popupform) {
+        $popupcats = array();
+        foreach ($categoriesarray as $contextstring => $optgroup) {
+            $group = array();
+            foreach ($optgroup as $key => $value) {
+                $key = str_replace($CFG->wwwroot, '', $key);
+                $group[$key] = $value;
+            }
+            $popupcats[] = array($contextstring => $group);
+        }
+        return $popupcats;
+    } else {
+        return $categoriesarray;
+    }
+}
+
+function question_add_context_in_key($categories) {
+    $newcatarray = array();
+    foreach ($categories as $id => $category) {
+        $category->parent = "$category->parent,$category->contextid";
+        $category->id = "$category->id,$category->contextid";
+        $newcatarray["$id,$category->contextid"] = $category;
+    }
+    return $newcatarray;
+}
+
+/**
+ * Finds top categories in the given categories hierarchy and replace their name with a proper localised string.
+ *
+ * @param array $categories An array of question categories.
+ * @param boolean $escape Whether the returned name of the thing is to be HTML escaped or not.
+ * @return array The same question category list given to the function, with the top category names being translated.
+ */
+function question_fix_top_names($categories, $escape = true) {
+
+    foreach ($categories as $id => $category) {
+        if ($category->parent == 0) {
+            $context = context::instance_by_id($category->contextid);
+            $categories[$id]->name = get_string('topfor', 'question', $context->get_context_name(false, false, $escape));
+        }
+    }
+
+    return $categories;
+}
+
+/**
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
  * @return array of question category ids of the category and all subcategories.
  */
 function question_categorylist($categoryid): array {

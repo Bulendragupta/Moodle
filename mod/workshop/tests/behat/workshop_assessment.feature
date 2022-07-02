@@ -138,8 +138,11 @@ Feature: Workshop submission and assessment
     And I press "Re-calculate grades"
     And I should see "32" in the "//table/tbody/tr[td[contains(concat(' ', normalize-space(@class), ' '), ' participant ') and contains(.,'Sam1')]]/td[contains(concat(' ', normalize-space(@class), ' '), ' submissiongrade ')]" "xpath_element"
     And I should see "16" in the "//table/tbody/tr[td[contains(concat(' ', normalize-space(@class), ' '), ' participant ') and contains(.,'Sam1')]]/td[contains(concat(' ', normalize-space(@class), ' '), ' gradinggrade ')]" "xpath_element"
+<<<<<<< HEAD
     And I change phase in workshop "TestWorkshop" to "Closed"
     And I log out
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
     # student1 looks at the activity
     And I am on the TestWorkshop "workshop activity" page logged in as student1

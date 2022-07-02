@@ -25,7 +25,11 @@ Feature: Assign user override
   @javascript
   Scenario: Add, modify then delete a user override
     Given I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I navigate to "Overrides" in current page administration
+=======
+    When I navigate to "User overrides" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Add user override"
     And I set the following fields to these values:
       | Override user | Student1                            |
@@ -44,7 +48,11 @@ Feature: Assign user override
   @javascript
   Scenario: Duplicate a user override
     Given I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I navigate to "Overrides" in current page administration
+=======
+    When I navigate to "User overrides" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Add user override"
     And I set the following fields to these values:
       | Override user | Student1             |
@@ -62,7 +70,11 @@ Feature: Assign user override
   @javascript
   Scenario: Allow a user to have a different due date
     Given I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I navigate to "Settings" in current page administration
+=======
+    When I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Allow submissions from | disabled             |
       | Due date               | ##1 Jan 2000 08:00## |
@@ -85,7 +97,11 @@ Feature: Assign user override
   @javascript
   Scenario: Allow a user to have a different cut off date
     Given I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I navigate to "Settings" in current page administration
+=======
+    When I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Due date               | disabled             |
       | Allow submissions from | disabled             |
@@ -108,7 +124,11 @@ Feature: Assign user override
   @javascript
   Scenario: Allow a user to have a different start date
     Given I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I navigate to "Settings" in current page administration
+=======
+    When I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Due date               | disabled                 |
       | Allow submissions from | ##1 January 2030 08:00## |
@@ -140,7 +160,11 @@ Feature: Assign user override
       | activity | name         | intro                    | course | groupmode |
       | assign   | Assignment 2 | Assignment 2 description | C1     | 1         |
     And I am on the "Assignment 2" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I navigate to "Overrides" in current page administration
+=======
+    When I navigate to "User overrides" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "No groups you can access."
     And the "Add user override" "button" should be disabled
 
@@ -162,7 +186,11 @@ Feature: Assign user override
       | student1 | G1    |
       | student2 | G2    |
     And I am on the "Assignment 2" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I navigate to "Overrides" in current page administration
+=======
+    When I navigate to "User overrides" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Add user override"
     Then the "Override user" select box should contain "Sam1 Student1, student1@example.com"
     And the "Override user" select box should not contain "Sam2 Student2, student2@example.com"
@@ -186,7 +214,11 @@ Feature: Assign user override
       | student1 | G1    |
       | student2 | G2    |
     And I am on the "Assignment 2" Activity page logged in as admin
+<<<<<<< HEAD
     And I navigate to "Overrides" in current page administration
+=======
+    And I navigate to "User overrides" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Add user override"
     And I set the following fields to these values:
       | Override user          | Student1                            |
@@ -199,14 +231,22 @@ Feature: Assign user override
     And I log out
 
     And I am on the "Assignment 2" Activity page logged in as teacher1
+<<<<<<< HEAD
     When I navigate to "Overrides" in current page administration
+=======
+    When I navigate to "User overrides" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "Student1" in the ".generaltable" "css_element"
     But I should not see "Student2" in the ".generaltable" "css_element"
 
   @javascript
   Scenario: Create a user override when the assignment is not available to the student
     Given I am on the "Test assignment name" Activity page logged in as teacher1
+<<<<<<< HEAD
     And I navigate to "Settings" in current page administration
+=======
+    And I navigate to "Edit settings" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I expand all fieldsets
     And I set the field "Availability" to "Hide from students"
     And I click on "Save and display" "button"

@@ -43,7 +43,11 @@ Feature: I can grade a students by group with separate groups
     And I set the field "Whole forum grading > Type" to "Point"
     And I set the field "Common module settings > Group mode" to "Separate groups"
     And I press "Save and return to course"
+<<<<<<< HEAD
     And I am on the "Test Forum 1" "forum activity" page
+=======
+    And I follow "Test Forum 1"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
   @javascript
   Scenario: Grade users by group A
@@ -72,6 +76,7 @@ Feature: I can grade a students by group with separate groups
     Then I should not see "1 out of 1"
     And I should not see "1 out of 2"
     And I should see "1 out of 3"
+<<<<<<< HEAD
 
   @javascript
   Scenario: Teacher can see only the discussions which are joined to
@@ -106,3 +111,5 @@ Feature: I can grade a students by group with separate groups
     And I should see "Student 1"
     And I should see "Discussion subject C"
     And I should not see "Discussion subject A"
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef

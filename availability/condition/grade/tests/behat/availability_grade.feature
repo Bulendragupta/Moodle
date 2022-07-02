@@ -110,7 +110,11 @@ Feature: availability_grade
     When I am on the "A1" "assign activity" page logged in as teacher1
 
     # Give the assignment 40%.
+<<<<<<< HEAD
     And I follow "View all submissions"
+=======
+    And I navigate to "View all submissions" in current page administration
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     # Pick the grade link in the row that has s@example.com in it.
     And I click on "Grade" "link" in the "s@example.com" "table_row"
     And I set the field "Grade out of 100" to "40"

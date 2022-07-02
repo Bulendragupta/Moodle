@@ -31,7 +31,11 @@ Feature: Glossary entries can be organised in categories
     And "a.glossary.autolink" "css_element" should not exist
 # Create, edit and delete categories
     And I am on the MyGlossary "glossary activity" page
+<<<<<<< HEAD
     And I select "Browse by category" from the "Browse the glossary using this index" singleselect
+=======
+    And I follow "Browse by category"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Edit categories"
     And I press "Add category"
     And I set the field "name" to "CategoryNoLinks"
@@ -97,7 +101,11 @@ Feature: Glossary entries can be organised in categories
     And "//a[contains(.,'CategoryNoLinks')]" "xpath_element" should not exist
 # Delete a category with entries
     And I am on the MyGlossary "glossary activity" page
+<<<<<<< HEAD
     And I select "Browse by category" from the "Browse the glossary using this index" singleselect
+=======
+    And I follow "Browse by category"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I press "Edit categories"
     And I should see "2 Entries" in the "CategoryNoLinks" "table_row"
     And I should see "2 Entries" in the "CategoryAutoLinks" "table_row"
@@ -105,7 +113,11 @@ Feature: Glossary entries can be organised in categories
     And I press "Yes"
     And I wait to be redirected
     And I am on the MyGlossary "glossary activity" page
+<<<<<<< HEAD
     And I select "Browse by category" from the "Browse the glossary using this index" singleselect
+=======
+    And I follow "Browse by category"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I should see "EntryCategoryNL"
     And I should not see "EntryNoCategory"
     And I should not see "EntryCategoryAL"

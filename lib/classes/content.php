@@ -71,6 +71,7 @@ class content {
 
             }
         } else if ($currentcontext->contextlevel == CONTEXT_MODULE) {
+<<<<<<< HEAD
             $cm = get_fast_modinfo($currentcontext->get_course_context()->instanceid)->cms[$currentcontext->instanceid];
 
             // Do not export course content if disabled at activity level.
@@ -78,6 +79,8 @@ class content {
                 return false;
             }
 
+=======
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
             // Modules can only be exported if exporting is allowed in their course context.
             $canexport = self::can_export_context($currentcontext->get_course_context(), $user);
         }

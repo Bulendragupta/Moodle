@@ -133,7 +133,11 @@ $mform = new edit_category_form(null, array('current'=>$category, 'gpr'=>$gpr));
 if ($mform->is_cancelled()) {
     redirect($returnurl);
 
+<<<<<<< HEAD
 } else if ($data = $mform->get_data()) {
+=======
+} else if ($data = $mform->get_data(false)) {
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     grade_edit_tree::update_gradecategory($grade_category, $data);
     redirect($returnurl);
 }

@@ -40,10 +40,17 @@ Feature: A teacher can choose whether glossary entries require approval
     And I log out
     # Approve the entry.
     And I am on the "Test glossary name" "glossary activity" page logged in as teacher1
+<<<<<<< HEAD
     And I follow "Pending approval"
     Then I should see "(this entry is currently hidden)"
     And I follow "Approve"
     And I am on the "Test glossary name" "glossary activity" page
+=======
+    And I follow "Waiting approval"
+    Then I should see "(this entry is currently hidden)"
+    And I follow "Approve"
+    And I click on "Test glossary name" "link" in the "page-header" "region"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     Then I should see "Concept definition"
     And I log out
     # Check that the entry can now be viewed by students.

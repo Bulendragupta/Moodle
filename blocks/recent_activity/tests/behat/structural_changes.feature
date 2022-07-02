@@ -60,25 +60,41 @@ Feature: View structural changes in recent activity block
 
     And I am on "Course 1" course homepage
     And I click on "ForumVisibleGroupsG1" "link"
+<<<<<<< HEAD
     And I click on "Settings" "link"
+=======
+    And I click on "Edit settings" "link"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Access restrictions | Grouping: Grouping 1 |
     And I press "Save and return to course"
 
     And I click on "ForumSeparateGroupsG1" "link"
+<<<<<<< HEAD
     And I click on "Settings" "link"
+=======
+    And I click on "Edit settings" "link"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Access restrictions | Grouping: Grouping 1 |
     And I press "Save and return to course"
 
     And I click on "ForumVisibleGroupsG2" "link"
+<<<<<<< HEAD
     And I click on "Settings" "link"
+=======
+    And I click on "Edit settings" "link"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Access restrictions | Grouping: Grouping 2 |
     And I press "Save and return to course"
 
     And I click on "ForumSeparateGroupsG2" "link"
+<<<<<<< HEAD
     And I click on "Settings" "link"
+=======
+    And I click on "Edit settings" "link"
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     And I set the following fields to these values:
       | Access restrictions | Grouping: Grouping 2 |
     And I press "Save and return to course"

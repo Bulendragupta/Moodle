@@ -518,7 +518,11 @@ class lib_test extends \advanced_testcase {
         $gg = $this->getDataGenerator()->get_plugin_generator('mod_glossary');
         $this->setUser($student);
         $entry = $gg->create_content($glossary);
+<<<<<<< HEAD
         $context = \context_module::instance($glossary->cmid);
+=======
+        $context = context_module::instance($glossary->cmid);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Test student can delete.
         $this->assertTrue(mod_glossary_can_delete_entry($entry, $glossary, $context));
@@ -552,7 +556,11 @@ class lib_test extends \advanced_testcase {
         $gg = $this->getDataGenerator()->get_plugin_generator('mod_glossary');
         $this->setUser($student);
         $entry = $gg->create_content($glossary);
+<<<<<<< HEAD
         $context = \context_module::instance($glossary->cmid);
+=======
+        $context = context_module::instance($glossary->cmid);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
 
         // Test student can always delete when edit always is set to 1.
         $entry->timecreated = time() - 2 * $CFG->maxeditingtime;
@@ -582,13 +590,21 @@ class lib_test extends \advanced_testcase {
         $student1 = $this->getDataGenerator()->create_and_enrol($course, 'student');
         $student2 = $this->getDataGenerator()->create_and_enrol($course, 'student');
 
+<<<<<<< HEAD
         $record = new \stdClass();
+=======
+        $record = new stdClass();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $record->course = $course->id;
         $record->assessed = RATING_AGGREGATE_AVERAGE;
         $scale = $this->getDataGenerator()->create_scale(['scale' => 'A,B,C,D']);
         $record->scale = "-$scale->id";
         $glossary = $this->getDataGenerator()->create_module('glossary', $record);
+<<<<<<< HEAD
         $context = \context_module::instance($glossary->cmid);
+=======
+        $context = context_module::instance($glossary->cmid);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $cm = get_coursemodule_from_instance('glossary', $glossary->id);
 
         $gg = $this->getDataGenerator()->get_plugin_generator('mod_glossary');
@@ -602,7 +618,11 @@ class lib_test extends \advanced_testcase {
         );
 
         // Rate the entry as user2.
+<<<<<<< HEAD
         $rating1 = new \stdClass();
+=======
+        $rating1 = new stdClass();
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $rating1->contextid = $context->id;
         $rating1->component = 'mod_glossary';
         $rating1->ratingarea = 'entry';
@@ -628,7 +648,11 @@ class lib_test extends \advanced_testcase {
         $this->assertEquals(0, $DB->count_records('glossary_entries', ['id' => $entry->id]));
         $this->assertEquals(0, $DB->count_records('glossary_alias', ['entryid' => $entry->id]));
         $this->assertEquals(0, $DB->count_records('rating', ['component' => 'mod_glossary', 'itemid' => $entry->id]));
+<<<<<<< HEAD
         $this->assertEmpty(\core_tag_tag::get_by_name(0, 'Cats'));
+=======
+        $this->assertEmpty(core_tag_tag::get_by_name(0, 'Cats'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     public function test_mod_glossary_delete_entry_imported() {
@@ -642,7 +666,11 @@ class lib_test extends \advanced_testcase {
         $glossary1 = $this->getDataGenerator()->create_module('glossary', ['course' => $course->id]);
         $glossary2 = $this->getDataGenerator()->create_module('glossary', ['course' => $course->id]);
 
+<<<<<<< HEAD
         $context = \context_module::instance($glossary2->cmid);
+=======
+        $context = context_module::instance($glossary2->cmid);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $cm = get_coursemodule_from_instance('glossary', $glossary2->id);
 
         $gg = $this->getDataGenerator()->get_plugin_generator('mod_glossary');
@@ -669,7 +697,11 @@ class lib_test extends \advanced_testcase {
         $this->assertEquals($glossary1->id, $DB->get_field('glossary_entries', 'glossaryid', ['id' => $entry2->id]));
 
         // Tags.
+<<<<<<< HEAD
         $this->assertEmpty(\core_tag_tag::get_by_name(0, 'Cats'));
+=======
+        $this->assertEmpty(core_tag_tag::get_by_name(0, 'Cats'));
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
     }
 
     public function test_mod_glossary_can_update_entry_users() {
@@ -685,7 +717,11 @@ class lib_test extends \advanced_testcase {
         $gg = $this->getDataGenerator()->get_plugin_generator('mod_glossary');
         $this->setUser($student);
         $entry = $gg->create_content($glossary);
+<<<<<<< HEAD
         $context = \context_module::instance($glossary->cmid);
+=======
+        $context = context_module::instance($glossary->cmid);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $cm = get_coursemodule_from_instance('glossary', $glossary->id);
 
         // Test student can update.
@@ -720,7 +756,11 @@ class lib_test extends \advanced_testcase {
         $gg = $this->getDataGenerator()->get_plugin_generator('mod_glossary');
         $this->setUser($student);
         $entry = $gg->create_content($glossary);
+<<<<<<< HEAD
         $context = \context_module::instance($glossary->cmid);
+=======
+        $context = context_module::instance($glossary->cmid);
+>>>>>>> 82a1143541c07fd468250ec9d6103d16e68bd8ef
         $cm = get_coursemodule_from_instance('glossary', $glossary->id);
 
         // Test student can always update when edit always is set to 1.
