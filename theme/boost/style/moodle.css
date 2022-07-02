@@ -10000,7 +10000,7 @@ img.activityicon {
 
 #maincontent {
   display: block;
-  height: 1px;
+  height: 0px;
   overflow: hidden; }
 
 img.uihint {
