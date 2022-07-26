@@ -64,12 +64,13 @@ body {
     font-family: 'Metropolis';
     color: #111;
 }
-.loginWrapper{
-    /* min-height: 950px; */
+.loginWrapper {
+    min-height: 725px;
+    overflow: hidden;
 }
 .loginWrapper::after{
     background: rgba(58, 58, 58, 0.4);
-    position: absolute;
+    position: fixed;
     left: 0;
     top: 0;
     right: 0;
@@ -109,6 +110,7 @@ header{
     border-left: 1px solid rgba(255,255,255,0.2);
     padding-left: 15px;
     margin-left: 15px;
+    margin-right: 85px;
 }
 .socialLinks a{
     color: #fff;
@@ -140,7 +142,7 @@ header{
     z-index: 10;
     left: 0;
     right: 0;
-    top: 0;
+    top: 10%;
 }
 .cuidolLmsLogin__inner{
     max-width: 420px;
@@ -149,30 +151,64 @@ header{
 }
 .cuidolLmsLogin__inner h2{
     color: #fff;
-    font-size: 24px;
+    font-size: 30px;
     line-height: 28px;
     font-weight: bold;
-    margin-bottom: 30px;
+    margin-bottom: 15px;
 }
 .cuidolLmsLogin__inner h2 span{
     font-weight: 300;
 }
 
+.cuidolLmsLogin__inner p{
+    color: #fff;
+}
 
 .cuidolLmsLogin__form{
-    background: #fff;
-    padding: 45px 36px;
-    border-radius: 30px;
+    background: transparent;
 }
 
-.cuidolLmsLogin__form .form-control{
-    height: 49px;
-    background: #ebebeb;
+.cuidolLmsLogin__form .form-control {
+    background: rgba(255,255,255,0.05);
     border-radius: 10px;
-    border: 1px solid #d7d7d7;
+    border: 1px solid #8e8a8d;
+    color: #fff;
+    font-weight: bold;
+    backdrop-filter: blur(5px);
 }
+
+.form-floating>label{
+    color: #fff;
+}
+
+.invalid-feedback {
+    color: #ffffff;
+    background: #cb2f34;
+    margin: 0;
+    font-size: 11px;
+    padding: 0px 5px;
+    top: -9px;
+    position: relative;
+    border-radius: 0 0 10px 10px;
+}
+
+
+.form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #fff;
+    opacity: 1; /* Firefox */
+  }
+  
+  .form-control:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #fff;
+  }
+  
+  .form-control::-ms-input-placeholder { /* Microsoft Edge */
+    color: #fff;
+  }
+
+
 .cuidolLmsLogin__form--fields p a{
-    color: #5b5b5b;
+    color: #fff;
     text-decoration: none;
 }
 
@@ -193,6 +229,20 @@ header{
 }
 .cuidolLmsLogin__form--tabs a.active{
     color: #cb2f34;
+}
+
+
+.triangle {
+    width: 0;
+    height: 0;
+    border-width: 1600px 0 0 2000px;
+    border-color: transparent transparent transparent #FF0000;
+    border-style: solid;
+    position: absolute;
+    top: 0;
+    z-index: 10;
+    bottom: 0;
+    right: -50%;
 }
 
 
@@ -226,9 +276,6 @@ header{
     .cuidolLmsLogin__inner{
         margin-top: 200px;
     }
-    .headerLogos a:first-child{
-        margin-right: 15px !important;
-    }
     .cuLogo {
         width: 200px;
     }
@@ -248,9 +295,6 @@ header{
     
     .cuidolLmsLogin__inner{
         margin-top: 230px;
-    }
-    .headerLogos a:first-child{
-        margin-right: 15px !important;
     }
     .headerRight{
         text-align: center;
@@ -281,7 +325,6 @@ header{
         padding: 11px 25px
     }
     .cuidolLmsLogin__form{
-        padding: 35px 25px;
         margin-bottom: 30px;
     }
     .cuidolLmsLogin__form--tabs a{
@@ -290,9 +333,27 @@ header{
     .loginWrapper {
         min-height: inherit;
         height: auto !important;
-    }
-    body{
-        background: #212529;
+        overflow: inherit;
     }
     
+
+    .cuidolLmsLogin__inner p{
+        font-size: 14px;
+    }
+
+    .cuidolLmsLogin{
+        position: relative;
+    }
+    
+    
 }
+
+    body{
+        background-color: #5d684e;
+        background-image: url('../img/slide-2.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-height: 720px;
+        overflow: hidden;
+    }
